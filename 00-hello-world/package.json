@@ -1,0 +1,32 @@
+{
+  "name": "jinge-demo-hello-world",
+  "version": "1.0.0",
+  "description": "basic demo for jinge",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --config ./jinge/webpack.config.js --watch",
+    "build-jinge": "PROD=true webpack --config ./jinge/webpack.config.js",
+    "build-react": "PROD=true webpack --config ./react/webpack.config.js",
+    "build-vue": "PROD=true webpack --config ./vue/webpack.config.js",
+    "start": "webpack-dev-server --config ./jinge/webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "eslint-plugin-react": "^7.12.4",
+    "jinge": "^1.0.0",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "vue": "^2.6.6",
+    "vue-loader": "^15.6.2",
+    "vue-template-compiler": "^2.6.6",
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  }
+}

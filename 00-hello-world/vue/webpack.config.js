@@ -1,0 +1,34 @@
+/* eslint-env node */
+const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const prod = 'PROD' in process.env;
+
+module.exports = {
+  mode: prod ? 'production' : 'development',
+  target: 'web',
+  entry: path.join(__dirname, 'index.js'),
+  output: {
+    filename: `bundle.${prod ? 'min.' : ''}js`,
+    path: path.join(__dirname, 'dist')
+  },
+  module: {
+    rules: [{
+      test: /\.vue$/,
+      use: {
+        loader: 'vue-loader'
+      }
+    }]
+  },
+  devtool: 'source-map',
+  devServer: {
+    contentBase: './',
+    port: 9000
+  },
+  stats: {
+    errors: true,
+    all: false
+  },
+  plugins: [
+    new VueLoaderPlugin()
+  ]
+};

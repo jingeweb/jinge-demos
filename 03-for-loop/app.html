@@ -1,0 +1,35 @@
+<h2>Simple For-loop</h2>
+<div>
+  <p>
+  <for e:loop="numbers" _key="index" vm:each="n" vm:index="i">
+  ${i}: ${n};
+  </for>
+  </p>
+  <div>
+    <button on:click="test()">Test</button>
+    <button on:click="push()">Push Large</button>
+  </div>
+</div>
+<h2>For & If</h2>
+<div>
+  <p>
+  <for e:loop="numbers" _key="each" vm:each="n" vm:index="i">
+  <if e:expect="n % 2 === 0">
+  <span style="margin-right: 10px;">${i}: ${n};</span>
+  </if>
+  <if e:expect="n % 2 === 1">
+  <span style="margin-right: 10px; color: blue;">${n}</span>
+  </if>
+  </for>
+  </p>
+</div>
+<h2>Key: id</h2>
+<div>
+  <p>
+  <ul>
+    <for e:loop="persons" _key="each.id" vm:each="person">
+    <li>${person.name}</li>
+    </for>
+  </ul>
+  </p>
+</div>

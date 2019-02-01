@@ -1,0 +1,20 @@
+{
+  "name": "jinge-demo-if-else",
+  "version": "1.0.0",
+  "description": "basic demo for jinge",
+  "main": "index.js",
+  "scripts": {
+    "build-dev": "webpack --config ./webpack.config.js",
+    "build": "PROD=true npm run build-dev",
+    "start": "webpack-dev-server --config ./webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "jinge": "^1.0.0",
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
