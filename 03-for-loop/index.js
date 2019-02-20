@@ -29,7 +29,7 @@ class App extends Component {
         id: Date.now().toString(32),
         name: Date.now().toString(32)
       }));
-    }, 1000);
+    }, 3000);
   }
   test() {
     this.numbers = VM([6, 0, 7, 3, 2]);
