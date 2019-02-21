@@ -1,0 +1,24 @@
+<h2>UI-Router</h2>
+<p>jinge framework does't implement router. we use ui-router.</p>
+<ui-hash-router e:_states="_states" e:_plugins="_plugins" _otherwise="/hello">
+<div>
+  <div style="border-bottom: 1px solid blue; margin-bottom: 10px;">
+    <h3>Top Menu Area</h3>
+    <p>
+      <!-- default sref link -->
+      <ui-sref text="Hello" to="hello" active="active"></ui-sref>
+      <!-- custom sref link-->
+      <ui-sref to="about" active="active">
+      <a style="margin: 10px;">About</a>
+      </ui-sref>
+      <ui-sref to="people" active="active" text="People"/>
+    </p>
+  </div>
+  <div>
+    <h3>Content Area</h3>
+    <div class="content">
+      <ui-view/>
+    </div>
+  </div>
+</div>
+</ui-hash-router>

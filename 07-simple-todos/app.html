@@ -1,0 +1,43 @@
+<h2>Simple Todos</h2>
+<div>
+  <table>
+  <thead>
+    <tr>
+      <th>
+        <input
+          e:disabled="todos.length === 0"
+          id="xx"
+          type="checkbox"
+          e:checked="allDone"
+          on:click="toggleAllDone()"
+        />
+      </th>
+      <th>Title</th>
+      <th>Operate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <for e:loop="todos" vm:each="todo">
+    <tr>
+      <td>
+        <input type="checkbox" e:checked="todo.done" on:click="toggleDone(todo)"/>
+      </td>
+      <td>${todo.title}</td>
+      <td>
+        <button on:click="modify(todo)">Modify</button>
+        <button on:click="remove(todo)">Delete</button>
+      </td>
+    </tr>
+    </for>
+    <if e:expect="todos.length === 0">
+    <tr>
+      <td class="emp" colspan="3">no todo, please add.</td>
+    </tr>
+    </if>
+  </tbody>
+  </table>
+</div>
+<div class="ctrl">
+  <button on:click="add()">Add</button>
+  <button on:click="clear()">Clear</button>
+</div>
