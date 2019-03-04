@@ -16,6 +16,6 @@
   <!-- '$event' will be replaced to 'args[0]' -->
   <button on:click="showBoy = !showBoy; inc++; log($event)">${showBoy ? 'Hide' : 'Show'} Boy</button>
   <if e:expect="showBoy">
-  <button on:click="callApi(...args)">Call Api</button>
+  <button on:click="callApi">Call Api</button>
   </if>
 </p>

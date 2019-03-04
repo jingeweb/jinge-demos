@@ -21,10 +21,8 @@ function saveTodos(todos) {
   localStorage.setItem('jinge-simple-todos', JSON.stringify(todos));
 }
 
-let id = 0;
 function createTodo(title, done = false) {
   return VM({
-    // id: Date.now().toString(32) + (id++).toString(32),
     title,
     done
   });

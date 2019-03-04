@@ -12,7 +12,7 @@ class Boy extends Component {
 -->
 <div> Hello everyone, my name is: \${name || "xiaoge"}.</div>
 <if e:expect="clickTimes >= 2">
-<div> My girlfriend is <Girl name="\${girl}-\${clickTimes.toString(32)}"/>.</div>
+<div> My girlfriend is <Girl name="\${girl}-\${clickTimes}"/>.</div>
 </if>
 <div> You have clicked \${clickTimes} times. </div>
 `;
@@ -23,9 +23,8 @@ class App extends Component {
   static get template() {
     return `
 <!--
-  // Use short import statement to explicitly declare the name of the component used.
-  // The used component must be in the same file.
-  import Boy;
+  // if Component to use is in the same file, just import it from '.'.
+  import Boy from '.';
 -->
 <Boy e:name="name" girl="alice" clickTimes="\${clickTimes}"/>
 <div>

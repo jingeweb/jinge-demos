@@ -6,7 +6,7 @@ import {
 
 import _tpl from './app.html';
 
-let AUTO_INC = 6;
+let AUTO_INC = 1000;
 
 class App extends Component {
   static get template() {
@@ -31,7 +31,8 @@ class App extends Component {
       }));
     }, 3000);
   }
-  test() {
+  test($evt) {
+    console.log($evt);
     this.numbers = VM([6, 0, 7, 3, 2]);
     this.persons.length = 0;
   }
