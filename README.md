@@ -2,5 +2,5 @@
 
 [中文](./README_zh-cn.md) | English
 
-TODO: Translate chinese README to english.
+TODO: Translate chinese README_zh-cn.md.
 
