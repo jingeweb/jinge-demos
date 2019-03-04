@@ -1,0 +1,22 @@
+<li ref:todo class="${todo.done ? 'completed' : ''} ${editing ? 'editing' : ''}">
+  <div class="view">
+    <input
+      class="toggle"
+      type="checkbox"
+      on:click="toggleDone"
+      e:checked="todo.done"
+    />
+    <label on:dblclick="edit(todo)">${ todo.title }</label>
+    <button class="destroy" on:click="remove"></button>
+  </div>
+  <if e:expect="editing" on:updated="focus">
+  <input
+    class="edit"
+    ref:edit
+    e:value="editingTitle"
+    on:input="editingTitle = $event.target.value"
+    on:blur="stopEditing"
+    on:keyup="if ($event.keyCode === 13) stopEditing(); else if ($event.keyCode === 8) cancelEditing();"
+  />
+  </if>
+</li>
