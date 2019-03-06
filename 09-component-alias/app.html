@@ -1,0 +1,15 @@
+<!--
+  // we must import components before using.
+  import ModuleA from './module/module_a';
+  import ModuleB from './module/module_b';
+-->
+<h2>Component Alias</h2>
+<div>
+  <ModuleA/>
+  <ModuleB/>
+  <!--
+    cus-com-a is component alias, reference to 'common/components/custom-component-a.js'
+    we do not need to import it as it is registerd globaly.
+   -->
+  <p>This is App: <cus-com-a/></p>
+</div>
