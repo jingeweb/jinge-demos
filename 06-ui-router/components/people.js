@@ -3,6 +3,10 @@ import {
 } from 'jinge';
 
 export default class People extends Component {
+  constructor(attrs) {
+    super(attrs);
+    this.people = attrs.people;
+  }
   static get template() {
     return `
 <div style="display:flex;flex-direction:row;">

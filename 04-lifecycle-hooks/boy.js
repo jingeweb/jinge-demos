@@ -8,6 +8,10 @@ export default class Boy extends Component {
   static get template() {
     return _tpl;
   }
+  constructor(attrs) {
+    super(attrs);
+    this.name = attrs.name;
+  }
   someApi() {
     alert(`Hello, everyone. My name is ${this.name}`);
     this.notify('someApiCalled', this.name);

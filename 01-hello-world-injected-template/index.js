@@ -17,6 +17,12 @@ class Boy extends Component {
 <div> You have clicked \${clickTimes} times. </div>
 `;
   }
+  constructor(attrs) {
+    super(attrs);
+    this.clickTimes = attrs.clickTimes;
+    this.name = attrs.name;
+    this.girl = attrs.girl;
+  }
 }
 
 class App extends Component {

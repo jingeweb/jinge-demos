@@ -3,6 +3,10 @@ import {
 } from 'jinge';
 
 export default class Girl extends Component {
+  constructor(args) {
+    super(args);
+    this.name = args.name;
+  }
   static get template() {
     return '${name}';
   }

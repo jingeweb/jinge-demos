@@ -12,23 +12,23 @@ class App extends Component {
   }
   constructor(args) {
     super(args);
-    this.btnHandler = this.onButtonClick.bind(this);
-    this.chart = null;
+    this._btnHandler = this.onButtonClick.bind(this);
+    this._chart = null;
   }
   afterRender() {
-    $(this.getChild('btn')).on('click', this.btnHandler);
+    $(this.getChild('btn')).on('click', this._btnHandler);
   }
   beforeDestroy() {
-    $(this.getChild('btn')).off('click', this.btnHandler);
-    this.chart && this.chart.dispose();
+    $(this.getChild('btn')).off('click', this._btnHandler);
+    this._chart && this._chart.dispose();
   }
   onButtonClick($evt) {
     console.log($evt);
-    if (!this.chart) {
-      this.chart = echarts.init(this.getChild('chart'));
+    if (!this._chart) {
+      this._chart = echarts.init(this.getChild('chart'));
     }
     // use configuration item and data specified to show chart
-    this.chart.setOption({
+    this._chart.setOption({
       title: {
         text: 'ECharts entry example'
       },
