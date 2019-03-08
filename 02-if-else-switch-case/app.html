@@ -18,14 +18,20 @@
 <h2>If and Else</h2>
 <div>
   <p>
-  <if e:expect="n > 5">
-  <argument arg:pass="default">
-    It's greater than 5.
-  </argument>
-  <argument arg:pass="else">
-    It's less or equal than 5.
-  </argument>
-  </if>
+    <if e:expect="n > 5">
+    <argument arg-pass:default>
+      It's greater than <span>5</span>
+    </argument>
+    <argument arg-pass:else>
+      It's less or equal than <span>5</span>
+    </argument>
+    </if>
+  </p>
+  <p>
+    <if e:expect="n > 5">
+    <span arg-pass:default>It's greater than 5.</span>
+    <span arg-pass:else>It's less or equal than 5.</span>
+    </if>
   </p>
 </div>
 <h2>Use class-name instead of If</h2>
@@ -39,10 +45,10 @@
 <div>
   <p>
   <switch e:test="n">
-  <argument arg:pass="0">零</argument>
-  <argument arg:pass="3">三</argument>
-  <argument arg:pass="8">八</argument>
-  <argument arg:pass="default">${n}</argument>
+  <argument arg-pass:0>零</argument>
+  <argument arg-pass:3>三</argument>
+  <p arg-pass:8>八</p>
+  <argument arg-pass:default>${n} <if e:expect="n > 5"> > 5</if></argument>
   </switch>
   </p>
 </div>

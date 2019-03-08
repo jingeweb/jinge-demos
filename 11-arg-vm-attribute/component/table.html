@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <for e:loop="columns" vm-use:each="col" vm-use:index="i">
+      <parameter arg-use:vh vm-pass:columnIndex="xx" :columnData="col">
+      <th>${col}</th>
+      </parameter>
+      </for>
+    </tr>
+  </thead>
+  <tbody>
+    <for e:loop="data" vm-use:each="row" vm-use:index="ri">
+    <tr>
+      <for e:loop="row" vm-use:each="cell" vm-use:index="ci">
+      <parameter arg-use:td vm-pass:rowIndex="ri" vm-pass:rowData="row" vm-pass:columnIndex="ci" vm-pass:cellData="cell">
+      <td>${cell}</td>
+      </parameter>
+      </for>
+    </tr>
+    </for>
+  </tbody>
+</table>

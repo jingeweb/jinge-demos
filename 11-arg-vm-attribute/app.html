@@ -1,0 +1,51 @@
+<!-- import Table from './component/table' -->
+<h1>arg & vm attribute</h1>
+<h3>Basic Table</h3>
+<Table e:data="basic.data" e:columns="basic.columns">
+  <th
+    arg-pass:th
+    vm:columnIndex="colIdx"
+    vm:columnData="col"
+  >
+  ${colIdx} - ${col}
+  </th>
+</Table>
+<p>
+  <button on:click="prependColumn">Prepend Column</button>
+</p>
+<h3>Custom render Table</h3>
+<!-- <Table e:data="advance.data" e:columns="advance.columns">
+<argument arg-pass:th vm:columnIndex="i" vm:columnData="col">
+  <if e:expect="col.key === '-'">
+  <argument arg-pass:default>
+    <th><input type="checkbox"/></th>
+  </argument>
+  <argument arg-pass:else>
+    <th style="color: blue;" class="col-${i}">
+      <span>${i}: ${col.title}</span>
+    </th>  
+  </argument>
+  </if>
+</argument>
+<argument arg-pass:td vm:rowIndex="rowIdx" vm:columnIndex="key" vm:cellData="cell">
+  <switch e:test="key">
+    <argument arg:pass="-">
+      <td><input type="checkbox"/></td>
+    </argument>
+    <argument arg-pass:tags>
+    <for e:loop="cell" vm:each="tag" vm:index="tagIdx">
+      <span>${tag}</span>
+      <if e:expect="tagIdx === cell.length - 1"><span>,</span></if>
+    </for>
+    </argument>
+    <argument arg-pass:default>
+      <td>${cell}</td>
+    </argument>
+    <argument arg-pass:__op>
+      <td style="color: red">
+        <a on:click="delRow(rowIdx)">Delete</a>
+      </td>
+    </argument>
+  </switch>
+</argument>
+</Table> -->
