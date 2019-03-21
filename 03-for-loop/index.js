@@ -32,7 +32,9 @@ class App extends Component {
     }, 3000);
   }
   test($evt) {
-    console.log($evt);
+    // this.numbers.push(AUTO_INC++);
+    // return;
+    // console.log($evt);
     this.numbers = VM([6, 0, 7, 3, 2]);
     this.persons.length = 0;
   }

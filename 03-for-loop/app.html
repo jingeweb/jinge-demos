@@ -1,8 +1,8 @@
-<h2>Simple For-loop</h2>
+<h2>Simple Array For-loop</h2>
 <div>
  <p>
-  <for e:loop="numbers" _key="index" vm:each="n" vm:index="i">
-  ${i}: ${n};
+  <for e:loop="numbers" vm:isLast="$last" vm:isFirst vm:each="n" vm:index="i">
+  <if e:expect="isFirst">First: </if> ${i}: ${n} <if e:expect="!$last">;</if>
   </for>
   </p>
   <div>
@@ -14,6 +14,10 @@
 <div>
   <p>
   <for e:loop="numbers" _key="each" vm:each="n" vm:index="i">
+  <if e:expect="i % 2 === 0">
+    <span arg-pass:default>odd: </span>
+    <span arg-pass:else>even: </span>
+  </if>
   <if e:expect="n % 2 === 0">
   <span style="margin-right: 10px;">${i}: ${n};</span>
   </if>
