@@ -1,22 +1,29 @@
 <table>
   <thead>
     <tr>
-      <for e:loop="columns" vm-use:each="col" vm-use:index="i">
-      <parameter arg-use:vh vm-pass:columnIndex="xx" :columnData="col">
-      <th>${col}</th>
+      <for e:loop="columns" e:_key="_columnKey" vm:each="col" vm:index="i">
+      <parameter arg-use:th vm-pass:columnIndex="i" vm-pass:columnData="col">
+      <th>${col.title || col.key}</th>
       </parameter>
       </for>
     </tr>
   </thead>
   <tbody>
-    <for e:loop="data" vm-use:each="row" vm-use:index="ri">
+    <for e:loop="data" e:_key="_rowKey" vm:each="row" vm:index="ri">
     <tr>
-      <for e:loop="row" vm-use:each="cell" vm-use:index="ci">
-      <parameter arg-use:td vm-pass:rowIndex="ri" vm-pass:rowData="row" vm-pass:columnIndex="ci" vm-pass:cellData="cell">
-      <td>${cell}</td>
+      <for e:loop="columns" vm:each="col" e:_key="_columnKey" vm:index="ci">
+      <parameter arg-use:td vm-pass:rowIndex="ri" vm-pass:rowData="row" vm-pass:columnIndex="ci" vm-pass:columnData="col">
+      <td>${row[col.dataIndex || col.key]}</td>
       </parameter>
       </for>
     </tr>
     </for>
+    <if e:expect="!data || data.length === 0">
+      <tr>
+        <parameter arg-use:empty-td>
+        <td colspan="${columns.length}" style="text-align: center; color: gray;">No Data</td>
+        </parameter>
+      </tr>
+    </if>
   </tbody>
 </table>

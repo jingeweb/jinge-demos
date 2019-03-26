@@ -3,8 +3,13 @@ import {
   bootstrap,
   VM
 } from 'jinge';
+import {
+  config
+} from 'jinge/src/util';
 
 import _tpl from './app.html';
+
+config.vmDebug = true;
 
 class App extends Component {
   static get template() {
@@ -12,49 +17,96 @@ class App extends Component {
   }
   constructor(args) {
     super(args);
-    this.basic = VM({
-      columns: ['Name', 'Age'],
-      data: [
-        ['Ge', 20],
-        ['Jing', 18]
-      ]
-    });
-    this.advance = VM({
-      columns: [{
-        title: '-',
-        key: '-'
-      }, {
-        title: 'Name',
-        key: 'name'
-      }, {
-        title: 'Age',
-        key: 'age'
-      }, {
-        title: 'Tags',
-        key: 'tags'
-      }, {
-        title: 'Operate',
-        key: '__op'
-      }],
-      data: [{
-        name: 'Ge',
-        age: 20,
-        tags: ['Boy']
-      }, {
-        name: 'Jing',
-        age: 18,
-        tags: ['Girl', 'Wife']
-      }]
-    });
+    this.data = VM([{
+      name: 'Ge',
+      age: 20
+    }, {
+      name: 'Jing',
+      age: 18
+    }]);
+    this.columns = VM([{
+      key: 'name',
+      title: 'Name'
+    }, {
+      key: 'age',
+      title: 'Age'
+    }]);
+   
+    this.columns2 = VM([{
+      key: '-'
+    }, {
+      key: 'name',
+      title: 'Name'
+    }, {
+      key: 'age',
+      title: 'Age'
+    }, {
+      key: 'tags',
+      title: 'Tag'
+    }, {
+      key: 'action',
+      title: 'Action'
+    }]);
+    this.data2 = VM([{
+      key: 0,
+      checked: false,
+      name: 'Ge',
+      age: 20,
+      tags: ['Boy']
+    }, {
+      key: 1,
+      name: 'Jing',
+      checked: false,
+      age: 18,
+      tags: ['Girl', 'Wife']
+    }]);
+    this.allChecked = false;
   }
   prependColumn() {
-    this.basic.columns.unshift('Col_' + (Date.now()).toString(32));
-    this.basic.data.forEach(row => {
-      row.unshift((Math.random() * 1000) | 0);
+    const _k = (Date.now()).toString(32);
+    this.columns.unshift(VM({
+      key: _k,
+      title: 'Col_' + _k
+    }));
+    this.data.forEach(row => {
+      row[_k] = (Math.random() * 1000) | 0;
     });
   }
-  appendRow() {
-
+  test() {
+    this.columns[0] = VM({
+      title: 'TT',
+      key: 'age'
+    })
+  }
+  removeRow(idx) {
+    console.log('rm', idx);
+    this.data2.splice(idx, 1);
+  }
+  addRow() {
+    this.data2.push(VM({
+      key: this.data2.length,
+      name: Date.now().toString(32),
+      age: 16 + (Math.random() * 10 | 0),
+      tags: (new Array((Math.random() * 4 | 0) + 1)).fill(0).map((n, i) => `Tag${i+1}`)
+    }));
+  }
+  modifyRow() {
+    const ri = Math.random() * this.data2.length | 0;
+    console.log(ri);
+    const row = this.data2[ri];
+    row.age++;
+    row.name += `_${row.age}`;
+    row.tags = VM((new Array((Math.random() * 2 | 0) + 1)).fill(0).map((n, i) => `Tag${i+1}`));
+  }
+  toggleAllCheck() {
+    this.data2.forEach(row => {
+      row.checked = !this.allChecked;
+    });
+    this.allChecked = !this.allChecked;
+  }
+  toggleCheck(row) {
+    row.checked = !row.checked;
+    this.allChecked = !this.data2.find(row => !row.checked);
   }
 }
 
