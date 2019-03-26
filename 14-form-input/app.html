@@ -1,0 +1,55 @@
+<h2>Form Input</h2>
+<div>
+  <form>
+    <p>
+      <label for="t">TEXT:</label>
+      <input id="t" e:value="data.t" placeholder="input 1" on:input="data.t = $event.target.value"/>
+    </p>
+    <p>
+      <label for="t2">TEXTAREA:</label>
+      <textarea id="t2" placeholder="input ${data.t}" on:input="data.t2 = $event.target.value">${data.t2}</textarea>
+    </p>
+    <p>
+      <label>CHECKBOX:</label>
+      <input id="t3" type="checkbox" e:checked="data.t3" on:change="data.t3 = $event.target.checked" />
+      <label for="t3">Click here to check: ${data.t3}</label>
+    </p>
+    <p>
+      <label>MULTI CHECK:</label>
+      <for e:loop="fruits4" vm:each>
+        <label><input name="t4" e:checked="each.selected" on:change="(each.selected = $event.target.checked) ? add(each.name) : del(each.name)" type="checkbox"/>${each.name}</label>
+      </for>
+    </p>
+    <p>
+      <label>RADIO:</label>
+      <for e:loop="fruits5" vm:each>
+        <label><input name="t5" e:checked="each === data.t5" on:click="data.t5 = each" type="radio"/>${each}</label>
+      </for>
+    </p>
+    <p>
+      <label>SELECT:</label>
+      <select e:value="data.t6" on:change="data.t6 = $event.target.value">
+        <option disabled value="">Please select one</option>
+        <for e:loop="fruits5" vm:each>
+        <option value="${each}">${each}</option>
+        </for>
+      </select>
+    </p>
+    <p>
+      <label>MULTI SELECT:</label>
+      <select multiple on:change="onMultiSelectChange($event.target)">
+        <for e:loop="fruits4" vm:each vm:isFirst>
+        <option value="${each.name}" e:selected="each.selected">${each.name}:${each.selected}</option>
+        </for>
+      </select>
+    </p>
+      
+  </form>
+</div>
+<h4>Input Form Data:</h4>
+<pre>
+  ${output}
+</pre>
+<p>
+  <button on:click="test">Test</button>
+</p>
