@@ -36,37 +36,37 @@ class App extends Component {
       }]
     });
 
-    vmWatch(this, '**', () => {
-      console.log('root: anything changed.');
+    vmWatch(this, '**', (propPath) => {
+      console.log('root: anything changed.', propPath);
     });
 
-    vmWatch(this, 'boy1.**', () => {
-      console.log('root: boy1 deep notify.');
+    vmWatch(this, 'boy1.**', (propPath) => {
+      console.log('root: boy1 deep notify.', propPath);
     });
 
-    vmWatch(this, 'boy2.children.*.name', () => {
-      console.log('root: boy2.children.*.name notify');
+    vmWatch(this, 'boy2.children.*.name', (propPath) => {
+      console.log('root: boy2.children.*.name notify', propPath);
     });
 
-    vmWatch(this, 'boy2.*.name', () => {
-      console.log('root: boy2.*.name notify.');
+    vmWatch(this, 'boy2.*.name', (propPath) => {
+      console.log('root: boy2.*.name notify.', propPath);
     });
 
-    vmWatch(this.boy1, '*.name', () => {
-      console.log('boy1: *.name notify');
+    vmWatch(this.boy1, '*.name', (propPath) => {
+      console.log('boy1: *.name notify', propPath);
     });
 
     // array item watch
-    vmWatch(this.boy1, 'children.1.name', () => {
-      console.log('boy1: children[1].name notify.');
+    vmWatch(this.boy1, 'children.1.name', (propPath) => {
+      console.log('boy1: children[1].name notify.', propPath);
     });
     // deep watch
-    vmWatch(this.boy1, 'children.**', () => {
-      console.log('boy1: deep children notify');
+    vmWatch(this.boy1, 'children.**', (propPath) => {
+      console.log('boy1: deep children notify', propPath);
     });
 
-    this._h = () => {
-      console.log('boy2: xxx.ooo notify.');
+    this._h = (propPath) => {
+      console.log('boy2: xxx.ooo notify.', propPath);
     };
     vmWatch(this.boy2, 'xxx.ooo', this._h);
   }
@@ -93,9 +93,9 @@ class App extends Component {
      * 此处的赋值操作，会同时触发 boy1 上对 `*.name` 的监听，
      * 这一点容易让人迷糊，在 README 中有详细的解释。 
      */
-    this.boy1.children.push({
+    this.boy1.children.push(VM({
       name: 'ppp'
-    });
+    }));
   }
 
   clear() {
