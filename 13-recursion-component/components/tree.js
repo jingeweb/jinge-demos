@@ -3,7 +3,7 @@ import {
 } from 'jinge';
 import {
   isArray
-} from 'jinge/src/util';
+} from 'jinge/util';
 
 export default class Tree extends Component {
   static get template() {

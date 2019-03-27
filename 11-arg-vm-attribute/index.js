@@ -5,11 +5,11 @@ import {
 } from 'jinge';
 import {
   config
-} from 'jinge/src/util';
+} from 'jinge/util';
 
 import _tpl from './app.html';
 
-config.vmDebug = true;
+// config.vmDebug = true;
 
 class App extends Component {
   static get template() {
@@ -81,6 +81,7 @@ class App extends Component {
   removeRow(idx) {
     console.log('rm', idx);
     this.data2.splice(idx, 1);
+    this._update();
   }
   addRow() {
     this.data2.push(VM({
@@ -89,6 +90,7 @@ class App extends Component {
       age: 16 + (Math.random() * 10 | 0),
       tags: (new Array((Math.random() * 4 | 0) + 1)).fill(0).map((n, i) => `Tag${i+1}`)
     }));
+    this.allChecked = false;
   }
   modifyRow() {
     const ri = Math.random() * this.data2.length | 0;
@@ -106,6 +108,9 @@ class App extends Component {
   }
   toggleCheck(row) {
     row.checked = !row.checked;
+    this._update();
+  }
+  _update() {
     this.allChecked = !this.data2.find(row => !row.checked);
   }
 }

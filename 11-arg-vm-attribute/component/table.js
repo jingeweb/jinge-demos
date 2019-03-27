@@ -3,7 +3,7 @@ import {
 } from 'jinge';
 import {
   isArray
-} from 'jinge/src/util';
+} from 'jinge/util';
 
 import _tpl from './table.html';
 

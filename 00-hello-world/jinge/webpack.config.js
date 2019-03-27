@@ -1,6 +1,7 @@
 /* eslint-env node */
 const path = require('path');
 const prod = 'PROD' in process.env;
+const CompressionPlugin = require('compression-webpack-plugin');
 const { jingeLoader } = require('jinge/compiler');
 
 module.exports = {
@@ -22,5 +23,8 @@ module.exports = {
     writeToDisk: true,
     contentBase: __dirname,
     port: 9000
-  }
+  },
+  plugins: [
+    new CompressionPlugin()
+  ]
 };

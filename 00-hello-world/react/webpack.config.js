@@ -1,5 +1,6 @@
 /* eslint-env node */
 const path = require('path');
+const CompressionPlugin = require('compression-webpack-plugin');
 const prod = 'PROD' in process.env;
 
 module.exports = {
@@ -29,8 +30,7 @@ module.exports = {
     contentBase: './',
     port: 9000
   },
-  stats: {
-    errors: true,
-    all: false
-  }
+  plugins: [
+    new CompressionPlugin()
+  ]
 };

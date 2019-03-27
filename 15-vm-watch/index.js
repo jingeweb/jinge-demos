@@ -6,12 +6,13 @@ import {
   vmUnwatch
 } from 'jinge';
 
-import debugConfig from 'jinge/src/util/config';
-import { VM_LISTENERS } from 'jinge/src/viewmodel/notify';
-
 import _tpl from './app.html';
 
-debugConfig.vmSyncNotify = true; // use sync mode to debug.
+import {
+  config
+} from 'jinge/util';
+
+// config.vmDebug = true;
 
 class App extends Component {
   static get template() {
