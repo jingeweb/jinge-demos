@@ -1,0 +1,8 @@
+{
+  "select_locale": "请选择语言",
+  "title": "国际化多语言示例",
+  "tip": "请输入您的名字：",
+  "hello.xiaoge": "你好，小葛！",
+  "hello.t1": "你好，{name}！",
+  "hello.t2": "{name}，你好！"
+}

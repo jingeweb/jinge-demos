@@ -1,0 +1,30 @@
+<!--
+  import I18n from './hi18n';
+-->
+<p>
+  <select e:value="locale" on:change="changeLocale($event.target.value)">
+    <option disabled value=""><i18n key="select_locale"/></option>
+    <for e:loop="locales" vm:each>
+    <option value="${each.locale}">${each.name}</option>
+    </for>
+  </select>
+</p>
+<h1>
+  <!--
+    <i18n> is default alias of I18nComponent,
+    you can use it directly without import it.
+  -->
+  <i18n key="title"/>
+</h1>
+<p>
+  <i18n key="tip"/><input e:value="boy" on:input="boy = $event.target.value"/>
+</p>
+<p>
+  <!--
+    Equal as <i18n key="hello.t1" e:name="boy"/>
+  -->
+  <I18n key="t1" e:name="boy"/>
+</p>
+<p>
+  <I18n key="${boy}" e:name="boy"/>
+</p>
