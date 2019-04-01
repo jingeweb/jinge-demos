@@ -3,6 +3,7 @@ node_modules
 .tmp
 .vscode
 **/.DS_Store
+package-lock.json
 .jshintignore
 .jshintrc
 .jshint
