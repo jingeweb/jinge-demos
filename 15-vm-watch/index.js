@@ -8,12 +8,6 @@ import {
 
 import _tpl from './app.html';
 
-import {
-  config
-} from 'jinge/util';
-
-// config.vmDebug = true;
-
 class App extends Component {
   static get template() {
     return _tpl;

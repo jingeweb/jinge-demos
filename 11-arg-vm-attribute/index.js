@@ -3,13 +3,8 @@ import {
   bootstrap,
   VM
 } from 'jinge';
-import {
-  config
-} from 'jinge/util';
 
 import _tpl from './app.html';
-
-// config.vmDebug = true;
 
 class App extends Component {
   static get template() {
