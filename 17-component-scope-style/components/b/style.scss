@@ -1,0 +1,21 @@
+h4 {
+  font-size: 20px;
+}
+
+.c1 {
+  color: blue;
+
+  > .c11 {
+    color: red;
+  }
+}
+
+.c3 {
+  /deep/ .d1 {
+    color: purple;
+  }
+
+  .d2 { // without deep will not effect child component
+    color: purple;
+  }
+}

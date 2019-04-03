@@ -1,0 +1,18 @@
+.c1 {
+  color: red;
+
+  > .c11 {
+    color: blue;
+  }
+
+}
+
+.c3 {
+  /deep/ > .d1 {
+    color: green;
+  }
+  
+  ::deep > .d2 {
+    color: green;
+  }
+}
