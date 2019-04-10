@@ -1,0 +1,63 @@
+<h1>Transition Demo</h1>
+<p>Jinge framework only provide basic transition/animation supports.</p>
+<p>TODO: implement advance transtion/animation supports</p>
+<h3>Toggle className</h3>
+<div>
+  <p>
+    <toggle-class
+      e:class="{fade: fade, slide: slide}"
+      transition
+      on:transition="handleTransition"
+    >
+    <div class="ts">Hello, World</div>
+    </toggle-class>
+  </p>
+  <button on:click="fade = !fade">Fade</button>
+  <button on:click="slide = !slide">Slide</button>
+  <button on:click="fade = !fade; slide = !slide">Both</button>
+</div>
+<h3>Hide/Show</h3>
+<div>
+  <button on:click="show = !show">${show ? 'Hide' : 'Show'}</button>
+  <hide e:test="!show" transition>
+  <p>Hello, World</p>
+  </hide>
+</div>
+<h3>If</h3>
+<div>
+  <button on:click="show2 = !show2">${show2 ? 'Hide' : 'Show'}</button>
+  <if
+    e:expect="show2"
+    transition="slide-fade"
+  >
+    <p>Hello, World</p>
+  </if>
+</div>
+<h3>If/Else</h3>
+<div>
+  <button on:click="show3 = !show3">Toggle</button>
+  <if
+    e:expect="show3"
+    transition="slide-fade"
+  >
+    <p arg:default>Hello, A!</p>
+    <p arg:else>Hello, B!</p>
+  </if>
+</div>
+<h3>Switch</h3>
+<div>
+  <button on:click="si = si ? si + 1 : 1">Increment ${si}</button>
+  <button on:click="si = si ? si - 1 : 0">Decrement ${si}</button>
+
+  <switch
+    e:test="si"
+    transition="slide-fade"
+  >
+    <p arg:1>Hello, A!</p>
+    <p arg:2>Hello, B!</p>
+    <p arg:default>Hello, ${si}</p>
+  </switch>
+</div>
+<h3>For</h3>
+<p>Not supported!</p>
+<p>TODO: implement transition for component: &lt;for&gt;</p>

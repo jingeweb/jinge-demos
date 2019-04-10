@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>demo of jinge-framework</title>
+  <style>
+  .fade-enter,
+  .fade-leave {
+    transition: all 5000ms ease;
+  }
+  .fade,
+  .fade-enter-active {
+    opacity: 0.1;
+  }
+  .fade.fade-leave-active {
+    opacity: 1;
+  }
+
+  .slide {
+    transform: translateX(100px);
+  }
+  .slide-enter-active {
+    animation: slide-in 5000ms;
+  }
+  .slide-leave-active {
+    animation: slide-in 5000ms reverse;
+  }
+  @keyframes slide-in {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(150px);
+    }
+    100% {
+      transform: translateX(100px);
+    }
+  }
+
+  .jg-hide-enter,
+  .jg-hide-leave {
+    transition: all 5000ms ease;
+  }
+  .jg-hide-enter-active,
+  .jg-hide.jg-hide-leave {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  .jg-hide.jg-hide-leave-active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .slide-fade-enter,
+  .slide-fade-leave {
+    transition: opacity 1s, transform 1s;
+  }
+  .slide-fade-enter,
+  .slide-fade-leave-active {
+    transform: translateX(60px);
+    opacity: 0;
+  }
+  .slide-fade-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  </style>
+</head>
+<body>
+<div id="root-app"></div>
+<script src="./dist/bundle.js"></script>
+</body>
+</html>
