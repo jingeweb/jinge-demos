@@ -1,0 +1,7 @@
+{
+  "select_locale": "Please choose language",
+  "title": "I18n Demo - hot switch",
+  "tip": "Please enter your name:",
+  "hello": "Hello, <span style='color: red;'>{name}</span>",
+  "message": "Here is text returned by i18n function in javascript code."
+}

@@ -5,8 +5,8 @@ if (locale !== 'zh_cn' && locale !== 'en') {
 }
 
 fetch(`i18n/${locale}.json`).then(res => res.json()).then(dictData => {
-  // pass i18n data to jinge framework by window.JingeI18nData
-  window.JingeI18nData = dictData;
+  // pass i18n data to jinge framework by window.JINGE_I18N_DATA
+  window.JINGE_I18N_DATA = dictData;
   return loadScript('dist/app.js');
 }).catch(err => {
   console.error(err);
