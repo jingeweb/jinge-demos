@@ -18,7 +18,10 @@ module.exports = {
       use: jingeLoader
     }, {
       test: /\.scss$/,
-      use: [ jingeLoader, 'sass-loader' ]
+      use: [ jingeLoader, {
+        loader: 'sass-loader',
+        options: { sourceMap: true }
+      } ]
     }]
   },
   devServer: {
