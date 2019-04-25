@@ -4,11 +4,13 @@ import {
   i18n,
   i18nPrefix,
   registerI18nData,
-  VM,
-  config,
-  CFG_I18N_WARN_KEY_NOT_FOUND
+  VM
 } from 'jinge';
 
+import {
+  config,
+  CFG_I18N_WARN_KEY_NOT_FOUND
+} from 'jinge/config';
 config[CFG_I18N_WARN_KEY_NOT_FOUND] = false;
 
 import _tpl from './app.html';

@@ -2,6 +2,6 @@
   "select_locale": "请选择语言",
   "title": "国际化多语言示例 - 热切换",
   "tip": "请输入您的名字：",
-  "hello": "你好，<span style='color: red;'>{name}</span>",
+  "hello": "你好，<span style='color: red;'>${name}</span>",
   "message": "这个是 javascript 代码里使用 i18n 函数获取的多语言文本。"
 }

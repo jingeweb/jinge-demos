@@ -1,27 +1,33 @@
 <p>
   <select e:value="locale" on:change="changeLocale($event.target.value)">
-    <option disabled value=""><_t text="请选择语言"/></option>
+    <option disabled value="">
+      <_t>请选择语言</_t>
+    </option>
     <for e:loop="locales" vm:each>
     <option value="${each.locale}">${each.name}</option>
     </for>
   </select>
 </p>
 <h1>
-  <_t text="国际化多语言示例 - 编译器翻译模式"/>
+  <_t>国际化多语言示例 - 编译器翻译模式</_t>
 </h1>
 <p>
-  <_t text="请输入您的<span style='font-weight: bold;'>名字</span>：" html/>
-  <input e:value="boy" on:input="boy = $event.target.value"/>
+  <_t>
+  请输入您的<span style='font-weight: bold;'>名字</span>：
+  </_t>
+  <input _t:placeholder="输入名字" e:value="boy" on:input="boy = $event.target.value"/>
 </p>
 <p>
-  <_t text="你好，<span style='color: red;'>{name}</span>" html params="{name: boy}"/>
+  <_t>
+  你好，<span style='color: red;'>${boy}</span>
+  </_t>
 </p>
 <p>${i18nMessage}</p>
-<_t locale="zh_cn">
+<_t if-locale="zh_cn">
 <p>这里是中文下才会渲染的 DOM 结构2。</p>
 ${i18nMessage2}
 </_t>
-<_t locale="en">
+<_t if-locale="en">
 <p>Here is dom structure which will only be rendered under Engilish.</p>
 <p>${i18nMessage2}</p>
 </_t>

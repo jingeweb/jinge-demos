@@ -24,7 +24,7 @@ class App extends Component {
       locale: 'en'
     }]);
     this.i18nMessage = SOME_CONST_MSG;
-    this.i18nMessage2 = _t('你好，{name}！', {name: _t('小葛')})
+    this.i18nMessage2 = _t('你好，${name}！', {name: _t('小葛')})
   }
   changeLocale(locale) {
     location.href = '/?locale=' + encodeURIComponent(locale);

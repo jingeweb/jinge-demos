@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "jinge": "^1.0.2",
+    "jinge": "^1.0.4",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
