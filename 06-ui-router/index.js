@@ -9,6 +9,10 @@ import About from './components/about';
 import Hello from './components/hello';
 import People from './components/people';
 import Person from './components/person';
+import {
+  Redirect,
+  RedirectDetail
+} from './components/redirect';
 
 import {
   getAllPersons,
@@ -23,6 +27,15 @@ const uiStates = [{
   name: 'about',
   url: '/about',
   component: About
+}, {
+  name: 'redirect',
+  url: '/redirect',
+  component: Redirect,
+  redirectTo: 'redirect.detail'
+}, {
+  name: 'redirect.detail',
+  url: '/detail',
+  component: RedirectDetail
 }, {
   name: 'people',
   url: '/people',
