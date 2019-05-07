@@ -9,7 +9,7 @@
     <label on:dblclick="edit(todo)">${ todo.title }</label>
     <button class="destroy" on:click="remove"></button>
   </div>
-  <if e:expect="editing" on:updated="focus">
+  <if e:expect="editing" on:branch-switched="focus">
   <input
     class="edit"
     ref:edit

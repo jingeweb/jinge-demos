@@ -2,9 +2,9 @@
   <thead>
     <tr>
       <for e:loop="columns" e:_key="_columnKey" vm:each="col" vm:index="i">
-      <parameter arg-use:th vm-pass:columnIndex="i" vm-pass:columnData="col">
+      <_slot slot-use:th vm-pass:columnIndex="i" vm-pass:columnData="col">
       <th>${col.title || col.key}</th>
-      </parameter>
+      </_slot>
       </for>
     </tr>
   </thead>
@@ -12,17 +12,17 @@
     <for e:loop="data" e:_key="_rowKey" vm:each="row" vm:index="ri">
     <tr>
       <for e:loop="columns" vm:each="col" e:_key="_columnKey" vm:index="ci">
-      <parameter arg-use:td vm-pass:rowIndex="ri" vm-pass:rowData="row" vm-pass:columnIndex="ci" vm-pass:columnData="col">
+      <_slot slot-use:td vm-pass:rowIndex="ri" vm-pass:rowData="row" vm-pass:columnIndex="ci" vm-pass:columnData="col">
       <td>${row[col.dataIndex || col.key]}</td>
-      </parameter>
+      </_slot>
       </for>
     </tr>
     </for>
     <if e:expect="!data || data.length === 0">
       <tr>
-        <parameter arg-use:empty-td>
+        <_slot slot-use:empty-td>
         <td colspan="${columns.length}" style="text-align: center; color: gray;">No Data</td>
-        </parameter>
+        </_slot>
       </tr>
     </if>
   </tbody>

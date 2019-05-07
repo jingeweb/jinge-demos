@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jinge": "~1.0.0",
-    "jinge-ui-router": "~1.0.0",
+    "jinge": "^1.0.5",
+    "jinge-ui-router": "^1.0.1",
     "@uirouter/visualizer": "^7.0.0"
   },
   "devDependencies": {

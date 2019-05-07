@@ -15,8 +15,8 @@
   <p>
   <for e:loop="numbers" _key="each" vm:each="n" vm:index="i">
   <if e:expect="i % 2 === 0">
-    <span arg-pass:default>odd: </span>
-    <span arg-pass:else>even: </span>
+    <span slot-pass:default>odd: </span>
+    <span slot-pass:else>even: </span>
   </if>
   <if e:expect="n % 2 === 0">
   <span style="margin-right: 10px;">${i}: ${n};</span>

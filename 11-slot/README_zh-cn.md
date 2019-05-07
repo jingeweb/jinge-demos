@@ -109,7 +109,7 @@ class SomeComponent extends Component {
 
 编译属性是用于在编译模板阶段使用的属性，跟值属性和信使属性不同，不会体现到最终编译出来的代码里。
 
-编译属性包括： `ref:`，`arg-pass:`，`arg-use:`, `vm-use:`，`vm-pass:`。还包括一个语法糖属性 `vm:`。
+编译属性包括： `ref:`，`slot-pass:`，`slot-use:`, `vm-use:`，`vm-pass:`。还包括一个语法糖属性 `vm:`。
 
 #### `ref:` 属性
 
@@ -147,42 +147,73 @@ class Boy extends Component {
 
 `特别提示！` jinge 框架允许父组件直接获取到子组件的实例，并使用该实例调用子组件的 api 接口。这种模式，提供了基于消息通信之外的更大的灵活性，但也可能因烂用该模式导致代码混乱。
 
-#### `arg-pass:`， `arg-use:`，`vm-use:`，`vm-pass:` 属性
+#### `slot-pass:`， `slot-use:`，`vm-use:`，`vm-pass:` 属性
 
 大部分情况下，组件的 view，渲染的都是该组件的模板定义的 DOM 元素和子组件，这些元素都会书写在模板代码里。但有一种情况是，需要将外部元素，传递给组件，在该组件的模板里，会嵌入这些外部元素。
 
-在 angular 1.x 中，是通过 `ng-transclude` 来实现的该功能；在 react 中，是利用 jsx 的语法特性直接将外部元素以 props 的形式传递给组件。
+在 angular 1.x 中，是通过 `ng-transclude` 来实现的该功能；在 react 中，是利用 jsx 的语法特性直接将外部元素以 props 的形式传递给组件；在原生 Web Components 中，是使用 slot 这个概念。jinge 框架也使用 slot 概念，但扩展了 `slot-pass` 和 `slot-use` 两种类型的 slot，依次是向组件传递的 slot 和使用外部传递进来的 slot 。
 
-在 jinge 中，我们将组件在概念层面抽象成函数，包括传递给该组件的属性值以及外部元素都可以抽象成该函数的输入，即函数的`“参数（Argument，简称 arg）”`。在使用该组件的父组件的模板中，我们通过 `arg-pass:` 属性将外部元素传递给该组件，并为不同的外部组件映射到不同的 key。在该组件自身的模板中，我们通过 `arg-use:` 属性，通过 key 找到映射的外部组件，从而实现渲染外部组件到该组件中。
+比如下面的例子。
 
-一但元素具有 `arg-pass:` 或 `arg-use:` 属性，则编译器会识别到该组件的特殊功能，会忽略组件本身。因此，这两个属性应用到任何组件上，都是同样的效果。推荐的使用方式是，始终使用 `<argument>` 这个组件别名来搭配 `arg-pass:`，使用 `<parameter>` 这个组件别名来搭配 `arg-use:`，这两个别名对应的都是一个空组件。而 argument 和 parameter 两个单词的英文涵义也与参数的传递和参数的使用（实参和形参）两个概念一致。
-
-具有 `arg-pass:` 属性的组件（通常是 <argument>），在模板的 html 代码里，其子节点
-
-#### `vm:` 属性 - 语法糖属性
-
-`vm:` 属性只会用于高级的自定义简单讲，这个属性代表渲染模板时，会附加在渲染上下文的数据映射。举例来讲：
-
-````html
-<for e:loop="list" vm:each="item" vm:index="$index">
-  <li>${$index} - ${item}</li>
-</for>
-````
-
-上述代码，在编译阶段会被转成以下等价代码：
+组件 A:
 
 ````html
 <!--
-  import { ForComponent, Argument } from 'jinge'
--->
-<ForComponent e:loop="list">
-<Argument arg-pass:default vm:each="item" vm:index="$index">
-  <li>${$index} - ${item}</li>
-</Argument>
-</ForComponent>
+  import ComponentB from './component_b';
+--> 
+<ComponentB>
+  <_slot slot-pass="aa">
+    <_slot slot-use="aa">
+      你好，这里是组件 A，但可以被外部 App 传递的 slot 覆盖.
+    </_slot>
+  </_slot>
+</ComponentB>
+<ComponentB>
+  <_slot slot-pass="aa">
+    你好，这里是组件 A.
+  </_slot>
+</ComponentB>
 ````
 
-以上代码中，`<li>` 元素的渲染上下文，是 ForComponent，因为它是 ForComponent 的外部参数元素。ForComponent 提供的渲染上下文，会有两个数据，each 和 index。each 是循环的每个元素数据，index 是循环的索引数据。通过 `vm:each="item"` 的映射，在模板中的所有 `item` 表达式都会被替换成 `vm.each` 这个数据。
+组件 B:
 
+````html
+<_slot slot-use="aa">
+  你好，这里是组件 B.
+</_slot>
+````
 
+外层 App:
+
+````html
+<!-- import ComponentA from './component_a'; -->
+<ComponentA/>
+<ComponentA>
+  <_slot slot-pass="aa">这里是外部 App</_slot>
+</ComponentA>
+````
+
+上述例子里，在组件 A 的模板里，有名称同为 'aa' 的两种含义的 slot，一个是向组件 B 传递的 slot，用 slot-pass: 定义，另一个是使用外部 App 传递进来的 slot，用 slot-use: 定义。
+
+上述例子里，使用了一个编译器保留的 tag 名，`_slot`，这个下划线打头的 tag 是一个特殊 tag，代表编译器保留组件（另外一个编译器保留组件是用于处理多语言的 `<_t>`）。
+
+当待传递的 slot 是一个简单文本（如上述例子），或是需要有多个元素时，就需要用 `<_slot>` 来包裹和传递。如果只是一个单独的 html 或 Component 元素，则可以直接在元素上使用 `slot-pass:` 或 `slot-use:`。
+
+比如：
+
+````html
+<Coma>
+  <span slot-pass:aa>a</span>
+  <Comb slot-pass:bb/>
+</Coma>
+````
+
+等价于：
+
+````html
+<Coma>
+  <_slot slot-pass:aa><span>a</span></_slot>
+  <_slot slot-pass:bb><Comb/></_slot>
+</Coma>
+````
 

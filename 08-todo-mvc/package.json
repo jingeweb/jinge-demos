@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jinge": "~1.0.0",
-    "jinge-ui-router": "~1.0.0",
+    "jinge": "^1.0.5",
+    "jinge-ui-router": "^1.0.1",
     "todomvc-app-css": "^2.2.0",
     "todomvc-common": "^1.0.5"
   },

@@ -40,8 +40,8 @@
     e:expect="show3"
     transition="slide-fade"
   >
-    <p arg:default>Hello, A!</p>
-    <p arg:else>Hello, B!</p>
+    <p slot-pass:default>Hello, A!</p>
+    <p slot-pass:else>Hello, B!</p>
   </if>
 </div>
 <h3>Switch</h3>
@@ -53,9 +53,9 @@
     e:test="si"
     transition="slide-fade"
   >
-    <p arg:1>Hello, A!</p>
-    <p arg:2>Hello, B!</p>
-    <p arg:default>Hello, ${si}</p>
+    <p slot-pass:1>Hello, A!</p>
+    <p slot-pass:2>Hello, B!</p>
+    <p slot-pass:default>Hello, ${si}</p>
   </switch>
 </div>
 <h3>For</h3>

@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jinge": "~1.0.0"
+    "jinge": "^1.0.5"
   },
   "devDependencies": {
     "webpack": "^4.29.6",

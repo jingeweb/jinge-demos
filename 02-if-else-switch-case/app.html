@@ -19,18 +19,18 @@
 <div>
   <p>
     <if e:expect="n > 5">
-    <argument arg-pass:default>
+    <_slot slot-pass:default>
       It's greater than <span>5</span>
-    </argument>
-    <argument arg-pass:else>
+    </_slot>
+    <_slot slot-pass:else>
       It's less or equal than <span>5</span>
-    </argument>
+    </_slot>
     </if>
   </p>
   <p>
     <if e:expect="n > 5">
-    <span arg-pass:default>It's greater than 5.</span>
-    <span arg-pass:else>It's less or equal than 5.</span>
+    <span slot-pass:default>It's greater than 5.</span>
+    <span slot-pass:else>It's less or equal than 5.</span>
     </if>
   </p>
 </div>
@@ -45,10 +45,10 @@
 <div>
   <p>
   <switch e:test="n">
-  <argument arg-pass:0>零</argument>
-  <argument arg-pass:3>三</argument>
-  <p arg-pass:8>八</p>
-  <argument arg-pass:default>${n} <if e:expect="n > 5"> > 5</if></argument>
+  <_slot slot-pass:0>零</_slot>
+  <_slot slot-pass:3>三</_slot>
+  <p slot-pass:8>八</p>
+  <_slot slot-pass:default>${n} <if e:expect="n > 5"> > 5</if></_slot>
   </switch>
   </p>
 </div>
