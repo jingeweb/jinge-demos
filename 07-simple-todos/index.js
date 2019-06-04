@@ -1,15 +1,19 @@
 import {
   Component,
   bootstrap,
+  BEFORE_DESTROY,
   VM,
   vmWatch,
-  vmUnwatch
+  vmUnwatch,
+  setImmediate
 } from 'jinge';
 
 import _tpl from './app.html';
 
+const LS_KEY = 'JINGE_SAVED_SIMPLE_TODOS';
+
 function loadTodos() {
-  let data = localStorage.getItem('jinge-simple-todos');
+  let data = localStorage.getItem(LS_KEY);
   if (!data) return null;
   try {
     data = JSON.parse(data);
@@ -20,7 +24,7 @@ function loadTodos() {
 }
 
 function saveTodos(todos) {
-  localStorage.setItem('jinge-simple-todos', JSON.stringify(todos));
+  localStorage.setItem(LS_KEY, JSON.stringify(todos));
 }
 
 function createTodo(title, done = false) {
@@ -37,31 +41,34 @@ class App extends Component {
     super(args);
     this.todos = VM(loadTodos() || [createTodo('test')]);
     this.allDone = this.todos.length > 0 && !this.todos.find(t => !t.done);
-    this._updateHandler = this.update.bind(this);
-    /**
-     * 使用 vmWatch 在某些场景下可以使得代码更简洁。
-     * 但通常情况下，并不推荐使用 vmWatch 的形式，因为当模块化和逻辑性更加复杂
-     * 时，使用 watch 的模式不利于代码的可理解性。
-     * 
-     * 此处只是演示 vmWatch 函数的用法，并不推荐这样使用。
-     */
-    vmWatch(this, 'todos.**', this._updateHandler);
+    
+    vmWatch(this, 'todos.**', () => {
+      if (this._upImm) return; // alreay waiting for update
+      this._upImm = setImmediate(() => {
+        this._upImm = null;
+        this.update();
+      });
+    });
   }
-  beforeDestroy() {
-    vmUnwatch(this, 'todos.**', this._updateHandler);
+  [BEFORE_DESTROY]() {
+    vmUnwatch(this, 'todos.**');
   }
   toggleAllDone() {
+    /**
+     * 需要注意的是，这个地方的 forEach 循环，
+     *   每更新一个 TodoItem 的 done 属性，都会
+     *   触发一次 vmWatch('todos.**')。
+     * 因此，vmWatch('todos.**') 的处理函数里
+     *   推荐使用 setImmediate 来延后处理以提升性能。
+     */
     this.todos.forEach(t => t.done = !this.allDone);
-    // this.update(); // 如果不使用 vmWatch 来统一监控，则需要在每一处手动触发 this.update()
   }
   toggleDone(todo) {
     todo.done = !todo.done;
-    // this.update(); // 如果不使用 vmWatch 来统一监控，则需要在每一处手动触发 this.update()
   }
   remove(todo) {
     const idx = this.todos.indexOf(todo);
     if (idx >= 0) this.todos.splice(idx, 1);
-    // this.update(); // 如果不使用 vmWatch 来统一监控，则需要在每一处手动触发 this.update()
   }
   modify(todo) {
     const oldTitle = todo.title;
@@ -70,7 +77,6 @@ class App extends Component {
       return;
     }
     todo.title = title;
-    // this.update(); // 如果不使用 vmWatch 来统一监控，则需要在每一处手动触发 this.update()
   }
   add() {
     const title = prompt("Please enter title of new todo");
@@ -78,17 +84,14 @@ class App extends Component {
       return;
     }
     this.todos.push(createTodo(title));
-    // this.update(); // 如果不使用 vmWatch 来统一监控，则需要在每一处手动触发 this.update()
   }
   clear() {
     if (this.todos.length === 0) return;
     if (confirm('Sure to clear all todos?')) {
       this.todos.length = 0;
-      // this.update(); // 如果不使用 vmWatch 来统一监控，则需要在每一处手动触发 this.update()
     }
   }
   update() {
-    console.log('updated');
     this.allDone = this.todos.length > 0 && !this.todos.find(t => !t.done);
     saveTodos(this.todos);
   }

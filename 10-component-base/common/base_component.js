@@ -1,5 +1,6 @@
 import {
-  Component
+  Component,
+  AFTER_RENDER
 } from 'jinge';
 
 export default class MyBaseComponent extends Component {
@@ -15,7 +16,7 @@ export default class MyBaseComponent extends Component {
     console.log('name updated');
     this._n = v;
   }
-  afterRender() {
+  [AFTER_RENDER]() {
     console.log('base afterRender.');
   }
 }

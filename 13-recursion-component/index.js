@@ -1,8 +1,7 @@
 import {
   Component,
   VM,
-  bootstrap,
-  vmWatch
+  bootstrap
 } from 'jinge';
 
 import _tpl from './app.html';

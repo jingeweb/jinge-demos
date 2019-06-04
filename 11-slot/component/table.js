@@ -7,14 +7,6 @@ import {
 
 import _tpl from './table.html';
 
-class TableColumn extends Component {
-
-}
-
-class TableCell extends Component {
-
-}
-
 export default class Table extends Component {
   static get template() {
     return _tpl;

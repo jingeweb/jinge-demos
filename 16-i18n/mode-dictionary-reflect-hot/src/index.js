@@ -5,7 +5,8 @@ import {
   i18n,
   i18nMessenger,
   VM,
-  I18N_DATA_CHANGED
+  I18N_DATA_CHANGED,
+  ON
 } from 'jinge';
 
 import _tpl from './app.html';
@@ -50,7 +51,7 @@ class App extends Component {
      * for hot switch.
      */
     this.i18nMessage = i18n('message');
-    i18nMessenger.on(I18N_DATA_CHANGED, () => {
+    i18nMessenger[ON](I18N_DATA_CHANGED, () => {
       this.i18nMessage = i18n('message');
     });
   }

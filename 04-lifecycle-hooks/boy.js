@@ -1,5 +1,9 @@
 import {
-  Component
+  Component,
+  BEFORE_DESTROY,
+  AFTER_RENDER,
+  NOTIFY,
+  GET_REF
 } from 'jinge';
 
 import _tpl from './boy.html';
@@ -14,16 +18,16 @@ export default class Boy extends Component {
   }
   someApi() {
     alert(`Hello, everyone. My name is ${this.name}`);
-    this.notify('someApiCalled', this.name);
+    this[NOTIFY]('someApiCalled', this.name);
   }
-  afterRender() {
+  [AFTER_RENDER]() {
     console.log('after render');
     /**
      * you can use this.getChild to get DOM node.
      */
-    console.log(this.getChild('someId'));
+    console.log(this[GET_REF]('someId'));
   }
-  beforeDestroy() {
+  [BEFORE_DESTROY]() {
     console.log('before destroy');
   }
 }

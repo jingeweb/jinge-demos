@@ -16,6 +16,9 @@ class App extends Component {
       console.log(this.n);
     }, 1000);
   }
+  log(...args) {
+    console.log(...args);
+  }
 }
 
 bootstrap(App, document.getElementById('root-app'));

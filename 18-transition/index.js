@@ -9,6 +9,9 @@ class App extends Component {
   static get template() {
     return _tpl;
   }
+  log(...args) {
+    console.log(...args);
+  }
   constructor(args) {
     super(args);
     this.fade = false;

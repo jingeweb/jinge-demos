@@ -1,6 +1,9 @@
 import {
   Component,
-  bootstrap
+  bootstrap,
+  AFTER_RENDER,
+  BEFORE_DESTROY,
+  GET_REF
 } from 'jinge';
 
 import _tpl from './app.html';
@@ -15,7 +18,7 @@ class App extends Component {
     this.inc = 0;
     this.name = 'Jinge';
   }
-  afterRender() {
+  [AFTER_RENDER]() {
     /**
      * if Component node have ref: attribute,
      * the component instance can be directly got by this.getChild.
@@ -28,7 +31,7 @@ class App extends Component {
   }
   callApi($evt) {
     console.log($evt);
-    const boy = this.getChild('boy');
+    const boy = this[GET_REF]('boy');
     boy.someApi();
   }
   onBoyApiCalled(name) {

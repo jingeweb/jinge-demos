@@ -1,5 +1,6 @@
 import {
-  Component
+  Component,
+  BEFORE_DESTROY
 } from 'jinge';
 
 export default class Person extends Component {
@@ -24,7 +25,7 @@ export default class Person extends Component {
     super(attrs);
     this.person = attrs.person;
   }
-  beforeDestroy() {
+  [BEFORE_DESTROY]() {
     console.log(`person: ${this.person.id} will be destroy.`);
   }
 }

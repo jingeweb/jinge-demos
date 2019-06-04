@@ -1,4 +1,7 @@
 import Component from 'my_base_component';
+import {
+  AFTER_RENDER
+} from 'jinge';
 
 export default class PageB extends Component {
   constructor(attrs) {
@@ -7,8 +10,8 @@ export default class PageB extends Component {
   static get template() {
     return '<p>This is PageB: ${name}</p>';
   }
-  afterRender() {
-    super.afterRender();
+  [AFTER_RENDER]() {
+    super[AFTER_RENDER]();
     console.log('PageB afterRender.');
   }
 }

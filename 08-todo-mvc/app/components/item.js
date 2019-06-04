@@ -1,5 +1,9 @@
 import {
-  Component
+  Component,
+  AFTER_RENDER,
+  BEFORE_DESTROY,
+  GET_REF,
+  NOTIFY
 } from 'jinge';
 
 import _tpl from './item.html';
@@ -24,7 +28,7 @@ export default class TodoItem extends Component {
       this.remove();
     } else {
       this.todo.title = editingTitle;
-		  this.notify('title-changed', this.todo.id);
+		  this[NOTIFY]('title-changed', this.todo.id);
     }
 	}
 	edit() {
@@ -33,19 +37,19 @@ export default class TodoItem extends Component {
   }
   focus(expect) {
     if (!expect) return;
-    this.getChild('edit').focus();
+    this[GET_REF]('edit').focus();
   }
   toggleDone() {
 		this.todo.done = !this.todo.done;
-		this.notify('done-changed', this.todo.id, this.todo.done);
+		this[NOTIFY]('done-changed', this.todo.id, this.todo.done);
 	}
 	remove() {
-    this.notify('removed', this.todo.id);
+    this[NOTIFY]('removed', this.todo.id);
   }
-  afterRender() {
-    console.log(`todo ${this.todo.id} has been rendered:`, this.getChild('todo'))
+  [AFTER_RENDER]() {
+    console.log(`todo ${this.todo.id} has been rendered:`, this[GET_REF]('todo'))
   }
-  beforeDestroy() {
+  [BEFORE_DESTROY]() {
     console.log(`todo ${this.todo.id} will be destry.`);
   }
 }

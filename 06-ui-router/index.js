@@ -1,8 +1,11 @@
 import {
   Component,
-  bootstrap
+  bootstrap,
+  VM
 } from 'jinge';
-import { Visualizer } from '@uirouter/visualizer';
+import {
+  Visualizer
+} from '@uirouter/visualizer';
 import _tpl from './app.html';
 
 import About from './components/about';
@@ -41,7 +44,7 @@ const uiStates = [{
   url: '/people',
   component: People,
   resolve: {
-    people: () => getAllPersons()
+    people: () => getAllPersons().then(result => VM(result))
   }
 }, {
   name: 'people.person',
@@ -68,7 +71,7 @@ const uiStates = [{
     person: ['$transition$', 'people', (trans, people) => {
       console.log('inherited resove people:', people);
       const id = trans.params().personId;
-      return getPersonById(id);
+      return getPersonById(id).then(result => VM(result));
     }]
   }
 }];

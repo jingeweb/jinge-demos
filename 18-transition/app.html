@@ -29,6 +29,7 @@
   <if
     e:expect="show2"
     transition="slide-fade"
+    on:transition="log(...args)"
   >
     <p>Hello, World</p>
   </if>
@@ -39,6 +40,7 @@
   <if
     e:expect="show3"
     transition="slide-fade"
+    on:branch-switched="log('if updated', ...args)"
   >
     <p slot-pass:default>Hello, A!</p>
     <p slot-pass:else>Hello, B!</p>
@@ -52,6 +54,7 @@
   <switch
     e:test="si"
     transition="slide-fade"
+    on:branch-switched="log('switch updated', ...args)"
   >
     <p slot-pass:1>Hello, A!</p>
     <p slot-pass:2>Hello, B!</p>

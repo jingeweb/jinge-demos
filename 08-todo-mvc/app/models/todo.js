@@ -1,7 +1,9 @@
 import {
   VM
 } from 'jinge';
-import { simpleUID } from '../services/util';
+import {
+  simpleUID
+} from '../services/util';
 
 export default class Todo {
   static fromSaved(savedData) {
