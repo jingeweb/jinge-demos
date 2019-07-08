@@ -57,7 +57,7 @@ module.exports = {
           'utf-8'
         ).replace(
           /\$LOCALE\$/g, 
-          req.query.locale || 'zh_cn'
+          req.query.locale || buildLocale
         ));
       });
     }

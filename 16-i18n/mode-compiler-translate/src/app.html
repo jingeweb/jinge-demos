@@ -1,3 +1,4 @@
+<!-- import { Printer } from './printer'; -->
 <p>
   <select e:value="locale" on:change="changeLocale($event.target.value)">
     <option disabled value="">
@@ -21,6 +22,9 @@
   <_t>
   你好，<span style='color: red;'>${boy}</span>
   </_t>
+</p>
+<p>
+  <Printer _t:message="你好，我的名字叫${boy}"/>
 </p>
 <p>${i18nMessage}</p>
 <_t if-locale="zh_cn">
