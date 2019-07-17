@@ -13,7 +13,7 @@
 <h2>For & If</h2>
 <div>
   <p>
-  <for e:loop="numbers" _key="each" vm:each="n" vm:index="i">
+  <for e:loop="numbers" key="each" vm:each="n" vm:index="i">
   <if e:expect="i % 2 === 0">
     <span slot-pass:default>odd: </span>
     <span slot-pass:else>even: </span>
@@ -31,7 +31,7 @@
 <div>
   <p>
   <ul>
-    <for e:loop="persons" _key="each.id" vm:each="person">
+    <for e:loop="persons" key="each.id" vm:each="person">
     <li>${person.name}</li>
     </for>
   </ul>

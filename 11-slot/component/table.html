@@ -1,7 +1,7 @@
 <table>
   <thead>
     <tr>
-      <for e:loop="columns" e:_key="_columnKey" vm:each="col" vm:index="i">
+      <for e:loop="columns" e:key="_columnKey" vm:each="col" vm:index="i">
       <_slot slot-use:th vm-pass:columnIndex="i" vm-pass:columnData="col">
       <th>${col.title || col.key}</th>
       </_slot>
@@ -9,9 +9,9 @@
     </tr>
   </thead>
   <tbody>
-    <for e:loop="data" e:_key="_rowKey" vm:each="row" vm:index="ri">
+    <for e:loop="data" e:key="_rowKey" vm:each="row" vm:index="ri">
     <tr>
-      <for e:loop="columns" vm:each="col" e:_key="_columnKey" vm:index="ci">
+      <for e:loop="columns" vm:each="col" e:key="_columnKey" vm:index="ci">
       <_slot slot-use:td vm-pass:rowIndex="ri" vm-pass:rowData="row" vm-pass:columnIndex="ci" vm-pass:columnData="col">
       <td>${row[col.dataIndex || col.key]}</td>
       </_slot>

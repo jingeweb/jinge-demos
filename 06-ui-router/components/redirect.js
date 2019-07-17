@@ -2,12 +2,6 @@ import {
   Component
 } from 'jinge';
 
-export class Redirect extends Component {
-	static get template() {
-		return '<ui-view/>';
-	}
-}
-
 export class RedirectDetail extends Component {
   static get template() {
     return `

@@ -18,7 +18,7 @@ export default class Table extends Component {
     super(attrs);
     this.data = attrs.data;
     this.columns = attrs.columns;
-    this._columnKey = `each.${attrs._columnKey || 'key'}`;
-    this._rowKey = `each.${attrs._rowKey || 'key'}`;
+    this._columnKey = `each.${attrs.columnKey || 'key'}`;
+    this._rowKey = `each.${attrs.rowKey || 'key'}`;
   }
 }

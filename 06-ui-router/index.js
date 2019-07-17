@@ -33,7 +33,6 @@ const uiStates = [{
 }, {
   name: 'redirect',
   url: '/redirect',
-  component: Redirect,
   redirectTo: 'redirect.detail'
 }, {
   name: 'redirect.detail',
@@ -84,6 +83,7 @@ class App extends Component {
     super(args);
     this._states = uiStates;
     this._plugins = [Visualizer];
+    this.newTab = false;
   }
 }
 

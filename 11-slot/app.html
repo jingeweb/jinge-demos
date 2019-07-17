@@ -1,7 +1,7 @@
 <!-- import Table from './component/table' -->
 <h1>arg & vm attribute</h1>
 <h3>Basic Table</h3>
-<Table e:data="data" e:columns="columns" _rowKey="name"></Table>
+<Table e:data="data" e:columns="columns" rowKey="name"></Table>
 <p>
   <button on:click="prependColumn">Prepend Column</button>
   <button on:click="test">Test</button>
@@ -26,7 +26,7 @@
     <input type="checkbox" e:checked="row.checked" on:change="toggleCheck(row)" slot-pass:-/>
     <a href="javascript:;" slot-pass:action on:click="removeRow(rowIndex)">Delete</a>
     <_slot slot-pass:tags>
-    <for e:loop="row[col.key]" vm:each="tag" _key="each">
+    <for e:loop="row[col.key]" vm:each="tag" key="each">
     <span class="tag">${tag}</span>
     </for>
     </_slot>

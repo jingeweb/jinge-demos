@@ -13,7 +13,7 @@ export default class People extends Component {
   <div style="margin-right: 20px;">
     <h4>Some People:</h4>
     <ul>
-      <for e:loop="people" _key="each.id" vm:each="person">
+      <for e:loop="people" key="each.id" vm:each="person">
       <li>
         <ui-sref
           e:text="person.name"
