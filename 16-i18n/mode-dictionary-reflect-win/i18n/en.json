@@ -1,8 +1,0 @@
-{
-  "select_locale": "Please choose language",
-  "title": "I18n Demo",
-  "tip": "Please enter your name:",
-  "hello.xiaoge": "Hi, Ge!",
-  "hello.t1": "Hello, ${name}!",
-  "hello.t2": "${name}, hello!"
-}

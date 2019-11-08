@@ -1,5 +1,5 @@
-# ui-router demo of jinge-framework
+# simple router demo for jinge
 
-jinge-framework does't implement router module. It use ui-router.
+[中文](./README_zh-cn.md) | English
 
-This demo is ported from [UI-Router for React - Hello Galaxy!](https://ui-router.github.io/react/tutorial/hellogalaxy)
+TODO: Translate Chinese README_zh-cn.md to English.

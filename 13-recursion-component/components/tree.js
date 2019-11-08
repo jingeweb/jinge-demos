@@ -1,9 +1,8 @@
 import {
-  Component
-} from 'jinge';
-import {
+  Component,
+  VM,
   isArray
-} from 'jinge/util';
+} from 'jinge';
 
 export default class Tree extends Component {
   static get template() {
@@ -22,6 +21,6 @@ export default class Tree extends Component {
     return this._data;
   }
   set data(v) {
-    this._data = isArray(v) ? v : [v];
+    this._data = isArray(v) ? v : VM([v]);
   }
 }

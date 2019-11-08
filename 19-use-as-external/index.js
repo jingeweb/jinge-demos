@@ -2,11 +2,9 @@ import {
   Component,
   bootstrap,
   AFTER_RENDER,
-  GET_REF
-} from 'jinge';
-import {
+  GET_REF,
   addClass
-} from 'jinge/dom';
+} from 'jinge';
 
 import _tpl from './app.html';
 

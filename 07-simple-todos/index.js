@@ -1,11 +1,10 @@
 import {
   Component,
   bootstrap,
-  BEFORE_DESTROY,
   VM,
   vmWatch,
-  vmUnwatch,
-  setImmediate
+  setImmediate,
+  UPDATE_IF_NEED
 } from 'jinge';
 
 import _tpl from './app.html';
@@ -42,34 +41,32 @@ class App extends Component {
     this.todos = VM(loadTodos() || [createTodo('test')]);
     this.allDone = this.todos.length > 0 && !this.todos.find(t => !t.done);
     
+    /**
+     * You don't need call vmUnwatch at BEFORE_DESTROY lifecycle,
+     * becase all view-model listener will be auto clear when component is destroied.
+     */
     vmWatch(this, 'todos.**', () => {
-      if (this._upImm) return; // alreay waiting for update
-      this._upImm = setImmediate(() => {
-        this._upImm = null;
-        this.update();
-      });
+      /**
+       * UPDATE_IF_NEED will ensure component has been rendered, then push update function
+       * to setImmediate queue only if it's not already in queue.
+       */
+      this[UPDATE_IF_NEED](this.update);
     });
   }
-  [BEFORE_DESTROY]() {
-    vmUnwatch(this, 'todos.**');
-  }
+
   toggleAllDone() {
-    /**
-     * 需要注意的是，这个地方的 forEach 循环，
-     *   每更新一个 TodoItem 的 done 属性，都会
-     *   触发一次 vmWatch('todos.**')。
-     * 因此，vmWatch('todos.**') 的处理函数里
-     *   推荐使用 setImmediate 来延后处理以提升性能。
-     */
     this.todos.forEach(t => t.done = !this.allDone);
   }
+
   toggleDone(todo) {
     todo.done = !todo.done;
   }
+
   remove(todo) {
     const idx = this.todos.indexOf(todo);
     if (idx >= 0) this.todos.splice(idx, 1);
   }
+
   modify(todo) {
     const oldTitle = todo.title;
     let title = prompt("Please enter title", oldTitle);
@@ -78,6 +75,7 @@ class App extends Component {
     }
     todo.title = title;
   }
+
   add() {
     const title = prompt("Please enter title of new todo");
     if (!title || !title.trim()) {
@@ -85,12 +83,14 @@ class App extends Component {
     }
     this.todos.push(createTodo(title));
   }
+
   clear() {
     if (this.todos.length === 0) return;
     if (confirm('Sure to clear all todos?')) {
       this.todos.length = 0;
     }
   }
+
   update() {
     this.allDone = this.todos.length > 0 && !this.todos.find(t => !t.done);
     saveTodos(this.todos);

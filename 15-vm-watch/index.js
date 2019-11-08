@@ -47,10 +47,6 @@ class App extends Component {
       console.log('root: boy2.*.name notify.', propPath);
     });
 
-    vmWatch(this.boy1, '*.name', (propPath) => {
-      console.log('boy1: *.name notify', propPath);
-    });
-
     // array item watch
     vmWatch(this.boy1, 'children.1.name', (propPath) => {
       console.log('boy1: children[1].name notify.', propPath);
@@ -84,10 +80,6 @@ class App extends Component {
   }
 
   test3() {
-    /**
-     * 此处的赋值操作，会同时触发 boy1 上对 `*.name` 的监听，
-     * 这一点容易让人迷糊，在 README 中有详细的解释。 
-     */
     this.boy1.children.push(VM({
       name: 'ppp'
     }));

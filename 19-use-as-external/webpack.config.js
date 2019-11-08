@@ -5,22 +5,16 @@ const { jingeLoader } = require('jinge/compiler');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
-  target: 'web',
   entry: path.join(__dirname, 'index.js'),
   output: {
     filename: `bundle.${prod ? 'min.' : ''}js`,
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
+    publicPath: 'dist'
   },
-  externals: [
-    function(context, request, callback) {
-      if (request === 'jinge') return callback(null, 'jinge');
-      if (/^jinge\//.test(request)) {
-        return callback(null, request.replace(/\/|\\/g, '.'));
-      }
-      callback();
-    }
-  ],
-  devtool: 'source-map',
+  externals: {
+    jinge: 'jinge'
+  },
+  devtool: prod ? false : 'source-map',
   module: {
     rules: [{
       test: /\.(js|html)$/,
@@ -28,7 +22,6 @@ module.exports = {
     }]
   },
   devServer: {
-    writeToDisk: true,
     contentBase: __dirname,
     port: 9000
   }

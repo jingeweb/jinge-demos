@@ -6,8 +6,7 @@ const prod = 'PROD' in process.env;
 
 module.exports = {
   mode: prod ? 'production' : 'development',
-  target: 'web',
-  entry: path.join(__dirname, 'index.js'),
+  entry:path.join(__dirname, 'index.js'),
   output: {
     filename: `bundle.${prod ? 'min.' : ''}js`,
     path: path.join(__dirname, 'dist')

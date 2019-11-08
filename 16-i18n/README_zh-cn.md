@@ -4,170 +4,128 @@
 
 ## 概述
 
-jinge 框架同时支持的两种模式的多语言，分为`字典映射模式（dictionary-reflect-mode）`和`编译器翻译模式（compiler-translate-mode)`。
+目前的很多 mvvm 框架对国际化多语言的支持都是基于第三方实现，加载多语言字典（key-text）文件后，通过 key 来查找 text。这些方案往往需要在代码里定义 key，当项目模块很多的情况下，需要通过约定 key 的规则或其它方法来避免冲突。同时，模板代码看起来不够简洁。
 
-字典映射模式，是加载一个语言文本的json数据，然后通过 key 在该 json 中找到对应的文本 value。诸如 [react-i18n](https://github.com/yahoo/react-intl)，[vue-i18n](https://github.com/kazupon/vue-i18n) 等就使用的是这种模式。
+jinge 在框架层面引入了对国际化多语言的支持，使得多语言的实现更加简洁和高效。当然，如果框架内置的多语言功能不能很好契合实际的业务需求，仍然可以像其它框架那样实现一套第三方多语言方案，且并不复杂。
 
-字典映射模式的优点主要包括：
+jinge 框架内置的多语言功能，具体来讲，是引入了多语言辅助组件`<_t>`，多语言辅助属性 `_t:`，以及多语言辅助函数 `_t()`。
 
-* 思路简洁，不依赖框架，可由第三方库实现。
-* 可通过 key 的跨模块引用，实现跨模块的文本复用。
-* 热切换（即不重新加载系统的情况下更新界面文本的语言）的实现简单。
-
-其缺点主要包括：
-
-* 对于小型项目，整体方案稍显罗嗦，在文本之外，要定义额外的 key；运行时还要加载外部的 json 字典文件。
-* 大型项目里，要通过良好的架构和约定才能避免跨模块的 key 冲突隐患。
-* 开发阶段对字典文件的模块化组织和划分，构建阶段的字典数据的合并，需要业务层自己架构设计和实现。
-
-编译器翻译模式，本质是在编译阶段，就由编译器翻译好文本，生成不同语言版本的最终打包文件。现阶段，angular 的 [i18n](https://angular.io/guide/i18n) 功能，基本就是这个模式。
-
-编译器翻译模式的优点主要包括：
-
-* 打包结果简洁，不需要 key 和额外的 json 文件。
-* 架构层面不需要业务层关注模块化组织，模块间冲突等问题。
-
-其缺点主要包括：
-
-* 热切换实现很难（目前 jinge 框架对该模式不支持热切换）。
-* 直接将服务器返回数据映射为文本时，没有字典模式灵活（字典模式可以直接将服务器返回数据作为动态的 key）。
-
-## 字典数据模式
-
-字典数据模式在实际使用时，又可根据项目情况选择使用 `使用 registerI18nData 加载字典的形式` 的形式还是 `从 window.JINGE_I18N_DATA 加载字典的形式`。接下来详细介绍其细节和区别。
-
-### 使用 registerI18nData 加载字典的形式
-
-字典数据模式，要求先使用 `registerI18nData` 注册字典数据，其后才能在 js 代码中使用 `i18n` 函数获取多语言的文本（text）以及在组件的 view 中使用`<i18n/>`组件。
-
-当使用 `registerI18nData` 二次注册字典数据时，`i18nMessenger` 会通知 `I18N_DATA_CHANGED` 事件。对于 view 中的 `<i18n/>` 组件，会自动监听该事件，从而实现热切换。但对于 js 代码中使用 `i18n` 函数取文本的逻辑，需要手动监听该事件，手动处理相关的热切换逻辑。
-
-`jinge-demos/16-i18n/mode-dictionary-hot` 目录下，就是这个形式的示例。
-
-### 从 window.JINGE_I18N_DATA 加载字典的形式
-
-很多时候，我们会在 js 文件的顶部将一个多语言文本赋值给一个常量。这种情况下存在一个问题，文件顶部的代码，在整个 bundle 加载时就已经被执行了，这时候 bootstrap 函数和 registerI18nData 函数是否已经执行很难确定（因为各文件的顶部代码的执行顺序取决于文件之间的依赖关系，即打包后在 bundle 里的次序）。
-
-所以，如果用 `registerI18nData` 主动注册字典的模式，就不能在 js 文件顶部使用 `i18n` 函数。对于大型前端项目，这个约束很难保证，是一个潜在的坑。
-
-为了解决这个问题，我们引入了从 window.JINGE_I18N_DATA 加载字典的形式。在整个 bundle 加载时，i18n 会直接尝试从 window.JINGE_I18N_DATA 这个全局变量上取字典数据。从而，在该 bundle 的任何地方调用 `i18n` 函数获取文本时，都能取到数据。
-
-配合上述逻辑，一个典型的架构可以是：使用 loader 脚本，先通过 api 接口读取用户配置的语言，然后根据该配置加载多语言字典数据并赋值到 `window.JINGE_I18N_DATA` 这个全局变量，最后加载 app 的整个 bundle 代码。
-
-但这种模式下，要处理热切换会很麻烦。因为文件顶部的代码逻辑几乎不受控于 jinge 的组件逻辑。为此，当已经通过 `window.JINGE_I18N_DATA` 赋予字典数据后，尝试再次使用 `registerI18nData` 热切换字典时，jinge 框架将给出告警。（TODO: 支持配置参数来禁用该告警）
-
-`jinge-demos/16-i18n/mode-dictionary-window` 目录下，就是这个形式的示例。
-
-## 编译器翻译模式
-
-使用编译器翻译模式，需要同时使用 webpack 的 loader 和 plugin，分别是 `jingeLoader` 和 `JingeWebpackPlugin`。二者都需要通过 `i18n` 参数来配置多语言翻译，且二者的 `i18n` 参数完全一致。
-
-### i18n 参数
-
-`i18n` 参数的使用示例如下：
-
-````js
-// webpack.config.js
-const I18N_OPTIONS = {
-  mode,
-  defaultLocale,
-  buildLocale,
-  translateDir,
-  ...
-};
-...
-plugins: [ new JingeWebpackPlugin({
-  i18n: I18N_OPTIONS
-}) ],
-module: {
-  rules: [{
-    test: /\.(js|html)$/,
-    use: {
-      loader: jingeLoader,
-      options: {
-        i18n: I18N_OPTIONS
-      }
-    }
-  }]
-}
-````
-
-上述代码里的 I18N_OPTIONS 参数，又包括以下项：
-
-#### `mode` - 必要参数
-
-这个参数决定了是使用字典映射模式还是编译器翻译模式。默认是 `dictionary-reflect`。当指定为 `compiler-translate` 时，启用编译器翻译模式。
-
-#### `defaultLocale` - 必要参数
-
-在源码中直接书写的默认语言。
-
-#### `buildLocale` - 必要参数
-
-当前构建的语言。
-
-如果 buildLocale 和 defaultLocale 一致，则可以将默认语言的待翻译 csv 生成并写入到 translateDir 目录。
-
-如果 buildLocale 和 defaultLocale 不一致，则会在 translateDir 目录中找到已翻译的 csv 文件，并在构建过程中应用翻译后的文本。
-
-#### `translateDir` - 必要参数
-
-存放翻译相关的 csv 资源文件的目录。
-
-#### `idBaseDir` - 可选参数
-
-翻译相关的 csv 文件里，第一列是文本 `id`。默认情况下，这个 id 是由`${文件名}/${key}`构成。其中：
-
-`文件名`是源码文件相对于 `idBaseDir` 的相对路径。取相对路径是为了在不同操作系统环境目录下，文件名保持一致。默认的 `idBaseDir` 是 `process.cwd()`，可以指定其它值，也可以使用函数`idBaseDir: (file) => {return ...}`。需要注意的是，务必保证在使用 `path.relative(idBaseDir, filepath)` 后，在不同操作系统环境目录下，对同一个文件，这个`文件名`保持一致。
-
-`key`是源码文件中，文本在当前源文件里的标识。当用户主动指定该标识时，使用指定标识；否则，使用该文本的 md5 hash 后的 hex 前 8 位。
-
-#### `generateCSV` - 可选参数
-
-当 `buildLocale` 和 `defaultLocale` 一致时，该参数指定是否向 `translateDir` 目录覆盖式写入由源码生成的待翻译 csv 文件。
-
-该参数默认为 true。但当使用 watch 模式开发时，可选择禁用该参数，避免频繁写磁盘。
-
-#### `checkConflict` - 可选参数
-
-是否检查对相同文本 id 的文本值是否冲突。由于 id 是由文件名和key构成的，并且 key 默认是文本的 hash。所以只在同一个文件里，主动指定 key 时，才可能存在冲突。
-
-在 production 模式下，默认为 true。在 development 模式下，默认为 false。
-
-### <_t> 多语言翻译组件
-
-在 view 模板中，使用 <_t> 这个多语言翻译组件来指定多语言文本。这是唯一一个有特殊含义的组件，即在编译器层面会特别处理。正因为其特殊性，jinge 框架要求所有组件名不能以下划线 `_` 打头，以下划线打头的组件为编译器保留组件名。当前仅支持 `_t` 这一个编译器保留组件。
-
-该组件的属性(attribute)包括：
-
-* `text`： 必要属性，默认语言下的文本。
-* `key`：可选属性，主动指定文本的标识。
-* `html`：可选属性，是否需要将文本以 html 方式渲染。
-* `params`：可选属性，渲染文本时提供的参数。
-
-该组件的使用示例如下：
+`<_t>` 辅助组件用于在模板中包裹需要翻译的文本串，`_t:` 用于在模板中指定需要翻译的属性值。比如：
 
 ````html
-<_t text="你好"/>
-<_t text="再见" key="goodbye"/>
-<_t text="你好，{name}" params="{name: boy}"/>
-<_t text="你好，<span style='color:red'>世界</span>" html/>
+<p><_t>你好，世界！</_t></p>
+<p><_t>你好，${name}！</_t></p>
+<for e:loop="boys" vm:each="boy">
+  <p>你好，${boy.name}，我是你们的老师${name}。</p>
+  <Boy _t:name="一年级一班的${boy.name}"/>
+</for>
+<p>
+  <_t>
+    中文下面<span style="color:red">这里是红色的</span>
+  <_t>
+</p>
 ````
 
-### _t 多语言翻译函数
+可以看出来，`<_t>` 对模板代码的入侵性非常小，一个不支持多语言的项目改造成需要支持多语言的项目，只需要简单地用 `<_t>` 来包裹。
 
-在 javascript 代码中，可以通过 `_t` 函数来定义多语言文本。编译器会自动将该函数在构建时处理成对应的语言版本。
-
-该函数接受三个参数，依次是 `text`, `params` 和 `key`。参数的含义，和 `<_t/>` 组件的同名属性完全一致。有一点灵活性是，当 params 参数为字符串（而不是 Object）时，会将其识别为 key 。
-
-该函数使用示例如下：
+`_t()` 函数用于在 js 代码中包裹需要翻译的文本串，例如：
 
 ````js
 import {
   _t
-} from 'pentagon';
+} from 'jinge';
 
-console.log(_t('你好'));
-console.log(_t('再见', 'goodbye')); // same as _t('再见', null, 'goodbye')
-console.log(_t('你好，{name}', { name: this.boy }));
+console.log(_t('你好，世界'));
 ````
+
+在内核层面，jinge 框架的多语言，最终也是（key-text）的字典查找方案。只不过，编译器(webpack loader)会自动将这些文本串提取，生成多语言的字典(key-text)文件，并将源码中文本串对应替换成 key。通过这种方式，使得编码的时候无需感知罗嗦的 key，也不需要关注大型前端项目中跨模块的 key 的冲突问题。同时，生成的字典也会自动避免完全相同的文本串的大量重复，从而减小大型前端项目的多语言字典包的体积。
+
+## 研发流程
+
+以下流程描述为简要介绍，详细代码以及参数的字段含义，参看此 demo 的源码。
+
+1. webpack 中引入 JingeWebpackPlugin，并配置 i18n 相关参数，其中，defaultLocale 为必须参数，假设配置为 `zh_cn`。
+2. 在源码中使用 `<_t>` 组件，`_t:` 类型的属性，或 `_t()` 函数包裹需要翻译的文本串。
+3. `npm run dev` 或 `npm run build` 后，会在 `translate` 目录（可配置）生成 `translate.zh_cn.csv`，文件内容包括两列，第二列是文本串，第一列是文本串所在的源码文件（用于定位文本串的上下文，以辅助翻译）。
+4. 翻译 `translate.zh_cn.csv` ，每一个目标语言，对应一个格式为 `translate.[targetLocale].csv` 的文件，文件内容包括三列，前两列和 `translate.zh_cn.csv` 完全一致，第三列是翻译后的文本串。
+5. 重新运行 `npm run dev` 或 `npm run build` 后，会在 `dist` 目录（可配置）生成文件名格式为 `locale.[targetLocale].js` （可配置）的文件。
+
+在第 5 步运行时，也仍然会执行第 3 步的生成（覆盖） `translate.zh_cn.csv` 的动作；并且会更新（覆盖）每一个 `translate.[targetLocale].csv` 文件，将其中已经被删除的文本串也删除，将新出现的未翻译的文本串添加到文件顶部。所以本质上第 5 步和第 3 步是同一个步骤。
+
+需要注意的是，第 3 步生成 csv 以及字典文件，都只在 webpack 第一次生成 bundle 时执行，不会监控 csv 文件的变化。源码发生变化后，发生变化的那个文件，会退回不使用多语言的代码，也就是 `<_t>`、`_t:` 和 `_t()` 都会被忽略。这样做的原因是实际研发中，并不会有频繁地多语言切换调试，基本都是默认语言下把某个模块开发好了，然后统一翻译，再测试翻译后结果。
+
+## 加载字典
+
+第一种方式是，在 `index.html` 文件中，在加载 bundle 之前，先加载需要的默认语言的字典文件。比如这个 demo 的 index.html 使用的方法。这种方式适合 `index.html` 可以由后端动态渲染的场景，比如后端根据登录用户的会话信息拿到用户配置的默认语言，渲染到 `index.html` 里去。
+
+第二种方式是，在 `index.html` 中只加载一个辅助的 `loader.js` 文件，这个文件里，先通过 api 接口读取登录用户的信息，拿到配置的语言，然后把字典文件和 bundle 文件用 `<script async="false">` 的形式添加到 index.html。如果不想使用 `<script>` 而是想直接先 `fetch` 代码然后 `eval` 执行脚本，则只要先执行字典文件，再执行 bundle 既可。
+
+## 切换语言
+
+第一种方式是，直接刷新页面。整个页面会重新执行加载字典逻辑，从而取到用户最近配置的语言选项。这种方式简单粗暴，优点是 js 代码里不需要考虑热更新的处理（详见下文），缺点是页面会重载，体验不够顺滑。
+
+第二种方式是，使用 `i18n.switch(locale, filename)` 热切换语言。 第一个必选参数是目标语言。第二个可选参数是语言字典文件名模板，当 webpack.config.js 里的 i18n 的参数不是默认参数的情况下，比如使用了自定义的路径或文件名，则此处也要同时指定完整的文件名。比如，webpack.config.js 里有如下配置：
+
+````js
+// webpack.config.js
+{
+  output: {
+    path: 'dist'
+  },
+  plugins: [ new JingeWebpackPlugin({
+    i18n: {
+      output: {
+        // 默认为 locale.[locale].js
+        filename: 'locale/[locale].js'
+      }
+    }
+  })]
+}
+````
+
+实际生成的字典文件会位于 `dist` 目录下的 `locale` 子目录。对应的浏览器端的热切换代码为：
+
+````js
+import {
+  i18n
+} from 'jinge';
+
+i18n.switch('en', '/dist/locale/[locale].js');
+````
+
+## 文本串热切换
+
+在模板里的 `<_t>` 和 `_t:` 可以自动实现当 `i18n.switch` 调用时热切换文本串。但 js 源码里的 `_t()` 无法自动热切换，需要手动处理。
+
+可以使用 `i18n.watch(listener, immediate = false)` 函数监控语言是否发生了变化。第一个必须参数是监听回调函数，第二个可选参数是是否立即执行一次该回调函数。这个 watch 函数的返回值也是一个函数，用于销毁之前的监听。
+
+如果是在组件（Component）里面处理热切换，可以使用一个便捷的监听函数，`this[I18N_WATCH](listener, immediate)`，函数参数和 `i18n.watch` 一致，返回值也是一个用于取消监听的函数。但这个组件的成员函数可以在组件被销毁时，自动销毁所有监听，从而即避免内存泄漏，又不需要业务层去手动处理销毁。还有一个小区别是，`this[I18N_WATCH]` 在触发 listener 时，会自动将 listener 的函数上下文设置成这个组件，即使用 `listener.apply(this, arguments)` 的形式调用回调。
+
+需要注意的是，当文本串出现在文件的顶部时，无法实现热切换。比如，某个服务会对外输出常量字符串，传统的写法往往如下：
+
+````js
+export SOME_CONST_VAR = '你好，世界！';
+````
+
+改成多语言后的简单写法是：
+
+````js
+import { _t } from 'jinge';
+export SOME_CONST_VAR = _t('你好，世界！');
+````
+
+这种写法无法实现热切换，因为无法修改 js 引擎里某个变量的内存地址对应的数据。如果是采用这种写法，切换语言时就只能采取重新加载整个 app 的方案。
+
+想要实现等价的功能，即将常量字符串暴露给外部，又可以热切换，只能采取在具体的业务需求下，结合 ViewModel 的消息机制和 i18n 服务的监听来具体地处理。比如一个可能的方案是：
+
+````js
+import { _t, VM } from 'jinge';
+export SOME_CONST_VARS = VM({});
+i18n.watch(() => {
+  Object.assign(SOME_CONST_VARS, {
+    varA: _t('你好，世界！');
+  });
+}, true);
+````
+
+通过这种方式，业务层可以直接使用 SOME_CONST_VARS 的 ViewModel 消息机制获知文本串的变更。 业务层还可以使用 `i18n.watch` 来处理，但这个方案并不靠谱，因为需要注意 i18n.watch 注册的先后顺序，如果业务层先注册，则会在服务层变更文本串之前就执行了监听回调（从而拿不到变更后的文本串）。

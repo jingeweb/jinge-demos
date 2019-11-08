@@ -1,9 +1,7 @@
 import {
-  Component
-} from 'jinge';
-import {
+  Component,
   isArray
-} from 'jinge/util';
+} from 'jinge';
 
 import _tpl from './table.html';
 

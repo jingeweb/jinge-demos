@@ -6,11 +6,11 @@ const { uiRouterAlias } = require('jinge-ui-router/compiler');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
-  target: 'web',
-  entry: path.join(__dirname, 'app/main.js'),
+  entry:path.join(__dirname, 'app/main.js'),
   output: {
     filename: `bundle.${prod ? 'min.' : ''}js`,
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
+    publicPath: 'dist'
   },
   devtool: 'source-map',
   module: {
@@ -25,7 +25,6 @@ module.exports = {
     }]
   },
   devServer: {
-    writeToDisk: true,
     contentBase: __dirname,
     port: 9000
   }

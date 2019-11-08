@@ -1,9 +1,7 @@
 import {
   VM
 } from 'jinge';
-
 import Todo from '../models/todo';
-import { simpleUID, findIndex } from './util';
 
 const STORAGE_KEY = 'jinge-todo-mvc-saved-todos';
 
@@ -24,7 +22,7 @@ class TodoStore {
     return idx >= 0 ? this.allTodos[idx] : null;
   }
   _findIndexById(id) {
-    return findIndex(this.allTodos, t => t.id === id);
+    return this.allTodos.findIndex(t => t.id === id);
   }
   _calcRemaining() {
     return this.allTodos.reduce((p, c) => p + (c.done ? 0 : 1), 0);

@@ -8,16 +8,16 @@
     "build": "PROD=true npm run build-dev",
     "start": "webpack-dev-server --config ./webpack.config.js"
   },
-  "author": "",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "jinge": "^1.0.5",
-    "jinge-ui-router": "^1.0.1",
-    "@uirouter/visualizer": "^7.0.0"
+    "@uirouter/visualizer": "^7.0.0",
+    "jinge": "^1.0.6",
+    "jinge-ui-router": "^1.0.3"
   },
   "devDependencies": {
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }

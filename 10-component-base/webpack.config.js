@@ -5,11 +5,11 @@ const { jingeLoader } = require('jinge/compiler');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
-  target: 'web',
-  entry: path.join(__dirname, 'index.js'),
+  entry:path.join(__dirname, 'index.js'),
   output: {
     filename: `bundle.${prod ? 'min.' : ''}js`,
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
+    publicPath: 'dist'
   },
   devtool: 'source-map',
   module: {
@@ -42,7 +42,6 @@ module.exports = {
     }
   },
   devServer: {
-    writeToDisk: true,
     contentBase: __dirname,
     port: 9000
   }

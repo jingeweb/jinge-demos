@@ -1,16 +1,14 @@
 import {
-  VM
+  VM,
+  uid
 } from 'jinge';
-import {
-  simpleUID
-} from '../services/util';
 
 export default class Todo {
   static fromSaved(savedData) {
     return new Todo(savedData.title, savedData.done, savedData.id);
   }
   constructor(title, done = false, id = null) {
-    this.id = id || simpleUID();
+    this.id = id || uid();
     this.title = title;
     this.done = done;
     /*

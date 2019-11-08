@@ -3,46 +3,40 @@ const path = require('path');
 const fs = require('fs');
 const prod = 'PROD' in process.env;
 const { jingeLoader, JingeWebpackPlugin } = require('jinge/compiler');
-const buildLocale = process.env.BUILD_LOCALE || 'zh_cn';
-
-const I18N_OPTIONS = {
-  mode: 'compiler-translate',
-  generateCSV: 'GENERATE_I18N_CSV' in process.env, // default is true
-  // idBaseDir: __dirname, // default is process.cwd()
-  // checkConflict: true/false,  // if mode is production, default is true; otherwize, default is false
-  translateDir: path.join(__dirname, 'translate'),
-  defaultLocale: 'zh_cn',
-  buildLocale
-};
 
 module.exports = {
   mode: prod ? 'production' : 'development',
-  target: 'web',
+  watch: 'WATCH' in process.env,
   entry: path.join(__dirname, 'src/index.js'),
   output: {
-    filename: `bundle.${buildLocale}.${prod ? 'min.' : ''}js`,
-    path: path.join(__dirname, 'dist')
+    filename: `bundle.${prod ? 'min.' : ''}js`,
+    path: path.join(__dirname, 'dist'),
+    publicPath: 'dist'
   },
-  devtool: 'source-map',
-  /**
-   * 
-   */
+  devtool: prod ? false : 'source-map',
   plugins: [ new JingeWebpackPlugin({
-    i18n: I18N_OPTIONS
+    i18n: {
+      // // 翻译资源 csv 文件的存放路径
+      // translateDir: path.join(process.cwd(), 'translate'),
+      // output: {
+      //   // 生成的字典资源文件名，默认为 locale.[locale].js 
+      //   filename: 'locale.[locale].js',
+      //   // 生成的字典资源路径，默认使用 webpack 的 output 配置
+      //   path: <inherit webpack config> 
+      // }
+      // 默认语言，即源代码里需要翻译的文本串的默认编程语言
+      defaultLocale: 'zh_cn'
+    }
   }) ],
   module: {
     rules: [{
       test: /\.(js|html)$/,
       use: {
-        loader: jingeLoader,
-        options: {
-          i18n: I18N_OPTIONS
-        }
+        loader: jingeLoader
       }
     }]
   },
   devServer: {
-    writeToDisk: true,
     contentBase: __dirname,
     port: 9000,
     before: function(app, server) {
@@ -56,8 +50,8 @@ module.exports = {
           path.join(__dirname, 'index.html'),
           'utf-8'
         ).replace(
-          /\$LOCALE\$/g, 
-          req.query.locale || buildLocale
+          /locale\.zh_cn(\.min)?\.js/, 
+          `locale.${req.query.locale || 'zh_cn'}.js`
         ));
       });
     }

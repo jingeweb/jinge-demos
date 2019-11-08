@@ -1,5 +1,5 @@
 {
-  "name": "jinge-demo-integrated-with-jquery-echarts",
+  "name": "jinge-demo-if-else",
   "version": "1.0.0",
   "description": "basic demo for jinge",
   "main": "index.js",
@@ -11,9 +11,7 @@
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "echarts": "^4.4.0",
-    "jinge": "^1.0.6",
-    "jquery": "^3.4.1"
+    "jinge": "^1.0.6"
   },
   "devDependencies": {
     "webpack": "^4.41.2",

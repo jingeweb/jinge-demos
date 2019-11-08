@@ -4,17 +4,18 @@
   "description": "basic demo for jinge",
   "main": "index.js",
   "scripts": {
-    "build-dev": "webpack --watch --config ./webpack.config.js",
+    "build-dev": "webpack --config ./webpack.config.js",
     "build": "PROD=true npm run build-dev",
     "start": "webpack-dev-server --config ./webpack.config.js"
   },
-  "author": "",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "jinge": "^1.0.6"
+  },
   "devDependencies": {
-    "jinge": "^1.0.5",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   }
 }
