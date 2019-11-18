@@ -108,23 +108,23 @@ class ToggleClassComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component
     if (!attrs || !Object(_util__WEBPACK_IMPORTED_MODULE_2__["isObject"])(attrs.class)) {
       throw new Error('<toggle-class> component require "class" attribute to be Object.');
     }
-    const vm_eb7664d704 = super(attrs);
-    const fn_eb7664d704_2 = () => {
-      vm_eb7664d704.class = attrs.class;
+    const vm_37647a7968 = super(attrs);
+    const fn_37647a7968_2 = () => {
+      vm_37647a7968.class = attrs.class;
     };
-    fn_eb7664d704_2();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('class', fn_eb7664d704_2);
-    const fn_eb7664d704_3 = () => {
-      vm_eb7664d704.trans = !!attrs.transition;
+    fn_37647a7968_2();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('class', fn_37647a7968_2);
+    const fn_37647a7968_3 = () => {
+      vm_37647a7968.trans = !!attrs.transition;
     };
-    fn_eb7664d704_3();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_eb7664d704_3);
-    vm_eb7664d704._t = null;
-    vm_eb7664d704._i = null;
+    fn_37647a7968_3();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_37647a7968_3);
+    vm_37647a7968._t = null;
+    vm_37647a7968._i = null;
     Object(_vm__WEBPACK_IMPORTED_MODULE_0__["vmWatch"])(this, 'class.**', () => {
-      vm_eb7664d704[_core__WEBPACK_IMPORTED_MODULE_1__["UPDATE_IF_NEED"]]();
+      vm_37647a7968[_core__WEBPACK_IMPORTED_MODULE_1__["UPDATE_IF_NEED"]]();
     });
-    return vm_eb7664d704;
+    return vm_37647a7968;
   }
 
   [_core__WEBPACK_IMPORTED_MODULE_1__["RENDER"]]() {
@@ -258,12 +258,12 @@ const EMP_ARR = [];
 
 class ForEachComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs, item, index, isLast) {
-    const vm_eb7664d704 = super(attrs);
-    vm_eb7664d704.each = item;
-    vm_eb7664d704.index = index;
-    vm_eb7664d704.isFirst = index === 0;
-    vm_eb7664d704.isLast = isLast;
-    return vm_eb7664d704;
+    const vm_37647a7968 = super(attrs);
+    vm_37647a7968.each = item;
+    vm_37647a7968.index = index;
+    vm_37647a7968.isFirst = index === 0;
+    vm_37647a7968.isLast = isLast;
+    return vm_37647a7968;
   }
 
   [_core__WEBPACK_IMPORTED_MODULE_1__["RENDER"]]() {
@@ -357,48 +357,48 @@ class ForComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     if (attrs.key && !/^(index|each(.[\w\d$_]+)*)$/.test(attrs.key)) {
       throw new Error('Value of "_key" attribute of <for> component is invalidate. See https://[todo]');
     }
-    const vm_eb7664d704 = super(attrs);
-    const fn_eb7664d704_2 = () => {
-      vm_eb7664d704.loop = attrs.loop;
+    const vm_37647a7968 = super(attrs);
+    const fn_37647a7968_2 = () => {
+      vm_37647a7968.loop = attrs.loop;
     };
-    fn_eb7664d704_2();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('loop', fn_eb7664d704_2);
-    vm_eb7664d704[ID] = INC++;
+    fn_37647a7968_2();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('loop', fn_37647a7968_2);
+    vm_37647a7968[ID] = INC++;
     const kn = attrs.key || KEY_INDEX;
-    vm_eb7664d704[FOR_KEY_NAME] = kn;
-    vm_eb7664d704[FOR_LENGTH] = 0;
-    vm_eb7664d704[FOR_KEYS] = null;
-    vm_eb7664d704[FOR_WAIT_UPDATE] = false;
+    vm_37647a7968[FOR_KEY_NAME] = kn;
+    vm_37647a7968[FOR_LENGTH] = 0;
+    vm_37647a7968[FOR_KEYS] = null;
+    vm_37647a7968[FOR_WAIT_UPDATE] = false;
     if (kn !== KEY_INDEX && kn !== KEY_EACH) {
-      vm_eb7664d704[FOR_KEY_NAME] = new Function(KEY_EACH, `return ${ kn }`);
+      vm_37647a7968[FOR_KEY_NAME] = new Function(KEY_EACH, `return ${ kn }`);
       const propCount = kn.split('.').length + 1;
       Object(_vm__WEBPACK_IMPORTED_MODULE_0__["vmWatch"])(this, 'loop.*.' + kn.slice(5), propPath => {
-        if (propPath.length !== propCount || vm_eb7664d704[FOR_WAIT_UPDATE]) {
+        if (propPath.length !== propCount || vm_37647a7968[FOR_WAIT_UPDATE]) {
           return;
         }
-        const items = vm_eb7664d704.loop;
+        const items = vm_37647a7968.loop;
         if (!Object(_util__WEBPACK_IMPORTED_MODULE_2__["isArray"])(items) || items.length === 0)
           return;
         const p = _parseIndexPath(propPath[1]);
         if (!Object(_util__WEBPACK_IMPORTED_MODULE_2__["isNumber"])(p) || p >= items.length) {
           return;
         }
-        vm_eb7664d704[FOR_KEYS][p] = vm_eb7664d704[FOR_KEY_NAME](items[p]);
+        vm_37647a7968[FOR_KEYS][p] = vm_37647a7968[FOR_KEY_NAME](items[p]);
       });
     }
     Object(_vm__WEBPACK_IMPORTED_MODULE_0__["vmWatch"])(this, 'loop.*', propPath => {
-      if (vm_eb7664d704[_core__WEBPACK_IMPORTED_MODULE_1__["STATE"]] !== _core__WEBPACK_IMPORTED_MODULE_1__["STATE_RENDERED"] || propPath.length !== 2 || vm_eb7664d704[FOR_WAIT_UPDATE]) {
+      if (vm_37647a7968[_core__WEBPACK_IMPORTED_MODULE_1__["STATE"]] !== _core__WEBPACK_IMPORTED_MODULE_1__["STATE_RENDERED"] || propPath.length !== 2 || vm_37647a7968[FOR_WAIT_UPDATE]) {
         return;
       }
       const p = _parseIndexPath(propPath[1]);
       if (p === _util__WEBPACK_IMPORTED_MODULE_2__["STR_LENGTH"]) {
-        vm_eb7664d704[FOR_WAIT_UPDATE] = true;
-        vm_eb7664d704[_core__WEBPACK_IMPORTED_MODULE_1__["UPDATE_IF_NEED"]]();
+        vm_37647a7968[FOR_WAIT_UPDATE] = true;
+        vm_37647a7968[_core__WEBPACK_IMPORTED_MODULE_1__["UPDATE_IF_NEED"]]();
       } else if (Object(_util__WEBPACK_IMPORTED_MODULE_2__["isNumber"])(p)) {
-        vm_eb7664d704[FOR_UPDATE_ITEM](p);
+        vm_37647a7968[FOR_UPDATE_ITEM](p);
       }
     });
-    return vm_eb7664d704;
+    return vm_37647a7968;
   }
 
   get loop() {
@@ -729,13 +729,13 @@ class BindHtmlComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] 
       throw new Error('<bind-html/> don\'t accept any child.');
     if (!('content' in attrs))
       throw new Error('<bind-html/> require "content" attribute');
-    const vm_eb7664d704 = super(attrs);
-    const fn_eb7664d704_3 = () => {
-      vm_eb7664d704.c = attrs.content;
+    const vm_37647a7968 = super(attrs);
+    const fn_37647a7968_3 = () => {
+      vm_37647a7968.c = attrs.content;
     };
-    fn_eb7664d704_3();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('content', fn_eb7664d704_3);
-    return vm_eb7664d704;
+    fn_37647a7968_3();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('content', fn_37647a7968_3);
+    return vm_37647a7968;
   }
 
   get c() {
@@ -790,11 +790,11 @@ const ON_LOCALE_CHANGE = Symbol('fn_on_locale_change');
 
 class I18nComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs, renderKey, renderVms) {
-    const vm_eb7664d704 = super(attrs);
-    vm_eb7664d704[RENDER_KEY] = renderKey;
-    vm_eb7664d704[RENDER_VMS] = renderVms;
-    vm_eb7664d704[_core__WEBPACK_IMPORTED_MODULE_1__["I18N_WATCH"]](vm_eb7664d704[ON_LOCALE_CHANGE]);
-    return vm_eb7664d704;
+    const vm_37647a7968 = super(attrs);
+    vm_37647a7968[RENDER_KEY] = renderKey;
+    vm_37647a7968[RENDER_VMS] = renderVms;
+    vm_37647a7968[_core__WEBPACK_IMPORTED_MODULE_1__["I18N_WATCH"]](vm_37647a7968[ON_LOCALE_CHANGE]);
+    return vm_37647a7968;
   }
 
   [_core__WEBPACK_IMPORTED_MODULE_1__["RENDER"]]() {
@@ -1061,22 +1061,22 @@ function destroySwitch(component) {
 
 class IfComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs) {
-    const vm_eb7664d704 = super(attrs);
-    vm_eb7664d704[C_VAL] = _util__WEBPACK_IMPORTED_MODULE_2__["STR_DEFAULT"];
-    vm_eb7664d704[OE_H] = null;
-    vm_eb7664d704[T_MAP] = null;
-    vm_eb7664d704[P_VAL] = null;
-    const fn_eb7664d704_5 = () => {
-      vm_eb7664d704.expect = attrs.expect;
+    const vm_37647a7968 = super(attrs);
+    vm_37647a7968[C_VAL] = _util__WEBPACK_IMPORTED_MODULE_2__["STR_DEFAULT"];
+    vm_37647a7968[OE_H] = null;
+    vm_37647a7968[T_MAP] = null;
+    vm_37647a7968[P_VAL] = null;
+    const fn_37647a7968_5 = () => {
+      vm_37647a7968.expect = attrs.expect;
     };
-    fn_eb7664d704_5();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('expect', fn_eb7664d704_5);
-    const fn_eb7664d704_6 = () => {
-      vm_eb7664d704.ts = attrs.transition;
+    fn_37647a7968_5();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('expect', fn_37647a7968_5);
+    const fn_37647a7968_6 = () => {
+      vm_37647a7968.ts = attrs.transition;
     };
-    fn_eb7664d704_6();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_eb7664d704_6);
-    return vm_eb7664d704;
+    fn_37647a7968_6();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_37647a7968_6);
+    return vm_37647a7968;
   }
 
   get expect() {
@@ -1113,21 +1113,21 @@ class IfComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
 
 class SwitchComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs) {
-    const vm_eb7664d704 = super(attrs);
-    vm_eb7664d704[OE_H] = null;
-    vm_eb7664d704[T_MAP] = null;
-    vm_eb7664d704[P_VAL] = null;
-    const fn_eb7664d704_4 = () => {
-      vm_eb7664d704.test = attrs.test;
+    const vm_37647a7968 = super(attrs);
+    vm_37647a7968[OE_H] = null;
+    vm_37647a7968[T_MAP] = null;
+    vm_37647a7968[P_VAL] = null;
+    const fn_37647a7968_4 = () => {
+      vm_37647a7968.test = attrs.test;
     };
-    fn_eb7664d704_4();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('test', fn_eb7664d704_4);
-    const fn_eb7664d704_5 = () => {
-      vm_eb7664d704.ts = attrs.transition;
+    fn_37647a7968_4();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('test', fn_37647a7968_4);
+    const fn_37647a7968_5 = () => {
+      vm_37647a7968.ts = attrs.transition;
     };
-    fn_eb7664d704_5();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_eb7664d704_5);
-    return vm_eb7664d704;
+    fn_37647a7968_5();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_37647a7968_5);
+    return vm_37647a7968;
   }
 
   get test() {
@@ -1250,13 +1250,13 @@ __webpack_require__.r(__webpack_exports__);
  */
 class LogComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs) {
-    const vm_eb7664d704 = super(attrs);
-    const fn_eb7664d704_1 = () => {
-      vm_eb7664d704.msg = attrs.msg;
+    const vm_37647a7968 = super(attrs);
+    const fn_37647a7968_1 = () => {
+      vm_37647a7968.msg = attrs.msg;
     };
-    fn_eb7664d704_1();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('msg', fn_eb7664d704_1);
-    return vm_eb7664d704;
+    fn_37647a7968_1();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('msg', fn_37647a7968_1);
+    return vm_37647a7968;
   }
 
   set msg(v) {
@@ -1293,14 +1293,14 @@ __webpack_require__.r(__webpack_exports__);
 
 class ParameterComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs, params) {
-    const vm_eb7664d704 = super(attrs);
+    const vm_37647a7968 = super(attrs);
     params.forEach(p => {
-      vm_eb7664d704[p] = attrs[p];
+      vm_37647a7968[p] = attrs[p];
       attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](p, () => {
-        vm_eb7664d704[p] = attrs[p];
+        vm_37647a7968[p] = attrs[p];
       });
     });
-    return vm_eb7664d704;
+    return vm_37647a7968;
   }
 }
 
@@ -2126,7 +2126,9 @@ class I18nService extends _messenger__WEBPACK_IMPORTED_MODULE_1__["Messenger"] {
         this[LAST_FETCHING_KEY] = key;
         fetchFn(locale).then(code => {
           // eslint-disable-next-line no-new-func
-          (new Function('JINGE_I18N_SERVICE', code))(this);
+          (new Function('jinge', code))({
+            i18n: this
+          });
           if (this[LAST_FETCHING_KEY] !== key || this[CURRENT_DATA].locale === locale) {
             /*
              * ignore if callback has been expired.
@@ -5270,6 +5272,59 @@ function wrapAttrs(attrsObj) {
 
 /***/ }),
 
+/***/ "./girl.js":
+/*!*****************!*\
+  !*** ./girl.js ***!
+  \*****************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Girl; });
+/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge-framework/index.js");
+
+
+
+
+class Girl extends jinge__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  static get template() {
+    return function(component) {
+      const vm_0 = component;
+      return [
+      (() => {
+        const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createTextNode"])();
+        const fn_0 = () => {
+          Object(jinge__WEBPACK_IMPORTED_MODULE_0__["setText"])(el, vm_0.name);
+        };
+        fn_0();
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](["name"], fn_0, component);
+        component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
+        return el;
+      })()
+      ];
+    };
+  }
+  constructor(args) {
+    const vm_37647a7968 = super(args);
+    const fn_37647a7968_1 = () => {
+      vm_37647a7968.name = args.name;
+    };
+    fn_37647a7968_1();
+    args[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('name', fn_37647a7968_1);
+    return vm_37647a7968;
+  }
+  [jinge__WEBPACK_IMPORTED_MODULE_0__["AFTER_RENDER"]]() {
+    console.log('girl has been rendered.');
+  }
+  [jinge__WEBPACK_IMPORTED_MODULE_0__["BEFORE_DESTROY"]]() {
+    console.log('girl will be destroied.');
+  }
+}
+
+
+/***/ }),
+
 /***/ "./index.js":
 /*!******************!*\
   !*** ./index.js ***!
@@ -5280,6 +5335,9 @@ function wrapAttrs(attrsObj) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge-framework/index.js");
+/* harmony import */ var _girl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./girl */ "./girl.js");
+
+
 
 
 
@@ -5289,17 +5347,91 @@ class Boy extends jinge__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return function(component) {
       const vm_0 = component;
       return [
-      Object(jinge__WEBPACK_IMPORTED_MODULE_0__["textRenderFn"])(component, "boy: "),
       (() => {
-        const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createTextNode"])();
+        const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createElement"])(
+          "div",
+          component[jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]],
+          " Hello everyone, my name is: ",
+          (() => {
+            const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createTextNode"])();
+            const fn_0 = () => {
+              Object(jinge__WEBPACK_IMPORTED_MODULE_0__["setText"])(el, vm_0.name || 'xiaoge');
+            };
+            fn_0();
+            vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](["name"], fn_0, component);
+            return el;
+          })(),
+          "."
+        );
+        component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
+        return el;
+      })(),
+      ...(() => {
+        const attrs = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["wrapAttrs"])({
+          [jinge__WEBPACK_IMPORTED_MODULE_0__["VM_DEBUG_NAME"]]: "attrs_of_<if>",
+          [jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]]: null,
+          [jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]]: component[jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]],
+          expect: null,
+          [jinge__WEBPACK_IMPORTED_MODULE_0__["ARG_COMPONENTS"]]: {
+            [jinge__WEBPACK_IMPORTED_MODULE_0__["STR_DEFAULT"]]: function(component) {
+              return [
+              (() => {
+                const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createElement"])(
+                  "div",
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]],
+                  " My girlfriend is ",
+                  ...(() => {
+                    const attrs = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["wrapAttrs"])({
+                      [jinge__WEBPACK_IMPORTED_MODULE_0__["VM_DEBUG_NAME"]]: "attrs_of_<Girl>",
+                      [jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]]: null,
+                      [jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]]: component[jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]],
+                      name: null
+                    });
+                    const fn_0 = () => {
+                      attrs.name = vm_0.girl + '-' + vm_0.clickTimes;
+                    };
+                    fn_0();
+                    vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](["girl"], fn_0, component);
+                    vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](["clickTimes"], fn_0, component);
+                    const el = new _girl__WEBPACK_IMPORTED_MODULE_1__["default"](attrs);
+                    component[jinge__WEBPACK_IMPORTED_MODULE_0__["NON_ROOT_COMPONENT_NODES"]].push(el);
+                    return Object(jinge__WEBPACK_IMPORTED_MODULE_0__["assertRenderResults"])(el[jinge__WEBPACK_IMPORTED_MODULE_0__["RENDER"]](component));
+                  })(),
+                  "."
+                );
+                component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
+                return el;
+              })()
+              ];
+            }
+          }
+        });
         const fn_0 = () => {
-          Object(jinge__WEBPACK_IMPORTED_MODULE_0__["setText"])(el, function () {
-            let _0;
-            return (_0 = vm_0.xx) === null || _0 === void 0 ? void 0 : _0.b;
-        }());
+          attrs.expect = vm_0.clickTimes >= 2;
         };
         fn_0();
-        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](["xx","b"], fn_0, component);
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](["clickTimes"], fn_0, component);
+        const el = new jinge__WEBPACK_IMPORTED_MODULE_0__["IfComponent"](attrs);
+        Object(jinge__WEBPACK_IMPORTED_MODULE_0__["addParentStyleId"])(el, component[jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]]);
+        component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
+        return Object(jinge__WEBPACK_IMPORTED_MODULE_0__["assertRenderResults"])(el[jinge__WEBPACK_IMPORTED_MODULE_0__["RENDER"]](component));
+      })(),
+      (() => {
+        const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createElement"])(
+          "div",
+          component[jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]],
+          " You have clicked ",
+          (() => {
+            const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createTextNode"])();
+            const fn_0 = () => {
+              Object(jinge__WEBPACK_IMPORTED_MODULE_0__["setText"])(el, vm_0.clickTimes);
+            };
+            fn_0();
+            vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](["clickTimes"], fn_0, component);
+            return el;
+          })(),
+          " times. "
+        );
         component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
         return el;
       })()
@@ -5307,14 +5439,23 @@ class Boy extends jinge__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     };
   }
   constructor(attrs) {
-    const vm_eb7664d704 = super(attrs);
-    const fn_eb7664d704_1 = () => {
-      vm_eb7664d704.xx = attrs.xx;
+    const vm_37647a7968 = super(attrs);
+    const fn_37647a7968_1 = () => {
+      vm_37647a7968.clickTimes = attrs.clickTimes;
     };
-    fn_eb7664d704_1();
-    attrs[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('xx', fn_eb7664d704_1);
-    console.log(vm_eb7664d704.xx);
-    return vm_eb7664d704;
+    fn_37647a7968_1();
+    attrs[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('clickTimes', fn_37647a7968_1);
+    const fn_37647a7968_2 = () => {
+      vm_37647a7968.name = attrs.name;
+    };
+    fn_37647a7968_2();
+    attrs[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('name', fn_37647a7968_2);
+    const fn_37647a7968_3 = () => {
+      vm_37647a7968.girl = attrs.girl;
+    };
+    fn_37647a7968_3();
+    attrs[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('girl', fn_37647a7968_3);
+    return vm_37647a7968;
   }
 }
 
@@ -5328,69 +5469,56 @@ class App extends jinge__WEBPACK_IMPORTED_MODULE_0__["Component"] {
           [jinge__WEBPACK_IMPORTED_MODULE_0__["VM_DEBUG_NAME"]]: "attrs_of_<Boy>",
           [jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]]: null,
           [jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]]: component[jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]],
-          xx: null
+          name: null,
+          clickTimes: null,
+          girl: "alice"
         });
-        let _0_0;
-        let _0_0_p;
-        let _0_0_0;
-        function _calc_0_0_0() {
-          _0_0_0 = vm_0.k;
-        }
-        function _calc_0_0() {
-          _0_0 = function () {
-            let _0, _1;
-            return (_1 = (_0 = vm_0.a) === null || _0 === void 0 ? void 0 : _0[_0_0_0]) === null || _1 === void 0 ? void 0 : _1.c;
-        }();
-        }
-        function _calc_0() {
-          attrs.xx = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["wrapViewModel"])({ b: _0_0 });
-        }
-        _calc_0_0_0();
-        _calc_0_0();
-        _calc_0();
-        function _update_0() { _calc_0(); }
-        function _update_0_0() {
-          _calc_0_0();
-          _update_0();
-        }
-        function _notify_0_0() {
-          const _np = ["a", _0_0_0, "c"];
-          const _eq = _0_0_p && Object(jinge__WEBPACK_IMPORTED_MODULE_0__["arrayEqual"])(_0_0_p, _np);
-          if (_0_0_p && !_eq) {
-            vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_OFF"]](_0_0_p, _update_0_0, component);
-          }
-          if (!_0_0_p || !_eq) {
-            _0_0_p = _np;
-            vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](_0_0_p, _update_0_0, component);
-          }
-        }
-        function _update_0_0_0() {
-          _calc_0_0_0();
-          _notify_0_0();
-          _update_0_0();
-        }
-        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](["k"], _update_0_0_0, component);
-        _notify_0_0();
+        const fn_0 = () => {
+          attrs.name = vm_0.name;
+        };
+        fn_0();
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](["name"], fn_0, component);
+        const fn_1 = () => {
+          attrs.clickTimes = vm_0.clickTimes;
+        };
+        fn_1();
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](["clickTimes"], fn_1, component);
         const el = new Boy(attrs);
         Object(jinge__WEBPACK_IMPORTED_MODULE_0__["addParentStyleId"])(el, component[jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]]);
         component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
         return Object(jinge__WEBPACK_IMPORTED_MODULE_0__["assertRenderResults"])(el[jinge__WEBPACK_IMPORTED_MODULE_0__["RENDER"]](component));
+      })(),
+      (() => {
+        const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createElement"])(
+          "div",
+          component[jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]],
+          (() => {
+            const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createElementWithoutAttrs"])(
+              "button",
+              "Increase"
+            );
+            Object(jinge__WEBPACK_IMPORTED_MODULE_0__["addEvent"])(el, 'click', function(...args) {vm_0.name = 'yuhang';vm_0.clickTimes++})
+            return el;
+          })(),
+          (() => {
+            const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createElementWithoutAttrs"])(
+              "button",
+              "Decrease"
+            );
+            Object(jinge__WEBPACK_IMPORTED_MODULE_0__["addEvent"])(el, 'click', function(...args) {if (vm_0.clickTimes === 1) {vm_0.log('reset name');vm_0.name = 'xiaoge';};if (vm_0.clickTimes > 0) {vm_0.clickTimes--;}})
+            return el;
+          })()
+        );
+        component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
+        return el;
       })()
       ];
     };
   }
   constructor(args) {
-    const vm_eb7664d704 = super(args);
-    vm_eb7664d704.clickTimes = 0;
-    vm_eb7664d704.k = 'm';
-    vm_eb7664d704.a = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["VM"])({
-      m: { c: 10 },
-      n: { c: 20 }
-    });
-    setTimeout(() => {
-      vm_eb7664d704.k = 'n';
-    }, 10000);
-    return vm_eb7664d704;
+    const vm_37647a7968 = super(args);
+    vm_37647a7968.clickTimes = 0;
+    return vm_37647a7968;
   }
   log(...args) {
     console.log(...args);

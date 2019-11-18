@@ -1,17 +1,27 @@
 import {
   Component,
-  bootstrap,
-  VM
+  bootstrap
 } from 'jinge';
 
 class Boy extends Component {
   static get template() {
-    return 'boy: ${xx.b}';
+    return `
+<!--
+  // You must explicitly import the component used.
+  import Girl from './girl';
+-->
+<div> Hello everyone, my name is: \${name || "xiaoge"}.</div>
+<if e:expect="clickTimes >= 2">
+<div> My girlfriend is <Girl name="\${girl}-\${clickTimes}"/>.</div>
+</if>
+<div> You have clicked \${clickTimes} times. </div>
+`;
   }
   constructor(attrs) {
     super(attrs);
-    this.xx = attrs.xx;
-    console.log(this.xx);
+    this.clickTimes = attrs.clickTimes;
+    this.name = attrs.name;
+    this.girl = attrs.girl;
   }
 }
 
@@ -22,16 +32,15 @@ class App extends Component {
   // if Component to use is in the same file, just import it from '.'.
   import Boy from '.';
 -->
-<Boy e:xx="{b: a[k].c}"/>`;
+<Boy e:name="name" girl="alice" clickTimes="\${clickTimes}"/>
+<div>
+<button on:click="name='yuhang'; clickTimes++;">Increase</button>
+<button on:click="if (clickTimes === 1) {log('reset name'); name='xiaoge'} if (clickTimes > 0) clickTimes--;">Decrease</button>
+</div>`;
   }
   constructor(args) {
     super(args);
     this.clickTimes = 0;
-    this.k = 'm';
-    this.a = VM({m: {c: 10}, n: {c: 20}});
-    setTimeout(() => {
-      this.k = 'n'
-    }, 10000);
   }
   log(...args) {
     console.log(...args);
