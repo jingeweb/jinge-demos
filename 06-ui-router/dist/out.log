@@ -1,0 +1,626 @@
+
+> jinge-demo-ui-router@1.0.0 build-dev /Users/geyuhang/jinge/jinge-demos/06-ui-router
+> webpack --config ./webpack.config.js
+
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "h2",
+    "UI-Router"
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "p",
+    "jinge framework does't implement router. we use ui-router."
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+vm_0._states
+createElementWithoutAttrs_93552ad7(
+  "h3",
+  "Top Menu Area"
+)
+(() => {
+  const el = createElement_93552ad7(
+    "a",
+    {
+      style: "margin-left: 10px;"
+    },
+    "About"
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+createElementWithoutAttrs_93552ad7(
+  "p",
+  ...(() => {
+    const attrs = wrapViewModel_93552ad7({
+      [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+      text: "Hello",
+      to: "hello",
+      active: "active"
+    }, true);
+    const el = new UISref_a6e0858b(attrs);
+    component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+    return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+  })(),
+  ...(() => {
+    const attrs = wrapViewModel_93552ad7({
+      [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+      to: "about",
+      active: "active",
+      [ARG_COMPONENTS_93552ad7]: {
+        [STR_DEFAULT_93552ad7]: function(component) {
+          return [
+          (() => {
+            const el = createElement_93552ad7(
+              "a",
+              {
+                style: "margin-left: 10px;"
+              },
+              "About"
+            );
+            component[ROOT_NODES_93552ad7].push(el);
+            return el;
+          })()
+          ];
+        }
+      }
+    }, true);
+    const el = new UISref_a6e0858b(attrs);
+    component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+    return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+  })()
+)
+createElement_93552ad7(
+  "div",
+  {
+    style: "border-bottom: 1px solid blue; margin-bottom: 10px;"
+  },
+  createElementWithoutAttrs_93552ad7(
+    "h3",
+    "Top Menu Area"
+  ),
+  createElementWithoutAttrs_93552ad7(
+    "p",
+    ...(() => {
+      const attrs = wrapViewModel_93552ad7({
+        [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+        text: "Hello",
+        to: "hello",
+        active: "active"
+      }, true);
+      const el = new UISref_a6e0858b(attrs);
+      component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+      return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+    })(),
+    ...(() => {
+      const attrs = wrapViewModel_93552ad7({
+        [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+        to: "about",
+        active: "active",
+        [ARG_COMPONENTS_93552ad7]: {
+          [STR_DEFAULT_93552ad7]: function(component) {
+            return [
+            (() => {
+              const el = createElement_93552ad7(
+                "a",
+                {
+                  style: "margin-left: 10px;"
+                },
+                "About"
+              );
+              component[ROOT_NODES_93552ad7].push(el);
+              return el;
+            })()
+            ];
+          }
+        }
+      }, true);
+      const el = new UISref_a6e0858b(attrs);
+      component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+      return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+    })()
+  )
+)
+createElementWithoutAttrs_93552ad7(
+  "h3",
+  "Content Area"
+)
+createElement_93552ad7(
+  "div",
+  {
+    class: "content"
+  },
+  ...(() => {
+    const attrs = wrapViewModel_93552ad7({
+      [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+    }, true);
+    const el = new UIView_a6e0858b(attrs);
+    component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+    return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+  })()
+)
+createElementWithoutAttrs_93552ad7(
+  "div",
+  createElementWithoutAttrs_93552ad7(
+    "h3",
+    "Content Area"
+  ),
+  createElement_93552ad7(
+    "div",
+    {
+      class: "content"
+    },
+    ...(() => {
+      const attrs = wrapViewModel_93552ad7({
+        [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+      }, true);
+      const el = new UIView_a6e0858b(attrs);
+      component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+      return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+    })()
+  )
+)
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "div",
+    createElement_93552ad7(
+      "div",
+      {
+        style: "border-bottom: 1px solid blue; margin-bottom: 10px;"
+      },
+      createElementWithoutAttrs_93552ad7(
+        "h3",
+        "Top Menu Area"
+      ),
+      createElementWithoutAttrs_93552ad7(
+        "p",
+        ...(() => {
+          const attrs = wrapViewModel_93552ad7({
+            [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+            text: "Hello",
+            to: "hello",
+            active: "active"
+          }, true);
+          const el = new UISref_a6e0858b(attrs);
+          component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+          return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+        })(),
+        ...(() => {
+          const attrs = wrapViewModel_93552ad7({
+            [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+            to: "about",
+            active: "active",
+            [ARG_COMPONENTS_93552ad7]: {
+              [STR_DEFAULT_93552ad7]: function(component) {
+                return [
+                (() => {
+                  const el = createElement_93552ad7(
+                    "a",
+                    {
+                      style: "margin-left: 10px;"
+                    },
+                    "About"
+                  );
+                  component[ROOT_NODES_93552ad7].push(el);
+                  return el;
+                })()
+                ];
+              }
+            }
+          }, true);
+          const el = new UISref_a6e0858b(attrs);
+          component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+          return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+        })()
+      )
+    ),
+    createElementWithoutAttrs_93552ad7(
+      "div",
+      createElementWithoutAttrs_93552ad7(
+        "h3",
+        "Content Area"
+      ),
+      createElement_93552ad7(
+        "div",
+        {
+          class: "content"
+        },
+        ...(() => {
+          const attrs = wrapViewModel_93552ad7({
+            [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+          }, true);
+          const el = new UIView_a6e0858b(attrs);
+          component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+          return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+        })()
+      )
+    )
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "h4",
+    "Hello"
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "p",
+    "hello, jinge!"
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "h4",
+    "About"
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "p",
+    "jinge is a Messenger, Proxy and Compiler based MVVM framework"
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+createElementWithoutAttrs_93552ad7(
+  "h4",
+  "Some People:"
+)
+vm_0.people
+vm_1.each.name
+{ personId: vm_1.each.id }
+(() => {
+  const el = createElement_93552ad7(
+    "ui-sref",
+    {
+      to: "person",
+      active: "active"
+    },
+  );
+  const fn_0 = () => setAttribute_93552ad7(el, 'text', vm_1.each.name);
+  vm_1[VM_ON_93552ad7]("each.name", fn_0, component);
+  fn_0();,const fn_1 = () => setAttribute_93552ad7(el, 'params', { personId: vm_1.each.id });
+  vm_1[VM_ON_93552ad7]("each.id", fn_1, component);
+  fn_1();
+  return el;
+})()
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "li",
+    (() => {
+      const el = createElement_93552ad7(
+        "ui-sref",
+        {
+          to: "person",
+          active: "active"
+        },
+      );
+      const fn_0 = () => setAttribute_93552ad7(el, 'text', vm_1.each.name);
+      vm_1[VM_ON_93552ad7]("each.name", fn_0, component);
+      fn_0();,const fn_1 = () => setAttribute_93552ad7(el, 'params', { personId: vm_1.each.id });
+      vm_1[VM_ON_93552ad7]("each.id", fn_1, component);
+      fn_1();
+      return el;
+    })()
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+createElementWithoutAttrs_93552ad7(
+  "ul",
+  ...(() => {
+    const attrs = wrapViewModel_93552ad7({
+      [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+      loop: null,
+      _key: "each.id",
+      [ARG_COMPONENTS_93552ad7]: {
+        [STR_DEFAULT_93552ad7]: function(component) {
+          const vm_1 = component;
+          return [
+          (() => {
+            const el = createElementWithoutAttrs_93552ad7(
+              "li",
+              (() => {
+                const el = createElement_93552ad7(
+                  "ui-sref",
+                  {
+                    to: "person",
+                    active: "active"
+                  },
+                );
+                const fn_0 = () => setAttribute_93552ad7(el, 'text', vm_1.each.name);
+                vm_1[VM_ON_93552ad7]("each.name", fn_0, component);
+                fn_0();,const fn_1 = () => setAttribute_93552ad7(el, 'params', { personId: vm_1.each.id });
+                vm_1[VM_ON_93552ad7]("each.id", fn_1, component);
+                fn_1();
+                return el;
+              })()
+            );
+            component[ROOT_NODES_93552ad7].push(el);
+            return el;
+          })()
+          ];
+        }
+      }
+    }, true);
+    const fn_0 = () => attrs.loop = vm_0.people;
+    vm_0[VM_ON_93552ad7]("people", fn_0, component);
+    fn_0();
+    const el = new ForComponent_a6e0858b(attrs);
+    component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+    return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+  })()
+)
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "div",
+    createElementWithoutAttrs_93552ad7(
+      "h4",
+      "Some People:"
+    ),
+    createElementWithoutAttrs_93552ad7(
+      "ul",
+      ...(() => {
+        const attrs = wrapViewModel_93552ad7({
+          [CONTEXT_93552ad7]: component[CONTEXT_93552ad7],
+          loop: null,
+          _key: "each.id",
+          [ARG_COMPONENTS_93552ad7]: {
+            [STR_DEFAULT_93552ad7]: function(component) {
+              const vm_1 = component;
+              return [
+              (() => {
+                const el = createElementWithoutAttrs_93552ad7(
+                  "li",
+                  (() => {
+                    const el = createElement_93552ad7(
+                      "ui-sref",
+                      {
+                        to: "person",
+                        active: "active"
+                      },
+                    );
+                    const fn_0 = () => setAttribute_93552ad7(el, 'text', vm_1.each.name);
+                    vm_1[VM_ON_93552ad7]("each.name", fn_0, component);
+                    fn_0();,const fn_1 = () => setAttribute_93552ad7(el, 'params', { personId: vm_1.each.id });
+                    vm_1[VM_ON_93552ad7]("each.id", fn_1, component);
+                    fn_1();
+                    return el;
+                  })()
+                );
+                component[ROOT_NODES_93552ad7].push(el);
+                return el;
+              })()
+              ];
+            }
+          }
+        }, true);
+        const fn_0 = () => attrs.loop = vm_0.people;
+        vm_0[VM_ON_93552ad7]("people", fn_0, component);
+        fn_0();
+        const el = new ForComponent_a6e0858b(attrs);
+        component[NON_ROOT_COMPONENT_NODES_93552ad7].push(el);
+        return assertRenderResults_93552ad7(el[RENDER_93552ad7](component));
+      })()
+    )
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+createElementWithoutAttrs_93552ad7(
+  "h4",
+  "A person!"
+)
+vm_0.person.name
+createElementWithoutAttrs_93552ad7(
+  "div",
+  "Name: ",
+  (() => {
+    const el = createTextNode_93552ad7('');
+    const fn = () => setText_93552ad7(el, vm_0.person.name);
+    vm_0[VM_ON_93552ad7]("person.name", fn, component);
+    fn();
+    return el;
+  })()
+)
+vm_0.person.id
+createElementWithoutAttrs_93552ad7(
+  "div",
+  "Id: ",
+  (() => {
+    const el = createTextNode_93552ad7('');
+    const fn = () => setText_93552ad7(el, vm_0.person.id);
+    vm_0[VM_ON_93552ad7]("person.id", fn, component);
+    fn();
+    return el;
+  })()
+)
+vm_0.person.company
+createElementWithoutAttrs_93552ad7(
+  "div",
+  "Company: ",
+  (() => {
+    const el = createTextNode_93552ad7('');
+    const fn = () => setText_93552ad7(el, vm_0.person.company);
+    vm_0[VM_ON_93552ad7]("person.company", fn, component);
+    fn();
+    return el;
+  })()
+)
+vm_0.person.email
+createElementWithoutAttrs_93552ad7(
+  "div",
+  "Email: ",
+  (() => {
+    const el = createTextNode_93552ad7('');
+    const fn = () => setText_93552ad7(el, vm_0.person.email);
+    vm_0[VM_ON_93552ad7]("person.email", fn, component);
+    fn();
+    return el;
+  })()
+)
+vm_0.person.address
+createElementWithoutAttrs_93552ad7(
+  "div",
+  "Address: ",
+  (() => {
+    const el = createTextNode_93552ad7('');
+    const fn = () => setText_93552ad7(el, vm_0.person.address);
+    vm_0[VM_ON_93552ad7]("person.address", fn, component);
+    fn();
+    return el;
+  })()
+)
+createElementWithoutAttrs_93552ad7(
+  "button",
+  "Close"
+)
+createElement_93552ad7(
+  "ui-sref",
+  {
+    to: "people"
+  },
+  createElementWithoutAttrs_93552ad7(
+    "button",
+    "Close"
+  )
+)
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "div",
+    createElementWithoutAttrs_93552ad7(
+      "h4",
+      "A person!"
+    ),
+    createElementWithoutAttrs_93552ad7(
+      "div",
+      "Name: ",
+      (() => {
+        const el = createTextNode_93552ad7('');
+        const fn = () => setText_93552ad7(el, vm_0.person.name);
+        vm_0[VM_ON_93552ad7]("person.name", fn, component);
+        fn();
+        return el;
+      })()
+    ),
+    createElementWithoutAttrs_93552ad7(
+      "div",
+      "Id: ",
+      (() => {
+        const el = createTextNode_93552ad7('');
+        const fn = () => setText_93552ad7(el, vm_0.person.id);
+        vm_0[VM_ON_93552ad7]("person.id", fn, component);
+        fn();
+        return el;
+      })()
+    ),
+    createElementWithoutAttrs_93552ad7(
+      "div",
+      "Company: ",
+      (() => {
+        const el = createTextNode_93552ad7('');
+        const fn = () => setText_93552ad7(el, vm_0.person.company);
+        vm_0[VM_ON_93552ad7]("person.company", fn, component);
+        fn();
+        return el;
+      })()
+    ),
+    createElementWithoutAttrs_93552ad7(
+      "div",
+      "Email: ",
+      (() => {
+        const el = createTextNode_93552ad7('');
+        const fn = () => setText_93552ad7(el, vm_0.person.email);
+        vm_0[VM_ON_93552ad7]("person.email", fn, component);
+        fn();
+        return el;
+      })()
+    ),
+    createElementWithoutAttrs_93552ad7(
+      "div",
+      "Address: ",
+      (() => {
+        const el = createTextNode_93552ad7('');
+        const fn = () => setText_93552ad7(el, vm_0.person.address);
+        vm_0[VM_ON_93552ad7]("person.address", fn, component);
+        fn();
+        return el;
+      })()
+    ),
+    createElement_93552ad7(
+      "ui-sref",
+      {
+        to: "people"
+      },
+      createElementWithoutAttrs_93552ad7(
+        "button",
+        "Close"
+      )
+    )
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+vm_0.text
+(() => {
+  const el = createElementWithoutAttrs_93552ad7(
+    "a",
+    (() => {
+      const el = createTextNode_93552ad7('');
+      const fn = () => setText_93552ad7(el, vm_0.text);
+      vm_0[VM_ON_93552ad7]("text", fn, component);
+      fn();
+      return el;
+    })()
+  );
+  component[ROOT_NODES_93552ad7].push(el);
+  return el;
+})()
+Hash: 55afcff8de9666b7d9b6
+Version: webpack 4.29.3
+Time: 870ms
+Built at: 2019-02-21 18:18:11
+        Asset     Size  Chunks             Chunk Names
+    bundle.js  707 KiB    main  [emitted]  main
+bundle.js.map  551 KiB    main  [emitted]  main
+Entrypoint main = bundle.js bundle.js.map
+[../../jinge-framework/src/core/bootstrap.js] /Users/geyuhang/jinge/jinge-framework/src/core/bootstrap.js 373 bytes {main} [built]
+[../../jinge-framework/src/core/component.js] /Users/geyuhang/jinge/jinge-framework/src/core/component.js 11 KiB {main} [built]
+[../../jinge-framework/src/core/messenger.js] /Users/geyuhang/jinge/jinge-framework/src/core/messenger.js 1.72 KiB {main} [built]
+[../../jinge-framework/src/dom/index.js] /Users/geyuhang/jinge/jinge-framework/src/dom/index.js 2.94 KiB {main} [built]
+[../../jinge-framework/src/index.js] /Users/geyuhang/jinge/jinge-framework/src/index.js 312 bytes {main} [built]
+[../../jinge-framework/src/util/array.js] /Users/geyuhang/jinge/jinge-framework/src/util/array.js 371 bytes {main} [built]
+[../../jinge-framework/src/util/diff.js] /Users/geyuhang/jinge/jinge-framework/src/util/diff.js 5.42 KiB {main} [built]
+[../../jinge-framework/src/util/index.js] /Users/geyuhang/jinge/jinge-framework/src/util/index.js 896 bytes {main} [built]
+[../../jinge-framework/src/viewmodel/common.js] /Users/geyuhang/jinge/jinge-framework/src/viewmodel/common.js 770 bytes {main} [built]
+[../../jinge-framework/src/viewmodel/notify.js] /Users/geyuhang/jinge/jinge-framework/src/viewmodel/notify.js 3.56 KiB {main} [built]
+[../../jinge-framework/src/viewmodel/proxy.js] /Users/geyuhang/jinge/jinge-framework/src/viewmodel/proxy.js 4.29 KiB {main} [built]
+[../../jinge-ui-router/src/index.js] /Users/geyuhang/jinge/jinge-ui-router/src/index.js 78 bytes {main} [built]
+[./app.html] 5.54 KiB {main} [built]
+[./index.js] 1.85 KiB {main} [built]
+[./service/api.js] 494 bytes {main} [built]
+    + 89 hidden modules
+
+ERROR in ./components/people.js 83:33
+Module parse failed: Unexpected token (83:33)
+You may need an appropriate loader to handle this file type.
+|                           const fn_0 = () => setAttribute_93552ad7(el, 'text', vm_1.each.name);
+|                           vm_1[VM_ON_93552ad7]("each.name", fn_0, component);
+>                           fn_0();,const fn_1 = () => setAttribute_93552ad7(el, 'params', { personId: vm_1.each.id });
+|                           vm_1[VM_ON_93552ad7]("each.id", fn_1, component);
+|                           fn_1();
+ @ ./index.js 18:0-41 37:13-19
