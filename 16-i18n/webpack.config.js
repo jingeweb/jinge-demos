@@ -18,12 +18,8 @@ module.exports = {
     i18n: {
       // // 翻译资源 csv 文件的存放路径
       // translateDir: path.join(process.cwd(), 'translate'),
-      // output: {
-      //   // 生成的字典资源文件名，默认为 locale.[locale].js 
-      //   filename: 'locale.[locale].js',
-      //   // 生成的字典资源路径，默认使用 webpack 的 output 配置
-      //   path: <inherit webpack config> 
-      // }
+      // 生成的字典资源文件名，默认为 locale.[locale].js 
+      // filename: 'locale.[locale].js',
       // 默认语言，即源代码里需要翻译的文本串的默认编程语言
       defaultLocale: 'zh_cn'
     }
