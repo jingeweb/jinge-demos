@@ -108,23 +108,23 @@ class ToggleClassComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component
     if (!attrs || !Object(_util__WEBPACK_IMPORTED_MODULE_2__["isObject"])(attrs.class)) {
       throw new Error('<toggle-class> component require "class" attribute to be Object.');
     }
-    const vm_50250e3c63 = super(attrs);
-    const fn_50250e3c63_2 = () => {
-      vm_50250e3c63.class = attrs.class;
+    const vm_996ad1cf81dd = super(attrs);
+    const fn_2_996ad1cf81dd = () => {
+      vm_996ad1cf81dd.class = attrs.class;
     };
-    fn_50250e3c63_2();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('class', fn_50250e3c63_2);
-    const fn_50250e3c63_3 = () => {
-      vm_50250e3c63.trans = !!attrs.transition;
+    fn_2_996ad1cf81dd();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('class', fn_2_996ad1cf81dd);
+    const fn_3_996ad1cf81dd = () => {
+      vm_996ad1cf81dd.trans = !!attrs.transition;
     };
-    fn_50250e3c63_3();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_50250e3c63_3);
-    vm_50250e3c63._t = null;
-    vm_50250e3c63._i = null;
+    fn_3_996ad1cf81dd();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_3_996ad1cf81dd);
+    vm_996ad1cf81dd._t = null;
+    vm_996ad1cf81dd._i = null;
     Object(_vm__WEBPACK_IMPORTED_MODULE_0__["vmWatch"])(this, 'class.**', () => {
-      vm_50250e3c63[_core__WEBPACK_IMPORTED_MODULE_1__["UPDATE_IF_NEED"]]();
+      vm_996ad1cf81dd[_core__WEBPACK_IMPORTED_MODULE_1__["UPDATE_IF_NEED"]]();
     });
-    return vm_50250e3c63;
+    return vm_996ad1cf81dd;
   }
 
   [_core__WEBPACK_IMPORTED_MODULE_1__["RENDER"]]() {
@@ -258,12 +258,24 @@ const EMP_ARR = [];
 
 class ForEachComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs, item, index, isLast) {
-    const vm_50250e3c63 = super(attrs);
-    vm_50250e3c63.each = item;
-    vm_50250e3c63.index = index;
-    vm_50250e3c63.isFirst = index === 0;
-    vm_50250e3c63.isLast = isLast;
-    return vm_50250e3c63;
+    const vm_996ad1cf81dd = super(attrs);
+    if (Object(_vm__WEBPACK_IMPORTED_MODULE_0__["isViewModel"])(item)) {
+      vm_996ad1cf81dd.each = item;
+    } else {
+      vm_996ad1cf81dd._e = item;
+    }
+    vm_996ad1cf81dd.index = index;
+    vm_996ad1cf81dd.isFirst = index === 0;
+    vm_996ad1cf81dd.isLast = isLast;
+    return vm_996ad1cf81dd;
+  }
+
+  get each() {
+    return this._e;
+  }
+
+  set each(v) {
+    this._e = v;
   }
 
   [_core__WEBPACK_IMPORTED_MODULE_1__["RENDER"]]() {
@@ -292,11 +304,11 @@ function appendRenderEach(item, i, isLast, itemRenderFn, roots, context, cstyPid
   return el[_core__WEBPACK_IMPORTED_MODULE_1__["RENDER"]]();
 }
 
-function _assertVm(item, i) {
-  if (Object(_util__WEBPACK_IMPORTED_MODULE_2__["isObject"])(item) && !Object(_vm__WEBPACK_IMPORTED_MODULE_0__["isInnerObj"])(item) && !(_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"] in item)) {
-    throw new Error(`loop item [${i}] of <for> component must be ViewModel.`);
-  }
-}
+// function _assertVm(item, i) {
+//   if (isObject(item) && !isInnerObj(item) && !(VM_ATTRS in item)) {
+//     throw new Error(`loop item [${i}] of <for> component must be ViewModel.`);
+//   }
+// }
 
 function _prepareKey(item, i, keyMap, keyName) {
   const key = keyName === KEY_EACH ? item : keyName(item);
@@ -311,7 +323,7 @@ function renderItems(items, itemRenderFn, roots, keys, keyName, context, cstyPid
   const result = [];
   const tmpKeyMap = new Map();
   items.forEach((item, i) => {
-    _assertVm(item, i);
+    // _assertVm(item, i);
     if (keyName !== KEY_INDEX) {
       keys.push(_prepareKey(item, i, tmpKeyMap, keyName));
     }
@@ -357,48 +369,51 @@ class ForComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     if (attrs.key && !/^(index|each(.[\w\d$_]+)*)$/.test(attrs.key)) {
       throw new Error('Value of "_key" attribute of <for> component is invalidate. See https://[todo]');
     }
-    const vm_50250e3c63 = super(attrs);
-    const fn_50250e3c63_2 = () => {
-      vm_50250e3c63.loop = attrs.loop;
-    };
-    fn_50250e3c63_2();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('loop', fn_50250e3c63_2);
-    vm_50250e3c63[ID] = INC++;
+    const vm_996ad1cf81dd = super(attrs);
+    if (Object(_vm__WEBPACK_IMPORTED_MODULE_0__["isViewModel"])(attrs.loop)) {
+      vm_996ad1cf81dd.loop = attrs.loop;
+    } else {
+      vm_996ad1cf81dd._l = attrs.loop;
+    }
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('loop', () => {
+      vm_996ad1cf81dd.loop = attrs.loop;
+    });
+    vm_996ad1cf81dd[ID] = INC++;
     const kn = attrs.key || KEY_INDEX;
-    vm_50250e3c63[FOR_KEY_NAME] = kn;
-    vm_50250e3c63[FOR_LENGTH] = 0;
-    vm_50250e3c63[FOR_KEYS] = null;
-    vm_50250e3c63[FOR_WAIT_UPDATE] = false;
+    vm_996ad1cf81dd[FOR_KEY_NAME] = kn;
+    vm_996ad1cf81dd[FOR_LENGTH] = 0;
+    vm_996ad1cf81dd[FOR_KEYS] = null;
+    vm_996ad1cf81dd[FOR_WAIT_UPDATE] = false;
     if (kn !== KEY_INDEX && kn !== KEY_EACH) {
-      vm_50250e3c63[FOR_KEY_NAME] = new Function(KEY_EACH, `return ${ kn }`);
+      vm_996ad1cf81dd[FOR_KEY_NAME] = new Function(KEY_EACH, `return ${ kn }`);
       const propCount = kn.split('.').length + 1;
       Object(_vm__WEBPACK_IMPORTED_MODULE_0__["vmWatch"])(this, 'loop.*.' + kn.slice(5), propPath => {
-        if (propPath.length !== propCount || vm_50250e3c63[FOR_WAIT_UPDATE]) {
+        if (propPath.length !== propCount || vm_996ad1cf81dd[FOR_WAIT_UPDATE]) {
           return;
         }
-        const items = vm_50250e3c63.loop;
+        const items = vm_996ad1cf81dd.loop;
         if (!Object(_util__WEBPACK_IMPORTED_MODULE_2__["isArray"])(items) || items.length === 0)
           return;
         const p = _parseIndexPath(propPath[1]);
         if (!Object(_util__WEBPACK_IMPORTED_MODULE_2__["isNumber"])(p) || p >= items.length) {
           return;
         }
-        vm_50250e3c63[FOR_KEYS][p] = vm_50250e3c63[FOR_KEY_NAME](items[p]);
+        vm_996ad1cf81dd[FOR_KEYS][p] = vm_996ad1cf81dd[FOR_KEY_NAME](items[p]);
       });
     }
     Object(_vm__WEBPACK_IMPORTED_MODULE_0__["vmWatch"])(this, 'loop.*', propPath => {
-      if (vm_50250e3c63[_core__WEBPACK_IMPORTED_MODULE_1__["STATE"]] !== _core__WEBPACK_IMPORTED_MODULE_1__["STATE_RENDERED"] || propPath.length !== 2 || vm_50250e3c63[FOR_WAIT_UPDATE]) {
+      if (vm_996ad1cf81dd[_core__WEBPACK_IMPORTED_MODULE_1__["STATE"]] !== _core__WEBPACK_IMPORTED_MODULE_1__["STATE_RENDERED"] || propPath.length !== 2 || vm_996ad1cf81dd[FOR_WAIT_UPDATE]) {
         return;
       }
       const p = _parseIndexPath(propPath[1]);
       if (p === _util__WEBPACK_IMPORTED_MODULE_2__["STR_LENGTH"]) {
-        vm_50250e3c63[FOR_WAIT_UPDATE] = true;
-        vm_50250e3c63[_core__WEBPACK_IMPORTED_MODULE_1__["UPDATE_IF_NEED"]]();
+        vm_996ad1cf81dd[FOR_WAIT_UPDATE] = true;
+        vm_996ad1cf81dd[_core__WEBPACK_IMPORTED_MODULE_1__["UPDATE_IF_NEED"]]();
       } else if (Object(_util__WEBPACK_IMPORTED_MODULE_2__["isNumber"])(p)) {
-        vm_50250e3c63[FOR_UPDATE_ITEM](p);
+        vm_996ad1cf81dd[FOR_UPDATE_ITEM](p);
       }
     });
-    return vm_50250e3c63;
+    return vm_996ad1cf81dd;
   }
 
   get loop() {
@@ -564,7 +579,7 @@ class ForComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     const newKeys = [];
     const newKeyMap = new Map();
     newItems.forEach((item, i) => {
-      _assertVm(item, i);
+      // _assertVm(item, i);
       newKeys.push(_prepareKey(item, i, newKeyMap, keyName));
     });
 
@@ -729,13 +744,13 @@ class BindHtmlComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] 
       throw new Error('<bind-html/> don\'t accept any child.');
     if (!('content' in attrs))
       throw new Error('<bind-html/> require "content" attribute');
-    const vm_50250e3c63 = super(attrs);
-    const fn_50250e3c63_3 = () => {
-      vm_50250e3c63.c = attrs.content;
+    const vm_996ad1cf81dd = super(attrs);
+    const fn_3_996ad1cf81dd = () => {
+      vm_996ad1cf81dd.c = attrs.content;
     };
-    fn_50250e3c63_3();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('content', fn_50250e3c63_3);
-    return vm_50250e3c63;
+    fn_3_996ad1cf81dd();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('content', fn_3_996ad1cf81dd);
+    return vm_996ad1cf81dd;
   }
 
   get c() {
@@ -790,15 +805,15 @@ const ON_LOCALE_CHANGE = Symbol('fn_on_locale_change');
 
 class I18nComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs, renderKey, renderVms) {
-    const vm_50250e3c63 = super(attrs);
-    vm_50250e3c63[RENDER_KEY] = renderKey;
-    vm_50250e3c63[RENDER_VMS] = renderVms;
-    vm_50250e3c63[_core__WEBPACK_IMPORTED_MODULE_1__["I18N_WATCH"]](vm_50250e3c63[ON_LOCALE_CHANGE]);
-    return vm_50250e3c63;
+    const vm_996ad1cf81dd = super(attrs);
+    vm_996ad1cf81dd[RENDER_KEY] = renderKey;
+    vm_996ad1cf81dd[RENDER_VMS] = renderVms;
+    vm_996ad1cf81dd[_core__WEBPACK_IMPORTED_MODULE_1__["I18N_WATCH"]](vm_996ad1cf81dd[ON_LOCALE_CHANGE]);
+    return vm_996ad1cf81dd;
   }
 
   [_core__WEBPACK_IMPORTED_MODULE_1__["RENDER"]]() {
-    const renderFn = _core__WEBPACK_IMPORTED_MODULE_1__["i18n"][_core__WEBPACK_IMPORTED_MODULE_1__["I18N_GET_RENDER"]](this[RENDER_KEY]);
+    const renderFn = _core__WEBPACK_IMPORTED_MODULE_1__["i18n"][_core__WEBPACK_IMPORTED_MODULE_1__["I18N_GET_COMPONENT_RENDER"]](this[RENDER_KEY]);
     return renderFn(this, ...this[RENDER_VMS]);
   }
 
@@ -1061,22 +1076,22 @@ function destroySwitch(component) {
 
 class IfComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs) {
-    const vm_50250e3c63 = super(attrs);
-    vm_50250e3c63[C_VAL] = _util__WEBPACK_IMPORTED_MODULE_2__["STR_DEFAULT"];
-    vm_50250e3c63[OE_H] = null;
-    vm_50250e3c63[T_MAP] = null;
-    vm_50250e3c63[P_VAL] = null;
-    const fn_50250e3c63_5 = () => {
-      vm_50250e3c63.expect = attrs.expect;
+    const vm_996ad1cf81dd = super(attrs);
+    vm_996ad1cf81dd[C_VAL] = _util__WEBPACK_IMPORTED_MODULE_2__["STR_DEFAULT"];
+    vm_996ad1cf81dd[OE_H] = null;
+    vm_996ad1cf81dd[T_MAP] = null;
+    vm_996ad1cf81dd[P_VAL] = null;
+    const fn_5_996ad1cf81dd = () => {
+      vm_996ad1cf81dd.expect = attrs.expect;
     };
-    fn_50250e3c63_5();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('expect', fn_50250e3c63_5);
-    const fn_50250e3c63_6 = () => {
-      vm_50250e3c63.ts = attrs.transition;
+    fn_5_996ad1cf81dd();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('expect', fn_5_996ad1cf81dd);
+    const fn_6_996ad1cf81dd = () => {
+      vm_996ad1cf81dd.ts = attrs.transition;
     };
-    fn_50250e3c63_6();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_50250e3c63_6);
-    return vm_50250e3c63;
+    fn_6_996ad1cf81dd();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_6_996ad1cf81dd);
+    return vm_996ad1cf81dd;
   }
 
   get expect() {
@@ -1113,21 +1128,21 @@ class IfComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
 
 class SwitchComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs) {
-    const vm_50250e3c63 = super(attrs);
-    vm_50250e3c63[OE_H] = null;
-    vm_50250e3c63[T_MAP] = null;
-    vm_50250e3c63[P_VAL] = null;
-    const fn_50250e3c63_4 = () => {
-      vm_50250e3c63.test = attrs.test;
+    const vm_996ad1cf81dd = super(attrs);
+    vm_996ad1cf81dd[OE_H] = null;
+    vm_996ad1cf81dd[T_MAP] = null;
+    vm_996ad1cf81dd[P_VAL] = null;
+    const fn_4_996ad1cf81dd = () => {
+      vm_996ad1cf81dd.test = attrs.test;
     };
-    fn_50250e3c63_4();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('test', fn_50250e3c63_4);
-    const fn_50250e3c63_5 = () => {
-      vm_50250e3c63.ts = attrs.transition;
+    fn_4_996ad1cf81dd();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('test', fn_4_996ad1cf81dd);
+    const fn_5_996ad1cf81dd = () => {
+      vm_996ad1cf81dd.ts = attrs.transition;
     };
-    fn_50250e3c63_5();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_50250e3c63_5);
-    return vm_50250e3c63;
+    fn_5_996ad1cf81dd();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('transition', fn_5_996ad1cf81dd);
+    return vm_996ad1cf81dd;
   }
 
   get test() {
@@ -1250,13 +1265,13 @@ __webpack_require__.r(__webpack_exports__);
  */
 class LogComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs) {
-    const vm_50250e3c63 = super(attrs);
-    const fn_50250e3c63_1 = () => {
-      vm_50250e3c63.msg = attrs.msg;
+    const vm_996ad1cf81dd = super(attrs);
+    const fn_1_996ad1cf81dd = () => {
+      vm_996ad1cf81dd.msg = attrs.msg;
     };
-    fn_50250e3c63_1();
-    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('msg', fn_50250e3c63_1);
-    return vm_50250e3c63;
+    fn_1_996ad1cf81dd();
+    attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('msg', fn_1_996ad1cf81dd);
+    return vm_996ad1cf81dd;
   }
 
   set msg(v) {
@@ -1293,14 +1308,14 @@ __webpack_require__.r(__webpack_exports__);
 
 class ParameterComponent extends _core__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(attrs, params) {
-    const vm_50250e3c63 = super(attrs);
+    const vm_996ad1cf81dd = super(attrs);
     params.forEach(p => {
-      vm_50250e3c63[p] = attrs[p];
+      vm_996ad1cf81dd[p] = attrs[p];
       attrs[_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]](p, () => {
-        vm_50250e3c63[p] = attrs[p];
+        vm_996ad1cf81dd[p] = attrs[p];
       });
     });
-    return vm_50250e3c63;
+    return vm_996ad1cf81dd;
   }
 }
 
@@ -1757,12 +1772,12 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_2__["Messenger"] {
       sfm.forEach((fn, prop) => {
         if (fn === null) return;
         const v = this[prop];
-        if (Object(_util__WEBPACK_IMPORTED_MODULE_0__["isObject"])(v) && (_vm__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"] in v)) {
-          v[_vm__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_1__["VM_REMOVE_PARENT"]](
-            this[_vm__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_1__["VM_HOST"]],
-            prop
-          );
-        }
+        if (!Object(_util__WEBPACK_IMPORTED_MODULE_0__["isObject"])(v)) return;
+        const va = v[_vm__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"]];
+        va && va[_vm__WEBPACK_IMPORTED_MODULE_1__["VM_REMOVE_PARENT"]](
+          this[_vm__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"]][_vm__WEBPACK_IMPORTED_MODULE_1__["VM_HOST"]],
+          prop
+        );
       });
       sfm.clear();
       this[_vm__WEBPACK_IMPORTED_MODULE_1__["VM_SETTER_FN_MAP"]] = null;
@@ -2039,17 +2054,16 @@ function operateRootHtmlDOM(fn, el, ...args) {
 /*!**********************************************************!*\
   !*** /Users/geyuhang/jinge/jinge-framework/core/i18n.js ***!
   \**********************************************************/
-/*! exports provided: I18N_GET_RENDER, I18N_GET_TEXT, I18N_GET_ATTR, I18N_LOCALE_CHANGE, I18N_SWITCH_LOCALE, I18N_RENDER_DEPS, I18N_CURRENT_LOCALE, i18n, _t */
+/*! exports provided: I18N_GET_COMPONENT_RENDER, I18N_GET_ATTRIBUTE_RENDER, I18N_GET_TEXT, I18N_LOCALE_CHANGE, I18N_REG_DEP, I18N_CURRENT_LOCALE, i18n, _t */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_RENDER", function() { return I18N_GET_RENDER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_COMPONENT_RENDER", function() { return I18N_GET_COMPONENT_RENDER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_ATTRIBUTE_RENDER", function() { return I18N_GET_ATTRIBUTE_RENDER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_TEXT", function() { return I18N_GET_TEXT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_ATTR", function() { return I18N_GET_ATTR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I18N_LOCALE_CHANGE", function() { return I18N_LOCALE_CHANGE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I18N_SWITCH_LOCALE", function() { return I18N_SWITCH_LOCALE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I18N_RENDER_DEPS", function() { return I18N_RENDER_DEPS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I18N_REG_DEP", function() { return I18N_REG_DEP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I18N_CURRENT_LOCALE", function() { return I18N_CURRENT_LOCALE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i18n", function() { return i18n; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_t", function() { return _t; });
@@ -2058,33 +2072,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const I18N_GET_RENDER = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('fn_get_render');
+const I18N_GET_COMPONENT_RENDER = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('fn_get_component_render');
+const I18N_GET_ATTRIBUTE_RENDER = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('fn_get_attribute_render');
 const I18N_GET_TEXT = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('fn_get_text');
-const I18N_GET_ATTR = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('fn_get_attr');
 const I18N_LOCALE_CHANGE = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('locale_change');
-const I18N_SWITCH_LOCALE = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('switch_locale');
-const I18N_RENDER_DEPS = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('register_render_dependent_functions');
+const I18N_REG_DEP = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('fn_register_render_dependent');
 const I18N_CURRENT_LOCALE = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('current_locale');
 
+const RENDER_DEPS = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('render_dependents');
 const LAST_FETCHING_KEY = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('last_fetching_key');
 const CURRENT_DATA = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('current_data');
 const CACHE = Object(_util__WEBPACK_IMPORTED_MODULE_0__["Symbol"])('cache');
+const DEFAULT_FILENAME = 'dist/locale.[locale].js';
 
+/**
+ * convert i18n text template to function
+ * @param {String} text i18n formatted text template
+ */
 function compile(text) {
   // eslint-disable-next-line no-new-func
-  return new Function('__ctx', `return \`${text.replace(/\$\{\s*([\w\d._$]+)\s*\}/g, (m, n) => {
+  return new Function('__ctx', `return \`${text.replace(/`/g, '\\`').replace(/\$\{\s*([\w\d._$]+)\s*\}/g, (m, n) => {
     return '${ __ctx.' + n + ' }';
   })}\`;`);
 }
 
-function defaultFetchFn(locale) {
-  return window.fetch('dist/locale.' + locale + '.js').then(res => res.text());
+function defaultFetchFn(locale, filename) {
+  return window.fetch(filename.replace('[locale]', locale)).then(res => res.text());
 }
 
 class I18nService extends _messenger__WEBPACK_IMPORTED_MODULE_1__["Messenger"] {
   constructor(attrs) {
     super(attrs);
-    this[I18N_RENDER_DEPS] = null;
+    this[RENDER_DEPS] = null;
     this[CURRENT_DATA] = null;
     this[CACHE] = new Map();
     this[LAST_FETCHING_KEY] = null;
@@ -2092,8 +2111,21 @@ class I18nService extends _messenger__WEBPACK_IMPORTED_MODULE_1__["Messenger"] {
     this.r(window.JINGE_I18N_DATA);
   }
 
+  parse(template, params) {
+    return compile(template)(params);
+  }
+
   get locale() {
     return this[CURRENT_DATA].locale;
+  }
+
+  /**
+   * Register i18n render depedent.
+   * This method will be called by compiler generated code, don't call it manully.
+   */
+  [I18N_REG_DEP](depent) {
+    const deps = Object(_util__WEBPACK_IMPORTED_MODULE_0__["getOrCreateArrayProperty"])(this, RENDER_DEPS);
+    deps.push(depent);
   }
 
   /**
@@ -2113,37 +2145,33 @@ class I18nService extends _messenger__WEBPACK_IMPORTED_MODULE_1__["Messenger"] {
   /**
    * switch to another locale/language
    * @param {String} locale locale to swtiched
-   * @param {Function} fetchFn a function to fetch locale resource script.
+   * @param {String|Function} filename filename of locale script with full path, or function fetch locale script.
    */
-  switch(locale, fetchFn = defaultFetchFn) {
+  switch(locale, filename = DEFAULT_FILENAME) {
     if (this[CURRENT_DATA].locale === locale) {
       return;
     }
     const data = this[CACHE].get(locale);
     if (!data) {
-      if (fetchFn) {
-        const key = Object(_util__WEBPACK_IMPORTED_MODULE_0__["uid"])();
-        this[LAST_FETCHING_KEY] = key;
-        fetchFn(locale).then(code => {
-          // eslint-disable-next-line no-new-func
-          (new Function('jinge', code))({
-            i18n: this
-          });
-          if (this[LAST_FETCHING_KEY] !== key || this[CURRENT_DATA].locale === locale) {
-            /*
-             * ignore if callback has been expired.
-             * 使用闭包的技巧来检测当前回调是否已经过期，
-             * 即，是否已经有新的 fetchFn 函数的调用。
-             */
-            return;
-          }
-          const data = this[CACHE].get(locale);
-          this[CURRENT_DATA] = data;
-          this[_messenger__WEBPACK_IMPORTED_MODULE_1__["NOTIFY"]](I18N_LOCALE_CHANGE, this.locale);
+      const key = Object(_util__WEBPACK_IMPORTED_MODULE_0__["uid"])();
+      this[LAST_FETCHING_KEY] = key;
+      (Object(_util__WEBPACK_IMPORTED_MODULE_0__["isFunction"])(filename) ? filename(locale) : defaultFetchFn(locale, filename)).then(code => {
+        // eslint-disable-next-line no-new-func
+        (new Function('jinge', code))({
+          i18n: this
         });
-      } else {
-        throw new Error(`i18n data of "${locale}" is not found. `);
-      }
+        if (this[LAST_FETCHING_KEY] !== key || this[CURRENT_DATA].locale === locale) {
+          /*
+            * ignore if callback has been expired.
+            * 使用闭包的技巧来检测当前回调是否已经过期，
+            * 即，是否已经有新的 fetchFn 函数的调用。
+            */
+          return;
+        }
+        const data = this[CACHE].get(locale);
+        this[CURRENT_DATA] = data;
+        this[_messenger__WEBPACK_IMPORTED_MODULE_1__["NOTIFY"]](I18N_LOCALE_CHANGE, this.locale);
+      });
     } else {
       this[CURRENT_DATA] = data;
       this[_messenger__WEBPACK_IMPORTED_MODULE_1__["NOTIFY"]](I18N_LOCALE_CHANGE, this.locale);
@@ -2160,6 +2188,9 @@ class I18nService extends _messenger__WEBPACK_IMPORTED_MODULE_1__["Messenger"] {
       // text.startsWith("«") means reference to another key
       if (text.charCodeAt(0) === 171) {
         text = dict[text.substring(1)];
+        if (Object(_util__WEBPACK_IMPORTED_MODULE_0__["isString"])(text)) {
+          text = compile(text);
+        }
       } else {
         text = compile(text);
       }
@@ -2168,12 +2199,12 @@ class I18nService extends _messenger__WEBPACK_IMPORTED_MODULE_1__["Messenger"] {
     return text(params);
   }
 
-  [I18N_GET_RENDER](key) {
-    return getRenderOrAttr(this[CURRENT_DATA], this[I18N_RENDER_DEPS], 'render', key);
+  [I18N_GET_COMPONENT_RENDER](key) {
+    return getRender(this, 'components', key);
   }
 
-  [I18N_GET_ATTR](key) {
-    return getRenderOrAttr(this[CURRENT_DATA], this[I18N_RENDER_DEPS], 'attribute', key);
+  [I18N_GET_ATTRIBUTE_RENDER](key) {
+    return getRender(this, 'attributes', key);
   }
 
   /**
@@ -2186,24 +2217,29 @@ class I18nService extends _messenger__WEBPACK_IMPORTED_MODULE_1__["Messenger"] {
   watch(listener, immediate) {
     this[_messenger__WEBPACK_IMPORTED_MODULE_1__["ON"]](I18N_LOCALE_CHANGE, listener);
     if (immediate) listener(this.locale);
-    return function unwatcher() {
+    return () => {
       this[_messenger__WEBPACK_IMPORTED_MODULE_1__["OFF"]](I18N_LOCALE_CHANGE, listener);
     };
   }
 }
 
-function getRenderOrAttr(data, depFns, type, key) {
-  let renderOrAttr = data[type];
-  if (Object(_util__WEBPACK_IMPORTED_MODULE_0__["isFunction"])(renderOrAttr)) {
-    data[type] = renderOrAttr = (depFns ? renderOrAttr(...depFns[type]) : {});
+function getRender(m, type, key) {
+  const data = m[CURRENT_DATA];
+  const depFns = m[RENDER_DEPS];
+  if (Object(_util__WEBPACK_IMPORTED_MODULE_0__["isFunction"])(data.render)) {
+    if (!depFns) {
+      throw new Error('missing I18N_RENDER_DEPS');
+    }
+    data.render = data.render(...depFns);
   }
-  if (!(key in renderOrAttr)) {
+  const renders = data.render[type];
+  if (!(key in renders)) {
     throw new Error(`missing i18n ${type} for key: ${key}`);
   }
-  let fn = renderOrAttr[key];
+  let fn = renders[key];
   if (Object(_util__WEBPACK_IMPORTED_MODULE_0__["isString"])(fn)) {
     // if fn is string, it's a reference to another key.
-    renderOrAttr[key] = fn = renderOrAttr[fn];
+    renders[key] = fn = renders[fn];
   }
   return fn;
 }
@@ -2232,7 +2268,7 @@ function _t(text, params) {
 /*!***********************************************************!*\
   !*** /Users/geyuhang/jinge/jinge-framework/core/index.js ***!
   \***********************************************************/
-/*! exports provided: bootstrap, NOTIFY_TRANSITION, TEMPLATE_RENDER, RENDER, RENDER_TO_DOM, ARG_COMPONENTS, PASSED_ATTRS, CLONE, DESTROY, CONTEXT, CONTEXT_STATE, ROOT_NODES, NON_ROOT_COMPONENT_NODES, REF_NODES, SET_REF_NODE, REF_BELONGS, RELATED_DOM_REFS, GET_STATE_NAME, AFTER_RENDER, HANDLE_AFTER_RENDER, HANDLE_BEFORE_DESTROY, GET_FIRST_DOM, GET_LAST_DOM, GET_TRANSITION_DOM, BEFORE_DESTROY, GET_CONTEXT, SET_CONTEXT, GET_REF, UPDATE, UPDATE_IF_NEED, UPDATE_NEXT_MAP, STATE, STATE_INITIALIZE, STATE_RENDERED, STATE_WILLDESTROY, STATE_DESTROIED, STATE_NAMES, DOM_ON, DOM_PASS_LISTENERS, I18N_WATCH, Component, destroyRelatedRefs, isComponent, assertRenderResults, operateRootHtmlDOM, I18N_GET_RENDER, I18N_GET_TEXT, I18N_GET_ATTR, I18N_LOCALE_CHANGE, I18N_SWITCH_LOCALE, I18N_RENDER_DEPS, I18N_CURRENT_LOCALE, i18n, _t, LISTENERS, notifyHelper, onHelper, offHelper, clearHelper, onceHelper, NOTIFY, ON, OFF, CLEAR, Messenger, passListeners, emptyRenderFn, errorRenderFn, textRenderFn, i18nRenderFn, CSTYLE_PID, CSTYLE_ADD, CSTYLE_DEL, CSTYLE_ATTACH, addParentStyleId, manager, TS_TRANSITION_END, TS_ANIMATION_END, TS_TRANSITION_DURATION, TS_ANIMATION_DURATION, TS_TRANSITION, TS_ZERO_S, TS_ENTER, TS_LEAVE, TS_C_ENTER, TS_C_LEAVE, TS_C_ENTER_ACTIVE, TS_C_LEAVE_ACTIVE, TS_BEFORE_ENTER, TS_AFTER_ENTER, TS_BEFORE_LEAVE, TS_AFTER_LEAVE, TS_ENTER_CANCELLED, TS_LEAVE_CANCELLED, TS_STATE_ENTERING, TS_STATE_ENTERED, TS_STATE_LEAVING, TS_STATE_LEAVED, getDurationType, getDuration */
+/*! exports provided: bootstrap, NOTIFY_TRANSITION, TEMPLATE_RENDER, RENDER, RENDER_TO_DOM, ARG_COMPONENTS, PASSED_ATTRS, CLONE, DESTROY, CONTEXT, CONTEXT_STATE, ROOT_NODES, NON_ROOT_COMPONENT_NODES, REF_NODES, SET_REF_NODE, REF_BELONGS, RELATED_DOM_REFS, GET_STATE_NAME, AFTER_RENDER, HANDLE_AFTER_RENDER, HANDLE_BEFORE_DESTROY, GET_FIRST_DOM, GET_LAST_DOM, GET_TRANSITION_DOM, BEFORE_DESTROY, GET_CONTEXT, SET_CONTEXT, GET_REF, UPDATE, UPDATE_IF_NEED, UPDATE_NEXT_MAP, STATE, STATE_INITIALIZE, STATE_RENDERED, STATE_WILLDESTROY, STATE_DESTROIED, STATE_NAMES, DOM_ON, DOM_PASS_LISTENERS, I18N_WATCH, Component, destroyRelatedRefs, isComponent, assertRenderResults, operateRootHtmlDOM, I18N_GET_COMPONENT_RENDER, I18N_GET_ATTRIBUTE_RENDER, I18N_GET_TEXT, I18N_LOCALE_CHANGE, I18N_REG_DEP, I18N_CURRENT_LOCALE, i18n, _t, LISTENERS, notifyHelper, onHelper, offHelper, clearHelper, onceHelper, NOTIFY, ON, OFF, CLEAR, Messenger, passListeners, emptyRenderFn, errorRenderFn, textRenderFn, i18nRenderFn, CSTYLE_PID, CSTYLE_ADD, CSTYLE_DEL, CSTYLE_ATTACH, addParentStyleId, manager, TS_TRANSITION_END, TS_ANIMATION_END, TS_TRANSITION_DURATION, TS_ANIMATION_DURATION, TS_TRANSITION, TS_ZERO_S, TS_ENTER, TS_LEAVE, TS_C_ENTER, TS_C_LEAVE, TS_C_ENTER_ACTIVE, TS_C_LEAVE_ACTIVE, TS_BEFORE_ENTER, TS_AFTER_ENTER, TS_BEFORE_LEAVE, TS_AFTER_LEAVE, TS_ENTER_CANCELLED, TS_LEAVE_CANCELLED, TS_STATE_ENTERING, TS_STATE_ENTERED, TS_STATE_LEAVING, TS_STATE_LEAVED, getDurationType, getDuration */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2330,17 +2366,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "operateRootHtmlDOM", function() { return _component__WEBPACK_IMPORTED_MODULE_1__["operateRootHtmlDOM"]; });
 
 /* harmony import */ var _i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./i18n */ "../../jinge-framework/core/i18n.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_RENDER", function() { return _i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_GET_RENDER"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_COMPONENT_RENDER", function() { return _i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_GET_COMPONENT_RENDER"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_ATTRIBUTE_RENDER", function() { return _i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_GET_ATTRIBUTE_RENDER"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_TEXT", function() { return _i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_GET_TEXT"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_ATTR", function() { return _i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_GET_ATTR"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_LOCALE_CHANGE", function() { return _i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_LOCALE_CHANGE"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_SWITCH_LOCALE", function() { return _i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_SWITCH_LOCALE"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_RENDER_DEPS", function() { return _i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_RENDER_DEPS"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_REG_DEP", function() { return _i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_REG_DEP"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_CURRENT_LOCALE", function() { return _i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_CURRENT_LOCALE"]; });
 
@@ -2645,14 +2679,14 @@ function textRenderFn(component, txtContent) {
   return el;
 }
 
-function i18nRenderFn(component, key) {
+function i18nRenderFn(component, key, isRoot) {
   const el = Object(_util__WEBPACK_IMPORTED_MODULE_0__["createTextNode"])();
   const fn = () => {
     el.textContent = _i18n__WEBPACK_IMPORTED_MODULE_2__["i18n"][_i18n__WEBPACK_IMPORTED_MODULE_2__["I18N_GET_TEXT"]](key);
   };
   fn();
   component[_component__WEBPACK_IMPORTED_MODULE_1__["I18N_WATCH"]](fn);
-  component[_component__WEBPACK_IMPORTED_MODULE_1__["ROOT_NODES"]].push(el);
+  isRoot && component[_component__WEBPACK_IMPORTED_MODULE_1__["ROOT_NODES"]].push(el);
   return el;
 }
 
@@ -2882,7 +2916,7 @@ function getDuration(el) {
 /*!******************************************************!*\
   !*** /Users/geyuhang/jinge/jinge-framework/index.js ***!
   \******************************************************/
-/*! exports provided: ToggleClassComponent, FOR_LENGTH, FOR_KEYS, FOR_KEY_NAME, FOR_WAIT_UPDATE, FOR_UPDATE_ITEM, ForEachComponent, ForComponent, STR_JG_HIDE, HideComponent, BindHtmlComponent, IfComponent, SwitchComponent, ParameterComponent, LogComponent, I18nComponent, bootstrap, NOTIFY_TRANSITION, TEMPLATE_RENDER, RENDER, RENDER_TO_DOM, ARG_COMPONENTS, PASSED_ATTRS, CLONE, DESTROY, CONTEXT, CONTEXT_STATE, ROOT_NODES, NON_ROOT_COMPONENT_NODES, REF_NODES, SET_REF_NODE, REF_BELONGS, RELATED_DOM_REFS, GET_STATE_NAME, AFTER_RENDER, HANDLE_AFTER_RENDER, HANDLE_BEFORE_DESTROY, GET_FIRST_DOM, GET_LAST_DOM, GET_TRANSITION_DOM, BEFORE_DESTROY, GET_CONTEXT, SET_CONTEXT, GET_REF, UPDATE, UPDATE_IF_NEED, UPDATE_NEXT_MAP, STATE, STATE_INITIALIZE, STATE_RENDERED, STATE_WILLDESTROY, STATE_DESTROIED, STATE_NAMES, DOM_ON, DOM_PASS_LISTENERS, I18N_WATCH, Component, destroyRelatedRefs, isComponent, assertRenderResults, operateRootHtmlDOM, I18N_GET_RENDER, I18N_GET_TEXT, I18N_GET_ATTR, I18N_LOCALE_CHANGE, I18N_SWITCH_LOCALE, I18N_RENDER_DEPS, I18N_CURRENT_LOCALE, i18n, _t, LISTENERS, notifyHelper, onHelper, offHelper, clearHelper, onceHelper, NOTIFY, ON, OFF, CLEAR, Messenger, passListeners, emptyRenderFn, errorRenderFn, textRenderFn, i18nRenderFn, CSTYLE_PID, CSTYLE_ADD, CSTYLE_DEL, CSTYLE_ATTACH, addParentStyleId, manager, TS_TRANSITION_END, TS_ANIMATION_END, TS_TRANSITION_DURATION, TS_ANIMATION_DURATION, TS_TRANSITION, TS_ZERO_S, TS_ENTER, TS_LEAVE, TS_C_ENTER, TS_C_LEAVE, TS_C_ENTER_ACTIVE, TS_C_LEAVE_ACTIVE, TS_BEFORE_ENTER, TS_AFTER_ENTER, TS_BEFORE_LEAVE, TS_AFTER_LEAVE, TS_ENTER_CANCELLED, TS_LEAVE_CANCELLED, TS_STATE_ENTERING, TS_STATE_ENTERED, TS_STATE_LEAVING, TS_STATE_LEAVED, getDurationType, getDuration, typeOf, isObject, isString, isNumber, isUndefined, isArray, isBoolean, isFunction, instanceOf, isDOMNode, isPromise, arrayIndexOf, arrayRemove, arrayPushIfNotExist, arrayFind, arrayFindIndex, arrayEqual, STR_DEFAULT, STR_JINGE, STR_EMPTY, STR_LENGTH, BEFORE_DESTROY_EVENT_NAME, AFTER_RENDER_EVENT_NAME, HTML_ATTR_checked, HTML_ATTR_disabled, HTML_ATTR_selected, HTML_ATTR_readOnly, HTML_ATTR_autofocus, HTML_ATTR_autocomplete, HTML_ATTR_required, HTML_ATTR_controls, HTML_ATTR_autoplay, HTML_ATTR_draggable, HTML_ATTR_multiple, HTML_ATTR_muted, HTML_ATTR_value, Symbol, assertFail, startsWith, endsWith, defineProperty, assignObject, obj2class, obj2style, defineProperties, getOwnPropertyNames, getOwnPropertySymbols, isPropertyEnumerable, createEmptyObject, uid, mapObject, getOrCreateProperty, getOrCreateValueOfMap, getOrCreateMapProperty, getOrCreateArrayValueOfMap, getOrCreateArrayProperty, setImmediate, clearImmediate, getParent, setText, setAttribute, removeAttribute, setInputValue, createElement, createElementWithoutAttrs, createSVGElement, createSVGElementWithoutAttrs, createFragment, createTextNode, createElementWithChild, createComment, replaceChild, insertBefore, insertAfter, removeChild, appendChild, hasClass, toggleClass, addClass, removeClass, replaceClass, addEvent, removeEvent, registerEvent, getComputedStyle, getCSPropertyValue, VM_ATTRS, VM_DEBUG_NAME, VM_PROXY, VM_ON, VM_OFF, VM_NOTIFY, VM_NOTIFIABLE, VM_HOST, VM_RELATED_LISTENERS, VM_ADD_PARENT, VM_REMOVE_PARENT, VM_SHIFT_PARENT, VM_DESTROY, isInnerObj, isViewModel, isPublicProp, ViewModelAttrs, vmRelatedClear, RelatedListenersStore, vmWatch, vmUnwatch, VM_SETTER_FN_MAP, ObjectProxyHandler, ComponentProxyHandler, PromiseProxyHandler, ArrayProxyHandler, wrapViewModel, VM, wrapComponent, wrapAttrs */
+/*! exports provided: ToggleClassComponent, FOR_LENGTH, FOR_KEYS, FOR_KEY_NAME, FOR_WAIT_UPDATE, FOR_UPDATE_ITEM, ForEachComponent, ForComponent, STR_JG_HIDE, HideComponent, BindHtmlComponent, IfComponent, SwitchComponent, ParameterComponent, LogComponent, I18nComponent, bootstrap, NOTIFY_TRANSITION, TEMPLATE_RENDER, RENDER, RENDER_TO_DOM, ARG_COMPONENTS, PASSED_ATTRS, CLONE, DESTROY, CONTEXT, CONTEXT_STATE, ROOT_NODES, NON_ROOT_COMPONENT_NODES, REF_NODES, SET_REF_NODE, REF_BELONGS, RELATED_DOM_REFS, GET_STATE_NAME, AFTER_RENDER, HANDLE_AFTER_RENDER, HANDLE_BEFORE_DESTROY, GET_FIRST_DOM, GET_LAST_DOM, GET_TRANSITION_DOM, BEFORE_DESTROY, GET_CONTEXT, SET_CONTEXT, GET_REF, UPDATE, UPDATE_IF_NEED, UPDATE_NEXT_MAP, STATE, STATE_INITIALIZE, STATE_RENDERED, STATE_WILLDESTROY, STATE_DESTROIED, STATE_NAMES, DOM_ON, DOM_PASS_LISTENERS, I18N_WATCH, Component, destroyRelatedRefs, isComponent, assertRenderResults, operateRootHtmlDOM, I18N_GET_COMPONENT_RENDER, I18N_GET_ATTRIBUTE_RENDER, I18N_GET_TEXT, I18N_LOCALE_CHANGE, I18N_REG_DEP, I18N_CURRENT_LOCALE, i18n, _t, LISTENERS, notifyHelper, onHelper, offHelper, clearHelper, onceHelper, NOTIFY, ON, OFF, CLEAR, Messenger, passListeners, emptyRenderFn, errorRenderFn, textRenderFn, i18nRenderFn, CSTYLE_PID, CSTYLE_ADD, CSTYLE_DEL, CSTYLE_ATTACH, addParentStyleId, manager, TS_TRANSITION_END, TS_ANIMATION_END, TS_TRANSITION_DURATION, TS_ANIMATION_DURATION, TS_TRANSITION, TS_ZERO_S, TS_ENTER, TS_LEAVE, TS_C_ENTER, TS_C_LEAVE, TS_C_ENTER_ACTIVE, TS_C_LEAVE_ACTIVE, TS_BEFORE_ENTER, TS_AFTER_ENTER, TS_BEFORE_LEAVE, TS_AFTER_LEAVE, TS_ENTER_CANCELLED, TS_LEAVE_CANCELLED, TS_STATE_ENTERING, TS_STATE_ENTERED, TS_STATE_LEAVING, TS_STATE_LEAVED, getDurationType, getDuration, typeOf, isObject, isString, isNumber, isUndefined, isArray, isBoolean, isFunction, instanceOf, isDOMNode, isPromise, arrayIndexOf, arrayRemove, arrayPushIfNotExist, arrayFind, arrayFindIndex, arrayEqual, STR_DEFAULT, STR_JINGE, STR_EMPTY, STR_LENGTH, BEFORE_DESTROY_EVENT_NAME, AFTER_RENDER_EVENT_NAME, HTML_ATTR_checked, HTML_ATTR_disabled, HTML_ATTR_selected, HTML_ATTR_readOnly, HTML_ATTR_autofocus, HTML_ATTR_autocomplete, HTML_ATTR_required, HTML_ATTR_controls, HTML_ATTR_autoplay, HTML_ATTR_draggable, HTML_ATTR_multiple, HTML_ATTR_muted, HTML_ATTR_value, Symbol, assertFail, startsWith, endsWith, defineProperty, assignObject, obj2class, obj2style, defineProperties, getOwnPropertyNames, getOwnPropertySymbols, isPropertyEnumerable, createEmptyObject, uid, mapObject, getOrCreateProperty, getOrCreateValueOfMap, getOrCreateMapProperty, getOrCreateArrayValueOfMap, getOrCreateArrayProperty, setImmediate, clearImmediate, getParent, setText, setAttribute, removeAttribute, setInputValue, createElement, createElementWithoutAttrs, createSVGElement, createSVGElementWithoutAttrs, createFragment, createTextNode, createElementWithChild, createComment, replaceChild, insertBefore, insertAfter, removeChild, appendChild, hasClass, toggleClass, addClass, removeClass, replaceClass, addEvent, removeEvent, registerEvent, getComputedStyle, getCSPropertyValue, VM_ATTRS, VM_DEBUG_NAME, VM_PROXY, VM_ON, VM_OFF, VM_NOTIFY, VM_NOTIFIABLE, VM_HOST, VM_RELATED_LISTENERS, VM_ADD_PARENT, VM_REMOVE_PARENT, VM_SHIFT_PARENT, VM_DESTROY, isInnerObj, isViewModel, isPublicProp, ViewModelAttrs, vmRelatedClear, RelatedListenersStore, vmWatch, vmUnwatch, VM_SETTER_FN_MAP, wrapViewModel, VM, wrapComponent, wrapAttrs */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3011,17 +3045,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "operateRootHtmlDOM", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["operateRootHtmlDOM"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_RENDER", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["I18N_GET_RENDER"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_COMPONENT_RENDER", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["I18N_GET_COMPONENT_RENDER"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_ATTRIBUTE_RENDER", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["I18N_GET_ATTRIBUTE_RENDER"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_TEXT", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["I18N_GET_TEXT"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_GET_ATTR", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["I18N_GET_ATTR"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_LOCALE_CHANGE", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["I18N_LOCALE_CHANGE"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_SWITCH_LOCALE", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["I18N_SWITCH_LOCALE"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_RENDER_DEPS", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["I18N_RENDER_DEPS"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_REG_DEP", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["I18N_REG_DEP"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "I18N_CURRENT_LOCALE", function() { return _core__WEBPACK_IMPORTED_MODULE_1__["I18N_CURRENT_LOCALE"]; });
 
@@ -3338,14 +3370,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "vmUnwatch", function() { return _vm__WEBPACK_IMPORTED_MODULE_3__["vmUnwatch"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VM_SETTER_FN_MAP", function() { return _vm__WEBPACK_IMPORTED_MODULE_3__["VM_SETTER_FN_MAP"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ObjectProxyHandler", function() { return _vm__WEBPACK_IMPORTED_MODULE_3__["ObjectProxyHandler"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ComponentProxyHandler", function() { return _vm__WEBPACK_IMPORTED_MODULE_3__["ComponentProxyHandler"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PromiseProxyHandler", function() { return _vm__WEBPACK_IMPORTED_MODULE_3__["PromiseProxyHandler"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ArrayProxyHandler", function() { return _vm__WEBPACK_IMPORTED_MODULE_3__["ArrayProxyHandler"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "wrapViewModel", function() { return _vm__WEBPACK_IMPORTED_MODULE_3__["wrapViewModel"]; });
 
@@ -3827,7 +3851,11 @@ function replaceClass($ele, oldClass, newClass) {
   return $ele.classList.replace(oldClass, newClass);
 }
 
-function addEvent($element, eventName, handler, capture = false) {
+function addEvent($element, eventName, handler, capture) {
+  Object(_type__WEBPACK_IMPORTED_MODULE_0__["isUndefined"])(capture) && (capture = eventName.startsWith('touch') ? {
+    capture: false,
+    passive: true
+  } : false);
   $element.addEventListener(eventName, handler, capture);
 }
 
@@ -4380,7 +4408,7 @@ function _handleCancel(handler) {
     _handleTasks.delete(handler);
   }
 }
-function _handleOnce(node, handler, propPath) {
+function _handleOnce(handler, propPath) {
   if (_handleTasks.has(handler)) {
     return;
   }
@@ -4398,19 +4426,22 @@ function _handleOnce(node, handler, propPath) {
   });
 }
 
-function loopHandle(propPath, node) {
+function loopHandle(propPath, node, immediate) {
   const handlers = node[LISTENERS_HANDLERS];
   handlers && handlers.forEach(handler => {
-    _handleOnce(node, handler, propPath);
-    // imms ? _handleOnce(node, handler, propPath) : handler(propPath);
+    if (immediate) {
+      handler(propPath);
+    } else {
+      _handleOnce(handler, propPath);
+    }
   });
   const listeners = node[LISTENERS];
   listeners && listeners.forEach(c => {
-    loopHandle(propPath, c);
+    loopHandle(propPath, c, immediate);
   });
 }
 
-function loopNotify(vm, props, level = 0) {
+function loopNotify(vm, props, immediate, level = 0) {
   const listeners = vm[LISTENERS];
   if (!listeners) {
     return;
@@ -4423,22 +4454,22 @@ function loopNotify(vm, props, level = 0) {
   if (node) {
     if (props.length - 1 === level) {
       // loopHandle(props, node, config[CFG_VM_DEBUG] ? null : imms);
-      loopHandle(props, node);
+      loopHandle(props, node, immediate);
     } else {
-      loopNotify(node, props, level + 1);
+      loopNotify(node, props, immediate, level + 1);
     }
   }
   node = listeners.get(LISTENERS_STAR);
   if (node) {
     if (props.length - 1 === level) {
-      loopHandle(props, node, null);
+      loopHandle(props, node, true);
     } else {
-      loopNotify(node, props, level + 1);
+      loopNotify(node, props, immediate, level + 1);
     }
   }
   node = listeners.get(LISTENERS_DBSTAR);
   if (node) {
-    loopHandle(props, node, null);
+    loopHandle(props, node, true);
   }
 }
 
@@ -4528,13 +4559,13 @@ class ViewModelAttrs {
     vmRelatedOff(relatedComponent, host, prop, handler);
   }
 
-  [VM_NOTIFY](prop) {
+  [VM_NOTIFY](prop, immediate = false) {
     if (!this[VM_NOTIFIABLE]) {
       return;
     }
     const props = getProps(prop);
     if (this[LISTENERS]) {
-      loopNotify(this, props);
+      loopNotify(this, props, immediate);
     }
     const pArr = this[PARENTS];
     pArr && pArr.forEach(ps => {
@@ -4544,7 +4575,8 @@ class ViewModelAttrs {
         return;
       }
       vmAttrs[VM_NOTIFY](
-        [ps[1]].concat(props)
+        [ps[1]].concat(props),
+        immediate
       );
     });
   }
@@ -4704,7 +4736,7 @@ function vmUnwatch(vm, prop, handler) {
 /*!*********************************************************!*\
   !*** /Users/geyuhang/jinge/jinge-framework/vm/index.js ***!
   \*********************************************************/
-/*! exports provided: VM_ATTRS, VM_DEBUG_NAME, VM_PROXY, VM_ON, VM_OFF, VM_NOTIFY, VM_NOTIFIABLE, VM_HOST, VM_RELATED_LISTENERS, VM_ADD_PARENT, VM_REMOVE_PARENT, VM_SHIFT_PARENT, VM_DESTROY, isInnerObj, isViewModel, isPublicProp, ViewModelAttrs, vmRelatedClear, RelatedListenersStore, vmWatch, vmUnwatch, VM_SETTER_FN_MAP, ObjectProxyHandler, ComponentProxyHandler, PromiseProxyHandler, ArrayProxyHandler, wrapViewModel, VM, wrapComponent, wrapAttrs */
+/*! exports provided: VM_ATTRS, VM_DEBUG_NAME, VM_PROXY, VM_ON, VM_OFF, VM_NOTIFY, VM_NOTIFIABLE, VM_HOST, VM_RELATED_LISTENERS, VM_ADD_PARENT, VM_REMOVE_PARENT, VM_SHIFT_PARENT, VM_DESTROY, isInnerObj, isViewModel, isPublicProp, ViewModelAttrs, vmRelatedClear, RelatedListenersStore, vmWatch, vmUnwatch, VM_SETTER_FN_MAP, wrapViewModel, VM, wrapComponent, wrapAttrs */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4755,14 +4787,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _proxy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./proxy */ "../../jinge-framework/vm/proxy.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VM_SETTER_FN_MAP", function() { return _proxy__WEBPACK_IMPORTED_MODULE_1__["VM_SETTER_FN_MAP"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ObjectProxyHandler", function() { return _proxy__WEBPACK_IMPORTED_MODULE_1__["ObjectProxyHandler"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ComponentProxyHandler", function() { return _proxy__WEBPACK_IMPORTED_MODULE_1__["ComponentProxyHandler"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PromiseProxyHandler", function() { return _proxy__WEBPACK_IMPORTED_MODULE_1__["PromiseProxyHandler"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ArrayProxyHandler", function() { return _proxy__WEBPACK_IMPORTED_MODULE_1__["ArrayProxyHandler"]; });
-
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "wrapViewModel", function() { return _proxy__WEBPACK_IMPORTED_MODULE_1__["wrapViewModel"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "VM", function() { return _proxy__WEBPACK_IMPORTED_MODULE_1__["VM"]; });
@@ -4781,16 +4805,12 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************!*\
   !*** /Users/geyuhang/jinge/jinge-framework/vm/proxy.js ***!
   \*********************************************************/
-/*! exports provided: VM_SETTER_FN_MAP, ObjectProxyHandler, ComponentProxyHandler, PromiseProxyHandler, ArrayProxyHandler, wrapViewModel, VM, wrapComponent, wrapAttrs */
+/*! exports provided: VM_SETTER_FN_MAP, wrapViewModel, VM, wrapComponent, wrapAttrs */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VM_SETTER_FN_MAP", function() { return VM_SETTER_FN_MAP; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ObjectProxyHandler", function() { return ObjectProxyHandler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentProxyHandler", function() { return ComponentProxyHandler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PromiseProxyHandler", function() { return PromiseProxyHandler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ArrayProxyHandler", function() { return ArrayProxyHandler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wrapViewModel", function() { return wrapViewModel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VM", function() { return VM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wrapComponent", function() { return wrapComponent; });
@@ -4845,7 +4865,7 @@ function notifyPropChanged(vm, prop) {
   vm[_core__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"]][_core__WEBPACK_IMPORTED_MODULE_1__["VM_NOTIFY"]](prop);
 }
 
-function __propSetHandler(target, prop, value, setFn) {
+function __propSetHandler(target, prop, value, setFn, assertVM = true) {
   if (!Object(_core__WEBPACK_IMPORTED_MODULE_1__["isPublicProp"])(prop)) {
     target[prop] = value;
     return true;
@@ -4854,9 +4874,12 @@ function __propSetHandler(target, prop, value, setFn) {
   if (oldVal === value && !Object(_util__WEBPACK_IMPORTED_MODULE_0__["isUndefined"])(value)) {
     return true;
   }
-  const newValIsVM = Object(_util__WEBPACK_IMPORTED_MODULE_0__["isObject"])(value) && !Object(_core__WEBPACK_IMPORTED_MODULE_1__["isInnerObj"])(value);
-  if (newValIsVM && !(_core__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"] in value)) {
-    throw new Error(`public property "${prop}" of ViewModel must also be ViewModel`);
+  let newValIsVM = Object(_util__WEBPACK_IMPORTED_MODULE_0__["isObject"])(value) && !Object(_core__WEBPACK_IMPORTED_MODULE_1__["isInnerObj"])(value);
+  if (newValIsVM) {
+    newValIsVM = _core__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"] in value;
+    if (assertVM && !newValIsVM) {
+      throw new Error(`public property "${prop}" of ViewModel must also be ViewModel`);
+    }
   }
   // console.log(`'${prop}' changed from ${store[prop]} to ${value}`);
   if (Object(_util__WEBPACK_IMPORTED_MODULE_0__["isObject"])(oldVal)) {
@@ -4899,6 +4922,14 @@ function objectPropSetHandler(target, prop, value) {
     return true;
   }
   return __propSetHandler(target, prop, value, __objectPropSetFn);
+}
+
+function attrsPropSetHandler(target, prop, value) {
+  if (!target[_core__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"]]) {
+    // ViewModel has been destroied.
+    return true;
+  }
+  return __propSetHandler(target, prop, value, __objectPropSetFn, false);
 }
 
 function componentPropSetHandler(target, prop, value) {
@@ -4948,10 +4979,6 @@ function arrayLengthSetHandler(target, value) {
 
 const ObjectProxyHandler = {
   set: objectPropSetHandler
-};
-
-const ComponentProxyHandler = {
-  set: componentPropSetHandler
 };
 
 const PromiseProxyHandler = {
@@ -5245,7 +5272,9 @@ function wrapComponent(component) {
   // 待 RENDER 结束后才修改为 true，用于避免无谓的消息通知。
   vmAttrs[_core__WEBPACK_IMPORTED_MODULE_1__["VM_NOTIFIABLE"]] = false;
   component[_core__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"]] = vmAttrs;
-  const p = new Proxy(component, ComponentProxyHandler);
+  const p = new Proxy(component, {
+    set: componentPropSetHandler
+  });
   vmAttrs[_core__WEBPACK_IMPORTED_MODULE_1__["VM_PROXY"]] = p;
   return p;
 }
@@ -5254,59 +5283,18 @@ function wrapAttrs(attrsObj) {
   if (!Object(_util__WEBPACK_IMPORTED_MODULE_0__["isObject"])(attrsObj)) {
     Object(_util__WEBPACK_IMPORTED_MODULE_0__["assertFail"])();
   }
-  for (const k in attrsObj) {
-    if (Object(_core__WEBPACK_IMPORTED_MODULE_1__["isPublicProp"])(k)) {
-      const v = attrsObj[k];
-      if (Object(_util__WEBPACK_IMPORTED_MODULE_0__["isObject"])(v) && !Object(_core__WEBPACK_IMPORTED_MODULE_1__["isInnerObj"])(v) && !(_core__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"] in v)) {
-        throw new Error(`value passed to attribute "${k}" must be ViewModel.`);
-      }
-    }
-  }
-  const attrs = wrapProxy(attrsObj, false);
-  // 初始化时 Component 默认的 VM_NOTIFIABLE 为 false，
+  const vmAttrs = new _core__WEBPACK_IMPORTED_MODULE_1__["ViewModelAttrs"](attrsObj);
+  // 初始化时 Attrs 默认的 VM_NOTIFIABLE 为 false，
   // 待 RENDER 结束后才修改为 true，用于避免无谓的消息通知。
-  attrs[_core__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"]][_core__WEBPACK_IMPORTED_MODULE_1__["VM_NOTIFIABLE"]] = false;
+  vmAttrs[_core__WEBPACK_IMPORTED_MODULE_1__["VM_NOTIFIABLE"]] = false;
+  attrsObj[_core__WEBPACK_IMPORTED_MODULE_1__["VM_ATTRS"]] = vmAttrs;
+  const attrs = new Proxy(attrsObj, {
+    set: attrsPropSetHandler
+  });
+  vmAttrs[_core__WEBPACK_IMPORTED_MODULE_1__["VM_PROXY"]] = attrs;
   return attrs;
 }
 
-
-/***/ }),
-
-/***/ "./__jinge_i18n_render_deps_b042c544-b1f8-4cc9-b73b-d9d4461f9040__.js":
-/*!****************************************************************************!*\
-  !*** ./__jinge_i18n_render_deps_b042c544-b1f8-4cc9-b73b-d9d4461f9040__.js ***!
-  \****************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge-framework/index.js");
-
-const __VM_ATTRS = jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"];
-const __VM_ON = jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"];
-const __VM_OFF = jinge__WEBPACK_IMPORTED_MODULE_0__["VM_OFF"];
-const __createElement = jinge__WEBPACK_IMPORTED_MODULE_0__["createElement"];
-const __createElementWithoutAttrs = jinge__WEBPACK_IMPORTED_MODULE_0__["createElementWithoutAttrs"];
-const __createTextNode = jinge__WEBPACK_IMPORTED_MODULE_0__["createTextNode"];
-const __setText = jinge__WEBPACK_IMPORTED_MODULE_0__["setText"];
-const __setAttribute = jinge__WEBPACK_IMPORTED_MODULE_0__["setAttribute"];
-const __ROOT_NODES = jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"];
-const __CSTYLE_PID = jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"];
-const __i18n = jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"];
-const __I18N_GET_ATTR = jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_ATTR"];
-const __I18N_GET_TEXT = jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_TEXT"];
-const __I18N_WATCH = jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_WATCH"];
-const __I18N_RENDER_DEPS = jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_RENDER_DEPS"];
-const __textRenderFn = jinge__WEBPACK_IMPORTED_MODULE_0__["textRenderFn"];
-const __i18nRenderFn = jinge__WEBPACK_IMPORTED_MODULE_0__["i18nRenderFn"];
-const __errorRenderFn = jinge__WEBPACK_IMPORTED_MODULE_0__["errorRenderFn"];
-const __emptyRenderFn = jinge__WEBPACK_IMPORTED_MODULE_0__["emptyRenderFn"];
-
-if (!__i18n[__I18N_RENDER_DEPS]) __i18n[__I18N_RENDER_DEPS] = {
-  render: [__textRenderFn, __createTextNode, __setText, __VM_ATTRS, __VM_ON, __ROOT_NODES, __createElement, __CSTYLE_PID],
-  attribute: [__setAttribute, __VM_ATTRS, __VM_ON]
-};
 
 /***/ }),
 
@@ -5320,12 +5308,26 @@ if (!__i18n[__I18N_RENDER_DEPS]) __i18n[__I18N_RENDER_DEPS] = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge-framework/index.js");
-/* harmony import */ var _Users_geyuhang_jinge_jinge_demos_16_i18n_jinge_i18n_render_deps_b042c544_b1f8_4cc9_b73b_d9d4461f9040_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./__jinge_i18n_render_deps_b042c544-b1f8-4cc9-b73b-d9d4461f9040__.js */ "./__jinge_i18n_render_deps_b042c544-b1f8-4cc9-b73b-d9d4461f9040__.js");
-/* harmony import */ var _printer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./printer.js */ "./src/printer.js");
+/* harmony import */ var _printer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./printer.js */ "./src/printer.js");
 
 
 
-
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["textRenderFn"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["createTextNode"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["setText"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["setAttribute"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["wrapAttrs"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["VM_DEBUG_NAME"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["addParentStyleId"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["assertRenderResults"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["RENDER"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](_printer_js__WEBPACK_IMPORTED_MODULE_1__["Printer"]);
+jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_REG_DEP"]](jinge__WEBPACK_IMPORTED_MODULE_0__["createElement"]);
 /* harmony default export */ __webpack_exports__["default"] = (function(component) {
   const vm_0 = component;
   return [
@@ -5341,7 +5343,7 @@ __webpack_require__.r(__webpack_exports__);
             {
               disabled: true
             },
-            Object(jinge__WEBPACK_IMPORTED_MODULE_0__["i18nRenderFn"])(component, 'd')
+            Object(jinge__WEBPACK_IMPORTED_MODULE_0__["i18nRenderFn"])(component, "d", false)
           ),
           ...(() => {
             const attrs = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["wrapAttrs"])({
@@ -5424,10 +5426,10 @@ __webpack_require__.r(__webpack_exports__);
               (() => {
                 const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createElementWithoutAttrs"])(
                   "p",
-                  Object(jinge__WEBPACK_IMPORTED_MODULE_0__["i18nRenderFn"])(component, 'e')
+                  Object(jinge__WEBPACK_IMPORTED_MODULE_0__["i18nRenderFn"])(component, "e", false)
                 );
                 const fn_0 = () => {
-                  Object(jinge__WEBPACK_IMPORTED_MODULE_0__["setAttribute"])(el, 'data-xx', jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_TEXT"]]('e'));
+                  Object(jinge__WEBPACK_IMPORTED_MODULE_0__["setAttribute"])(el, 'data-xx', jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_TEXT"]]("e"));
                 };
                 fn_0();
                 component[jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_WATCH"]](fn_0);
@@ -5448,7 +5450,7 @@ __webpack_require__.r(__webpack_exports__);
                 const rls_0 = new jinge__WEBPACK_IMPORTED_MODULE_0__["RelatedListenersStore"]();
                 const fn_0 = () => {
                   rls_0.d();
-                  jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_ATTR"]]('a')(el, 'data-yy', true, rls_0, vm_0, vm_1);
+                  jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_ATTRIBUTE_RENDER"]]("a")(el, 'data-yy', true, rls_0, vm_0, vm_1);
                 };
                 fn_0();
                 component[jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_WATCH"]](fn_0);
@@ -5479,7 +5481,7 @@ __webpack_require__.r(__webpack_exports__);
       [jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]]: null,
       [jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]]: component[jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]],
     });
-    const el = new _printer_js__WEBPACK_IMPORTED_MODULE_2__["Printer"](attrs);
+    const el = new _printer_js__WEBPACK_IMPORTED_MODULE_1__["Printer"](attrs);
     Object(jinge__WEBPACK_IMPORTED_MODULE_0__["addParentStyleId"])(el, component[jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]]);
     component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
     return Object(jinge__WEBPACK_IMPORTED_MODULE_0__["assertRenderResults"])(el[jinge__WEBPACK_IMPORTED_MODULE_0__["RENDER"]](component));
@@ -5494,15 +5496,24 @@ __webpack_require__.r(__webpack_exports__);
     const rls_0 = new jinge__WEBPACK_IMPORTED_MODULE_0__["RelatedListenersStore"]();
     const fn_0 = () => {
       rls_0.d();
-      jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_ATTR"]]('b')(attrs, 'message', false, rls_0, vm_0);
+      jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_ATTRIBUTE_RENDER"]]("b")(attrs, 'message', false, rls_0, vm_0);
     };
     fn_0();
-    const el = new _printer_js__WEBPACK_IMPORTED_MODULE_2__["Printer"](attrs);
+    const el = new _printer_js__WEBPACK_IMPORTED_MODULE_1__["Printer"](attrs);
     el[jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_WATCH"]](fn_0);
     el[jinge__WEBPACK_IMPORTED_MODULE_0__["ON"]](jinge__WEBPACK_IMPORTED_MODULE_0__["BEFORE_DESTROY_EVENT_NAME"], () => rls_0.d());
     Object(jinge__WEBPACK_IMPORTED_MODULE_0__["addParentStyleId"])(el, component[jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]]);
     component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
     return Object(jinge__WEBPACK_IMPORTED_MODULE_0__["assertRenderResults"])(el[jinge__WEBPACK_IMPORTED_MODULE_0__["RENDER"]](component));
+  })(),
+  ...(() => {
+    const el = new jinge__WEBPACK_IMPORTED_MODULE_0__["I18nComponent"](Object(jinge__WEBPACK_IMPORTED_MODULE_0__["wrapAttrs"])({
+      [jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]]: null,
+      [jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]]: component[jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]]
+    }), "b", [vm_0]);
+    Object(jinge__WEBPACK_IMPORTED_MODULE_0__["addParentStyleId"])(el, component[jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]]);
+    component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
+    return Object(jinge__WEBPACK_IMPORTED_MODULE_0__["assertRenderResults"])(el[jinge__WEBPACK_IMPORTED_MODULE_0__["RENDER"]]());
   })(),
   (() => {
     const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createElement"])(
@@ -5512,7 +5523,7 @@ __webpack_require__.r(__webpack_exports__);
         const el = new jinge__WEBPACK_IMPORTED_MODULE_0__["I18nComponent"](Object(jinge__WEBPACK_IMPORTED_MODULE_0__["wrapAttrs"])({
           [jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]]: null,
           [jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]]: component[jinge__WEBPACK_IMPORTED_MODULE_0__["CONTEXT"]]
-        }), "b", [vm_0]);
+        }), "c", [vm_0]);
         component[jinge__WEBPACK_IMPORTED_MODULE_0__["NON_ROOT_COMPONENT_NODES"]].push(el);
         return Object(jinge__WEBPACK_IMPORTED_MODULE_0__["assertRenderResults"])(el[jinge__WEBPACK_IMPORTED_MODULE_0__["RENDER"]]());
       })()
@@ -5547,9 +5558,9 @@ class App extends jinge__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     return _app_html__WEBPACK_IMPORTED_MODULE_1__["default"];
   }
   constructor(attrs) {
-    const vm_50250e3c63 = super(attrs);
-    vm_50250e3c63.locale = jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"].locale;
-    vm_50250e3c63.locales = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["VM"])([
+    const vm_996ad1cf81dd = super(attrs);
+    vm_996ad1cf81dd.locale = jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"].locale;
+    vm_996ad1cf81dd.locales = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["VM"])([
       {
         name: '简体中文',
         locale: 'zh_cn'
@@ -5559,14 +5570,14 @@ class App extends jinge__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         locale: 'en'
       }
     ]);
-    vm_50250e3c63[jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_WATCH"]](() => {
-      vm_50250e3c63.moon = jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_TEXT"]]('a');
-      vm_50250e3c63.boys = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["VM"])([
+    vm_996ad1cf81dd[jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_WATCH"]](() => {
+      vm_996ad1cf81dd.moon = jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_TEXT"]]('a');
+      vm_996ad1cf81dd.boys = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["VM"])([
         { name: jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_TEXT"]]('b') },
         { name: jinge__WEBPACK_IMPORTED_MODULE_0__["i18n"][jinge__WEBPACK_IMPORTED_MODULE_0__["I18N_GET_TEXT"]]('c') }
       ]);
     }, true);
-    return vm_50250e3c63;
+    return vm_996ad1cf81dd;
   }
 
   changeLocale(locale) {
@@ -5590,7 +5601,6 @@ Object(jinge__WEBPACK_IMPORTED_MODULE_0__["bootstrap"])(App, document.getElement
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Printer", function() { return Printer; });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge-framework/index.js");
-
 
 
 
@@ -5634,7 +5644,7 @@ class Printer extends jinge__WEBPACK_IMPORTED_MODULE_0__["Component"] {
                 const el = Object(jinge__WEBPACK_IMPORTED_MODULE_0__["createElement"])(
                   "p",
                   component[jinge__WEBPACK_IMPORTED_MODULE_0__["CSTYLE_PID"]],
-                  Object(jinge__WEBPACK_IMPORTED_MODULE_0__["i18nRenderFn"])(component, 'f')
+                  Object(jinge__WEBPACK_IMPORTED_MODULE_0__["i18nRenderFn"])(component, "f", false)
                 );
                 component[jinge__WEBPACK_IMPORTED_MODULE_0__["ROOT_NODES"]].push(el);
                 return el;
@@ -5658,13 +5668,13 @@ class Printer extends jinge__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   }
 
   constructor(attrs) {
-    const vm_50250e3c63 = super(attrs);
-    const fn_50250e3c63_1 = () => {
-      vm_50250e3c63.message = attrs.message;
+    const vm_996ad1cf81dd = super(attrs);
+    const fn_1_996ad1cf81dd = () => {
+      vm_996ad1cf81dd.message = attrs.message;
     };
-    fn_50250e3c63_1();
-    attrs[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('message', fn_50250e3c63_1);
-    return vm_50250e3c63;
+    fn_1_996ad1cf81dd();
+    attrs[jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ATTRS"]][jinge__WEBPACK_IMPORTED_MODULE_0__["VM_ON"]]('message', fn_1_996ad1cf81dd);
+    return vm_996ad1cf81dd;
   }
 }
 

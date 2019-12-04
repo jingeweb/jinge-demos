@@ -1,7 +1,8 @@
 (function() {
-function i18nRender(
-  textRenderFn, createTextNode, setText, VM_ATTRS, VM_ON, ROOT_NODES, createElement, CSTYLE_PID
+function renderFactory(
+  textRenderFn, createTextNode, setText, VM_ATTRS, VM_ON, ROOT_NODES, setAttribute, wrapAttrs, VM_DEBUG_NAME, CONTEXT, addParentStyleId, CSTYLE_PID, assertRenderResults, RENDER, Printer_4f3eb8aecd17, createElement
 ) { return {
+components: {
   a: function(component, vm_0, vm_1) { return [
     textRenderFn(component, "Hello, "),
     (() => {
@@ -19,6 +20,20 @@ function i18nRender(
     })()
   ]},
   b: function(component, vm_0) { return [
+    textRenderFn(component, "hello, "),
+    ...(() => {
+      const attrs = wrapAttrs({
+        [VM_DEBUG_NAME]: "attrs_of_<Printer>",
+        [VM_ATTRS]: null,
+        [CONTEXT]: component[CONTEXT],
+      });
+      const el = new Printer_4f3eb8aecd17(attrs);
+      addParentStyleId(el, component[CSTYLE_PID]);
+      component[ROOT_NODES].push(el);
+      return assertRenderResults(el[RENDER](component));
+    })()
+  ]},
+  c: function(component, vm_0) { return [
     (() => {
       const el = createElement(
         "p",
@@ -36,10 +51,8 @@ function i18nRender(
       return el;
     })()
   ]}
-}}
-function i18nAttribute(
-  setAttribute, VM_ATTRS, VM_ON
-) { return {
+},
+attributes: {
   a: function(target, attrName, isDOM, component, vm_0, vm_1) {
     const fn_ = () => {
       const __attrV = 'Hello, ' + function () {
@@ -59,6 +72,7 @@ function i18nAttribute(
     fn_();
     vm_0[VM_ATTRS][VM_ON](["moon"], fn_, component);
   }
+}
 }}
 const i18nData = {
   locale: "en",
@@ -70,8 +84,7 @@ const i18nData = {
     e: "Hello, World!",
     f: "Quiet for body, Squint for soul"
   },
-  render: i18nRender,
-  attribute: i18nAttribute
+  render: renderFactory
 };
 if (typeof jinge !== 'undefined') {
   jinge.i18n.r(i18nData);
