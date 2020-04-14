@@ -1,9 +1,6 @@
 import {
   Component,
-  bootstrap,
-  AFTER_RENDER,
-  GET_REF,
-  addClass
+  bootstrap
 } from 'jinge';
 
 import _tpl from './app.html';
@@ -20,9 +17,9 @@ class App extends Component {
     console.log(evt);
     this.n++;
   }
-  [AFTER_RENDER]() {
-    console.log(this[GET_REF]('title'))
-    addClass(this[GET_REF]('title'), 'color-blue');
+  __afterRender() {
+    console.log(this.__getRef('title'))
+    this.__getRef('title').classList.add('color-blue');
   }
 }
 

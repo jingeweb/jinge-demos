@@ -1,6 +1,6 @@
 import {
   Component,
-  VM,
+  vm,
   isArray
 } from 'jinge';
 
@@ -21,6 +21,6 @@ export default class Tree extends Component {
     return this._data;
   }
   set data(v) {
-    this._data = isArray(v) ? v : VM([v]);
+    this._data = isArray(v) ? v : vm([v]);
   }
 }

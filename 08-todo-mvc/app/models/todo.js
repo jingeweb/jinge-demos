@@ -1,5 +1,5 @@
 import {
-  VM,
+  vm,
   uid
 } from 'jinge';
 
@@ -15,6 +15,6 @@ export default class Todo {
      * this code is important. we must convert object to ViewModel,
      *   as todo model will be used in view of Component.
      */
-    return VM(this);
+    return vm(this);
   }
 }

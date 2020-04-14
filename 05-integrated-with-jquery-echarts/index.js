@@ -1,9 +1,6 @@
 import {
   Component,
-  bootstrap,
-  AFTER_RENDER,
-  BEFORE_DESTROY,
-  GET_REF
+  bootstrap
 } from 'jinge';
 import $ from 'jquery';
 import echarts from 'echarts';
@@ -18,17 +15,17 @@ class App extends Component {
     this._btnHandler = this.onButtonClick.bind(this);
     this._chart = null;
   }
-  [AFTER_RENDER]() {
-    $(this[GET_REF]('btn')).on('click', this._btnHandler);
+  __afterRender() {
+    $(this.__getRef('btn')).on('click', this._btnHandler);
   }
-  [BEFORE_DESTROY]() {
-    $(this[GET_REF]('btn')).off('click', this._btnHandler);
+  __beforeDestroy() {
+    $(this.__getRef('btn')).off('click', this._btnHandler);
     this._chart && this._chart.dispose();
   }
   onButtonClick($evt) {
     console.log($evt);
     if (!this._chart) {
-      this._chart = echarts.init(this[GET_REF]('chart'));
+      this._chart = echarts.init(this.__getRef('chart'));
     }
     // use configuration item and data specified to show chart
     this._chart.setOption({
@@ -46,7 +43,7 @@ class App extends Component {
       series: [{
         name: 'Sales',
         type: 'bar',
-        data: [5, 20, 36, 10, 10, 20]
+        data: (new Array(6)).fill(0).map(() => Math.random() * 10 | 0 + 4)
       }]
     });
   }

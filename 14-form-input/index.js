@@ -1,8 +1,8 @@
 import {
   Component,
-  VM,
+  vm,
   bootstrap,
-  vmWatch
+  watch
 } from 'jinge';
 
 import _tpl from './app.html';
@@ -13,7 +13,7 @@ class App extends Component {
   }
   constructor(args) {
     super(args);
-    this.data = VM({
+    this.data = vm({
       t: 'hello',
       t2: 'hello\njinge',
       t3: true,
@@ -22,12 +22,12 @@ class App extends Component {
       t6: '',
       t7: []
     });
-    this.fruits5 = VM(['Apple', 'Orange', 'Banana']);
+    this.fruits5 = vm(['Apple', 'Orange', 'Banana']);
     this.fruits4 = this.fruits5.map(f => ({name: f, selected: false}));
 
-    this.output = this.genOutput();
-    vmWatch(this, 'data.**', () => {
-      this.output = this.genOutput();
+    this.output = JSON.stringify(this.data, null, 2);
+    watch(this, 'data.**', (p) => {
+      this.__updateIfNeed();
     });
   }
   log(...args) {
@@ -42,12 +42,12 @@ class App extends Component {
     if (i >= 0) this.data.t4.splice(i, 1);
   }
   onMultiSelectChange($select) {
-    this.data.t7 = this.fruits4.filter((f, i) => {
+    this.data.t7 = this.data.t4 = this.fruits4.filter((f, i) => {
       return (f.selected = $select.children[i].selected);
     }).map(f => f.name);
   }
-  genOutput() {
-    return JSON.stringify(this.data, null, 2);
+  __update() {
+    this.output = JSON.stringify(this.data, null, 2);
   }
   test() {
     this.data.t2 = this.data.t;

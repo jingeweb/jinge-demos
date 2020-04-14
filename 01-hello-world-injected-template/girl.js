@@ -1,7 +1,5 @@
 import {
-  Component,
-  AFTER_RENDER,
-  BEFORE_DESTROY
+  Component
 } from 'jinge';
 
 export default class Girl extends Component {
@@ -12,10 +10,10 @@ export default class Girl extends Component {
     super(args);
     this.name = args.name;
   }
-  [AFTER_RENDER]() {
+  __afterRender() {
     console.log('girl has been rendered.');
   }
-  [BEFORE_DESTROY]() {
+  __beforeDestroy() {
     console.log('girl will be destroied.');
   }
 }

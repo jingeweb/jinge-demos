@@ -1,10 +1,9 @@
 import {
   Component,
   bootstrap,
-  VM,
-  vmWatch,
-  setImmediate,
-  UPDATE_IF_NEED
+  vm,
+  watch,
+  setImmediate
 } from 'jinge';
 
 import _tpl from './app.html';
@@ -27,7 +26,7 @@ function saveTodos(todos) {
 }
 
 function createTodo(title, done = false) {
-  return VM({
+  return vm({
     title,
     done
   });
@@ -38,19 +37,19 @@ class App extends Component {
   }
   constructor(args) {
     super(args);
-    this.todos = VM(loadTodos() || [createTodo('test')]);
+    this.todos = vm(loadTodos() || [createTodo('test')]);
     this.allDone = this.todos.length > 0 && !this.todos.find(t => !t.done);
     
     /**
-     * You don't need call vmUnwatch at BEFORE_DESTROY lifecycle,
+     * You don't need call unwatch at __beforeDestroy lifecycle,
      * becase all view-model listener will be auto clear when component is destroied.
      */
-    vmWatch(this, 'todos.**', () => {
+    watch(this, 'todos.**', () => {
       /**
-       * UPDATE_IF_NEED will ensure component has been rendered, then push update function
+       * __updateIfNeed will ensure component has been rendered, then push update function
        * to setImmediate queue only if it's not already in queue.
        */
-      this[UPDATE_IF_NEED](this.update);
+      this.__updateIfNeed();
     });
   }
 
@@ -91,7 +90,7 @@ class App extends Component {
     }
   }
 
-  update() {
+  __update() {
     this.allDone = this.todos.length > 0 && !this.todos.find(t => !t.done);
     saveTodos(this.todos);
   }

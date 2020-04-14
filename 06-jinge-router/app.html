@@ -1,0 +1,46 @@
+<h2>Jinge Router</h2>
+<router router="hash" e:routes="_routes">
+<div>
+  <div style="border-bottom: 1px solid blue; margin-bottom: 10px;">
+    <h3>Top Menu Area</h3>
+    <p>
+      <label>Open new tab:</label>
+      <input type="checkbox" e:checked="newTab" on:change="newTab = $event.target.checked" />
+    </p>
+    <p>
+      <!-- default sref link -->
+      <router-link class="xx" style="margin-right: 8px;" text="Hello" to="/hello" e:target="newTab ? '_black' : '_self'" active="active"/>
+      <!-- custom sref link-->
+      <router-link to="/about" e:target="newTab ? '_blank' : '_self'" active="active">
+        <a style="margin: 20px;">About</a>
+      </router-link>
+      
+      <router-link to="/people" e:target="newTab ? '_blank' : '_self'" active="active">
+        <button>People</button>
+      </router-link>
+      <router-link style="margin-left: 8px;" text="Person-2" e:to="{name: 'person', params: {personId: '002'}}" active="active"/>
+      <!--
+        directly use <a> to change to #/about from #/home，
+      -->
+      <a style="margin-left: 20px;" href="#/about">test</a>
+      <!-- dynamic import -->
+      <router-link to="/dynamic" text="Dynamic Import"/>
+    </p>
+  </div>
+  <div>
+    <h3>Content Area</h3>
+    <div class="content">
+      <router-view>
+        <div slot-pass:default>loading...</div>
+        <div slot-pass:error vm:error>
+          <p>Failed to load!</p>
+          <p>${error}</p>
+        </div>
+      </router-view> <!-- same as <router-view name="default"/> -->
+    </div>
+    <div class="footer">
+      <router-view name="footer"/>
+    </div>
+  </div>
+</div>
+</router>

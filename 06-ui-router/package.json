@@ -4,7 +4,7 @@
   "description": "basic demo for jinge",
   "main": "index.js",
   "scripts": {
-    "build-dev": "webpack --watch --config ./webpack.config.js",
+    "build-dev": "webpack --config ./webpack.config.js",
     "build": "PROD=true npm run build-dev",
     "start": "webpack-dev-server --config ./webpack.config.js"
   },
@@ -12,12 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "@uirouter/visualizer": "^7.0.0",
-    "jinge": "^1.0.6",
-    "jinge-ui-router": "^1.0.3"
+    "jinge": "^2.0.0",
+    "jinge-ui-router": "^2.0.0"
   },
   "devDependencies": {
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }

@@ -15,6 +15,7 @@ module.exports = {
     jquery: 'jQuery',
     echarts: 'echarts'
   },
+  node: false,
   devtool: 'source-map',
   module: {
     rules: [{

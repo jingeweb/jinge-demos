@@ -12,6 +12,7 @@ module.exports = {
     publicPath: 'dist'
   },
   devtool: 'source-map',
+  node: false,
   module: {
     rules: [{
       test: /\.(js|html)$/,

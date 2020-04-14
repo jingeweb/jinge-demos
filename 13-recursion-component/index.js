@@ -1,6 +1,6 @@
 import {
   Component,
-  VM,
+  vm,
   bootstrap
 } from 'jinge';
 
@@ -12,7 +12,7 @@ class App extends Component {
   }
   constructor(args) {
     super(args);
-    this.treeData = VM({
+    this.treeData = vm({
       name: 'root',
       children: [{
         name: 'c-1',

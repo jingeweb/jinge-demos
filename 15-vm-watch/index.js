@@ -1,9 +1,10 @@
 import {
   Component,
   bootstrap,
-  VM,
-  vmWatch,
-  vmUnwatch
+  vm,
+  watch,
+  uwatch,
+  unwatch
 } from 'jinge';
 
 import _tpl from './app.html';
@@ -15,7 +16,7 @@ class App extends Component {
   constructor(args) {
     super(args);
     this.n = 10;
-    this.boy1 = VM({
+    this.boy1 = vm({
       name: 'ge',
       girlfriend: {
         name: 'jing'
@@ -24,42 +25,42 @@ class App extends Component {
         name: 'yuang'
       }]
     });
-    this.boy2 = VM({
+    this.boy2 = vm({
       name: 'yy',
       children: [{
         name: 'pp'
       }]
     });
 
-    vmWatch(this, '**', (propPath) => {
+    watch(this, '**', (propPath) => {
       console.log('root: anything changed.', propPath);
     });
 
-    vmWatch(this, 'boy1.**', (propPath) => {
+    watch(this, 'boy1.**', (propPath) => {
       console.log('root: boy1 deep notify.', propPath);
     });
 
-    vmWatch(this, 'boy2.children.*.name', (propPath) => {
+    watch(this, 'boy2.children.*.name', (propPath) => {
       console.log('root: boy2.children.*.name notify', propPath);
     });
 
-    vmWatch(this, 'boy2.*.name', (propPath) => {
+    watch(this, 'boy2.*.name', (propPath) => {
       console.log('root: boy2.*.name notify.', propPath);
     });
 
     // array item watch
-    vmWatch(this.boy1, 'children.1.name', (propPath) => {
+    watch(this.boy1, 'children.1.name', (propPath) => {
       console.log('boy1: children[1].name notify.', propPath);
     });
     // deep watch
-    vmWatch(this.boy1, 'children.**', (propPath) => {
+    watch(this.boy1, 'children.**', (propPath) => {
       console.log('boy1: deep children notify', propPath);
     });
 
     this._h = (propPath) => {
       console.log('boy2: xxx.ooo notify.', propPath);
     };
-    vmWatch(this.boy2, 'xxx.ooo', this._h);
+    watch(this.boy2, 'xxx.ooo', this._h);
   }
   test1() {
     /*
@@ -74,24 +75,24 @@ class App extends Component {
      * 比如 'boy2' 这个路径发生了赋值行为，那么一定会通知该路径及其子路径上的监听。
      * 无论路径对应的实际值是否发生变化。
      */
-    this.boy2 = VM({
+    this.boy2 = vm({
       name: 'ge'
     });
   }
 
   test3() {
-    this.boy1.children.push(VM({
+    this.boy1.children.push(vm({
       name: 'ppp'
     }));
   }
 
   clear() {
     // clear all watch listeners
-    vmUnwatch(this);
+    unwatch(this);
     // clear all listeners on path 'children.**'
-    vmUnwatch(this.boy1, 'children.**');
+    unwatch(this.boy1, 'children.**');
     // remove specify listener
-    vmUnwatch(this.boy2, 'xxx.ooo', this._h);
+    unwatch(this.boy2, 'xxx.ooo', this._h);
   }
 }
 

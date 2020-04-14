@@ -1,6 +1,6 @@
 {
   "name": "jinge-demos",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "demos for jinge-framework",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YuhangGe/jinge-demos.git"
+    "url": "git+https://github.com/jinge-design/jinge-demos.git"
   },
   "keywords": [
     "jinge",
@@ -17,7 +17,7 @@
   "author": "Yuhang Ge <abeyuhang@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/YuhangGe/jinge-demos/issues"
+    "url": "https://github.com/jinge-design/jinge-demos/issues"
   },
-  "homepage": "https://github.com/YuhangGe/jinge-demos#readme"
+  "homepage": "https://github.com/jinge-design/jinge-demos#readme"
 }

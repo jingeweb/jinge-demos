@@ -1,7 +1,7 @@
 /* eslint-env node */
 const path = require('path');
 const prod = 'PROD' in process.env;
-const { jingeLoader } = require('jinge/compiler');
+const { jingeLoader, JingeWebpackPlugin } = require('jinge/compiler');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -9,9 +9,10 @@ module.exports = {
   output: {
     filename: `bundle.${prod ? 'min.' : ''}js`,
     path: path.join(__dirname, 'dist'),
-    publicPath: 'dist'
+    publicPath: 'dist/'
   },
-  devtool: 'source-map',
+  node: false,
+  devtool: prod ? false : 'source-map',
   module: {
     rules: [{
       test: /\.(js|html)$/,

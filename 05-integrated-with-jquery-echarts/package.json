@@ -11,13 +11,13 @@
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "echarts": "^4.4.0",
-    "jinge": "^1.0.6",
-    "jquery": "^3.4.1"
+    "echarts": "^4.7.0",
+    "jinge": "^2.0.0",
+    "jquery": "^3.5.0"
   },
   "devDependencies": {
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }

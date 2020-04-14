@@ -1,7 +1,7 @@
 import {
   Component,
   bootstrap,
-  VM
+  vm
 } from 'jinge';
 import {
   Visualizer
@@ -43,7 +43,7 @@ const uiStates = [{
   url: '/people',
   component: People,
   resolve: {
-    people: () => getAllPersons().then(result => VM(result))
+    people: () => getAllPersons().then(result => vm(result))
   }
 }, {
   name: 'people.person',
@@ -56,11 +56,6 @@ const uiStates = [{
    * if it's object, it will be convert to array.
    */
   resolve: {
-    /*
-     * resolve value can be constant/function
-     * constant will be convert to function: '() => constant'.
-     */
-    someConst: 'hello1',
     someFn: () => 'hello2',
     someFnPromise: () => new Promise(res => setTimeout(() => res('hello3'), 1000)),
     /* 
@@ -70,7 +65,7 @@ const uiStates = [{
     person: ['$transition$', 'people', (trans, people) => {
       console.log('inherited resove people:', people);
       const id = trans.params().personId;
-      return getPersonById(id).then(result => VM(result));
+      return getPersonById(id).then(result => vm(result));
     }]
   }
 }];

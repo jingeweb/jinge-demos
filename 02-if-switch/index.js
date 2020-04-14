@@ -11,7 +11,7 @@ class App extends Component {
   }
   constructor(args) {
     super(args);
-    this.n = 0;
+    this.n = (Math.random() * 10) | 0;
     setInterval(() => {
       this.n = (Math.random() * 10) | 0;
       console.log(this.n);

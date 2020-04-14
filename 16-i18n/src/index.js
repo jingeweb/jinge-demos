@@ -1,10 +1,9 @@
 import {
   Component,
-  VM,
+  vm,
   bootstrap,
   _t,
-  i18n,
-  I18N_WATCH
+  i18n
 } from 'jinge';
 
 import _tpl from './app.html';
@@ -17,7 +16,7 @@ class App extends Component {
   constructor(attrs) {
     super(attrs);
     this.locale = i18n.locale;
-    this.locales = VM([{
+    this.locales = vm([{
       name: '简体中文',
       locale: 'zh_cn'
     }, {
@@ -25,19 +24,22 @@ class App extends Component {
       locale: 'en'
     }]);
     
-    this[I18N_WATCH](() => {
-      this.moon = _t('明月');
-      this.boys = VM([{
+    this.__i18nWatch(() => {
+      this.moon = _t('月');
+      this.boys = vm([{
         name: _t('大葛')
       }, {
         name: _t('小葛')
       }]);
+      this.boy = vm({
+        name: _t('小葛')
+      })
     }, true);
   }
 
   changeLocale(locale) {
-    i18n.switch(locale);
-    history.replaceState(null, null, '/?locale=' + locale);
+    i18n.switch(locale, `/dist/bundle.${locale}.js`);
+    history.replaceState(null, null, href);
   }
 }
 

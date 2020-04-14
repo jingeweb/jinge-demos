@@ -2,7 +2,7 @@
 const path = require('path');
 const prod = 'PROD' in process.env;
 const { jingeLoader } = require('jinge/compiler');
-const { uiRouterAlias } = require('jinge-ui-router/compiler');
+const { routerAlias } = require('jinge-router/compiler');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -12,14 +12,15 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     publicPath: 'dist'
   },
-  devtool: 'source-map',
+  node: false,
+  devtool: prod ? false : 'source-map',
   module: {
     rules: [{
       test: /\.(js|html)$/,
       use: {
         loader: jingeLoader,
         options: {
-          componentAlias: uiRouterAlias
+          componentAlias: routerAlias
         }
       }
     }]

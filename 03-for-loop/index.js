@@ -1,7 +1,7 @@
 import {
   Component,
   bootstrap,
-  VM
+  vm
 } from 'jinge';
 
 import _tpl from './app.html';
@@ -15,8 +15,8 @@ class App extends Component {
   constructor(args) {
     super(args);
     this.INC = 10;
-    this.numbers = VM([0, 1, 2]);
-    this.persons = VM([{
+    this.numbers = vm([0, 1, 2]);
+    this.persons = vm([{
       id: '001',
       name: 'XiaoGe'
     }, {
@@ -25,7 +25,7 @@ class App extends Component {
     }]);
     setInterval(() => {
       this.numbers.push(AUTO_INC++);
-      this.persons.push(VM({
+      this.persons.push(vm({
         id: Date.now().toString(32),
         name: Date.now().toString(32)
       }));
@@ -35,7 +35,8 @@ class App extends Component {
     // this.numbers.push(AUTO_INC++);
     // return;
     // console.log($evt);
-    this.numbers = VM([6, 0, 7, 3, 2]);
+    this.numbers = vm([6, 0, 7, 3, 2]);
+    // console.log(this.persons[0]);
     this.persons.length = 0;
   }
   push() {

@@ -11,6 +11,7 @@ module.exports = {
     filename: `bundle.${prod ? 'min.' : ''}js`,
     path: path.join(__dirname, 'dist')
   },
+  node: false,
   module: {
     rules: [{
       test: /\.vue$/,
@@ -23,10 +24,6 @@ module.exports = {
   devServer: {
     contentBase: './',
     port: 9000
-  },
-  stats: {
-    errors: true,
-    all: false
   },
   plugins: [
     new VueLoaderPlugin(),

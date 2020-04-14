@@ -1,5 +1,5 @@
 import {
-  VM
+  vm
 } from 'jinge';
 import Todo from '../models/todo';
 
@@ -15,7 +15,7 @@ class TodoStore {
      * this code is important. we must convert object to ViewModel,
      *   as todo store will be linked to public property of Component.
      */
-    return VM(this);
+    return vm(this);
   }
   _findById(id) {
     const idx = this._findIndexById(id);
@@ -47,7 +47,7 @@ class TodoStore {
   }
   _filter() {
     if (this.allTodos.length === 0) return;
-    if (!this._status) {
+    if (!this._status || this._status === 'all') {
       this.todos = this.allTodos.slice();
     } else {
       this.todos = this.allTodos.filter(t => t.done === (this._status === 'completed'));

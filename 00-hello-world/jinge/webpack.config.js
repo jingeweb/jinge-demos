@@ -12,11 +12,17 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     publicPath: '/dist/'
   },
+  node: false,
   devtool: 'source-map',
   module: {
     rules: [{
       test: /\.(js|html)$/,
-      use: jingeLoader
+      use: {
+        loader: jingeLoader,
+        // options: {
+          // symbolPostfix: '__$$$$__'
+        // }
+      }
     }]
   },
   devServer: {

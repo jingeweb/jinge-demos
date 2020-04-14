@@ -14,6 +14,7 @@ module.exports = {
   externals: {
     jinge: 'jinge'
   },
+  node: false,
   devtool: prod ? false : 'source-map',
   module: {
     rules: [{

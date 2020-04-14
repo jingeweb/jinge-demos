@@ -1,20 +1,13 @@
 import {
-  Component,
-  GET_CONTEXT,
-  AFTER_RENDER,
-  BEFORE_DESTROY
+  Component
 } from 'jinge';
-import {
-  UIROUTER_CONTEXT,
-  UIROUTER_CONTEXT_PARENT
-} from 'jinge-ui-router';
 
 export default class Hello extends Component {
   static get template() {
     return '<h4>Hello</h4><p>hello, jinge!</p>';
   }
-  [AFTER_RENDER]() {
-    const router = this[GET_CONTEXT](UIROUTER_CONTEXT);
+  __afterRender() {
+    const router = this.__getContext('ui-router');
     const transition = router.transitionService;
 
     this._des = transition.onExit({
@@ -31,7 +24,7 @@ export default class Hello extends Component {
       return confirm('确认要退出？');
     });
   }
-  [BEFORE_DESTROY]() {
+  __beforeDestroy() {
     this._des();
     console.log('Hello component will be destroy');
   }

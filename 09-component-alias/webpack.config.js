@@ -11,7 +11,8 @@ module.exports = {
     path: path.join(__dirname, 'dist'),
     publicPath: 'dist'
   },
-  devtool: 'source-map',
+  node: false,
+  devtool: prod ? false : 'source-map',
   module: {
     rules: [{
       test: /\.(js|html)$/,

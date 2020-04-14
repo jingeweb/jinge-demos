@@ -1,7 +1,7 @@
 import {
   Component,
   bootstrap,
-  VM
+  vm
 } from 'jinge';
 
 import _tpl from './app.html';
@@ -12,14 +12,14 @@ class App extends Component {
   }
   constructor(args) {
     super(args);
-    this.data = VM([{
+    this.data = vm([{
       name: 'Ge',
       age: 20
     }, {
       name: 'Jing',
       age: 18
     }]);
-    this.columns = VM([{
+    this.columns = vm([{
       key: 'name',
       title: 'Name'
     }, {
@@ -27,7 +27,7 @@ class App extends Component {
       title: 'Age'
     }]);
    
-    this.columns2 = VM([{
+    this.columns2 = vm([{
       key: '-'
     }, {
       key: 'name',
@@ -42,7 +42,7 @@ class App extends Component {
       key: 'action',
       title: 'Action'
     }]);
-    this.data2 = VM([{
+    this.data2 = vm([{
       key: 0,
       checked: false,
       name: 'Ge',
@@ -59,7 +59,7 @@ class App extends Component {
   }
   prependColumn() {
     const _k = (Date.now()).toString(32);
-    this.columns.unshift(VM({
+    this.columns.unshift(vm({
       key: _k,
       title: 'Col_' + _k
     }));
@@ -68,7 +68,7 @@ class App extends Component {
     });
   }
   test() {
-    this.columns[0] = VM({
+    this.columns[0] = vm({
       title: 'TT',
       key: 'age'
     })
@@ -79,7 +79,7 @@ class App extends Component {
     this._update();
   }
   addRow() {
-    this.data2.push(VM({
+    this.data2.push(vm({
       key: this.data2.length,
       name: Date.now().toString(32),
       age: 16 + (Math.random() * 10 | 0),
@@ -93,7 +93,7 @@ class App extends Component {
     const row = this.data2[ri];
     row.age++;
     row.name += `_${row.age}`;
-    row.tags = VM((new Array((Math.random() * 2 | 0) + 1)).fill(0).map((n, i) => `Tag${i+1}`));
+    row.tags = vm((new Array((Math.random() * 4 | 0) + 1)).fill(0).map((n, i) => `Tag${i+1}`));
   }
   toggleAllCheck() {
     this.data2.forEach(row => {

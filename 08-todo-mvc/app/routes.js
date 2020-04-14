@@ -2,15 +2,19 @@ import TodoList from './components/list';
 
 export default [{
   name: 'list',
-  url: '/:status',
+  path: '/:status',
   component: TodoList,
-  params: {
-    status: {
-      squash: true,
-      value: ''
+  resolves: {
+    status(params) {
+      return params.status;
     }
-  },
-  resolve: {
-    status: ['$transition$', trans => trans.params().status]
+  }
+}, {
+  path: '/(.*)',
+  redirect: {
+    name: 'list',
+    params: {
+      status: 'all'
+    }
   }
 }];
