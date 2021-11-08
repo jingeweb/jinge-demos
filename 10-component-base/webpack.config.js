@@ -43,7 +43,7 @@ module.exports = {
     }
   },
   devServer: {
-    contentBase: __dirname,
+    static: __dirname,
     port: 9000
   }
 };

@@ -11,7 +11,7 @@ h4 {
 }
 
 .c3 {
-  /deep/ .d1 {
+  ::deep .d1 {
     color: purple;
   }
 

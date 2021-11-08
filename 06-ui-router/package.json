@@ -11,13 +11,13 @@
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "@uirouter/visualizer": "^7.0.0",
-    "jinge": "^2.0.0",
-    "jinge-ui-router": "^2.0.0"
+    "@uirouter/visualizer": "^7.2.1",
+    "jinge": "^3.0.0",
+    "jinge-ui-router": "^3.0.0"
   },
   "devDependencies": {
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack": "^5.62.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0"
   }
 }

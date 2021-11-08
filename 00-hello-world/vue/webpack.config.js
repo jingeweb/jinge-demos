@@ -1,7 +1,7 @@
 /* eslint-env node */
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 const prod = 'PROD' in process.env;
 
 module.exports = {

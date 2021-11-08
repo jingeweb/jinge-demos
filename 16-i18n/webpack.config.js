@@ -9,7 +9,8 @@ module.exports = {
   entry: path.join(__dirname, 'src/index.js'),
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/dist/',
   },
   node: false,
   devtool: prod ? false : 'source-map',
@@ -30,8 +31,7 @@ module.exports = {
     }]
   },
   devServer: {
-    contentBase: __dirname,
+    static: __dirname,
     port: 9000,
-    publicPath: '/dist/'
   }
 };
