@@ -2,7 +2,7 @@
 const path = require('path');
 const prod = 'PROD' in process.env;
 const CompressionPlugin = require('compression-webpack-plugin');
-const { jingeLoader } = require('jinge/compiler');
+const { JingeRules } = require('jinge-compiler');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -15,15 +15,7 @@ module.exports = {
   node: false,
   devtool: 'source-map',
   module: {
-    rules: [{
-      test: /\.(js|html)$/,
-      use: {
-        loader: jingeLoader,
-        // options: {
-          // symbolPostfix: '__$$$$__'
-        // }
-      }
-    }]
+    rules: JingeRules
   },
   devServer: {
     static: __dirname,

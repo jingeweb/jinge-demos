@@ -1,0 +1,12 @@
+.c1 {
+  color: red;
+
+  :global(.c11) {
+    color: blue;
+  }
+
+}
+
+.cf {
+  font-weight: bold;
+}

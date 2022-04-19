@@ -1,0 +1,10 @@
+source,original,translate
+src/app.c.html,请选择语言,
+src/app.c.html,你好，世界！,
+src/app.c.html,你好，${boy.name},
+src/app.c.html,春江潮水连海平，海上明${moon}共潮生,
+src/app.c.html,你好<Printer/>,
+src/app.c.html,"<p>多语言支持不同的DOM结构，比如这里是<span style=""color: red;"">红色的中文</span></p>",
+src/app2.c.html,你好,
+src/app2.c.html,测试,
+src/printer.c.html,静以修身，检以养德,

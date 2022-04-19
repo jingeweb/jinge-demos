@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  render
-} from 'react-dom';
+  createRoot
+} from 'react-dom/client';
 
 const App = () => {
   return <div>Hello, World!</div>;
 }
 
-render(<App/>, document.getElementById('root-app'));
+createRoot(document.getElementById('root-app')).render(<App/>);

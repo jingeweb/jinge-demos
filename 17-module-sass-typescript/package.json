@@ -1,0 +1,29 @@
+{
+  "name": "jinge-demo-component-scope-style",
+  "version": "1.0.0",
+  "description": "basic demo for jinge",
+  "main": "index.js",
+  "scripts": {
+    "build-dev": "rm -rf ./dist && webpack --config ./webpack.config.js",
+    "build": "PROD=true npm run build-dev",
+    "start": "webpack-dev-server --config ./webpack.config.js"
+  },
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "esbuild": "^0.14.43",
+    "jinge": "^3.2.0",
+    "jinge-compiler": "^3.2.0"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "esbuild-loader": "^2.19.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "sass": "^1.52.3",
+    "sass-loader": "^13.0.0",
+    "typescript": "^4.7.3",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2"
+  }
+}
