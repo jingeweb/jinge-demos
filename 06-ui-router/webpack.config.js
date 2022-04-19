@@ -1,8 +1,8 @@
 /* eslint-env node */
 const path = require('path');
 const prod = 'PROD' in process.env;
-const { jingeLoader } = require('jinge/compiler');
-const { uiRouterAlias } = require('jinge-ui-router/compiler');
+const { JingeComponentRule, JingeTemplateRule } = require('jinge-compiler');
+const { UIRouterAlias } = require('jinge-ui-router/compiler');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -14,18 +14,22 @@ module.exports = {
   },
   devtool: 'source-map',
   module: {
-    rules: [{
-      test: /\.(js|html)$/,
+    rules:  [JingeComponentRule, {
+      test: JingeTemplateRule.test,
       use: {
-        loader: jingeLoader,
+        loader: JingeTemplateRule.use,
         options: {
-          componentAlias: uiRouterAlias
+          componentAlias: UIRouterAlias
         }
       }
     }]
   },
   devServer: {
     static: __dirname,
-    port: 9000
+    port: 9000,
+    hot: false,
+    devMiddleware: {
+      writeToDisk: true
+    }
   }
 };

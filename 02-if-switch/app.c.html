@@ -1,0 +1,54 @@
+<h2>Simple If</h2>
+<div>
+  <p>
+  <if e:expect="n > 5">It's greater than 5.</if>
+  <if e:expect="n <= 5">It's less or equal than 5.</if>
+  </p>
+</div>
+<h2>Multiple Elements Under If</h2>
+<div>
+  <p>
+  <if e:expect="n > 5">
+  It's
+  <span style="color: ${n >= 8 ? 'red' : 'blue'}">greater than </span>
+  <span>5.</span>
+  </if>
+  </p>
+</div>
+<h2>If and Else</h2>
+<div>
+  <p>
+    <if e:expect="n > 5">
+    <_slot slot-pass:default>
+      It's greater than <span>5</span>
+    </_slot>
+    <_slot slot-pass:else>
+      It's less or equal than <span>5</span>
+    </_slot>
+    </if>
+  </p>
+  <p>
+    <if e:expect="n > 5" on:branch-switched="log('if updated', $args)">
+    <span slot-pass:default>It's greater than 5.</span>
+    <span slot-pass:else>It's less or equal than 5.</span>
+    </if>
+  </p>
+</div>
+<h2>Use class-name instead of If</h2>
+<div>
+  <p>
+    <span class="${n <= 5 ? 'hide' : ''}">It's greater than 5.</span>
+    <span class="${n > 5 ? 'hide' : ''}">It's less or equal than 5.</span>
+  </p>
+</div>
+<h2>Switch-Case</h2>
+<div>
+  <p>
+  <switch e:test="n" on:branch-switched="log('switch updated', $args)">
+  <_slot slot-pass:0>零</_slot>
+  <_slot slot-pass:3>三</_slot>
+  <p slot-pass:8>八</p>
+  <_slot slot-pass:default>${n} <if e:expect="n > 5"> > 5</if></_slot>
+  </switch>
+  </p>
+</div>

@@ -1,0 +1,15 @@
+.nav {
+  > a {
+    color: #40c4ff;
+    margin-right: 12px;
+
+    &:hover {
+      color: #03a9f4;
+    }
+
+    &.active,
+    &.active:hover {
+      color: #536dfe;
+    }
+  }
+}

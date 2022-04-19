@@ -1,0 +1,21 @@
+<!--
+  import Boy from './boy.c';
+-->
+
+<h2>Lifecycle demo</h2>
+<p>
+  Each component have two lifecycle hooks,
+  afterRender and beforeDestroy.
+</p>
+<p>
+  <if e:expect="showBoy">
+  <Boy ref:boy name="${name}_${inc}" on:someApiCalled="onBoyApiCalled"/>
+  </if>
+</p>
+<p>
+  <!-- '$event' will be replaced to 'args[0]' -->
+  <button on:click="toggleShow">${showBoy ? 'Hide' : 'Show'} Boy</button>
+  <if e:expect="showBoy">
+  <button on:click="callApi">Call Api</button>
+  </if>
+</p>

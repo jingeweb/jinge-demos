@@ -1,4 +1,4 @@
-import TodoList from './components/list';
+import TodoList from './components/list.c';
 
 export default [{
   name: 'list',

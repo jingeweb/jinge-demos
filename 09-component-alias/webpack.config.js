@@ -1,7 +1,7 @@
 /* eslint-env node */
 const path = require('path');
 const prod = 'PROD' in process.env;
-const { jingeLoader } = require('jinge/compiler');
+const { JingeComponentRule, JingeTemplateRule } = require('jinge-compiler');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -14,10 +14,10 @@ module.exports = {
   node: false,
   devtool: prod ? false : 'source-map',
   module: {
-    rules: [{
-      test: /\.(js|html)$/,
+    rules: [JingeComponentRule, {
+      test: JingeTemplateRule.test,
       use: {
-        loader: jingeLoader,
+        loader: JingeTemplateRule.use,
         options: {
           componentAlias: {
             /* 
@@ -43,7 +43,7 @@ module.exports = {
              * 并且所有的 <cus-com-a/> 会被替换成 Component_08927
              * 其中是 08927 是为了防止重名的随机数。
              */
-            [path.join(__dirname, 'common/components/custom-component-a.js')]: {
+            [path.join(__dirname, 'common/components/custom-component-a.c.js')]: {
               'default': 'cus-com-a'
             }
           }
@@ -53,6 +53,10 @@ module.exports = {
   },
   devServer: {
     static: __dirname,
-    port: 9000
+    port: 9000,
+    hot: false,
+    devMiddleware: {
+      writeToDisk: true
+    }
   }
 };

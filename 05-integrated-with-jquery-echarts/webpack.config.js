@@ -1,7 +1,7 @@
 /* eslint-env node */
 const path = require('path');
 const prod = 'PROD' in process.env;
-const { jingeLoader } = require('jinge/compiler');
+const { JingeRules } = require('jinge-compiler');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
@@ -18,13 +18,14 @@ module.exports = {
   node: false,
   devtool: 'source-map',
   module: {
-    rules: [{
-      test: /\.(js|html)$/,
-      use: jingeLoader
-    }]
+    rules: JingeRules
   },
   devServer: {
     static: __dirname,
-    port: 9000
+    port: 9000,
+    hot: false,
+    devMiddleware: {
+      writeToDisk: true
+    }
   }
 };

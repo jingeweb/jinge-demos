@@ -1,1 +1,14 @@
-!function(){const n={locale:"zh_cn",dictionary:{"VgD!%":"月","rR)JC":"大葛","w#i*;":"小葛","3ylu$":"请选择语言","I2)`L":"你好，世界！","mAP ]":"静以修身，检以养德"},render:function(n,t,o,e,c,r,u,i,s,l){return{components:{"Xs<Yg":function(r,u,i,s){return[n(r,"你好，"),(()=>{const n=t(),u=()=>{o(n,function(){let n;return null===(n=s.each)||void 0===n?void 0:n.name}())};return u(),s[e].__watch(["each","name"],u,r[e]),r[c].rootNodes.push(n),n})()]},"sHX#5":function(t,o,e){return[n(t,"你好"),...(()=>{const n=u({[c]:{compStyle:{...t[c].compStyle,[o||""]:o||null},context:t[c].context}}),e=s.create(n);return t[c].rootNodes.push(e),i(e.__render())})()]},"V`zMa":function(n,t,o){return[(()=>{const o=l("p",Object.assign({[t||""]:t?"":null},n[c].compStyle),"多语言支持不同的DOM结构，比如这里是",l("span",{style:"color: red;",[t||""]:t?"":null},"红色的中文"));return n[c].rootNodes.push(o),o})()]}},attributes:{"Xs<Yg":function(n,t,o,c,u,i){const s=()=>{const e="你好，"+function(){let n;return null===(n=i.each)||void 0===n?void 0:n.name}();o?r(n,t,e):n[t]=e};s(),i[e].__watch(["each","name"],s,c[e])},"y8?X ":function(n,t,o,c,u){const i=()=>{const e="春江潮水连海平，海上明"+u.moon+"共潮生";o?r(n,t,e):n[t]=e};i(),u[e].__watch(["moon"],i,c[e])},"l.>Wn":function(n,t,o,c,u){const i=()=>{const e="你好，"+function(){let n;return null===(n=u.boy)||void 0===n?void 0:n.name}()+"！";o?r(n,t,e):n[t]=e};i(),u[e].__watch(["boy","name"],i,c[e])}}}}};"undefined"!=typeof jinge?jinge.i18n.__regLoc(n):window.JINGE_I18N_DATA=n}();
+(function() {
+const i18nData = {
+  locale: "zh_cn",
+  dictionary: {
+    oClAf: "你好",
+    URmtI: "测试"
+  }
+};
+if (typeof jinge !== 'undefined') {
+  jinge.i18n.__regLoc(i18nData);
+} else {
+  window.JINGE_I18N_DATA = i18nData;
+}
+})();

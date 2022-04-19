@@ -1,30 +1,30 @@
 location,zh_cn,en
-src/app.html,请选择语言,Please choose language
-src/app.html,这个示例整合了多语言、路由和模块按需动态加载能力。,"This example integrates multi-language, routing and dynamic import code splitting."
-src/app.html,你好，世界！,"Hello, World!"
-src/app.html,模块 A,Module A
-src/app.html,模块 B,Module B
-src/app.html,模块 C,Module C
-src/components/a.html,春江花月夜,The Moon over the River on a Spring Night
-src/components/a.html,春江潮水连海平，,In spring the river rises as high as the sea.
-src/components/a.html,海上明<span>月</span>共潮生,And with the river's tide uprises the <span>moon</span> bright
-src/components/a.html,滟滟随波千万里，何处春江无月明！,"She follows the rolling waves for then thousandli; Where'er the river flows, there overflows her light."
-src/components/a.html,你好，世界！,"Hello, World!"
-src/components/a.html,哦哦：<Printer/>,"Oh,oh: <Printer/>"
-src/components/b.html,春江花月夜,The Moon over the River on a Spring Night
-src/components/b.html,春江潮水连海平，,In spring the river rises as high as the sea.
-src/components/b.html,海上明<span>月</span>共潮生,And with the river's tide uprises the <span>moon</span> bright
-src/components/b.html,滟滟随波千万里，何处春江无月明！,"She follows the rolling waves for then thousandli; Where'er the river flows, there overflows her light."
-src/components/b.html,江畔何人初见月？江月何年初照人？,Who by the riverside did first see the moon rise? When did the moon first see a man by riverside?
-src/components/b.html,人生代代无穷已，江月年年望相似。,"Many generations have come and passed away; From year to year the moons look alike, old and new."
-src/components/b.html,你好，世界！,"Hello, World!"
-src/components/c.html,春江花月夜,The Moon over the River on a Spring Night
-src/components/c.html,春江潮水连海平，,In spring the river rises as high as the sea.
-src/components/c.html,海上明<span>月</span>共潮生,And with the river's tide uprises the <span>moon</span> bright
-src/components/c.html,滟滟随波千万里，何处春江无月明！,"She follows the rolling waves for then thousandli; Where'er the river flows, there overflows her light."
-src/components/c.html,江畔何人初见月？江月何年初照人？,Who by the riverside did first see the moon rise? When did the moon first see a man by riverside?
-src/components/c.html,人生代代无穷已，江月年年望相似。,"Many generations have come and passed away; From year to year the moons look alike, old and new."
-src/components/c.html,不知江月待何人，但见长江送流水。,"We do not know tonight for whom she sheds her ray, But hear the river say to its water adieu."
-src/components/c.html,白云一片去悠悠，青枫浦上不胜愁。,"Away, away is sailing a single cloud white; On Farewell Beach are pining away maples green."
-src/components/d.js,以下随机的文本内容只是为了让代码足够大到 webpack 会抽取成独立的 chunk 文件。,The following random text content is just to make the code large enough that webpack will extract it into an independent chunk file.
-src/components/printer.js,春江花月夜,The Moon over the River on a Spring Night
+src/app.c.html,请选择语言,Please choose language
+src/app.c.html,这个示例整合了多语言、路由和模块按需动态加载能力。,"This example integrates multi-language, routing and dynamic import code splitting."
+src/app.c.html,你好，世界！,"Hello, World!"
+src/app.c.html,模块 A,Module A
+src/app.c.html,模块 B,Module B
+src/app.c.html,模块 C,Module C
+src/components/a.c.html,春江花月夜,The Moon over the River on a Spring Night
+src/components/a.c.html,春江潮水连海平，,In spring the river rises as high as the sea.
+src/components/a.c.html,海上明<span>月</span>共潮生,And with the river's tide uprises the <span>moon</span> bright
+src/components/a.c.html,滟滟随波千万里，何处春江无月明！,"She follows the rolling waves for then thousandli; Where'er the river flows, there overflows her light."
+src/components/a.c.html,你好，世界！,"Hello, World!"
+src/components/a.c.html,哦哦：<Printer/>,"Oh,oh: <Printer/>"
+src/components/b.c.html,春江花月夜,The Moon over the River on a Spring Night
+src/components/b.c.html,春江潮水连海平，,In spring the river rises as high as the sea.
+src/components/b.c.html,海上明<span>月</span>共潮生,And with the river's tide uprises the <span>moon</span> bright
+src/components/b.c.html,滟滟随波千万里，何处春江无月明！,"She follows the rolling waves for then thousandli; Where'er the river flows, there overflows her light."
+src/components/b.c.html,江畔何人初见月？江月何年初照人？,Who by the riverside did first see the moon rise? When did the moon first see a man by riverside?
+src/components/b.c.html,人生代代无穷已，江月年年望相似。,"Many generations have come and passed away; From year to year the moons look alike, old and new."
+src/components/b.c.html,你好，世界！,"Hello, World!"
+src/components/c.c.html,春江花月夜,The Moon over the River on a Spring Night
+src/components/c.c.html,春江潮水连海平，,In spring the river rises as high as the sea.
+src/components/c.c.html,海上明<span>月</span>共潮生,And with the river's tide uprises the <span>moon</span> bright
+src/components/c.c.html,滟滟随波千万里，何处春江无月明！,"She follows the rolling waves for then thousandli; Where'er the river flows, there overflows her light."
+src/components/c.c.html,江畔何人初见月？江月何年初照人？,Who by the riverside did first see the moon rise? When did the moon first see a man by riverside?
+src/components/c.c.html,人生代代无穷已，江月年年望相似。,"Many generations have come and passed away; From year to year the moons look alike, old and new."
+src/components/c.c.html,不知江月待何人，但见长江送流水。,"We do not know tonight for whom she sheds her ray, But hear the river say to its water adieu."
+src/components/c.c.html,白云一片去悠悠，青枫浦上不胜愁。,"Away, away is sailing a single cloud white; On Farewell Beach are pining away maples green."
+src/components/d.c.js,以下随机的文本内容只是为了让代码足够大到 webpack 会抽取成独立的 chunk 文件。,The following random text content is just to make the code large enough that webpack will extract it into an independent chunk file.
+src/components/printer.c.js,春江花月夜,The Moon over the River on a Spring Night
