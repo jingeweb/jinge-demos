@@ -25,13 +25,13 @@ module.exports = {
         loader: JingeComponentRule.use
       }, {
         loader: 'esbuild-loader',
-        options: { loader: 'ts', target: 'es2020' }
+        options: { loader: 'ts', target: 'es2020', charset: 'utf8' }
       } ]
     }, {
       test: /\.ts$/,
       use: {
         loader: 'esbuild-loader',
-        options: { loader: 'ts', target: 'es2020' }
+        options: { loader: 'ts', target: 'es2020', charset: 'utf8' }
       }
     }, {
       test: /\.scss$/,

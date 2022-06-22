@@ -12,7 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ App)
 /* harmony export */ });
-/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
+/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js");
 /* harmony import */ var _app_c_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.c.html */ "./app.c.html");
 
 
@@ -67,7 +67,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Boy)
 /* harmony export */ });
-/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
+/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js");
 /* harmony import */ var _boy_c_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./boy.c.html */ "./boy.c.html");
 
 
@@ -106,7 +106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
+/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js");
 /* harmony import */ var _boy_c__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./boy.c */ "./boy.c.js");
 
 
@@ -262,7 +262,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
+/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js");
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
   const vm_0 = component;
@@ -290,20 +290,20 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../jinge/lib/components/class.js":
-/*!*******************************************!*\
-  !*** ../../jinge/lib/components/class.js ***!
-  \*******************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/class.js":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/class.js ***!
+  \********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ToggleClassComponent": () => (/* binding */ ToggleClassComponent)
 /* harmony export */ });
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
-/* harmony import */ var _core_transition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/transition */ "../../jinge/lib/core/transition.js");
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
+/* harmony import */ var _core_transition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/transition */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/transition.js");
 
 
 
@@ -430,20 +430,20 @@ class ToggleClassComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.
 
 /***/ }),
 
-/***/ "../../jinge/lib/components/dynamic.js":
-/*!*********************************************!*\
-  !*** ../../jinge/lib/components/dynamic.js ***!
-  \*********************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/dynamic.js":
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/dynamic.js ***!
+  \**********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DynamicRenderComponent": () => (/* binding */ DynamicRenderComponent)
 /* harmony export */ });
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
-/* harmony import */ var _core_render_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/render_fns */ "../../jinge/lib/core/render_fns.js");
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
+/* harmony import */ var _core_render_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/render_fns */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/render_fns.js");
 
 
 
@@ -516,10 +516,10 @@ class DynamicRenderComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1_
 
 /***/ }),
 
-/***/ "../../jinge/lib/components/for.js":
-/*!*****************************************!*\
-  !*** ../../jinge/lib/components/for.js ***!
-  \*****************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/for.js":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/for.js ***!
+  \******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -527,9 +527,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ForComponent": () => (/* binding */ ForComponent),
 /* harmony export */   "ForEachComponent": () => (/* binding */ ForEachComponent)
 /* harmony export */ });
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
 
 
 
@@ -897,19 +897,19 @@ class ForComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
 
 /***/ }),
 
-/***/ "../../jinge/lib/components/hide.js":
-/*!******************************************!*\
-  !*** ../../jinge/lib/components/hide.js ***!
-  \******************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/hide.js":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/hide.js ***!
+  \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "HideComponent": () => (/* binding */ HideComponent)
 /* harmony export */ });
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _vm_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../vm/index */ "../../jinge/lib/vm/index.js");
-/* harmony import */ var _class__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./class */ "../../jinge/lib/components/class.js");
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _vm_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../vm/index */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/index.js");
+/* harmony import */ var _class__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./class */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/class.js");
 
 
 
@@ -919,7 +919,7 @@ class HideComponent extends _class__WEBPACK_IMPORTED_MODULE_2__.ToggleClassCompo
       "jg-hide": attrs.test
     });
     attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("test", () => {
-      attrs.class["jg-hide"] = attrs.hide;
+      attrs.class["jg-hide"] = attrs.test;
     });
     super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
   }
@@ -930,19 +930,19 @@ class HideComponent extends _class__WEBPACK_IMPORTED_MODULE_2__.ToggleClassCompo
 
 /***/ }),
 
-/***/ "../../jinge/lib/components/html.js":
-/*!******************************************!*\
-  !*** ../../jinge/lib/components/html.js ***!
-  \******************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/html.js":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/html.js ***!
+  \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "BindHtmlComponent": () => (/* binding */ BindHtmlComponent)
 /* harmony export */ });
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
 
 
 function renderHtml(content) {
@@ -991,10 +991,10 @@ class BindHtmlComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Com
 
 /***/ }),
 
-/***/ "../../jinge/lib/components/if.js":
-/*!****************************************!*\
-  !*** ../../jinge/lib/components/if.js ***!
-  \****************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/if.js":
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/if.js ***!
+  \*****************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1002,10 +1002,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "IfComponent": () => (/* binding */ IfComponent),
 /* harmony export */   "SwitchComponent": () => (/* binding */ SwitchComponent)
 /* harmony export */ });
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
-/* harmony import */ var _core_transition__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/transition */ "../../jinge/lib/core/transition.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js");
+/* harmony import */ var _core_transition__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/transition */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/transition.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
 
 
 
@@ -1268,10 +1268,10 @@ class SwitchComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Compo
 
 /***/ }),
 
-/***/ "../../jinge/lib/components/index.js":
-/*!*******************************************!*\
-  !*** ../../jinge/lib/components/index.js ***!
-  \*******************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/index.js":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/index.js ***!
+  \********************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1287,14 +1287,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "SwitchComponent": () => (/* reexport safe */ _if__WEBPACK_IMPORTED_MODULE_4__.SwitchComponent),
 /* harmony export */   "ToggleClassComponent": () => (/* reexport safe */ _class__WEBPACK_IMPORTED_MODULE_0__.ToggleClassComponent)
 /* harmony export */ });
-/* harmony import */ var _class__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./class */ "../../jinge/lib/components/class.js");
-/* harmony import */ var _for__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./for */ "../../jinge/lib/components/for.js");
-/* harmony import */ var _hide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hide */ "../../jinge/lib/components/hide.js");
-/* harmony import */ var _html__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./html */ "../../jinge/lib/components/html.js");
-/* harmony import */ var _if__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./if */ "../../jinge/lib/components/if.js");
-/* harmony import */ var _parameter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parameter */ "../../jinge/lib/components/parameter.js");
-/* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./log */ "../../jinge/lib/components/log.js");
-/* harmony import */ var _dynamic__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dynamic */ "../../jinge/lib/components/dynamic.js");
+/* harmony import */ var _class__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./class */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/class.js");
+/* harmony import */ var _for__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./for */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/for.js");
+/* harmony import */ var _hide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hide */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/hide.js");
+/* harmony import */ var _html__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./html */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/html.js");
+/* harmony import */ var _if__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./if */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/if.js");
+/* harmony import */ var _parameter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parameter */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/parameter.js");
+/* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./log */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/log.js");
+/* harmony import */ var _dynamic__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dynamic */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/dynamic.js");
 
 
 
@@ -1308,18 +1308,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../jinge/lib/components/log.js":
-/*!*****************************************!*\
-  !*** ../../jinge/lib/components/log.js ***!
-  \*****************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/log.js":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/log.js ***!
+  \******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LogComponent": () => (/* binding */ LogComponent)
 /* harmony export */ });
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js");
 
 class LogComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Component {
   constructor(attrs) {
@@ -1343,18 +1343,18 @@ class LogComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
 
 /***/ }),
 
-/***/ "../../jinge/lib/components/parameter.js":
-/*!***********************************************!*\
-  !*** ../../jinge/lib/components/parameter.js ***!
-  \***********************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/parameter.js":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/parameter.js ***!
+  \************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ParameterComponent": () => (/* binding */ ParameterComponent)
 /* harmony export */ });
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js");
 
 
 class ParameterComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Component {
@@ -1374,10 +1374,10 @@ class ParameterComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Co
 
 /***/ }),
 
-/***/ "../../jinge/lib/core/bootstrap.js":
-/*!*****************************************!*\
-  !*** ../../jinge/lib/core/bootstrap.js ***!
-  \*****************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/bootstrap.js":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/bootstrap.js ***!
+  \******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1395,10 +1395,10 @@ function bootstrap(ComponentClazz, dom, attrs) {
 
 /***/ }),
 
-/***/ "../../jinge/lib/core/component.js":
-/*!*****************************************!*\
-  !*** ../../jinge/lib/core/component.js ***!
-  \*****************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js ***!
+  \******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1411,11 +1411,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "attrs": () => (/* binding */ wrapAttrs),
 /* harmony export */   "isComponent": () => (/* binding */ isComponent)
 /* harmony export */ });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _vm_proxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../vm/proxy */ "../../jinge/lib/vm/proxy.js");
-/* harmony import */ var _messenger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./messenger */ "../../jinge/lib/core/messenger.js");
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style */ "../../jinge/lib/core/style.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../vm/common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _vm_proxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../vm/proxy */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/proxy.js");
+/* harmony import */ var _messenger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./messenger */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/messenger.js");
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/style.js");
 var _a;
 
 
@@ -1632,8 +1632,9 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
         n.__handleAfterRender();
     });
     this[__].nonRootCompNodes.forEach((n) => {
-      if (isComponent(n))
-        n.__handleAfterRender();
+      if (!isComponent(n))
+        debugger;
+      n.__handleAfterRender();
     });
     this[__].state = 1 /* RENDERED */;
     this[__].contextState = this[__].contextState === 1 /* TOUCHED */ ? 3 /* TOUCHED_FREEZED */ : 2 /* UNTOUCH_FREEZED */;
@@ -1732,10 +1733,10 @@ Component[_a] = true;
 
 /***/ }),
 
-/***/ "../../jinge/lib/core/index.js":
-/*!*************************************!*\
-  !*** ../../jinge/lib/core/index.js ***!
-  \*************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/index.js":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/index.js ***!
+  \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1758,12 +1759,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "isComponent": () => (/* reexport safe */ _component__WEBPACK_IMPORTED_MODULE_1__.isComponent),
 /* harmony export */   "textRenderFn": () => (/* reexport safe */ _render_fns__WEBPACK_IMPORTED_MODULE_3__.textRenderFn)
 /* harmony export */ });
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "../../jinge/lib/core/bootstrap.js");
-/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component */ "../../jinge/lib/core/component.js");
-/* harmony import */ var _messenger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./messenger */ "../../jinge/lib/core/messenger.js");
-/* harmony import */ var _render_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./render_fns */ "../../jinge/lib/core/render_fns.js");
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style */ "../../jinge/lib/core/style.js");
-/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./transition */ "../../jinge/lib/core/transition.js");
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/bootstrap.js");
+/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js");
+/* harmony import */ var _messenger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./messenger */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/messenger.js");
+/* harmony import */ var _render_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./render_fns */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/render_fns.js");
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/style.js");
+/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./transition */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/transition.js");
 
 
 
@@ -1775,10 +1776,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../jinge/lib/core/messenger.js":
-/*!*****************************************!*\
-  !*** ../../jinge/lib/core/messenger.js ***!
-  \*****************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/messenger.js":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/messenger.js ***!
+  \******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1848,10 +1849,10 @@ MESSENGER_LISTENERS;
 
 /***/ }),
 
-/***/ "../../jinge/lib/core/render_fns.js":
-/*!******************************************!*\
-  !*** ../../jinge/lib/core/render_fns.js ***!
-  \******************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/render_fns.js":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/render_fns.js ***!
+  \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1860,8 +1861,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "errorRenderFn": () => (/* binding */ errorRenderFn),
 /* harmony export */   "textRenderFn": () => (/* binding */ textRenderFn)
 /* harmony export */ });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
-/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component */ "../../jinge/lib/core/component.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
+/* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js");
 
 
 function emptyRenderFn(component) {
@@ -1888,17 +1889,17 @@ function textRenderFn(component, txtContent) {
 
 /***/ }),
 
-/***/ "../../jinge/lib/core/style.js":
-/*!*************************************!*\
-  !*** ../../jinge/lib/core/style.js ***!
-  \*************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/style.js":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/style.js ***!
+  \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "initStyle": () => (/* binding */ initStyle)
 /* harmony export */ });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
 
 const CSS = ".jg-hide{display:none!important}.jg-hide.jg-hide-enter,.jg-hide.jg-hide-leave{display:block!important}";
 let inited = false;
@@ -1921,10 +1922,10 @@ function initStyle() {
 
 /***/ }),
 
-/***/ "../../jinge/lib/core/transition.js":
-/*!******************************************!*\
-  !*** ../../jinge/lib/core/transition.js ***!
-  \******************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/transition.js":
+/*!*******************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/transition.js ***!
+  \*******************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -1985,10 +1986,10 @@ function getDuration(el) {
 
 /***/ }),
 
-/***/ "../../jinge/lib/index.js":
-/*!********************************!*\
-  !*** ../../jinge/lib/index.js ***!
-  \********************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js ***!
+  \*********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2078,10 +2079,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "warn": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.warn),
 /* harmony export */   "watch": () => (/* reexport safe */ _vm__WEBPACK_IMPORTED_MODULE_3__.watch)
 /* harmony export */ });
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components */ "../../jinge/lib/components/index.js");
-/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core */ "../../jinge/lib/core/index.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util */ "../../jinge/lib/util/index.js");
-/* harmony import */ var _vm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vm */ "../../jinge/lib/vm/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/index.js");
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/index.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
+/* harmony import */ var _vm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vm */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/index.js");
 
 
 
@@ -2091,10 +2092,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../jinge/lib/util/array.js":
-/*!*************************************!*\
-  !*** ../../jinge/lib/util/array.js ***!
-  \*************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/array.js":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/array.js ***!
+  \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2131,10 +2132,10 @@ function arrayEqual(arr1, arr2) {
 
 /***/ }),
 
-/***/ "../../jinge/lib/util/common.js":
-/*!**************************************!*\
-  !*** ../../jinge/lib/util/common.js ***!
-  \**************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/common.js":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/common.js ***!
+  \***************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2160,10 +2161,10 @@ function disableWarning() {
 
 /***/ }),
 
-/***/ "../../jinge/lib/util/dom.js":
-/*!***********************************!*\
-  !*** ../../jinge/lib/util/dom.js ***!
-  \***********************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/dom.js":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/dom.js ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2185,7 +2186,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "setAttribute": () => (/* binding */ setAttribute),
 /* harmony export */   "setText": () => (/* binding */ setText)
 /* harmony export */ });
-/* harmony import */ var _type__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./type */ "../../jinge/lib/util/type.js");
+/* harmony import */ var _type__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./type */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/type.js");
 
 function setText($element, text) {
   if (!(0,_type__WEBPACK_IMPORTED_MODULE_0__.isString)(text)) {
@@ -2293,10 +2294,10 @@ function registerEvent($element, eventName, handler, capture) {
 
 /***/ }),
 
-/***/ "../../jinge/lib/util/index.js":
-/*!*************************************!*\
-  !*** ../../jinge/lib/util/index.js ***!
-  \*************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js":
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js ***!
+  \**************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2335,11 +2336,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "uid": () => (/* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_2__.uid),
 /* harmony export */   "warn": () => (/* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_2__.warn)
 /* harmony export */ });
-/* harmony import */ var _type__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./type */ "../../jinge/lib/util/type.js");
-/* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./array */ "../../jinge/lib/util/array.js");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common */ "../../jinge/lib/util/common.js");
-/* harmony import */ var _setimm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./setimm */ "../../jinge/lib/util/setimm.js");
-/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dom */ "../../jinge/lib/util/dom.js");
+/* harmony import */ var _type__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./type */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/type.js");
+/* harmony import */ var _array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./array */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/array.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/common.js");
+/* harmony import */ var _setimm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./setimm */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/setimm.js");
+/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dom */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/dom.js");
 
 
 
@@ -2350,10 +2351,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../jinge/lib/util/setimm.js":
-/*!**************************************!*\
-  !*** ../../jinge/lib/util/setimm.js ***!
-  \**************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/setimm.js":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/setimm.js ***!
+  \***************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2361,7 +2362,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "clearImmediate": () => (/* binding */ clearImmediate),
 /* harmony export */   "setImmediate": () => (/* binding */ setImmediate)
 /* harmony export */ });
-/* harmony import */ var _type__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./type */ "../../jinge/lib/util/type.js");
+/* harmony import */ var _type__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./type */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/type.js");
 
 let autoIncrement = 0;
 let nextHandle = 1;
@@ -2416,10 +2417,10 @@ const clearImmediate = win.clearImmediate || clearImmediateFallback;
 
 /***/ }),
 
-/***/ "../../jinge/lib/util/type.js":
-/*!************************************!*\
-  !*** ../../jinge/lib/util/type.js ***!
-  \************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/type.js":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/type.js ***!
+  \*************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2467,10 +2468,10 @@ function isPromise(obj) {
 
 /***/ }),
 
-/***/ "../../jinge/lib/vm/common.js":
-/*!************************************!*\
-  !*** ../../jinge/lib/vm/common.js ***!
-  \************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js ***!
+  \*************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2485,7 +2486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "removeParent": () => (/* binding */ removeParent),
 /* harmony export */   "shiftParent": () => (/* binding */ shiftParent)
 /* harmony export */ });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
 
 const $$ = Symbol("$$");
 function isInnerObj(v) {
@@ -2549,20 +2550,20 @@ function shiftParent(child, parent, property, delta) {
 
 /***/ }),
 
-/***/ "../../jinge/lib/vm/core.js":
-/*!**********************************!*\
-  !*** ../../jinge/lib/vm/core.js ***!
-  \**********************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/core.js":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/core.js ***!
+  \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ViewModelCoreImpl": () => (/* binding */ ViewModelCoreImpl)
 /* harmony export */ });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node */ "../../jinge/lib/vm/node.js");
-/* harmony import */ var _notify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notify */ "../../jinge/lib/vm/notify.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/node.js");
+/* harmony import */ var _notify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notify */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/notify.js");
 
 
 
@@ -2714,10 +2715,10 @@ class ViewModelCoreImpl {
 
 /***/ }),
 
-/***/ "../../jinge/lib/vm/index.js":
-/*!***********************************!*\
-  !*** ../../jinge/lib/vm/index.js ***!
-  \***********************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/index.js":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/index.js ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2747,11 +2748,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "vm": () => (/* reexport safe */ _proxy__WEBPACK_IMPORTED_MODULE_4__.vm),
 /* harmony export */   "watch": () => (/* reexport safe */ _proxy__WEBPACK_IMPORTED_MODULE_4__.watch)
 /* harmony export */ });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core */ "../../jinge/lib/vm/core.js");
-/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node */ "../../jinge/lib/vm/node.js");
-/* harmony import */ var _notify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notify */ "../../jinge/lib/vm/notify.js");
-/* harmony import */ var _proxy__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./proxy */ "../../jinge/lib/vm/proxy.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/core.js");
+/* harmony import */ var _node__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/node.js");
+/* harmony import */ var _notify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notify */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/notify.js");
+/* harmony import */ var _proxy__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./proxy */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/proxy.js");
 
 
 
@@ -2762,10 +2763,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "../../jinge/lib/vm/node.js":
-/*!**********************************!*\
-  !*** ../../jinge/lib/vm/node.js ***!
-  \**********************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/node.js":
+/*!***********************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/node.js ***!
+  \***********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2775,8 +2776,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "loopCreateNode": () => (/* binding */ loopCreateNode),
 /* harmony export */   "loopGetNode": () => (/* binding */ loopGetNode)
 /* harmony export */ });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _notify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notify */ "../../jinge/lib/vm/notify.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _notify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notify */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/notify.js");
 
 
 function loopCreateNode(parentNode, propertyPath, level = 0) {
@@ -2844,10 +2845,10 @@ function loopClearNode(node) {
 
 /***/ }),
 
-/***/ "../../jinge/lib/vm/notify.js":
-/*!************************************!*\
-  !*** ../../jinge/lib/vm/notify.js ***!
-  \************************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/notify.js":
+/*!*************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/notify.js ***!
+  \*************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2857,8 +2858,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "loopHandle": () => (/* binding */ loopHandle),
 /* harmony export */   "loopNotify": () => (/* binding */ loopNotify)
 /* harmony export */ });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "../../jinge/lib/vm/common.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
 
 
 const handleTasks = /* @__PURE__ */ new Map();
@@ -2936,10 +2937,10 @@ function loopNotify(vm, propertyPath, immediate, level = 0) {
 
 /***/ }),
 
-/***/ "../../jinge/lib/vm/proxy.js":
-/*!***********************************!*\
-  !*** ../../jinge/lib/vm/proxy.js ***!
-  \***********************************/
+/***/ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/proxy.js":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/proxy.js ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2951,9 +2952,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "vm": () => (/* binding */ vm),
 /* harmony export */   "watch": () => (/* binding */ watch)
 /* harmony export */ });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./core */ "../../jinge/lib/vm/core.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js");
+/* harmony import */ var _core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./core */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/core.js");
 
 
 
@@ -3422,7 +3423,7 @@ var __webpack_exports__ = {};
   !*** ./index.js ***!
   \******************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
+/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js");
 /* harmony import */ var _app_c__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.c */ "./app.c.js");
 
 

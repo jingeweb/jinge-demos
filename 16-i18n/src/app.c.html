@@ -1,27 +1,32 @@
+
 <!-- import { Printer } from './printer.c' -->
 <p>
-  <select e:value="locale" on:change="changeLocale($event.target.value)">
+  <select :value="locale" on:change="changeLocale($event.target.value)">
     <option disabled>
       请选择语言
     </option>
-    <for e:loop="locales" vm:each>
+    <for :loop="locales" vm:each>
     <option value="${each.locale}">${each.name}</option>
     </for>
   </select>
+  <button style="margin-left: 16px" on:click="test">测试</button>
 </p>
 
-<for e:loop="boys" vm:each="boy">
+<for :loop="boys" vm:each="boy">
   <div>
-    <p data-xx="你好，世界！">你好，世界！</p>
-    <p data-yy="你好，${boy.name}">你好，${boy.name}</p>
+    <p data-xx="你好，世界！" data-yy="你好，${boy.name}">你好，世界！</p>
+    <p>你好，${boy.name}</p>
   </div>
 </for>
 
+<div>${tt}</div>
 <Printer/>
 <Printer message="春江潮水连海平，海上明${moon}共潮生"/>
-<!-- 可以主动通过 _t 这个 tag 来包裹需要整体处理的多语言文案 -->
-<_t>你好<Printer/></_t>
+<Printer message="你好，${boy.name}！"/>
+
 <div>
-  <_t><p>多语言支持不同的DOM结构，比如这里是<span style="color: red;">红色的中文</span></p></_t>
+  <switch-locale>
+    <p slot-pass:zh_cn>使用 &lt;switch-locale&gt; 进行高级控制，比如这里是<span style="color: red;">红色的中文</span></p>
+    <p slot-pass:en>use &lt;switch-locale&gt; to manually advanced control, for example, here is <span style="color: blue;">blue English</span></p>
+  </switch-locale>
 </div>
-<Printer _t:message="你好，${boy.name}！"/>

@@ -9,9 +9,6 @@ export class Printer extends Component {
   constructor(attrs) {
     super(attrs);
     this.message = attrs.message;
-    
-    this._el = true;
-    this.__i18nWatch(() => this._up);
   }
 
   get message() {

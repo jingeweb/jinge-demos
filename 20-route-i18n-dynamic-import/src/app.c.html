@@ -1,22 +1,25 @@
-<!-- import { Printer } from './components/printer.c' -->
+<!-- 
+  import { Printer } from './components/printer.c';
+  import style from './app.module.scss';
+-->
 <p>
   <select e:value="locale" on:change="changeLocale($event.target.value)">
     <option disabled>
-      <_t>请选择语言</_t>
+      请选择语言
     </option>
     <for e:loop="locales" vm:each>
     <option value="${each.locale}">${each.name}</option>
     </for>
   </select>
 </p>
-<!-- <_t>这个示例整合了多语言、路由和模块按需动态加载能力。</_t> -->
-<p><Printer _t:message="这个示例整合了多语言、路由和模块按需动态加载能力。"/></p>
-<p><_t>你好，世界！</_t></p>
+<!-- 这个示例整合了多语言、路由和模块按需动态加载能力。 -->
+<p><Printer message="这个示例整合了多语言、路由和模块按需动态加载能力。"/></p>
+<p>你好，世界！</p>
 <router router="hash" e:routes="_routes" e:baseHref="locale">
-  <div class="nav">
-    <router-link _t:text="模块 A" active="active" to="/a"/>
-    <router-link _t:text="模块 B" active="active" to="/b"/>
-    <router-link _t:text="模块 C" active="active" to="/c"/>
+  <div :class="style.nav">
+    <router-link text="模块 A" active="active" to="/a"/>
+    <router-link text="模块 B" active="active" to="/b"/>
+    <router-link text="模块 C" active="active" to="/c"/>
   </div>
   <div class="content">
     <router-view/>

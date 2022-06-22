@@ -1,41 +1,42 @@
-import {
-  Component,
-  vm,
-  _t,
-  i18n
-} from 'jinge';
+import { Component, vm } from 'jinge';
+import { getLocale, setLocale, watchForComponent } from 'jinge-i18n';
 
 import _tpl from './app.c.html';
+import locales from './locales';
 
 
 export default class App extends Component {
-  static template = _tpl;
-
+  static get template() {
+    return _tpl;
+  }
   constructor(attrs) {
     super(attrs);
-    this.locale = i18n.locale;
-    this.locales = vm([{
-      name: '简体中文',
-      locale: 'zh_cn'
-    }, {
-      name: 'English',
-      locale: 'en'
-    }]);
+    this.locale = getLocale();
+    this.locales = vm(locales);
     
-    this.__i18nWatch(() => {
-      this.moon = _t('月');
+    watchForComponent(this, () => {
+      this.moon = '月';
       this.boys = vm([{
-        name: _t('大葛')
+        name: '大葛'
       }, {
-        name: _t('小葛')
+        name: '小葛'
       }]);
       this.boy = vm({
-        name: _t('小葛')
-      })
+        name: '小葛',
+        age: 30
+      });
+      this.uptt();
     }, true);
   }
-
+  uptt() {
+    this.tt = `你好呀，${this.boy.age}岁的${this.boy.name}。`;
+  }
+  test() {
+    this.boy.age++;
+    this.boy.name = '小葛' + Math.random().toFixed(4);
+    this.uptt();
+  }
   changeLocale(locale) {
-    i18n.switch(locale);
+    setLocale(locale);
   }
 }

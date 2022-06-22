@@ -4,24 +4,27 @@
   "description": "basic demo for jinge",
   "main": "index.js",
   "scripts": {
-    "build-dev": "webpack --config ./webpack.config.js",
-    "build": "PROD=true npm run build-dev",
+    "i18n:scan": "jinge-i18n extract --scan src --locale en",
+    "i18n:gen": "jinge-i18n generate",
+    "build-dev": "rm -rf dist && webpack --config ./webpack.config.js",
+    "build": "MINIMIZE=true npm run build-dev",
     "start": "webpack-dev-server --config ./webpack.config.js"
   },
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "jinge": "^3.1.0",
-    "jinge-router": "^3.1.0"
+    "jinge": "^3.2.1",
+    "jinge-compiler": "^3.2.1",
+    "jinge-i18n": "^3.2.1",
+    "jinge-router": "^3.2.1"
   },
   "devDependencies": {
     "css-loader": "^6.7.1",
-    "jinge-compiler": "^3.1.2",
-    "mini-css-extract-plugin": "^2.6.0",
-    "sass": "^1.52.1",
-    "sass-loader": "^12.6.0",
-    "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.9.1"
+    "mini-css-extract-plugin": "^2.6.1",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
   }
 }

@@ -6,7 +6,15 @@
 </head>
 <body>
 <div id="root-app"></div>
-<script src="dist/bundle.zh_cn.js"></script>
+<script>
+(function() {
+  const m = location.href.match(/\/(zh_cn|en)\//);
+  if (!m) {
+    history.replaceState(null, '', location.pathname + '#/zh_cn/');
+  }
+  window.I18N_DEFAULT_LOCALE = m?.[1] || 'zh_cn';
+})();
+</script>
 <script src="dist/bundle.js"></script>
 </body>
 </html>

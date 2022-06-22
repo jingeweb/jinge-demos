@@ -1,22 +1,11 @@
-import {
-  Component
-} from 'jinge';
+import { Component } from 'jinge';
+import _tpl from './printer.c.html';
 
 export class Printer extends Component {
-  static get template() {
-    return `
-<if e:expect="message">
-<p slot-pass:default>\${message}</p>
-<p slot-pass:else><_t>春江花月夜</_t></p>
-</if>`;
-  }
-
+  static template = _tpl;
   constructor(attrs) {
     super(attrs);
     this.message = attrs.message;
-    
-    this._el = true;
-    this.__i18nWatch(() => this._up);
   }
 
   get message() {
