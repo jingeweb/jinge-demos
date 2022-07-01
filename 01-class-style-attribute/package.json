@@ -1,0 +1,22 @@
+{
+  "name": "jinge-demo-class-style",
+  "version": "1.0.0",
+  "description": "basic demo for jinge",
+  "main": "index.js",
+  "scripts": {
+    "build-dev": "webpack --config ./webpack.config.js",
+    "build": "MINIMIZE=true npm run build-dev",
+    "start": "webpack-dev-server --config ./webpack.config.js"
+  },
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "jinge": "^3.2.2",
+    "jinge-compiler": "^3.2.2"
+  },
+  "devDependencies": {
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  }
+}

@@ -1,0 +1,15 @@
+<!--
+  import { A } from './a.c';
+  import { B } from './b.c';
+  import { C } from './c.c';
+-->
+<div class="red">class="red"</div>
+<div :class="{ red: red }">:class="{ red: red }"<button on:click="red = !red">TEST</button></div>
+<div :class="['blue', {bold: bold}]">:class="['red', {bold: bold}]"<button on:click="bold=!bold">TEST</button></div>
+<div style="color: red; font-size: ${fsize || 16}px;">style="color: red; font-size: \${fsize}px;<button on:click="fsize = (fsize || 16) + 1">TEST</button></div>
+<div :style="{ color: 'red', fontSize: fsize }">:style="{ color: 'red', fontSize: fsize }"<button on:click="fsize = (fsize || 16) - 1">TEST</button></div>
+<div :style="{ color: clr }">:style="{ color: clr }<button on:click="clr = getClr()">TEST</button></div>
+
+<A class="${red ? 'red' : ''}" />
+<B class="italic" />
+<C :class="{ bold: bold, red: red }" :style="{color: clr, fontSize: fsize}" />
