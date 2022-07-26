@@ -28,7 +28,7 @@
     </if>
   </p>
   <p>
-    <if e:expect="n > 5" on:branch-switched="log('if updated', $args)">
+    <if e:expect="n > 5" on:branch-switched="log('if updated', ...$args)">
     <span slot-pass:default>It's greater than 5.</span>
     <span slot-pass:else>It's less or equal than 5.</span>
     </if>
@@ -44,7 +44,7 @@
 <h2>Switch-Case</h2>
 <div>
   <p>
-  <switch e:test="n" on:branch-switched="log('switch updated', $args)">
+  <switch e:test="n" on:branch-switched="log('switch updated', ...$args)">
   <_slot slot-pass:0>零</_slot>
   <_slot slot-pass:3>三</_slot>
   <p slot-pass:8>八</p>
