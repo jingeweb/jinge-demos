@@ -52,24 +52,10 @@ class App extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
   }
   constructor(args) {
     super(args);const _jg0 = this[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
-    // this.aa = 'app-aa';
-    // this.bb = 'app-bb';
+    _jg0.aa = 'app-aa';
+    _jg0.bb = 'app-bb';
     _jg0.store = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.vm)({ count: 0 });
     _jg0.__setContext('STORE', _jg0.store);
-    _jg0.t = true;
-    let i = 0;
-    const int = setInterval(() => {
-      i++;
-      if (i >= 10) {
-        clearInterval(int);
-        _jg0.t = false;
-      } else {
-        _jg0.t = !_jg0.t;
-      }
-    }, 100);
-  }
-  test() {
-    console.log(this.store);
   }
 }
 
@@ -307,10 +293,10 @@ __webpack_require__.r(__webpack_exports__);
                       (() => {
                         const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
                         const fn_0 = () => {
-                          (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `${vm_0.aa},${vm_2.bb}`);
+                          (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `${vm_1.aa},${vm_2.bb}`);
                         };
                         fn_0();
-                        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["aa"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+                        vm_1[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["aa"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
                         vm_2[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["bb"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
                         component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
                         return el;
@@ -319,25 +305,7 @@ __webpack_require__.r(__webpack_exports__);
                     }
                   }
                 },
-                k: undefined,
-                t: undefined,
-                y: undefined
               });
-              const fn_0 = () => {
-                attrs.k = vm_1.aa;
-              };
-              fn_0();
-              vm_1[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["aa"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-              const fn_1 = () => {
-                attrs.t = vm_0.oo;
-              };
-              fn_1();
-              vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["oo"], fn_1, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-              const fn_2 = () => {
-                attrs.y = vm_2.bb;
-              };
-              fn_2();
-              vm_2[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["bb"], fn_2, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
               const el = _b_c__WEBPACK_IMPORTED_MODULE_2__.B.create(attrs);
               component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
               return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
