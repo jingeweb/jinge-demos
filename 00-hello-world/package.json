@@ -13,8 +13,8 @@
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "jinge": "^3.2.1",
-    "jinge-compiler": "^3.2.1",
+    "jinge": "^3.2.2",
+    "jinge-compiler": "^3.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "vue": "^3.2.37"

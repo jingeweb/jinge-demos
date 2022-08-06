@@ -25,6 +25,10 @@
 <Printer message="你好，${boy.name}！"/>
 
 <div>
+  对于 inline tag，包括<code>code</code>, <span style="color: blue">span</span>, <small>small</small>, <strong>strong</strong><bold style="font-size: 500">bold</bold>, <i style="font-size:500;font-style:italic">i</i>, <code>a</code>这几个，如果其不包含任何需要翻译的属性（Attribute），则可以<a href="https://baidu.com" target="_blank">合并</a>到一行文本进行抽取和翻译。
+</div>
+
+<div>
   <switch-locale>
     <p slot-pass:zh_cn>使用 &lt;switch-locale&gt; 进行高级控制，比如这里是<span style="color: red;">红色的中文</span></p>
     <p slot-pass:en>use &lt;switch-locale&gt; to manually advanced control, for example, here is <span style="color: blue;">blue English</span></p>

@@ -6,7 +6,7 @@
   "scripts": {
     "build-dev": "webpack --config ./webpack.config.js",
     "build": "MINIMIZE=true npm run build-dev",
-    "i18n:scan": "jinge-i18n extract --scan=src --locale en zh_tr",
+    "i18n:scan": "jinge-i18n extract --scan src/**/*.{js,html} --locale en zh_tr",
     "i18n:gen": "jinge-i18n generate",
     "start": "webpack-dev-server --config ./webpack.config.js"
   },
@@ -18,8 +18,8 @@
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
-    "jinge": "^3.2.1",
-    "jinge-compiler": "^3.2.1",
+    "jinge": "^3.2.2",
+    "jinge-compiler": "^3.2.2",
     "jinge-i18n": "^3.2.1"
   }
 }
