@@ -2,23 +2,23 @@
 /******/ 	"use strict";
 var __webpack_exports__ = {};
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/type.js
+;// CONCATENATED MODULE: ../../jinge/lib/util/type.js
 function typeOf(v) {
   return typeof v;
 }
-function type_isObject(v) {
+function isObject(v) {
   return v !== null && typeOf(v) === "object";
 }
 function type_isString(v) {
   return typeOf(v) === "string";
 }
-function isNumber(v) {
+function type_isNumber(v) {
   return typeOf(v) === "number" && !Number.isNaN(v) && Number.isFinite(v);
 }
 function isUndefined(v) {
   return typeOf(v) === "undefined";
 }
-function isArray(v) {
+function type_isArray(v) {
   return Array.isArray(v);
 }
 function isBoolean(v) {
@@ -28,12 +28,12 @@ function isFunction(v) {
   return typeOf(v) === "function";
 }
 function isPromise(obj) {
-  return type_isObject(obj) && isFunction(obj.then);
+  return isObject(obj) && isFunction(obj.then);
 }
 
 
 //# sourceMappingURL=type.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/array.js
+;// CONCATENATED MODULE: ../../jinge/lib/util/array.js
 function arrayRemove(array, item) {
   const idx = array.indexOf(item);
   if (idx < 0)
@@ -59,7 +59,7 @@ function arrayEqual(arr1, arr2) {
 
 
 //# sourceMappingURL=array.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/common.js
+;// CONCATENATED MODULE: ../../jinge/lib/util/common.js
 let UID_INC = 0;
 function uid() {
   return Date.now().toString(32) + "-" + Math.floor(Math.random() * 16777215).toString(32) + "-" + (UID_INC++).toString(32);
@@ -74,7 +74,7 @@ function disableWarning() {
 
 
 //# sourceMappingURL=common.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/setimm.js
+;// CONCATENATED MODULE: ../../jinge/lib/util/setimm.js
 
 let autoIncrement = 0;
 let nextHandle = 1;
@@ -112,11 +112,15 @@ const win = typeof window === "undefined" ? globalThis : window;
 if (isUndefined(win.setImmediate)) {
   tasksByHandle = /* @__PURE__ */ new Map();
   const messagePrefix = "setImmediate$" + (autoIncrement++).toString(32) + "$";
-  win.addEventListener("message", (event) => {
-    if (event.source === window && type_isString(event.data) && event.data.startsWith(messagePrefix)) {
-      runIfPresent(Number(event.data.slice(messagePrefix.length)));
-    }
-  }, false);
+  win.addEventListener(
+    "message",
+    (event) => {
+      if (event.source === window && type_isString(event.data) && event.data.startsWith(messagePrefix)) {
+        runIfPresent(Number(event.data.slice(messagePrefix.length)));
+      }
+    },
+    false
+  );
   registerImmediate = function(handle) {
     win.postMessage(messagePrefix + handle, "*");
   };
@@ -126,16 +130,16 @@ const clearImmediate = win.clearImmediate || clearImmediateFallback;
 
 
 //# sourceMappingURL=setimm.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/dom.js
+;// CONCATENATED MODULE: ../../jinge/lib/util/dom.js
 
 function setText($element, text) {
-  if (!type_isString(text)) {
+  if (isObject(text)) {
     text = JSON.stringify(text);
   }
   $element.textContent = text;
 }
 function createTextNode(text = "") {
-  return document.createTextNode(type_isString(text) ? text : JSON.stringify(text));
+  return document.createTextNode(isObject(text) ? JSON.stringify(text) : text);
 }
 function dom_createFragment(children) {
   const f = document.createDocumentFragment();
@@ -145,7 +149,9 @@ function dom_createFragment(children) {
   return f;
 }
 function appendChildren($parent, children) {
-  $parent.appendChild(children.length > 1 ? dom_createFragment(children) : type_isString(children[0]) ? createTextNode(children[0]) : children[0]);
+  $parent.appendChild(
+    children.length > 1 ? dom_createFragment(children) : type_isString(children[0]) ? createTextNode(children[0]) : children[0]
+  );
 }
 function replaceChildren($parent, children, oldNode) {
   $parent.replaceChild(dom_createFragment(children), oldNode);
@@ -153,7 +159,7 @@ function replaceChildren($parent, children, oldNode) {
 function removeAttribute($ele, attrName) {
   if (!attrName)
     return;
-  if (type_isObject(attrName)) {
+  if (isObject(attrName)) {
     for (const attrN in attrName) {
       removeAttribute($ele, attrN);
     }
@@ -161,12 +167,12 @@ function removeAttribute($ele, attrName) {
   }
   return $ele.removeAttribute(attrName);
 }
-function setAttribute($ele, attrName, attrValue) {
+function dom_setAttribute($ele, attrName, attrValue) {
   if (!attrName)
     return;
-  if (type_isObject(attrName)) {
+  if (isObject(attrName)) {
     for (const attrN in attrName) {
-      setAttribute($ele, attrN, attrName[attrN]);
+      dom_setAttribute($ele, attrN, attrName[attrN]);
     }
     return;
   }
@@ -180,7 +186,7 @@ function _createEl($el, attrs, children) {
   if (attrs) {
     for (const an in attrs) {
       if (an && !isUndefined(attrs[an])) {
-        setAttribute($el, an, attrs[an]);
+        dom_setAttribute($el, an, attrs[an]);
       }
     }
   }
@@ -228,10 +234,92 @@ function registerEvent($element, eventName, handler, capture) {
     dom_removeEvent($element, eventName, handler);
   };
 }
+function class2str(className) {
+  if (!className)
+    return className;
+  if (isString(className)) {
+    return className.trim();
+  }
+  if (isArray(className)) {
+    const clist = [];
+    className.forEach((cn) => {
+      const seg = class2str(cn);
+      seg && clist.push(seg);
+    });
+    return clist.join(" ").trim();
+  }
+  return Object.keys(className).filter((k) => !!className[k]).join(" ").trim();
+}
+function setClassAttribute($ele, className) {
+  className = class2str(className);
+  if (!className)
+    $ele.removeAttribute("class");
+  else
+    $ele.setAttribute("class", className);
+}
+const UNITLESS = /* @__PURE__ */ new Set([
+  "box-flex",
+  "box-flex-group",
+  "column-count",
+  "flex",
+  "flex-grow",
+  "flex-positive",
+  "flex-shrink",
+  "flex-negative",
+  "font-weight",
+  "line-clamp",
+  "line-height",
+  "opacity",
+  "order",
+  "orphans",
+  "tab-size",
+  "widows",
+  "z-index",
+  "zoom",
+  "fill-opacity",
+  "stroke-dashoffset",
+  "stroke-opacity",
+  "stroke-width"
+]);
+function style2str(style) {
+  if (!style)
+    return style;
+  if (isString(style))
+    return style.trim();
+  if (Array.isArray(style)) {
+    const slist = [];
+    style.forEach((sty) => {
+      const seg = style2str(sty);
+      seg && slist.push(seg);
+    });
+    return slist.join("").trim();
+  }
+  const segs = [];
+  Object.keys(style).forEach((k) => {
+    let v = style[k];
+    if (!v && v !== 0)
+      return;
+    k = k.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
+    if (isNumber(v) && !UNITLESS.has(k)) {
+      v = `${v}px`;
+    } else {
+      v = v.toString();
+    }
+    segs.push(`${k}:${v};`);
+  });
+  return segs.join("").trim();
+}
+function setStyleAttribute($ele, style) {
+  style = style2str(style);
+  if (!style)
+    $ele.removeAttribute("style");
+  else
+    $ele.setAttribute("style", style);
+}
 
 
 //# sourceMappingURL=dom.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js
+;// CONCATENATED MODULE: ../../jinge/lib/util/index.js
 
 
 
@@ -239,7 +327,7 @@ function registerEvent($element, eventName, handler, capture) {
 
 
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js
+;// CONCATENATED MODULE: ../../jinge/lib/vm/common.js
 
 const common_$$ = Symbol("$$");
 function isInnerObj(v) {
@@ -247,7 +335,7 @@ function isInnerObj(v) {
   return clazz === RegExp || clazz === Date || clazz === Boolean;
 }
 function isViewModel(v) {
-  return type_isObject(v) && common_$$ in v;
+  return isObject(v) && common_$$ in v;
 }
 function isPublicProperty(v) {
   return type_isString(v) && v.charCodeAt(0) !== 95;
@@ -265,7 +353,7 @@ function getPropertyName(v) {
   return v.toString();
 }
 function parsePropertyPath(propertyPath) {
-  return type_isString(propertyPath) ? propertyPath.indexOf(".") > 0 ? propertyPath.split(".") : [propertyPath] : isArray(propertyPath) ? propertyPath : [propertyPath];
+  return type_isString(propertyPath) ? propertyPath.indexOf(".") > 0 ? propertyPath.split(".") : [propertyPath] : type_isArray(propertyPath) ? propertyPath : [propertyPath];
 }
 function addParent(child, parent, property) {
   if (!child.__parents) {
@@ -300,7 +388,7 @@ function shiftParent(child, parent, property, delta) {
 
 
 //# sourceMappingURL=common.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/notify.js
+;// CONCATENATED MODULE: ../../jinge/lib/vm/notify.js
 
 
 const handleTasks = /* @__PURE__ */ new Map();
@@ -375,7 +463,7 @@ function loopNotify(vm, propertyPath, immediate, level = 0) {
 
 
 //# sourceMappingURL=notify.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/node.js
+;// CONCATENATED MODULE: ../../jinge/lib/vm/node.js
 
 
 function loopCreateNode(parentNode, propertyPath, level = 0) {
@@ -440,7 +528,7 @@ function loopClearNode(node) {
 
 
 //# sourceMappingURL=node.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/core.js
+;// CONCATENATED MODULE: ../../jinge/lib/vm/core.js
 
 
 
@@ -542,7 +630,7 @@ class ViewModelCoreImpl {
           return;
         }
         const v = target[prop];
-        if (!type_isObject(v) || !(common_$$ in v)) {
+        if (!isObject(v) || !(common_$$ in v)) {
           return;
         }
         removeParent(v[common_$$], this, prop);
@@ -551,7 +639,7 @@ class ViewModelCoreImpl {
     }
     Object.getOwnPropertyNames(target).forEach((prop) => {
       const v = target[prop];
-      if (!type_isObject(v) || !(common_$$ in v)) {
+      if (!isObject(v) || !(common_$$ in v)) {
         return;
       }
       removeParent(v[common_$$], this, prop);
@@ -577,7 +665,7 @@ class ViewModelCoreImpl {
     const hook = this.__related.get(origin);
     if (!hook)
       return;
-    const isPropArray = isArray(propertyPath);
+    const isPropArray = type_isArray(propertyPath);
     const i = hook.findIndex((it) => {
       return handler === it.handler && (isPropArray ? arrayEqual(propertyPath, it.prop) : propertyPath === it.prop);
     });
@@ -589,7 +677,7 @@ class ViewModelCoreImpl {
 
 
 //# sourceMappingURL=core.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/proxy.js
+;// CONCATENATED MODULE: ../../jinge/lib/vm/proxy.js
 
 
 
@@ -635,14 +723,14 @@ function __propSetHandler(target, prop, value, setFn, assertVM = true) {
   if (oldVal === value && !isUndefined(value)) {
     return true;
   }
-  let newValIsVM = type_isObject(value) && !isInnerObj(value);
+  let newValIsVM = isObject(value) && !isInnerObj(value);
   if (newValIsVM) {
     newValIsVM = common_$$ in value;
     if (assertVM && !newValIsVM) {
       throw new Error(`public property "${prop.toString()}" of ViewModel must also be ViewModel`);
     }
   }
-  if (type_isObject(oldVal) && common_$$ in oldVal) {
+  if (isObject(oldVal) && common_$$ in oldVal) {
     removeParent(oldVal[common_$$], target[common_$$], prop);
   }
   setFn(target, prop, value);
@@ -677,7 +765,10 @@ function attrsPropSetHandler(target, prop, value) {
 }
 function componentPropSetHandler(target, prop, value) {
   if (!(common_$$ in target)) {
-    warn(`call setter "${prop.toString()}" after destroied, resources such as setInterval maybe not released before destroy. component:`, target);
+    warn(
+      `call setter "${prop.toString()}" after destroied, resources such as setInterval maybe not released before destroy. component:`,
+      target
+    );
     return true;
   }
   return __propSetHandler(target, prop, value, __componentPropSetFn);
@@ -693,7 +784,7 @@ function arrayNotifyItems(target, idxStart, idxEnd) {
   }
 }
 function arrayLengthSetHandler(target, value) {
-  if (!isNumber(value)) {
+  if (!type_isNumber(value)) {
     throw new Error("bad argument. array length must be validate number.");
   }
   const oldLen = target.length;
@@ -771,7 +862,7 @@ function _arrayShiftOrUnshiftProp(arr, delta) {
   });
 }
 function _argAssert(arg, fn) {
-  if (type_isObject(arg)) {
+  if (isObject(arg)) {
     if (!(common_$$ in arg)) {
       throw new Error(`argument passed to Array.${fn} must be ViewModel if the array is ViewModel`);
     } else {
@@ -926,10 +1017,13 @@ const ArrayProxyHandler = {
 };
 function wrapProxy(target, isArr) {
   const vmCore = new ViewModelCoreImpl(target);
-  return vmCore.proxy = new Proxy(target, isArr ? ArrayProxyHandler : isPromise(target) ? PromiseProxyHandler : ObjectProxyHandler);
+  return vmCore.proxy = new Proxy(
+    target,
+    isArr ? ArrayProxyHandler : isPromise(target) ? PromiseProxyHandler : ObjectProxyHandler
+  );
 }
 function wrapProp(parent, child, property) {
-  if (!type_isObject(child) || isInnerObj(child)) {
+  if (!isObject(child) || isInnerObj(child)) {
     return;
   }
   if (!(common_$$ in child)) {
@@ -938,11 +1032,11 @@ function wrapProp(parent, child, property) {
   addParent(child[common_$$], parent[common_$$], property);
 }
 function createViewModel(target) {
-  if (type_isObject(target)) {
+  if (isObject(target)) {
     if (isInnerObj(target) || common_$$ in target) {
       return target;
     }
-    const isArr = isArray(target);
+    const isArr = type_isArray(target);
     const rtn = wrapProxy(target, isArr);
     if (isArr) {
       for (let i = 0; i < target.length; i++) {
@@ -977,8 +1071,8 @@ function createComponent(component) {
     set: componentPropSetHandler
   });
 }
-function proxy_vm(target) {
-  if (!type_isObject(target)) {
+function vm(target) {
+  if (!isObject(target)) {
     throw new Error("vm() target must be object or array.");
   }
   return createViewModel(target);
@@ -992,7 +1086,7 @@ function unwatch(vm2, propertyPath, handler) {
 
 
 //# sourceMappingURL=proxy.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/messenger.js
+;// CONCATENATED MODULE: ../../jinge/lib/core/messenger.js
 const MESSENGER_LISTENERS = Symbol("listeners");
 class Messenger {
   constructor(templateListeners) {
@@ -1052,7 +1146,7 @@ MESSENGER_LISTENERS;
 
 
 //# sourceMappingURL=messenger.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/style.js
+;// CONCATENATED MODULE: ../../jinge/lib/core/style.js
 
 const CSS = ".jg-hide{display:none!important}.jg-hide.jg-hide-enter,.jg-hide.jg-hide-leave{display:block!important}";
 let inited = false;
@@ -1072,7 +1166,7 @@ function initStyle() {
 
 
 //# sourceMappingURL=style.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js
+;// CONCATENATED MODULE: ../../jinge/lib/core/component.js
 var _a;
 
 
@@ -1095,24 +1189,24 @@ var ContextStates = /* @__PURE__ */ ((ContextStates2) => {
   return ContextStates2;
 })(ContextStates || {});
 const component_ = Symbol("__");
-function component_isComponent(v) {
+function isComponent(v) {
   return component_ in v;
 }
 function assertRenderResults(renderResults) {
-  if (!isArray(renderResults) || renderResults.length === 0) {
+  if (!type_isArray(renderResults) || renderResults.length === 0) {
     throw new Error("Render results of component is empty");
   }
   return renderResults;
 }
 function component_wrapAttrs(target) {
-  if (!type_isObject(target) || isArray(target)) {
+  if (!isObject(target) || type_isArray(target)) {
     throw new Error("attrs() traget must be plain object.");
   }
   return createAttributes(target);
 }
 class component_Component extends Messenger {
   constructor(attrs) {
-    if (!type_isObject(attrs) || !(common_$$ in attrs)) {
+    if (!isObject(attrs) || !(common_$$ in attrs)) {
       throw new Error("Attributes passed to Component constructor must be ViewModel. See https://[todo]");
     }
     const compilerAttrs = attrs[component_] || {};
@@ -1131,9 +1225,17 @@ class component_Component extends Messenger {
       upNextMap: null,
       deregFns: null
     };
+    const $proxy = this[common_$$].proxy;
+    ["class", "style"].forEach((attrN) => {
+      if (!(attrN in attrs))
+        return;
+      const f = () => $proxy[attrN] = attrs[attrN];
+      f();
+      attrs[common_$$].__watch(attrN, f);
+    });
   }
   static create(attrs) {
-    const isObj = type_isObject(attrs);
+    const isObj = isObject(attrs);
     const vmAttrs = isObj && common_$$ in attrs ? attrs : component_wrapAttrs(isObj ? attrs : {});
     return new this(vmAttrs)[common_$$].proxy;
   }
@@ -1145,9 +1247,14 @@ class component_Component extends Messenger {
     deregs.add(deregisterFn);
   }
   __domAddListener($el, eventName, listener, capture) {
-    const deregEvtFn = registerEvent($el, eventName, ($event) => {
-      listener.call(this, $event);
-    }, capture);
+    const deregEvtFn = registerEvent(
+      $el,
+      eventName,
+      ($event) => {
+        listener.call(this, $event);
+      },
+      capture
+    );
     this.__addDeregisterFn(deregEvtFn);
     return () => {
       deregEvtFn();
@@ -1162,7 +1269,7 @@ class component_Component extends Messenger {
     if (!lis || lis.size === 0) {
       return;
     }
-    if (ignoredEventNames && !isArray(ignoredEventNames)) {
+    if (ignoredEventNames && !type_isArray(ignoredEventNames)) {
       targetEl = ignoredEventNames;
       ignoredEventNames = null;
     } else if (!targetEl) {
@@ -1176,29 +1283,34 @@ class component_Component extends Messenger {
         return;
       }
       handlers.forEach((opts, handler) => {
-        const deregFn = registerEvent(targetEl, eventName, opts && (opts.stop || opts.prevent) ? ($evt) => {
-          opts.stop && $evt.stopPropagation();
-          opts.prevent && $evt.preventDefault();
-          handler.call(this, $evt);
-        } : ($evt) => {
-          handler.call(this, $evt);
-        }, opts);
+        const deregFn = registerEvent(
+          targetEl,
+          eventName,
+          opts && (opts.stop || opts.prevent) ? ($evt) => {
+            opts.stop && $evt.stopPropagation();
+            opts.prevent && $evt.preventDefault();
+            handler.call(this, $evt);
+          } : ($evt) => {
+            handler.call(this, $evt);
+          },
+          opts
+        );
         this.__addDeregisterFn(deregFn);
       });
     });
   }
   get __transitionDOM() {
     const el = this[component_].rootNodes[0];
-    return component_isComponent(el) ? el.__transitionDOM : el;
+    return isComponent(el) ? el.__transitionDOM : el;
   }
   get __firstDOM() {
     const el = this[component_].rootNodes[0];
-    return component_isComponent(el) ? el.__firstDOM : el;
+    return isComponent(el) ? el.__firstDOM : el;
   }
   get __lastDOM() {
     const rns = this[component_].rootNodes;
     const el = rns[rns.length - 1];
-    return component_isComponent(el) ? el.__lastDOM : el;
+    return isComponent(el) ? el.__lastDOM : el;
   }
   __render() {
     const Clazz = this.constructor;
@@ -1249,7 +1361,7 @@ class component_Component extends Messenger {
         if (!refs)
           return;
         const rns = refs.get(info.ref);
-        if (isArray(rns)) {
+        if (type_isArray(rns)) {
           arrayRemove(rns, info.node || this);
         } else {
           refs.delete(info.ref);
@@ -1271,7 +1383,7 @@ class component_Component extends Messenger {
     });
     let $parent;
     this[component_].rootNodes.forEach((node) => {
-      if (component_isComponent(node)) {
+      if (isComponent(node)) {
         node.__destroy(removeDOM);
       } else if (removeDOM) {
         if (!$parent) {
@@ -1285,12 +1397,10 @@ class component_Component extends Messenger {
     this[component_].passedAttrs[common_$$].__notifiable = true;
     this[common_$$].__notifiable = true;
     this[component_].rootNodes.forEach((n) => {
-      if (component_isComponent(n))
+      if (isComponent(n))
         n.__handleAfterRender();
     });
     this[component_].nonRootCompNodes.forEach((n) => {
-      if (!component_isComponent(n))
-        debugger;
       n.__handleAfterRender();
     });
     this[component_].state = 1 /* RENDERED */;
@@ -1318,10 +1428,13 @@ class component_Component extends Messenger {
     if (ntMap.has(handler)) {
       return;
     }
-    ntMap.set(handler, setimm_setImmediate(() => {
-      ntMap.delete(handler);
-      handler.call(this);
-    }));
+    ntMap.set(
+      handler,
+      setimm_setImmediate(() => {
+        ntMap.delete(handler);
+        handler.call(this);
+      })
+    );
   }
   __update(first) {
   }
@@ -1335,13 +1448,15 @@ class component_Component extends Messenger {
     }
     if (key in this[component_].context) {
       if (!forceOverride) {
-        throw new Error(`Contenxt with key: ${key.toString()} is exist. Pass third argument forceOverride=true to override it.`);
+        throw new Error(
+          `Contenxt with key: ${key.toString()} is exist. Pass third argument forceOverride=true to override it.`
+        );
       }
     }
     this[component_].context[key] = value;
   }
   __getContext(key) {
-    return this[component_].context ? this[component_].context[key] : null;
+    return this[component_].context?.[key];
   }
   __setRef(ref, el, relatedComponent) {
     let rns = this[component_].refs;
@@ -1351,13 +1466,13 @@ class component_Component extends Messenger {
     let elOrArr = rns.get(ref);
     if (!elOrArr) {
       rns.set(ref, el);
-    } else if (isArray(elOrArr)) {
+    } else if (type_isArray(elOrArr)) {
       elOrArr.push(el);
     } else {
       elOrArr = [elOrArr, el];
       rns.set(ref, elOrArr);
     }
-    const isComp = component_isComponent(el);
+    const isComp = isComponent(el);
     if (!isComp && this === relatedComponent) {
       return;
     }
@@ -1373,9 +1488,11 @@ class component_Component extends Messenger {
   }
   __getRef(ref) {
     if (this[component_].state !== 1 /* RENDERED */) {
-      warn(`Warning: call __getRef before component '${this.constructor.name}' rendered will get nothing. see https://[TODO]`);
+      warn(
+        `Warning: call __getRef before component '${this.constructor.name}' rendered will get nothing. see https://[TODO]`
+      );
     }
-    return this[component_].refs ? this[component_].refs.get(ref) : null;
+    return this[component_].refs?.get(ref);
   }
   __afterRender() {
   }
@@ -1387,7 +1504,7 @@ component_Component[_a] = true;
 
 
 //# sourceMappingURL=component.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/transition.js
+;// CONCATENATED MODULE: ../../jinge/lib/core/transition.js
 var transition_TransitionStates = /* @__PURE__ */ ((TransitionStates2) => {
   TransitionStates2[TransitionStates2["ENTERING"] = 1] = "ENTERING";
   TransitionStates2[TransitionStates2["ENTERED"] = 2] = "ENTERED";
@@ -1437,31 +1554,29 @@ function getDuration(el) {
 
 
 //# sourceMappingURL=transition.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/class.js
+;// CONCATENATED MODULE: ../../jinge/lib/vm/index.js
 
 
 
 
-function loopOperateClass(el, isAddOperate, domClass) {
-  if (isComponent(el)) {
-    el[__].rootNodes.forEach((ce) => loopOperateClass(ce, isAddOperate, domClass));
-  } else if (isAddOperate) {
-    el.classList.add(domClass);
-  } else {
-    el.classList.remove(domClass);
-  }
-}
+
+
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ../../jinge/lib/components/class.js
+
+
+
+
+var ClassOpType = /* @__PURE__ */ ((ClassOpType2) => {
+  ClassOpType2[ClassOpType2["ADD"] = 0] = "ADD";
+  ClassOpType2[ClassOpType2["DEL"] = 1] = "DEL";
+  return ClassOpType2;
+})(ClassOpType || {});
 class class_ToggleClassComponent extends (/* unused pure expression or super */ null && (Component)) {
   constructor(attrs) {
-    if (!attrs || !isObject(attrs.class)) {
-      throw new Error('<toggle-class> component require "class" attribute to be Object.');
-    }
-    super(attrs);const _jg0 = this[$$_jg0402].proxy;const f2_jg0402 = () => {
-    _jg0.domClass = attrs.class; }; f2_jg0402(); attrs[$$_jg0402].__watch("class", f2_jg0402);const f3_jg0402 = () => {
-    _jg0.transition = !!attrs.transition; }; f3_jg0402(); attrs[$$_jg0402].__watch("transition", f3_jg0402);
-    _jg0._t = null;
-    _jg0._i = -1;
-    _jg0[$$].__watch("domClass.**", () => {
+    super(attrs);const _jg0 = this[$$_jg0402].proxy;const f1_jg0402 = () => {
+    _jg0.transition = attrs.transition !== false; }; f1_jg0402(); attrs[$$_jg0402].__watch("transition", f1_jg0402);
+    _jg0[$$].__watch("class", () => {
       _jg0.__updateIfNeed();
     });
   }
@@ -1471,54 +1586,65 @@ class class_ToggleClassComponent extends (/* unused pure expression or super */ 
     return rr;
   }
   __beforeDestroy() {
-    this._t = null;
+    this._ts = null;
   }
   __update(first) {
-    const el = this.transition ? this.__transitionDOM : null;
+    const el = this.__transitionDOM;
     if (el && el.nodeType !== Node.ELEMENT_NODE) {
       return;
     }
-    if (this.transition && !this._t) {
-      this._t = /* @__PURE__ */ new Map();
+    if (!this.transition) {
+      setAttribute(el, "class", this.class);
+      return;
     }
-    const cs = this.domClass;
-    Object.keys(cs).forEach((k) => {
-      const v = cs[k];
-      if (!this.transition) {
-        loopOperateClass(this, !!v, k);
-        return;
+    if (!this._ts) {
+      this._ts = /* @__PURE__ */ new Map();
+    }
+    const newClassList = new Set(this.class ? this.class.split(" ") : []);
+    if (first) {
+      newClassList.forEach((clz) => {
+        this._ts.set(clz, [TransitionStates.ENTERED, null]);
+        el.classList.add(clz);
+      });
+      this._cs = newClassList;
+      return;
+    }
+    const preClassList = this._cs;
+    const diffClassList = [];
+    newClassList.forEach((clz) => {
+      if (preClassList.has(clz)) {
+        preClassList.delete(clz);
+      } else {
+        diffClassList.push({ className: clz, type: 0 /* ADD */ });
       }
-      if (first) {
-        this._t.set(k, [
-          v ? TransitionStates.ENTERED : TransitionStates.LEAVED,
-          null
-        ]);
-        if (v) {
-          el.classList.add(k);
-        } else {
-          el.classList.remove(k);
-        }
-        return;
-      }
-      const t = this._t.get(k);
+    });
+    preClassList.forEach((clz) => {
+      diffClassList.push({ className: clz, type: 1 /* DEL */ });
+    });
+    this._cs = newClassList;
+    if (diffClassList.length === 0) {
+      return;
+    }
+    diffClassList.forEach(({ className, type }) => {
+      const isAdd = type === 0 /* ADD */;
+      let t = this._ts.get(className);
       if (!t) {
-        console.error("Unsupport <toogle-class> attribute. see https://todo");
+        t = [isAdd ? TransitionStates.LEAVED : TransitionStates.ENTERED, null];
+        this._ts.set(className, t);
+      }
+      if (isAdd && t[0] <= TransitionStates.ENTERED || !isAdd && t[0] >= TransitionStates.LEAVING) {
         return;
       }
-      const s = t[0];
-      if (v && s <= TransitionStates.ENTERED || !v && s >= TransitionStates.LEAVING) {
-        return;
-      }
-      if (s === (v ? TransitionStates.LEAVING : TransitionStates.ENTERING)) {
-        el.classList.remove(k + (v ? "-leave-active" : "-enter-active"));
-        el.classList.remove(k + (v ? "-leave" : "-enter"));
+      if (t && t[0] === (isAdd ? TransitionStates.LEAVING : TransitionStates.ENTERING)) {
+        el.classList.remove(className + (isAdd ? "-leave-active" : "-enter-active"));
+        el.classList.remove(className + (isAdd ? "-leave" : "-enter"));
         removeEvent(el, "transitionend", t[1]);
         removeEvent(el, "animationend", t[1]);
         t[1] = null;
-        this.__notify("transition", v ? "leave-cancelled" : "enter-cancelled", k, el);
+        this.__notify("transition", isAdd ? "leave-cancelled" : "enter-cancelled", className, el);
       }
-      const classOfStart = k + (v ? "-enter" : "-leave");
-      const classOfActive = k + (v ? "-enter-active" : "-leave-active");
+      const classOfStart = className + (isAdd ? "-enter" : "-leave");
+      const classOfActive = className + (isAdd ? "-enter-active" : "-leave-active");
       el.classList.add(classOfStart);
       getDurationType(el);
       el.classList.add(classOfActive);
@@ -1526,11 +1652,11 @@ class class_ToggleClassComponent extends (/* unused pure expression or super */ 
       if (!tsEndName) {
         el.classList.remove(classOfStart);
         el.classList.remove(classOfActive);
-        t[0] = v ? TransitionStates.ENTERED : TransitionStates.LEAVED;
-        if (v) {
-          el.classList.add(k);
+        t[0] = isAdd ? TransitionStates.ENTERED : TransitionStates.LEAVED;
+        if (isAdd) {
+          el.classList.add(className);
         } else {
-          el.classList.remove(k);
+          el.classList.remove(className);
         }
         return;
       }
@@ -1540,20 +1666,20 @@ class class_ToggleClassComponent extends (/* unused pure expression or super */ 
         el.classList.remove(classOfStart);
         el.classList.remove(classOfActive);
         t[1] = null;
-        t[0] = v ? TransitionStates.ENTERED : TransitionStates.LEAVED;
-        if (v) {
-          el.classList.add(k);
+        t[0] = isAdd ? TransitionStates.ENTERED : TransitionStates.LEAVED;
+        if (isAdd) {
+          el.classList.add(className);
         } else {
-          el.classList.remove(k);
+          el.classList.remove(className);
         }
-        this.__notify("transition", v ? "after-enter" : "after-leave", k, el);
+        this.__notify("transition", isAdd ? "after-enter" : "after-leave", className, el);
       };
-      t[0] = v ? TransitionStates.ENTERING : TransitionStates.LEAVING;
+      t[0] = isAdd ? TransitionStates.ENTERING : TransitionStates.LEAVING;
       t[1] = onEnd;
       addEvent(el, tsEndName, onEnd);
-      this.__notify("transition", v ? "before-enter" : "before-leave", k, el);
+      this.__notify("transition", isAdd ? "before-enter" : "before-leave", className, el);
       setImmediate(() => {
-        this.__notify("transition", v ? "enter" : "leave", k, el);
+        this.__notify("transition", isAdd ? "enter" : "leave", className, el);
       });
     });
   }
@@ -1561,7 +1687,7 @@ class class_ToggleClassComponent extends (/* unused pure expression or super */ 
 
 
 //# sourceMappingURL=class.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/for.js
+;// CONCATENATED MODULE: ../../jinge/lib/components/for.js
 
 
 
@@ -1588,14 +1714,19 @@ class ForEachComponent extends component_Component {
   }
 }
 function createEl(item, i, isLast, itemRenderFn, context) {
-  return new ForEachComponent(component_wrapAttrs({
-    [component_]: {
-      context,
-      slots: {
-        default: itemRenderFn
+  return new ForEachComponent(
+    component_wrapAttrs({
+      [component_]: {
+        context,
+        slots: {
+          default: itemRenderFn
+        }
       }
-    }
-  }), item, i, isLast)[common_$$].proxy;
+    }),
+    item,
+    i,
+    isLast
+  )[common_$$].proxy;
 }
 function appendRenderEach(item, i, isLast, itemRenderFn, roots, context) {
   const el = createEl(item, i, isLast, itemRenderFn, context);
@@ -1605,7 +1736,11 @@ function appendRenderEach(item, i, isLast, itemRenderFn, roots, context) {
 function _prepareKey(item, i, keyMap, keyName) {
   const key = keyName === "each" ? item : keyName(item);
   if (keyMap.has(key)) {
-    console.error(`loop items [${i}] and [${keyMap.get(key)}] of <for> component both have key '${key}', dulplicated key may cause update error.`);
+    console.error(
+      `loop items [${i}] and [${keyMap.get(
+        key
+      )}] of <for> component both have key '${key}', dulplicated key may cause update error.`
+    );
   }
   keyMap.set(key, i);
   return key;
@@ -1623,7 +1758,7 @@ function renderItems(items, itemRenderFn, roots, keys, keyName, context) {
 }
 function loopAppend($parent, el) {
   el[component_].rootNodes.forEach((node) => {
-    if (component_isComponent(node)) {
+    if (isComponent(node)) {
       loopAppend($parent, node);
     } else {
       $parent.appendChild(node);
@@ -1653,10 +1788,14 @@ class ForComponent extends component_Component {
       throw new Error('Value of "key" attribute of <for> component is invalidate. See https://[todo]');
     }
     super(attrs2);const _jg0 = this[common_$$].proxy;
-    if (!isViewModel(attrs2.loop)) {
-      throw new Error("require ViewModelArray");
-    }const f3_jg0402 = () => {
-    _jg0.loop = attrs2.loop; }; f3_jg0402(); attrs2[common_$$].__watch("loop", f3_jg0402);
+    if (isViewModel(attrs2.loop)) {
+      _jg0.loop = attrs2.loop;
+      attrs2[common_$$].__watch("loop", () => {
+        _jg0.loop = attrs2.loop;
+      });
+    } else {
+      _jg0._l = attrs2.loop;
+    }
     const kn = attrs2.key || "index";
     _jg0._keyName = kn;
     _jg0._length = 0;
@@ -1670,10 +1809,10 @@ class ForComponent extends component_Component {
           return;
         }
         const items = _jg0.loop;
-        if (!isArray(items) || items.length === 0)
+        if (!type_isArray(items) || items.length === 0)
           return;
         const p = _parseIndexPath(propPath[1]);
-        if (!isNumber(p) || p >= items.length) {
+        if (!type_isNumber(p) || p >= items.length) {
           return;
         }
         _jg0._keys[p] = _jg0._keyName(items[p]);
@@ -1687,7 +1826,7 @@ class ForComponent extends component_Component {
       if (p === "length") {
         _jg0._waitingUpdate = true;
         _jg0.__updateIfNeed();
-      } else if (isNumber(p)) {
+      } else if (type_isNumber(p)) {
         _jg0._updateItem(p);
       }
     });
@@ -1711,7 +1850,7 @@ class ForComponent extends component_Component {
     const keyName = this._keyName;
     if (keyName !== "index")
       this._keys = [];
-    if (!isArray(items) || items.length === 0) {
+    if (!type_isArray(items) || items.length === 0) {
       roots.push(document.createComment("empty"));
       return roots;
     }
@@ -1721,7 +1860,7 @@ class ForComponent extends component_Component {
   _updateItem(index) {
     const items = this.loop;
     const roots = this[component_].rootNodes;
-    if (!isArray(items) || index >= roots.length)
+    if (!type_isArray(items) || index >= roots.length)
       return;
     const keys = this._keys;
     const item = items[index];
@@ -1757,7 +1896,7 @@ class ForComponent extends component_Component {
     const itemRenderFn = this[component_].slots?.default;
     if (!itemRenderFn)
       return;
-    const newItems = isArray(this.loop) ? this.loop : [];
+    const newItems = type_isArray(this.loop) ? this.loop : [];
     const roots = this[component_].rootNodes;
     const nl = newItems.length;
     const ol = this._length;
@@ -1926,33 +2065,23 @@ class ForComponent extends component_Component {
 
 
 //# sourceMappingURL=for.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/index.js
-
-
-
-
-
-
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/hide.js
-
+;// CONCATENATED MODULE: ../../jinge/lib/components/hide.js
 
 
 class HideComponent extends (/* unused pure expression or super */ null && (ToggleClassComponent)) {
   constructor(attrs) {
-    attrs.class = vm({
-      "jg-hide": attrs.test
-    });
-    attrs[$$].__watch("test", () => {
-      attrs.class["jg-hide"] = attrs.test;
-    });
-    super(attrs);const _jg0 = this[$$_jg0402].proxy;
+    const fn = () => {
+      attrs.class = attrs.test ? "jg-hide" : null;
+    };
+    fn();
+    attrs[$$].__watch("test", fn);
+    super(attrs);
   }
 }
 
 
 //# sourceMappingURL=hide.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/html.js
+;// CONCATENATED MODULE: ../../jinge/lib/components/html.js
 
 
 function renderHtml(content) {
@@ -1998,7 +2127,7 @@ class BindHtmlComponent extends (/* unused pure expression or super */ null && (
 
 
 //# sourceMappingURL=html.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/if.js
+;// CONCATENATED MODULE: ../../jinge/lib/components/if.js
 
 
 
@@ -2040,7 +2169,7 @@ function renderSwitch(component) {
 function doUpdate(component) {
   const roots = component[component_].rootNodes;
   const el = roots[0];
-  const isComp = component_isComponent(el);
+  const isComp = isComponent(el);
   const firstDOM = isComp ? el.__firstDOM : el;
   const parentDOM = (isComp ? firstDOM : el).parentNode;
   const renderFn = component[component_].slots?.[component._currentValue];
@@ -2128,7 +2257,7 @@ function updateSwitchWithTransition(component) {
   }
 }
 function updateSwitch(component) {
-  if (!component_isComponent(component[component_].rootNodes[0]) && (!component[component_].slots || !component[component_].slots[component._currentValue])) {
+  if (!isComponent(component[component_].rootNodes[0]) && (!component[component_].slots || !component[component_].slots[component._currentValue])) {
     return;
   }
   if (component._transitionMap) {
@@ -2258,7 +2387,7 @@ class SwitchComponent extends (/* unused pure expression or super */ null && (Co
 
 
 //# sourceMappingURL=if.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/parameter.js
+;// CONCATENATED MODULE: ../../jinge/lib/components/parameter.js
 
 
 class ParameterComponent extends (/* unused pure expression or super */ null && (Component)) {
@@ -2275,7 +2404,7 @@ class ParameterComponent extends (/* unused pure expression or super */ null && 
 
 
 //# sourceMappingURL=parameter.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/log.js
+;// CONCATENATED MODULE: ../../jinge/lib/components/log.js
 
 class LogComponent extends (/* unused pure expression or super */ null && (Component)) {
   constructor(attrs) {
@@ -2296,7 +2425,7 @@ class LogComponent extends (/* unused pure expression or super */ null && (Compo
 
 
 //# sourceMappingURL=log.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/render_fns.js
+;// CONCATENATED MODULE: ../../jinge/lib/core/render_fns.js
 
 
 function render_fns_emptyRenderFn(component) {
@@ -2310,7 +2439,7 @@ function errorRenderFn(component) {
   });
   el.textContent = "template parsing failed! please check webpack log.";
   component[__].rootNodes.push(el);
-  return el;
+  return [el];
 }
 function textRenderFn(component, txtContent) {
   const el = createTextNode(txtContent);
@@ -2320,7 +2449,7 @@ function textRenderFn(component, txtContent) {
 
 
 //# sourceMappingURL=render_fns.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/dynamic.js
+;// CONCATENATED MODULE: ../../jinge/lib/components/dynamic.js
 
 
 
@@ -2390,7 +2519,7 @@ class DynamicRenderComponent extends (/* unused pure expression or super */ null
 
 
 //# sourceMappingURL=dynamic.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/index.js
+;// CONCATENATED MODULE: ../../jinge/lib/components/index.js
 
 
 
@@ -2401,7 +2530,7 @@ class DynamicRenderComponent extends (/* unused pure expression or super */ null
 
 
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/bootstrap.js
+;// CONCATENATED MODULE: ../../jinge/lib/core/bootstrap.js
 function bootstrap(ComponentClazz, dom, attrs) {
   const app = ComponentClazz.create(attrs);
   app.__renderToDOM(dom, dom !== document.body);
@@ -2410,7 +2539,7 @@ function bootstrap(ComponentClazz, dom, attrs) {
 
 
 //# sourceMappingURL=bootstrap.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/index.js
+;// CONCATENATED MODULE: ../../jinge/lib/core/index.js
 
 
 
@@ -2419,14 +2548,14 @@ function bootstrap(ComponentClazz, dom, attrs) {
 
 
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js
+;// CONCATENATED MODULE: ../../jinge/lib/index.js
 
 
 
 
 
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@3.2.1_jinge@3.2.1/node_modules/jinge-i18n/lib/core/service.js
+;// CONCATENATED MODULE: ../../jinge-i18n/lib/core/service.js
 let currentLocale = window.I18N_DEFAULT_LOCALE || void 0;
 const listeners = /* @__PURE__ */ new Set();
 function getLocale() {
@@ -2460,12 +2589,27 @@ function t(fn, ctx) {
 
 
 //# sourceMappingURL=service.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@3.2.1_jinge@3.2.1/node_modules/jinge-i18n/lib/components/text.js
+;// CONCATENATED MODULE: ../../jinge-i18n/lib/components/text.js
+var __accessCheck = (obj, member, msg) => {
+  if (!member.has(obj))
+    throw TypeError("Cannot " + msg);
+};
+var __privateAdd = (obj, member, value) => {
+  if (member.has(obj))
+    throw TypeError("Cannot add the same private member more than once");
+  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+};
+var __privateMethod = (obj, member, method) => {
+  __accessCheck(obj, member, "access private method");
+  return method;
+};
+var _t, t_fn;
 
 
 class TComponent extends component_Component {
   constructor(attrs) {
     super(attrs);const _jg0 = this[common_$$].proxy;
+    __privateAdd(_jg0, _t);
     attrs[common_$$].__watch("**", () => {
       _jg0.__updateIfNeed();
     });
@@ -2473,14 +2617,53 @@ class TComponent extends component_Component {
       _jg0.__updateIfNeed();
     });
   }
-  r() {
-    return this.constructor.d(getLocale())(this[component_].passedAttrs);
-  }
   __render() {
-    return [textRenderFn(this, this.r())];
+    return [textRenderFn(this, __privateMethod(this, _t, t_fn).call(this))];
   }
   __update() {
-    setText(this[component_].rootNodes[0], this.r());
+    setText(this[component_].rootNodes[0], __privateMethod(this, _t, t_fn).call(this));
+  }
+}
+_t = new WeakSet();
+t_fn = function() {
+  return this.constructor.d(getLocale())(this[component_].passedAttrs);
+};
+class RComponent extends component_Component {
+  constructor(attrs) {
+    super(attrs);const _jg0 = this[common_$$].proxy;
+    _jg0.attrs = attrs;
+    attrs[common_$$].__watch("**", () => {
+      _jg0.__updateIfNeed();
+    });
+    watchForComponent(_jg0, () => {
+      _jg0.__updateIfNeed();
+    });
+  }
+  __render() {
+    const renderFn = this.constructor.d(getLocale());
+    return renderFn(this);
+  }
+  __update() {
+    const $ld = this.__lastDOM;
+    const $pa = $ld.parentNode;
+    const $ns = $ld.nextSibling;
+    this.__handleBeforeDestroy(true);
+    this[component_].rootNodes.length = 0;
+    const renderFn = this.constructor.d(getLocale());
+    const els = renderFn(this);
+    const $newEl = els.length > 1 ? dom_createFragment(els) : els[0];
+    if ($ns) {
+      $pa.insertBefore($ns, $newEl);
+    } else {
+      $pa.appendChild($newEl);
+    }
+    this[component_].rootNodes.forEach((n) => {
+      if (isComponent(n))
+        n.__handleAfterRender();
+    });
+  }
+  __beforeDestroy() {
+    this.attrs = null;
   }
 }
 class AComponent extends component_Component {
@@ -2492,7 +2675,7 @@ class AComponent extends component_Component {
     watchForComponent(_jg0, () => {
       _jg0.__updateIfNeed();
     });
-    _jg0.c = proxy_vm(_jg0.constructor.d.map((fn) => fn(getLocale())(attrs)));
+    _jg0.c = vm(_jg0.constructor.d.map((fn) => fn(getLocale())(attrs)));
   }
   __update() {
     this.constructor.d.forEach((fn, i) => {
@@ -2504,7 +2687,7 @@ class AComponent extends component_Component {
 
 
 //# sourceMappingURL=text.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@3.2.1_jinge@3.2.1/node_modules/jinge-i18n/lib/components/switch.js
+;// CONCATENATED MODULE: ../../jinge-i18n/lib/components/switch.js
 
 
 function switch_createEl(component) {
@@ -2534,27 +2717,27 @@ class SwitchLocaleComponent extends component_Component {
     const el = switch_createEl(this);
     const roots = this[component_].rootNodes;
     roots.push(el);
-    return component_isComponent(el) ? el.__render() : roots;
+    return isComponent(el) ? el.__render() : roots;
   }
   __update() {
     const roots = this[component_].rootNodes;
     const el = roots[0];
-    const fd = component_isComponent(el) ? el.__firstDOM : el;
+    const fd = isComponent(el) ? el.__firstDOM : el;
     const pa = fd.parentNode;
     const newEl = switch_createEl(this);
     roots[0] = newEl;
-    if (component_isComponent(newEl)) {
+    if (isComponent(newEl)) {
       const nels = newEl.__render();
       pa.insertBefore(nels.length > 1 ? dom_createFragment(nels) : nels[0], fd);
     } else {
       pa.insertBefore(newEl, fd);
     }
-    if (component_isComponent(el)) {
+    if (isComponent(el)) {
       el.__destroy();
     } else {
       pa.removeChild(el);
     }
-    if (component_isComponent(newEl)) {
+    if (isComponent(newEl)) {
       newEl.__handleAfterRender();
     }
   }
@@ -2562,7 +2745,7 @@ class SwitchLocaleComponent extends component_Component {
 
 
 //# sourceMappingURL=switch.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@3.2.1_jinge@3.2.1/node_modules/jinge-i18n/lib/index.js
+;// CONCATENATED MODULE: ../../jinge-i18n/lib/index.js
 
 
 
@@ -2697,6 +2880,299 @@ const phj56t_ZHCN_EN_ZHTR = (locale) => locale === 'zh_cn' ? phj56t_ZHCN : local
 class Aphj56t_ZHCN_EN_ZHTR extends AComponent {
   static d = [phj56t_ZHCN_EN_ZHTR];
 }
+;// CONCATENATED MODULE: ./translate/dict/97q3jo.js
+/** @eslint-disabled **/
+/** this file is auto generated by jinge-i18n, don't modify it manually. **/
+/** dictionary for original text: 对于 inline tag，包括<code>code</code>,<span style="color: blue">span</span>,<small>small</small>,<strong style="font-size: 500">strong</strong>,<i style="font-size:500;font-style:italic">i</i>,<code>a</code>这几个，如果其不包含任何需要翻译的属性（Attribute），则可以<a href="https://baidu.com" target="_blank">合并</a>到一行文本进行抽取和翻译。
+  你好，${boy.name} **/;
+
+
+
+
+
+
+
+
+const _97q3jo_ZHCN = function(component) {
+  const vm_0 = component;
+  return [
+  textRenderFn(component, `对于 inline tag，包括`),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "code",
+      `code`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = dom_createElement(
+      "span",
+      {
+        style: `color: blue`
+      },
+      `span`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "small",
+      `small`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = dom_createElement(
+      "strong",
+      {
+        style: `font-size: 500`
+      },
+      `strong`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = dom_createElement(
+      "i",
+      {
+        style: `font-size:500;font-style:italic`
+      },
+      `i`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "code",
+      `a`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `这几个，如果其不包含任何需要翻译的属性（Attribute），则可以`),
+  (() => {
+    const el = dom_createElement(
+      "a",
+      {
+        href: `https://baidu.com`,
+        target: `_blank`
+      },
+      `合并`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  (() => {
+    const el = createTextNode();
+    const fn_0 = () => {
+      setText(el, `到一行文本进行抽取和翻译。
+      你好，${vm_0.attrs?.p0}`);
+    };
+    fn_0();
+    vm_0[common_$$].__watch(["attrs","p0"], fn_0, component[common_$$]);
+    component[component_].rootNodes.push(el);
+    return el;
+  })()
+  ];
+};
+const _97q3jo_EN = function(component) {
+  const vm_0 = component;
+  return [
+  textRenderFn(component, `For inline tags, include`),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "code",
+      `code`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = dom_createElement(
+      "span",
+      {
+        style: `color: blue`
+      },
+      `span`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "small",
+      `small`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = dom_createElement(
+      "strong",
+      {
+        style: `font-size: 500`
+      },
+      `strong`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = dom_createElement(
+      "i",
+      {
+        style: `font-size:500;font-style:italic`
+      },
+      `i`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "code",
+      `a`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `. If these tags do not contain any attributes that need to be translated, you can`),
+  (() => {
+    const el = dom_createElement(
+      "a",
+      {
+        href: `https://baidu.com`,
+        target: `_blank`
+      },
+      `merge`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  (() => {
+    const el = createTextNode();
+    const fn_0 = () => {
+      setText(el, `to a line of text for extracting and translating.
+      Hello, ${vm_0.attrs?.p0}`);
+    };
+    fn_0();
+    vm_0[common_$$].__watch(["attrs","p0"], fn_0, component[common_$$]);
+    component[component_].rootNodes.push(el);
+    return el;
+  })()
+  ];
+};
+const _97q3jo_ZHTR = function(component) {
+  const vm_0 = component;
+  return [
+  textRenderFn(component, `對於 inline tag，包括`),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "code",
+      `code`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = dom_createElement(
+      "span",
+      {
+        style: `color: blue`
+      },
+      `span`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "small",
+      `small`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = dom_createElement(
+      "strong",
+      {
+        style: `font-size: 500`
+      },
+      `strong`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = dom_createElement(
+      "i",
+      {
+        style: `font-size:500;font-style:italic`
+      },
+      `i`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `,`),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "code",
+      `a`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  textRenderFn(component, `這幾個，如果其不包含任何需要翻譯的屬性（Attribute），則可以`),
+  (() => {
+    const el = dom_createElement(
+      "a",
+      {
+        href: `https://baidu.com`,
+        target: `_blank`
+      },
+      `合併`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  (() => {
+    const el = createTextNode();
+    const fn_0 = () => {
+      setText(el, `到一行文本進行抽取和翻譯。
+      你好，${vm_0.attrs?.p0}`);
+    };
+    fn_0();
+    vm_0[common_$$].__watch(["attrs","p0"], fn_0, component[common_$$]);
+    component[component_].rootNodes.push(el);
+    return el;
+  })()
+  ];
+};
+const _97q3jo_ZHCN_EN_ZHTR = (locale) => locale === 'zh_cn' ? _97q3jo_ZHCN : locale === 'en' ? _97q3jo_EN : _97q3jo_ZHTR;
+class T97q3jo_ZHCN_EN_ZHTR extends RComponent {
+  static d = _97q3jo_ZHCN_EN_ZHTR;
+}
 ;// CONCATENATED MODULE: ./translate/dict/q7fn30.js
 /** @eslint-disabled **/
 /** this file is auto generated by jinge-i18n, don't modify it manually. **/
@@ -2729,7 +3205,7 @@ class Tq7fn30_ZHCN_EN_ZHTR extends TComponent {
                 (() => {
                   const el = createTextNode();
                   const fn_0 = () => {
-                    setText(el, `${vm_0.message}`);
+                    setText(el, vm_0.message);
                   };
                   fn_0();
                   vm_0[common_$$].__watch(["message"], fn_0, component[common_$$]);
@@ -2764,7 +3240,7 @@ class Tq7fn30_ZHCN_EN_ZHTR extends TComponent {
           }
         }
       },
-      expect: null
+      expect: undefined
     });
     const fn_0 = () => {
       attrs.expect = vm_0.message;
@@ -2817,6 +3293,7 @@ class Printer extends component_Component {
 
 
 
+
 /* harmony default export */ function app_c(component) {
   const vm_0 = component;
   return [
@@ -2856,7 +3333,7 @@ class Printer extends component_Component {
                         (() => {
                           const el = createTextNode();
                           const fn_0 = () => {
-                            setText(el, `${vm_1.each?.name}`);
+                            setText(el, vm_1.each?.name);
                           };
                           fn_0();
                           vm_1[common_$$].__watch(["each","name"], fn_0, component[common_$$]);
@@ -2864,7 +3341,7 @@ class Printer extends component_Component {
                         })()
                       );
                       const fn_0 = () => {
-                        el.value = `${vm_1.each?.locale}`;
+                        el.value = vm_1.each?.locale;
                       };
                       fn_0();
                       vm_1[common_$$].__watch(["each","locale"], fn_0, component[common_$$]);
@@ -2875,7 +3352,7 @@ class Printer extends component_Component {
                   }
                 }
               },
-              loop: null
+              loop: undefined
             });
             const fn_0 = () => {
               attrs.loop = vm_0.locales;
@@ -2957,12 +3434,12 @@ class Printer extends component_Component {
                               })()
                             );
                             const fn_0 = () => {
-                              setAttribute(el, "data-xx", vm_2.c?.[0]);
+                              dom_setAttribute(el, "data-xx", vm_2.c?.[0]);
                             };
                             fn_0();
                             vm_2[common_$$].__watch(["c",0], fn_0, component[common_$$]);
                             const fn_1 = () => {
-                              setAttribute(el, "data-yy", vm_2.c?.[1]);
+                              dom_setAttribute(el, "data-yy", vm_2.c?.[1]);
                             };
                             fn_1();
                             vm_2[common_$$].__watch(["c",1], fn_1, component[common_$$]);
@@ -2973,7 +3450,7 @@ class Printer extends component_Component {
                         }
                       }
                     },
-                    p0: null
+                    p0: undefined
                   });
                   const fn_0 = () => {
                     attrs.p0 = vm_1.each?.name;
@@ -2991,7 +3468,7 @@ class Printer extends component_Component {
                       [component_]: {
                         context: component[component_].context,
                       },
-                      p0: null
+                      p0: undefined
                     });
                     const fn_0 = () => {
                       attrs.p0 = vm_1.each?.name;
@@ -3011,7 +3488,7 @@ class Printer extends component_Component {
           }
         }
       },
-      loop: null
+      loop: undefined
     });
     const fn_0 = () => {
       attrs.loop = vm_0.boys;
@@ -3028,7 +3505,7 @@ class Printer extends component_Component {
       (() => {
         const el = createTextNode();
         const fn_0 = () => {
-          setText(el, `${vm_0.tt}`);
+          setText(el, vm_0.tt);
         };
         fn_0();
         vm_0[common_$$].__watch(["tt"], fn_0, component[common_$$]);
@@ -3061,7 +3538,7 @@ class Printer extends component_Component {
                 [component_]: {
                   context: component[component_].context,
                 },
-                message: null
+                message: undefined
               });
               const fn_0 = () => {
                 attrs.message = vm_1.c?.[0];
@@ -3076,7 +3553,7 @@ class Printer extends component_Component {
           }
         }
       },
-      p0: null
+      p0: undefined
     });
     const fn_0 = () => {
       attrs.p0 = vm_0.moon;
@@ -3100,7 +3577,7 @@ class Printer extends component_Component {
                 [component_]: {
                   context: component[component_].context,
                 },
-                message: null
+                message: undefined
               });
               const fn_0 = () => {
                 attrs.message = vm_1.c?.[0];
@@ -3115,7 +3592,7 @@ class Printer extends component_Component {
           }
         }
       },
-      p0: null
+      p0: undefined
     });
     const fn_0 = () => {
       attrs.p0 = vm_0.boy?.name;
@@ -3125,6 +3602,29 @@ class Printer extends component_Component {
     const el = Aphj56t_ZHCN_EN_ZHTR.create(attrs);
     component[component_].rootNodes.push(el);
     return assertRenderResults(el.__render());
+  })(),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "div",
+      ...(() => {
+        const attrs = component_wrapAttrs({
+          [component_]: {
+            context: component[component_].context,
+          },
+          p0: undefined
+        });
+        const fn_0 = () => {
+          attrs.p0 = vm_0.boy?.name;
+        };
+        fn_0();
+        vm_0[common_$$].__watch(["boy","name"], fn_0, component[common_$$]);
+        const el = T97q3jo_ZHCN_EN_ZHTR.create(attrs);
+        component[component_].nonRootCompNodes.push(el);
+        return assertRenderResults(el.__render());
+      })()
+    );
+    component[component_].rootNodes.push(el);
+    return el;
   })(),
   (() => {
     const el = createElementWithoutAttrs(
@@ -3214,16 +3714,16 @@ class App extends component_Component {
   constructor(attrs) {
     super(attrs);const _jg0 = this[common_$$].proxy;
     _jg0.locale = getLocale();
-    _jg0.locales = proxy_vm(locales);
+    _jg0.locales = vm(locales);
     
     watchForComponent(_jg0, () => {
       _jg0.moon = F34foc2d_ZHCN_EN_ZHTR();
-      _jg0.boys = proxy_vm([{
+      _jg0.boys = vm([{
         name: F159vdsg_ZHCN_EN_ZHTR()
       }, {
         name: F1ghjrtk_ZHCN_EN_ZHTR()
       }]);
-      _jg0.boy = proxy_vm({
+      _jg0.boy = vm({
         name: F1ghjrtk_ZHCN_EN_ZHTR(),
         age: 30
       });

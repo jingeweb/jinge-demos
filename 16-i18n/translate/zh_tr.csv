@@ -9,5 +9,7 @@ src/app.c.html,你好，世界！,你好，世界！
 src/app.c.html,你好，${boy.name},你好，${boy.name}
 src/app.c.html,春江潮水连海平，海上明${moon}共潮生,春江潮水連海平，海上明${moon}共潮生
 src/app.c.html,你好，${boy.name}！,你好，${boy.name}！
-src/app.c.html,"对于 inline tag，包括<code>code</code>,<span style=""color: blue"">span</span>,<small>small</small>,<strong>strong</strong><bold style=""font-size: 500"">bold</bold>,<i style=""font-size:500;font-style:italic"">i</i>,<code>a</code>这几个，如果其不包含任何需要翻译的属性（Attribute），则可以<a href=""https://baidu.com"" target=""_blank"">合并</a>到一行文本进行抽取和翻译。","對於 inline tag，包括<code>code</code>,<span style=""color: blue"">span</span>,<small>small</small>,<strong>strong</strong><bold style=""font-size: 500"">bold</bold>,<i style=""font-size:500;font-style:italic"">i</i>,<code>a</code>這幾個，如果其不包含任何需要翻譯的屬性（Attribute），則可以<a href=""https://baidu.com"" target=""_blank"">合併</a>到一行文本進行抽取和翻譯。"
+src/app.c.html,"对于 inline tag，包括<code>code</code>,<span style=""color: blue"">span</span>,<small>small</small>,<strong style=""font-size: 500"">strong</strong>,<i style=""font-size:500;font-style:italic"">i</i>,<code>a</code>这几个，如果其不包含任何需要翻译的属性（Attribute），则可以<a href=""https://baidu.com"" target=""_blank"">合并</a>到一行文本进行抽取和翻译。
+  你好，${boy.name}","對於 inline tag，包括<code>code</code>,<span style=""color: blue"">span</span>,<small>small</small>,<strong style=""font-size: 500"">strong</strong>,<i style=""font-size:500;font-style:italic"">i</i>,<code>a</code>這幾個，如果其不包含任何需要翻譯的屬性（Attribute），則可以<a href=""https://baidu.com"" target=""_blank"">合併</a>到一行文本進行抽取和翻譯。
+  你好，${boy.name}"
 src/printer.c.html,静以修身，检以养德,靜以修身，檢以養德
