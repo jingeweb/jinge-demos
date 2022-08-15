@@ -16,7 +16,7 @@
     "webpack-dev-server": "^4.9.3"
   },
   "dependencies": {
-    "jinge": "^3.2.1",
-    "jinge-compiler": "^3.2.1"
+    "jinge": "^3.2.2",
+    "jinge-compiler": "^3.2.2"
   }
 }

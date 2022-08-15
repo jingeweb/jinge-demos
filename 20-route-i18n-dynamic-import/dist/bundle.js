@@ -2,7 +2,7 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 15:
+/***/ 196:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -11,8 +11,8 @@ __webpack_require__.d(__webpack_exports__, {
   "F": () => (/* binding */ Printer)
 });
 
-// EXTERNAL MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js + 28 modules
-var lib = __webpack_require__(35);
+// EXTERNAL MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/index.js + 28 modules
+var lib = __webpack_require__(116);
 // EXTERNAL MODULE: ./translate/dict/fee9s7.js
 var fee9s7 = __webpack_require__(936);
 ;// CONCATENATED MODULE: ./src/components/printer.c.html
@@ -35,7 +35,7 @@ var fee9s7 = __webpack_require__(936);
                 (() => {
                   const el = (0,lib/* createTextNode */.Eg)();
                   const fn_0 = () => {
-                    (0,lib/* setText */.Hd)(el, `${vm_0.message}`);
+                    (0,lib/* setText */.Hd)(el, vm_0.message);
                   };
                   fn_0();
                   vm_0[lib.$$].__watch(["message"], fn_0, component[lib.$$]);
@@ -70,7 +70,7 @@ var fee9s7 = __webpack_require__(936);
           }
         }
       },
-      expect: null
+      expect: undefined
     });
     const fn_0 = () => {
       attrs.expect = vm_0.message;
@@ -113,7 +113,7 @@ class Printer extends lib/* Component */.wA {
 
 /***/ }),
 
-/***/ 511:
+/***/ 37:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -125,9 +125,9 @@ __webpack_require__.d(__webpack_exports__, {
   "i_": () => (/* reexport */ setLocale)
 });
 
-// UNUSED EXPORTS: SwitchLocaleComponent, cw, t, unwatch, w, watch, watchForComponent
+// UNUSED EXPORTS: RComponent, SwitchLocaleComponent, cw, t, unwatch, w, watch, watchForComponent
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@3.2.1_jinge@3.2.1/node_modules/jinge-i18n/lib/core/service.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@1.0.0_jinge@3.2.2/node_modules/jinge-i18n/lib/core/service.js
 let currentLocale = window.I18N_DEFAULT_LOCALE || void 0;
 const listeners = /* @__PURE__ */ new Set();
 function service_getLocale() {
@@ -161,14 +161,29 @@ function t(fn, ctx) {
 
 
 //# sourceMappingURL=service.js.map
-// EXTERNAL MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js + 28 modules
-var lib = __webpack_require__(35);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@3.2.1_jinge@3.2.1/node_modules/jinge-i18n/lib/components/text.js
+// EXTERNAL MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/index.js + 28 modules
+var lib = __webpack_require__(116);
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@1.0.0_jinge@3.2.2/node_modules/jinge-i18n/lib/components/text.js
+var __accessCheck = (obj, member, msg) => {
+  if (!member.has(obj))
+    throw TypeError("Cannot " + msg);
+};
+var __privateAdd = (obj, member, value) => {
+  if (member.has(obj))
+    throw TypeError("Cannot add the same private member more than once");
+  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+};
+var __privateMethod = (obj, member, method) => {
+  __accessCheck(obj, member, "access private method");
+  return method;
+};
+var _t, t_fn;
 
 
 class TComponent extends lib/* Component */.wA {
   constructor(attrs) {
     super(attrs);const _jg0 = this[lib.$$].proxy;
+    __privateAdd(_jg0, _t);
     attrs[lib.$$].__watch("**", () => {
       _jg0.__updateIfNeed();
     });
@@ -176,14 +191,53 @@ class TComponent extends lib/* Component */.wA {
       _jg0.__updateIfNeed();
     });
   }
-  r() {
-    return this.constructor.d(service_getLocale())(this[lib.__].passedAttrs);
-  }
   __render() {
-    return [(0,lib/* textRenderFn */.xc)(this, this.r())];
+    return [(0,lib/* textRenderFn */.xc)(this, __privateMethod(this, _t, t_fn).call(this))];
   }
   __update() {
-    (0,lib/* setText */.Hd)(this[lib.__].rootNodes[0], this.r());
+    (0,lib/* setText */.Hd)(this[lib.__].rootNodes[0], __privateMethod(this, _t, t_fn).call(this));
+  }
+}
+_t = new WeakSet();
+t_fn = function() {
+  return this.constructor.d(service_getLocale())(this[lib.__].passedAttrs);
+};
+class RComponent extends (/* unused pure expression or super */ null && (Component)) {
+  constructor(attrs) {
+    super(attrs);const _jg0 = this[$$_jg0402].proxy;
+    _jg0.attrs = attrs;
+    attrs[$$].__watch("**", () => {
+      _jg0.__updateIfNeed();
+    });
+    watchForComponent(_jg0, () => {
+      _jg0.__updateIfNeed();
+    });
+  }
+  __render() {
+    const renderFn = this.constructor.d(getLocale());
+    return renderFn(this);
+  }
+  __update() {
+    const $ld = this.__lastDOM;
+    const $pa = $ld.parentNode;
+    const $ns = $ld.nextSibling;
+    this.__handleBeforeDestroy(true);
+    this[__].rootNodes.length = 0;
+    const renderFn = this.constructor.d(getLocale());
+    const els = renderFn(this);
+    const $newEl = els.length > 1 ? createFragment(els) : els[0];
+    if ($ns) {
+      $pa.insertBefore($ns, $newEl);
+    } else {
+      $pa.appendChild($newEl);
+    }
+    this[__].rootNodes.forEach((n) => {
+      if (isComponent(n))
+        n.__handleAfterRender();
+    });
+  }
+  __beforeDestroy() {
+    this.attrs = null;
   }
 }
 class AComponent extends lib/* Component */.wA {
@@ -207,7 +261,7 @@ class AComponent extends lib/* Component */.wA {
 
 
 //# sourceMappingURL=text.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@3.2.1_jinge@3.2.1/node_modules/jinge-i18n/lib/components/switch.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@1.0.0_jinge@3.2.2/node_modules/jinge-i18n/lib/components/switch.js
 
 
 function createEl(component) {
@@ -265,7 +319,7 @@ class SwitchLocaleComponent extends (/* unused pure expression or super */ null 
 
 
 //# sourceMappingURL=switch.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@3.2.1_jinge@3.2.1/node_modules/jinge-i18n/lib/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-i18n@1.0.0_jinge@3.2.2/node_modules/jinge-i18n/lib/index.js
 
 
 
@@ -274,7 +328,7 @@ class SwitchLocaleComponent extends (/* unused pure expression or super */ null 
 
 /***/ }),
 
-/***/ 35:
+/***/ 116:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 
@@ -297,29 +351,31 @@ __webpack_require__.d(__webpack_exports__, {
   "xJ": () => (/* reexport */ dom_createFragment),
   "Eg": () => (/* reexport */ createTextNode),
   "qO": () => (/* reexport */ render_fns_emptyRenderFn),
-  "pE": () => (/* reexport */ component_isComponent),
+  "pE": () => (/* reexport */ isComponent),
   "mf": () => (/* reexport */ isFunction),
-  "Kn": () => (/* reexport */ type_isObject),
+  "Kn": () => (/* reexport */ isObject),
   "HD": () => (/* reexport */ type_isString),
   "o8": () => (/* reexport */ isUndefined),
   "KS": () => (/* reexport */ registerEvent),
   "xC": () => (/* reexport */ dom_removeEvent),
-  "P$": () => (/* reexport */ setAttribute),
+  "P$": () => (/* reexport */ dom_setAttribute),
+  "VT": () => (/* reexport */ setClassAttribute),
+  "V7": () => (/* reexport */ setStyleAttribute),
   "Hd": () => (/* reexport */ setText),
   "xc": () => (/* reexport */ textRenderFn),
   "UC": () => (/* reexport */ unwatch),
-  "vm": () => (/* reexport */ proxy_vm),
+  "vm": () => (/* reexport */ vm),
   "ZK": () => (/* reexport */ warn),
   "YP": () => (/* reexport */ watch)
 });
 
-// UNUSED EXPORTS: BindHtmlComponent, ComponentStates, ContextStates, DynamicRenderComponent, ForEachComponent, HideComponent, LogComponent, MESSENGER_LISTENERS, Messenger, SwitchComponent, ToggleClassComponent, TransitionStates, ViewModelCoreImpl, addParent, appendChildren, arrayEqual, clearImmediate, createAttributes, createComponent, createElementWithChild, createSVGElement, createSVGElementWithoutAttrs, createViewModel, deleteNode, disableWarning, errorRenderFn, getDuration, getDurationType, getPropertyName, handleCancel, handleOnce, initStyle, insertAfter, isArray, isBoolean, isInnerObj, isNumber, isPromise, isPublicProperty, isViewModel, loopClearNode, loopCreateNode, loopGetNode, loopHandle, loopNotify, parsePropertyPath, removeAttribute, removeParent, replaceChildren, setImmediate, shiftParent, typeOf, uid
+// UNUSED EXPORTS: BindHtmlComponent, ComponentStates, ContextStates, DynamicRenderComponent, ForEachComponent, HideComponent, LogComponent, MESSENGER_LISTENERS, Messenger, SwitchComponent, ToggleClassComponent, TransitionStates, ViewModelCoreImpl, addParent, appendChildren, arrayEqual, class2str, clearImmediate, createAttributes, createComponent, createElementWithChild, createSVGElement, createSVGElementWithoutAttrs, createViewModel, deleteNode, disableWarning, errorRenderFn, getDuration, getDurationType, getPropertyName, handleCancel, handleOnce, initStyle, insertAfter, isArray, isBoolean, isInnerObj, isNumber, isPromise, isPublicProperty, isViewModel, loopClearNode, loopCreateNode, loopGetNode, loopHandle, loopNotify, parsePropertyPath, removeAttribute, removeParent, replaceChildren, setImmediate, shiftParent, style2str, typeOf, uid
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/type.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/util/type.js
 function typeOf(v) {
   return typeof v;
 }
-function type_isObject(v) {
+function isObject(v) {
   return v !== null && typeOf(v) === "object";
 }
 function type_isString(v) {
@@ -341,12 +397,12 @@ function isFunction(v) {
   return typeOf(v) === "function";
 }
 function isPromise(obj) {
-  return type_isObject(obj) && isFunction(obj.then);
+  return isObject(obj) && isFunction(obj.then);
 }
 
 
 //# sourceMappingURL=type.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/array.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/util/array.js
 function arrayRemove(array, item) {
   const idx = array.indexOf(item);
   if (idx < 0)
@@ -372,7 +428,7 @@ function arrayEqual(arr1, arr2) {
 
 
 //# sourceMappingURL=array.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/common.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/util/common.js
 let UID_INC = 0;
 function uid() {
   return Date.now().toString(32) + "-" + Math.floor(Math.random() * 16777215).toString(32) + "-" + (UID_INC++).toString(32);
@@ -387,7 +443,7 @@ function disableWarning() {
 
 
 //# sourceMappingURL=common.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/setimm.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/util/setimm.js
 
 let autoIncrement = 0;
 let nextHandle = 1;
@@ -425,11 +481,15 @@ const win = typeof window === "undefined" ? globalThis : window;
 if (isUndefined(win.setImmediate)) {
   tasksByHandle = /* @__PURE__ */ new Map();
   const messagePrefix = "setImmediate$" + (autoIncrement++).toString(32) + "$";
-  win.addEventListener("message", (event) => {
-    if (event.source === window && type_isString(event.data) && event.data.startsWith(messagePrefix)) {
-      runIfPresent(Number(event.data.slice(messagePrefix.length)));
-    }
-  }, false);
+  win.addEventListener(
+    "message",
+    (event) => {
+      if (event.source === window && type_isString(event.data) && event.data.startsWith(messagePrefix)) {
+        runIfPresent(Number(event.data.slice(messagePrefix.length)));
+      }
+    },
+    false
+  );
   registerImmediate = function(handle) {
     win.postMessage(messagePrefix + handle, "*");
   };
@@ -439,16 +499,16 @@ const clearImmediate = win.clearImmediate || clearImmediateFallback;
 
 
 //# sourceMappingURL=setimm.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/dom.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/util/dom.js
 
 function setText($element, text) {
-  if (!type_isString(text)) {
+  if (isObject(text)) {
     text = JSON.stringify(text);
   }
   $element.textContent = text;
 }
 function createTextNode(text = "") {
-  return document.createTextNode(type_isString(text) ? text : JSON.stringify(text));
+  return document.createTextNode(isObject(text) ? JSON.stringify(text) : text);
 }
 function dom_createFragment(children) {
   const f = document.createDocumentFragment();
@@ -458,7 +518,9 @@ function dom_createFragment(children) {
   return f;
 }
 function appendChildren($parent, children) {
-  $parent.appendChild(children.length > 1 ? dom_createFragment(children) : type_isString(children[0]) ? createTextNode(children[0]) : children[0]);
+  $parent.appendChild(
+    children.length > 1 ? dom_createFragment(children) : type_isString(children[0]) ? createTextNode(children[0]) : children[0]
+  );
 }
 function replaceChildren($parent, children, oldNode) {
   $parent.replaceChild(dom_createFragment(children), oldNode);
@@ -466,7 +528,7 @@ function replaceChildren($parent, children, oldNode) {
 function removeAttribute($ele, attrName) {
   if (!attrName)
     return;
-  if (type_isObject(attrName)) {
+  if (isObject(attrName)) {
     for (const attrN in attrName) {
       removeAttribute($ele, attrN);
     }
@@ -474,12 +536,12 @@ function removeAttribute($ele, attrName) {
   }
   return $ele.removeAttribute(attrName);
 }
-function setAttribute($ele, attrName, attrValue) {
+function dom_setAttribute($ele, attrName, attrValue) {
   if (!attrName)
     return;
-  if (type_isObject(attrName)) {
+  if (isObject(attrName)) {
     for (const attrN in attrName) {
-      setAttribute($ele, attrN, attrName[attrN]);
+      dom_setAttribute($ele, attrN, attrName[attrN]);
     }
     return;
   }
@@ -493,7 +555,7 @@ function _createEl($el, attrs, children) {
   if (attrs) {
     for (const an in attrs) {
       if (an && !isUndefined(attrs[an])) {
-        setAttribute($el, an, attrs[an]);
+        dom_setAttribute($el, an, attrs[an]);
       }
     }
   }
@@ -541,10 +603,92 @@ function registerEvent($element, eventName, handler, capture) {
     dom_removeEvent($element, eventName, handler);
   };
 }
+function class2str(className) {
+  if (!className)
+    return className;
+  if (type_isString(className)) {
+    return className.trim();
+  }
+  if (isArray(className)) {
+    const clist = [];
+    className.forEach((cn) => {
+      const seg = class2str(cn);
+      seg && clist.push(seg);
+    });
+    return clist.join(" ").trim();
+  }
+  return Object.keys(className).filter((k) => !!className[k]).join(" ").trim();
+}
+function setClassAttribute($ele, className) {
+  className = class2str(className);
+  if (!className)
+    $ele.removeAttribute("class");
+  else
+    $ele.setAttribute("class", className);
+}
+const UNITLESS = /* @__PURE__ */ new Set([
+  "box-flex",
+  "box-flex-group",
+  "column-count",
+  "flex",
+  "flex-grow",
+  "flex-positive",
+  "flex-shrink",
+  "flex-negative",
+  "font-weight",
+  "line-clamp",
+  "line-height",
+  "opacity",
+  "order",
+  "orphans",
+  "tab-size",
+  "widows",
+  "z-index",
+  "zoom",
+  "fill-opacity",
+  "stroke-dashoffset",
+  "stroke-opacity",
+  "stroke-width"
+]);
+function style2str(style) {
+  if (!style)
+    return style;
+  if (type_isString(style))
+    return style.trim();
+  if (Array.isArray(style)) {
+    const slist = [];
+    style.forEach((sty) => {
+      const seg = style2str(sty);
+      seg && slist.push(seg);
+    });
+    return slist.join("").trim();
+  }
+  const segs = [];
+  Object.keys(style).forEach((k) => {
+    let v = style[k];
+    if (!v && v !== 0)
+      return;
+    k = k.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
+    if (isNumber(v) && !UNITLESS.has(k)) {
+      v = `${v}px`;
+    } else {
+      v = v.toString();
+    }
+    segs.push(`${k}:${v};`);
+  });
+  return segs.join("").trim();
+}
+function setStyleAttribute($ele, style) {
+  style = style2str(style);
+  if (!style)
+    $ele.removeAttribute("style");
+  else
+    $ele.setAttribute("style", style);
+}
 
 
 //# sourceMappingURL=dom.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/util/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/util/index.js
 
 
 
@@ -552,7 +696,7 @@ function registerEvent($element, eventName, handler, capture) {
 
 
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/common.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/vm/common.js
 
 const common_$$ = Symbol("$$");
 function isInnerObj(v) {
@@ -560,7 +704,7 @@ function isInnerObj(v) {
   return clazz === RegExp || clazz === Date || clazz === Boolean;
 }
 function isViewModel(v) {
-  return type_isObject(v) && common_$$ in v;
+  return isObject(v) && common_$$ in v;
 }
 function isPublicProperty(v) {
   return type_isString(v) && v.charCodeAt(0) !== 95;
@@ -613,7 +757,7 @@ function shiftParent(child, parent, property, delta) {
 
 
 //# sourceMappingURL=common.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/notify.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/vm/notify.js
 
 
 const handleTasks = /* @__PURE__ */ new Map();
@@ -688,7 +832,7 @@ function loopNotify(vm, propertyPath, immediate, level = 0) {
 
 
 //# sourceMappingURL=notify.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/node.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/vm/node.js
 
 
 function loopCreateNode(parentNode, propertyPath, level = 0) {
@@ -753,7 +897,7 @@ function loopClearNode(node) {
 
 
 //# sourceMappingURL=node.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/core.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/vm/core.js
 
 
 
@@ -855,7 +999,7 @@ class ViewModelCoreImpl {
           return;
         }
         const v = target[prop];
-        if (!type_isObject(v) || !(common_$$ in v)) {
+        if (!isObject(v) || !(common_$$ in v)) {
           return;
         }
         removeParent(v[common_$$], this, prop);
@@ -864,7 +1008,7 @@ class ViewModelCoreImpl {
     }
     Object.getOwnPropertyNames(target).forEach((prop) => {
       const v = target[prop];
-      if (!type_isObject(v) || !(common_$$ in v)) {
+      if (!isObject(v) || !(common_$$ in v)) {
         return;
       }
       removeParent(v[common_$$], this, prop);
@@ -902,7 +1046,7 @@ class ViewModelCoreImpl {
 
 
 //# sourceMappingURL=core.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/proxy.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/vm/proxy.js
 
 
 
@@ -948,14 +1092,14 @@ function __propSetHandler(target, prop, value, setFn, assertVM = true) {
   if (oldVal === value && !isUndefined(value)) {
     return true;
   }
-  let newValIsVM = type_isObject(value) && !isInnerObj(value);
+  let newValIsVM = isObject(value) && !isInnerObj(value);
   if (newValIsVM) {
     newValIsVM = common_$$ in value;
     if (assertVM && !newValIsVM) {
       throw new Error(`public property "${prop.toString()}" of ViewModel must also be ViewModel`);
     }
   }
-  if (type_isObject(oldVal) && common_$$ in oldVal) {
+  if (isObject(oldVal) && common_$$ in oldVal) {
     removeParent(oldVal[common_$$], target[common_$$], prop);
   }
   setFn(target, prop, value);
@@ -990,7 +1134,10 @@ function attrsPropSetHandler(target, prop, value) {
 }
 function componentPropSetHandler(target, prop, value) {
   if (!(common_$$ in target)) {
-    warn(`call setter "${prop.toString()}" after destroied, resources such as setInterval maybe not released before destroy. component:`, target);
+    warn(
+      `call setter "${prop.toString()}" after destroied, resources such as setInterval maybe not released before destroy. component:`,
+      target
+    );
     return true;
   }
   return __propSetHandler(target, prop, value, __componentPropSetFn);
@@ -1084,7 +1231,7 @@ function _arrayShiftOrUnshiftProp(arr, delta) {
   });
 }
 function _argAssert(arg, fn) {
-  if (type_isObject(arg)) {
+  if (isObject(arg)) {
     if (!(common_$$ in arg)) {
       throw new Error(`argument passed to Array.${fn} must be ViewModel if the array is ViewModel`);
     } else {
@@ -1239,10 +1386,13 @@ const ArrayProxyHandler = {
 };
 function wrapProxy(target, isArr) {
   const vmCore = new ViewModelCoreImpl(target);
-  return vmCore.proxy = new Proxy(target, isArr ? ArrayProxyHandler : isPromise(target) ? PromiseProxyHandler : ObjectProxyHandler);
+  return vmCore.proxy = new Proxy(
+    target,
+    isArr ? ArrayProxyHandler : isPromise(target) ? PromiseProxyHandler : ObjectProxyHandler
+  );
 }
 function wrapProp(parent, child, property) {
-  if (!type_isObject(child) || isInnerObj(child)) {
+  if (!isObject(child) || isInnerObj(child)) {
     return;
   }
   if (!(common_$$ in child)) {
@@ -1251,7 +1401,7 @@ function wrapProp(parent, child, property) {
   addParent(child[common_$$], parent[common_$$], property);
 }
 function createViewModel(target) {
-  if (type_isObject(target)) {
+  if (isObject(target)) {
     if (isInnerObj(target) || common_$$ in target) {
       return target;
     }
@@ -1290,8 +1440,8 @@ function createComponent(component) {
     set: componentPropSetHandler
   });
 }
-function proxy_vm(target) {
-  if (!type_isObject(target)) {
+function vm(target) {
+  if (!isObject(target)) {
     throw new Error("vm() target must be object or array.");
   }
   return createViewModel(target);
@@ -1305,7 +1455,7 @@ function unwatch(vm2, propertyPath, handler) {
 
 
 //# sourceMappingURL=proxy.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/messenger.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/core/messenger.js
 const MESSENGER_LISTENERS = Symbol("listeners");
 class Messenger {
   constructor(templateListeners) {
@@ -1365,7 +1515,7 @@ MESSENGER_LISTENERS;
 
 
 //# sourceMappingURL=messenger.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/style.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/core/style.js
 
 const CSS = ".jg-hide{display:none!important}.jg-hide.jg-hide-enter,.jg-hide.jg-hide-leave{display:block!important}";
 let inited = false;
@@ -1385,7 +1535,7 @@ function initStyle() {
 
 
 //# sourceMappingURL=style.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/component.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/core/component.js
 var _a;
 
 
@@ -1408,7 +1558,7 @@ var ContextStates = /* @__PURE__ */ ((ContextStates2) => {
   return ContextStates2;
 })(ContextStates || {});
 const component_ = Symbol("__");
-function component_isComponent(v) {
+function isComponent(v) {
   return component_ in v;
 }
 function assertRenderResults(renderResults) {
@@ -1418,14 +1568,14 @@ function assertRenderResults(renderResults) {
   return renderResults;
 }
 function component_wrapAttrs(target) {
-  if (!type_isObject(target) || isArray(target)) {
+  if (!isObject(target) || isArray(target)) {
     throw new Error("attrs() traget must be plain object.");
   }
   return createAttributes(target);
 }
 class component_Component extends Messenger {
   constructor(attrs) {
-    if (!type_isObject(attrs) || !(common_$$ in attrs)) {
+    if (!isObject(attrs) || !(common_$$ in attrs)) {
       throw new Error("Attributes passed to Component constructor must be ViewModel. See https://[todo]");
     }
     const compilerAttrs = attrs[component_] || {};
@@ -1444,9 +1594,17 @@ class component_Component extends Messenger {
       upNextMap: null,
       deregFns: null
     };
+    const $proxy = this[common_$$].proxy;
+    ["class", "style"].forEach((attrN) => {
+      if (!(attrN in attrs))
+        return;
+      const f = () => $proxy[attrN] = attrs[attrN];
+      f();
+      attrs[common_$$].__watch(attrN, f);
+    });
   }
   static create(attrs) {
-    const isObj = type_isObject(attrs);
+    const isObj = isObject(attrs);
     const vmAttrs = isObj && common_$$ in attrs ? attrs : component_wrapAttrs(isObj ? attrs : {});
     return new this(vmAttrs)[common_$$].proxy;
   }
@@ -1458,9 +1616,14 @@ class component_Component extends Messenger {
     deregs.add(deregisterFn);
   }
   __domAddListener($el, eventName, listener, capture) {
-    const deregEvtFn = registerEvent($el, eventName, ($event) => {
-      listener.call(this, $event);
-    }, capture);
+    const deregEvtFn = registerEvent(
+      $el,
+      eventName,
+      ($event) => {
+        listener.call(this, $event);
+      },
+      capture
+    );
     this.__addDeregisterFn(deregEvtFn);
     return () => {
       deregEvtFn();
@@ -1489,29 +1652,34 @@ class component_Component extends Messenger {
         return;
       }
       handlers.forEach((opts, handler) => {
-        const deregFn = registerEvent(targetEl, eventName, opts && (opts.stop || opts.prevent) ? ($evt) => {
-          opts.stop && $evt.stopPropagation();
-          opts.prevent && $evt.preventDefault();
-          handler.call(this, $evt);
-        } : ($evt) => {
-          handler.call(this, $evt);
-        }, opts);
+        const deregFn = registerEvent(
+          targetEl,
+          eventName,
+          opts && (opts.stop || opts.prevent) ? ($evt) => {
+            opts.stop && $evt.stopPropagation();
+            opts.prevent && $evt.preventDefault();
+            handler.call(this, $evt);
+          } : ($evt) => {
+            handler.call(this, $evt);
+          },
+          opts
+        );
         this.__addDeregisterFn(deregFn);
       });
     });
   }
   get __transitionDOM() {
     const el = this[component_].rootNodes[0];
-    return component_isComponent(el) ? el.__transitionDOM : el;
+    return isComponent(el) ? el.__transitionDOM : el;
   }
   get __firstDOM() {
     const el = this[component_].rootNodes[0];
-    return component_isComponent(el) ? el.__firstDOM : el;
+    return isComponent(el) ? el.__firstDOM : el;
   }
   get __lastDOM() {
     const rns = this[component_].rootNodes;
     const el = rns[rns.length - 1];
-    return component_isComponent(el) ? el.__lastDOM : el;
+    return isComponent(el) ? el.__lastDOM : el;
   }
   __render() {
     const Clazz = this.constructor;
@@ -1584,7 +1752,7 @@ class component_Component extends Messenger {
     });
     let $parent;
     this[component_].rootNodes.forEach((node) => {
-      if (component_isComponent(node)) {
+      if (isComponent(node)) {
         node.__destroy(removeDOM);
       } else if (removeDOM) {
         if (!$parent) {
@@ -1598,12 +1766,10 @@ class component_Component extends Messenger {
     this[component_].passedAttrs[common_$$].__notifiable = true;
     this[common_$$].__notifiable = true;
     this[component_].rootNodes.forEach((n) => {
-      if (component_isComponent(n))
+      if (isComponent(n))
         n.__handleAfterRender();
     });
     this[component_].nonRootCompNodes.forEach((n) => {
-      if (!component_isComponent(n))
-        debugger;
       n.__handleAfterRender();
     });
     this[component_].state = 1 /* RENDERED */;
@@ -1631,10 +1797,13 @@ class component_Component extends Messenger {
     if (ntMap.has(handler)) {
       return;
     }
-    ntMap.set(handler, setimm_setImmediate(() => {
-      ntMap.delete(handler);
-      handler.call(this);
-    }));
+    ntMap.set(
+      handler,
+      setimm_setImmediate(() => {
+        ntMap.delete(handler);
+        handler.call(this);
+      })
+    );
   }
   __update(first) {
   }
@@ -1648,13 +1817,15 @@ class component_Component extends Messenger {
     }
     if (key in this[component_].context) {
       if (!forceOverride) {
-        throw new Error(`Contenxt with key: ${key.toString()} is exist. Pass third argument forceOverride=true to override it.`);
+        throw new Error(
+          `Contenxt with key: ${key.toString()} is exist. Pass third argument forceOverride=true to override it.`
+        );
       }
     }
     this[component_].context[key] = value;
   }
   __getContext(key) {
-    return this[component_].context ? this[component_].context[key] : null;
+    return this[component_].context?.[key];
   }
   __setRef(ref, el, relatedComponent) {
     let rns = this[component_].refs;
@@ -1670,7 +1841,7 @@ class component_Component extends Messenger {
       elOrArr = [elOrArr, el];
       rns.set(ref, elOrArr);
     }
-    const isComp = component_isComponent(el);
+    const isComp = isComponent(el);
     if (!isComp && this === relatedComponent) {
       return;
     }
@@ -1686,9 +1857,11 @@ class component_Component extends Messenger {
   }
   __getRef(ref) {
     if (this[component_].state !== 1 /* RENDERED */) {
-      warn(`Warning: call __getRef before component '${this.constructor.name}' rendered will get nothing. see https://[TODO]`);
+      warn(
+        `Warning: call __getRef before component '${this.constructor.name}' rendered will get nothing. see https://[TODO]`
+      );
     }
-    return this[component_].refs ? this[component_].refs.get(ref) : null;
+    return this[component_].refs?.get(ref);
   }
   __afterRender() {
   }
@@ -1700,7 +1873,7 @@ component_Component[_a] = true;
 
 
 //# sourceMappingURL=component.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/transition.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/core/transition.js
 var transition_TransitionStates = /* @__PURE__ */ ((TransitionStates2) => {
   TransitionStates2[TransitionStates2["ENTERING"] = 1] = "ENTERING";
   TransitionStates2[TransitionStates2["ENTERED"] = 2] = "ENTERED";
@@ -1750,31 +1923,29 @@ function getDuration(el) {
 
 
 //# sourceMappingURL=transition.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/class.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/vm/index.js
 
 
 
 
-function loopOperateClass(el, isAddOperate, domClass) {
-  if (isComponent(el)) {
-    el[__].rootNodes.forEach((ce) => loopOperateClass(ce, isAddOperate, domClass));
-  } else if (isAddOperate) {
-    el.classList.add(domClass);
-  } else {
-    el.classList.remove(domClass);
-  }
-}
+
+
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/components/class.js
+
+
+
+
+var ClassOpType = /* @__PURE__ */ ((ClassOpType2) => {
+  ClassOpType2[ClassOpType2["ADD"] = 0] = "ADD";
+  ClassOpType2[ClassOpType2["DEL"] = 1] = "DEL";
+  return ClassOpType2;
+})(ClassOpType || {});
 class class_ToggleClassComponent extends (/* unused pure expression or super */ null && (Component)) {
   constructor(attrs) {
-    if (!attrs || !isObject(attrs.class)) {
-      throw new Error('<toggle-class> component require "class" attribute to be Object.');
-    }
-    super(attrs);const _jg0 = this[$$_jg0402].proxy;const f2_jg0402 = () => {
-    _jg0.domClass = attrs.class; }; f2_jg0402(); attrs[$$_jg0402].__watch("class", f2_jg0402);const f3_jg0402 = () => {
-    _jg0.transition = !!attrs.transition; }; f3_jg0402(); attrs[$$_jg0402].__watch("transition", f3_jg0402);
-    _jg0._t = null;
-    _jg0._i = -1;
-    _jg0[$$].__watch("domClass.**", () => {
+    super(attrs);const _jg0 = this[$$_jg0402].proxy;const f1_jg0402 = () => {
+    _jg0.transition = attrs.transition !== false; }; f1_jg0402(); attrs[$$_jg0402].__watch("transition", f1_jg0402);
+    _jg0[$$].__watch("class", () => {
       _jg0.__updateIfNeed();
     });
   }
@@ -1784,54 +1955,65 @@ class class_ToggleClassComponent extends (/* unused pure expression or super */ 
     return rr;
   }
   __beforeDestroy() {
-    this._t = null;
+    this._ts = null;
   }
   __update(first) {
-    const el = this.transition ? this.__transitionDOM : null;
+    const el = this.__transitionDOM;
     if (el && el.nodeType !== Node.ELEMENT_NODE) {
       return;
     }
-    if (this.transition && !this._t) {
-      this._t = /* @__PURE__ */ new Map();
+    if (!this.transition) {
+      setAttribute(el, "class", this.class);
+      return;
     }
-    const cs = this.domClass;
-    Object.keys(cs).forEach((k) => {
-      const v = cs[k];
-      if (!this.transition) {
-        loopOperateClass(this, !!v, k);
-        return;
+    if (!this._ts) {
+      this._ts = /* @__PURE__ */ new Map();
+    }
+    const newClassList = new Set(this.class ? this.class.split(" ") : []);
+    if (first) {
+      newClassList.forEach((clz) => {
+        this._ts.set(clz, [TransitionStates.ENTERED, null]);
+        el.classList.add(clz);
+      });
+      this._cs = newClassList;
+      return;
+    }
+    const preClassList = this._cs;
+    const diffClassList = [];
+    newClassList.forEach((clz) => {
+      if (preClassList.has(clz)) {
+        preClassList.delete(clz);
+      } else {
+        diffClassList.push({ className: clz, type: 0 /* ADD */ });
       }
-      if (first) {
-        this._t.set(k, [
-          v ? TransitionStates.ENTERED : TransitionStates.LEAVED,
-          null
-        ]);
-        if (v) {
-          el.classList.add(k);
-        } else {
-          el.classList.remove(k);
-        }
-        return;
-      }
-      const t = this._t.get(k);
+    });
+    preClassList.forEach((clz) => {
+      diffClassList.push({ className: clz, type: 1 /* DEL */ });
+    });
+    this._cs = newClassList;
+    if (diffClassList.length === 0) {
+      return;
+    }
+    diffClassList.forEach(({ className, type }) => {
+      const isAdd = type === 0 /* ADD */;
+      let t = this._ts.get(className);
       if (!t) {
-        console.error("Unsupport <toogle-class> attribute. see https://todo");
+        t = [isAdd ? TransitionStates.LEAVED : TransitionStates.ENTERED, null];
+        this._ts.set(className, t);
+      }
+      if (isAdd && t[0] <= TransitionStates.ENTERED || !isAdd && t[0] >= TransitionStates.LEAVING) {
         return;
       }
-      const s = t[0];
-      if (v && s <= TransitionStates.ENTERED || !v && s >= TransitionStates.LEAVING) {
-        return;
-      }
-      if (s === (v ? TransitionStates.LEAVING : TransitionStates.ENTERING)) {
-        el.classList.remove(k + (v ? "-leave-active" : "-enter-active"));
-        el.classList.remove(k + (v ? "-leave" : "-enter"));
+      if (t && t[0] === (isAdd ? TransitionStates.LEAVING : TransitionStates.ENTERING)) {
+        el.classList.remove(className + (isAdd ? "-leave-active" : "-enter-active"));
+        el.classList.remove(className + (isAdd ? "-leave" : "-enter"));
         removeEvent(el, "transitionend", t[1]);
         removeEvent(el, "animationend", t[1]);
         t[1] = null;
-        this.__notify("transition", v ? "leave-cancelled" : "enter-cancelled", k, el);
+        this.__notify("transition", isAdd ? "leave-cancelled" : "enter-cancelled", className, el);
       }
-      const classOfStart = k + (v ? "-enter" : "-leave");
-      const classOfActive = k + (v ? "-enter-active" : "-leave-active");
+      const classOfStart = className + (isAdd ? "-enter" : "-leave");
+      const classOfActive = className + (isAdd ? "-enter-active" : "-leave-active");
       el.classList.add(classOfStart);
       getDurationType(el);
       el.classList.add(classOfActive);
@@ -1839,11 +2021,11 @@ class class_ToggleClassComponent extends (/* unused pure expression or super */ 
       if (!tsEndName) {
         el.classList.remove(classOfStart);
         el.classList.remove(classOfActive);
-        t[0] = v ? TransitionStates.ENTERED : TransitionStates.LEAVED;
-        if (v) {
-          el.classList.add(k);
+        t[0] = isAdd ? TransitionStates.ENTERED : TransitionStates.LEAVED;
+        if (isAdd) {
+          el.classList.add(className);
         } else {
-          el.classList.remove(k);
+          el.classList.remove(className);
         }
         return;
       }
@@ -1853,20 +2035,20 @@ class class_ToggleClassComponent extends (/* unused pure expression or super */ 
         el.classList.remove(classOfStart);
         el.classList.remove(classOfActive);
         t[1] = null;
-        t[0] = v ? TransitionStates.ENTERED : TransitionStates.LEAVED;
-        if (v) {
-          el.classList.add(k);
+        t[0] = isAdd ? TransitionStates.ENTERED : TransitionStates.LEAVED;
+        if (isAdd) {
+          el.classList.add(className);
         } else {
-          el.classList.remove(k);
+          el.classList.remove(className);
         }
-        this.__notify("transition", v ? "after-enter" : "after-leave", k, el);
+        this.__notify("transition", isAdd ? "after-enter" : "after-leave", className, el);
       };
-      t[0] = v ? TransitionStates.ENTERING : TransitionStates.LEAVING;
+      t[0] = isAdd ? TransitionStates.ENTERING : TransitionStates.LEAVING;
       t[1] = onEnd;
       addEvent(el, tsEndName, onEnd);
-      this.__notify("transition", v ? "before-enter" : "before-leave", k, el);
+      this.__notify("transition", isAdd ? "before-enter" : "before-leave", className, el);
       setImmediate(() => {
-        this.__notify("transition", v ? "enter" : "leave", k, el);
+        this.__notify("transition", isAdd ? "enter" : "leave", className, el);
       });
     });
   }
@@ -1874,7 +2056,7 @@ class class_ToggleClassComponent extends (/* unused pure expression or super */ 
 
 
 //# sourceMappingURL=class.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/for.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/components/for.js
 
 
 
@@ -1901,14 +2083,19 @@ class ForEachComponent extends component_Component {
   }
 }
 function createEl(item, i, isLast, itemRenderFn, context) {
-  return new ForEachComponent(component_wrapAttrs({
-    [component_]: {
-      context,
-      slots: {
-        default: itemRenderFn
+  return new ForEachComponent(
+    component_wrapAttrs({
+      [component_]: {
+        context,
+        slots: {
+          default: itemRenderFn
+        }
       }
-    }
-  }), item, i, isLast)[common_$$].proxy;
+    }),
+    item,
+    i,
+    isLast
+  )[common_$$].proxy;
 }
 function appendRenderEach(item, i, isLast, itemRenderFn, roots, context) {
   const el = createEl(item, i, isLast, itemRenderFn, context);
@@ -1918,7 +2105,11 @@ function appendRenderEach(item, i, isLast, itemRenderFn, roots, context) {
 function _prepareKey(item, i, keyMap, keyName) {
   const key = keyName === "each" ? item : keyName(item);
   if (keyMap.has(key)) {
-    console.error(`loop items [${i}] and [${keyMap.get(key)}] of <for> component both have key '${key}', dulplicated key may cause update error.`);
+    console.error(
+      `loop items [${i}] and [${keyMap.get(
+        key
+      )}] of <for> component both have key '${key}', dulplicated key may cause update error.`
+    );
   }
   keyMap.set(key, i);
   return key;
@@ -1936,7 +2127,7 @@ function renderItems(items, itemRenderFn, roots, keys, keyName, context) {
 }
 function loopAppend($parent, el) {
   el[component_].rootNodes.forEach((node) => {
-    if (component_isComponent(node)) {
+    if (isComponent(node)) {
       loopAppend($parent, node);
     } else {
       $parent.appendChild(node);
@@ -1966,10 +2157,14 @@ class ForComponent extends component_Component {
       throw new Error('Value of "key" attribute of <for> component is invalidate. See https://[todo]');
     }
     super(attrs2);const _jg0 = this[common_$$].proxy;
-    if (!isViewModel(attrs2.loop)) {
-      throw new Error("require ViewModelArray");
-    }const f3_jg0402 = () => {
-    _jg0.loop = attrs2.loop; }; f3_jg0402(); attrs2[common_$$].__watch("loop", f3_jg0402);
+    if (isViewModel(attrs2.loop)) {
+      _jg0.loop = attrs2.loop;
+      attrs2[common_$$].__watch("loop", () => {
+        _jg0.loop = attrs2.loop;
+      });
+    } else {
+      _jg0._l = attrs2.loop;
+    }
     const kn = attrs2.key || "index";
     _jg0._keyName = kn;
     _jg0._length = 0;
@@ -2239,33 +2434,23 @@ class ForComponent extends component_Component {
 
 
 //# sourceMappingURL=for.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/vm/index.js
-
-
-
-
-
-
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/hide.js
-
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/components/hide.js
 
 
 class HideComponent extends (/* unused pure expression or super */ null && (ToggleClassComponent)) {
   constructor(attrs) {
-    attrs.class = vm({
-      "jg-hide": attrs.test
-    });
-    attrs[$$].__watch("test", () => {
-      attrs.class["jg-hide"] = attrs.test;
-    });
-    super(attrs);const _jg0 = this[$$_jg0402].proxy;
+    const fn = () => {
+      attrs.class = attrs.test ? "jg-hide" : null;
+    };
+    fn();
+    attrs[$$].__watch("test", fn);
+    super(attrs);
   }
 }
 
 
 //# sourceMappingURL=hide.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/html.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/components/html.js
 
 
 function renderHtml(content) {
@@ -2311,7 +2496,7 @@ class BindHtmlComponent extends (/* unused pure expression or super */ null && (
 
 
 //# sourceMappingURL=html.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/if.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/components/if.js
 
 
 
@@ -2353,7 +2538,7 @@ function renderSwitch(component) {
 function doUpdate(component) {
   const roots = component[component_].rootNodes;
   const el = roots[0];
-  const isComp = component_isComponent(el);
+  const isComp = isComponent(el);
   const firstDOM = isComp ? el.__firstDOM : el;
   const parentDOM = (isComp ? firstDOM : el).parentNode;
   const renderFn = component[component_].slots?.[component._currentValue];
@@ -2441,7 +2626,7 @@ function updateSwitchWithTransition(component) {
   }
 }
 function updateSwitch(component) {
-  if (!component_isComponent(component[component_].rootNodes[0]) && (!component[component_].slots || !component[component_].slots[component._currentValue])) {
+  if (!isComponent(component[component_].rootNodes[0]) && (!component[component_].slots || !component[component_].slots[component._currentValue])) {
     return;
   }
   if (component._transitionMap) {
@@ -2571,7 +2756,7 @@ class SwitchComponent extends (/* unused pure expression or super */ null && (Co
 
 
 //# sourceMappingURL=if.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/parameter.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/components/parameter.js
 
 
 class ParameterComponent extends component_Component {
@@ -2588,7 +2773,7 @@ class ParameterComponent extends component_Component {
 
 
 //# sourceMappingURL=parameter.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/log.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/components/log.js
 
 class LogComponent extends (/* unused pure expression or super */ null && (Component)) {
   constructor(attrs) {
@@ -2609,7 +2794,7 @@ class LogComponent extends (/* unused pure expression or super */ null && (Compo
 
 
 //# sourceMappingURL=log.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/render_fns.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/core/render_fns.js
 
 
 function render_fns_emptyRenderFn(component) {
@@ -2623,7 +2808,7 @@ function errorRenderFn(component) {
   });
   el.textContent = "template parsing failed! please check webpack log.";
   component[__].rootNodes.push(el);
-  return el;
+  return [el];
 }
 function textRenderFn(component, txtContent) {
   const el = createTextNode(txtContent);
@@ -2633,7 +2818,7 @@ function textRenderFn(component, txtContent) {
 
 
 //# sourceMappingURL=render_fns.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/dynamic.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/components/dynamic.js
 
 
 
@@ -2703,7 +2888,7 @@ class DynamicRenderComponent extends (/* unused pure expression or super */ null
 
 
 //# sourceMappingURL=dynamic.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/components/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/components/index.js
 
 
 
@@ -2714,7 +2899,7 @@ class DynamicRenderComponent extends (/* unused pure expression or super */ null
 
 
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/bootstrap.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/core/bootstrap.js
 function bootstrap(ComponentClazz, dom, attrs) {
   const app = ComponentClazz.create(attrs);
   app.__renderToDOM(dom, dom !== document.body);
@@ -2723,7 +2908,7 @@ function bootstrap(ComponentClazz, dom, attrs) {
 
 
 //# sourceMappingURL=bootstrap.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/core/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/core/index.js
 
 
 
@@ -2732,7 +2917,7 @@ function bootstrap(ComponentClazz, dom, attrs) {
 
 
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/index.js
 
 
 
@@ -2749,7 +2934,7 @@ function bootstrap(ComponentClazz, dom, attrs) {
 /* harmony export */   "ND": () => (/* binding */ T29rjaqd_ZHCN_EN)
 /* harmony export */ });
 /* unused harmony exports ZHCN, EN, ZHCN_EN */
-/* harmony import */ var jinge_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(511);
+/* harmony import */ var jinge_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(37);
 /** @eslint-disabled **/
 /** this file is auto generated by jinge-i18n, don't modify it manually. **/
 /** dictionary for original text: 你好，世界！ **/;
@@ -2770,7 +2955,7 @@ class T29rjaqd_ZHCN_EN extends jinge_i18n__WEBPACK_IMPORTED_MODULE_0__/* .TCompo
 /* harmony export */   "xd": () => (/* binding */ Tfee9s7_ZHCN_EN)
 /* harmony export */ });
 /* unused harmony exports ZHCN, EN, ZHCN_EN */
-/* harmony import */ var jinge_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(511);
+/* harmony import */ var jinge_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(37);
 /** @eslint-disabled **/
 /** this file is auto generated by jinge-i18n, don't modify it manually. **/
 /** dictionary for original text: 春江花月夜 **/;
@@ -2844,7 +3029,7 @@ class Tfee9s7_ZHCN_EN extends jinge_i18n__WEBPACK_IMPORTED_MODULE_0__/* .TCompon
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + {"81":"050791b8c6c503b86e39","194":"a1529743572234a8cf3d","649":"fb88276128f3f96f18f3","775":"f5de0e048d345417cf44"}[chunkId] + ".js";
+/******/ 			return "" + {"69":"8bde88fc37bf00c0f35e","207":"f29a157f78166e0a942b","444":"273253ad5603f255233b","925":"ca7db5977b590f24cffa"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -2853,7 +3038,7 @@ class Tfee9s7_ZHCN_EN extends jinge_i18n__WEBPACK_IMPORTED_MODULE_0__/* .TCompon
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.miniCssF = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + {"81":"645aafacd0de52488b98","194":"9034fd25d4c10e0b3077","775":"b81dbf284402f04d9f79"}[chunkId] + ".css";
+/******/ 			return "" + {"69":"645aafacd0de52488b98","207":"b81dbf284402f04d9f79","925":"9034fd25d4c10e0b3077"}[chunkId] + ".css";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -2981,7 +3166,7 @@ class Tfee9s7_ZHCN_EN extends jinge_i18n__WEBPACK_IMPORTED_MODULE_0__/* .TCompon
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = (chunkId, promises) => {
-/******/ 			var cssChunks = {"81":1,"194":1,"775":1};
+/******/ 			var cssChunks = {"69":1,"207":1,"925":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(() => {
@@ -3091,13 +3276,17 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 
-// EXTERNAL MODULE: ./node_modules/.pnpm/jinge@3.2.1_jinge-compiler@3.2.1/node_modules/jinge/lib/index.js + 28 modules
-var lib = __webpack_require__(35);
-// EXTERNAL MODULE: ./node_modules/.pnpm/jinge-i18n@3.2.1_jinge@3.2.1/node_modules/jinge-i18n/lib/index.js + 3 modules
-var jinge_i18n_lib = __webpack_require__(511);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.1_jinge@3.2.1/node_modules/jinge-router/lib/common.js
-
+// EXTERNAL MODULE: ./node_modules/.pnpm/jinge@3.2.2_jinge-compiler@3.2.2/node_modules/jinge/lib/index.js + 28 modules
+var lib = __webpack_require__(116);
+// EXTERNAL MODULE: ./node_modules/.pnpm/jinge-i18n@1.0.0_jinge@3.2.2/node_modules/jinge-i18n/lib/index.js + 3 modules
+var jinge_i18n_lib = __webpack_require__(37);
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/common.js
 const VIEW_NAME_PATH = Symbol("#viewNamePath");
+
+
+//# sourceMappingURL=common.js.map
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/util.js
+
 function isParamsOrQuerySameOrInclude(src, dst, strict = true) {
   if (!src)
     return !dst;
@@ -3127,9 +3316,11 @@ function isParamsOrQuerySameOrInclude(src, dst, strict = true) {
   return true;
 }
 function cloneParamsOrQuery(v) {
-  return Object.fromEntries(Object.keys(v).map((k) => {
-    return [k, v[k]];
-  }));
+  return Object.fromEntries(
+    Object.keys(v).map((k) => {
+      return [k, v[k]];
+    })
+  );
 }
 function encodeParamsOrQuery(v) {
   if (!(0,lib/* isObject */.Kn)(v))
@@ -3140,7 +3331,7 @@ function encodeParamsOrQuery(v) {
 }
 
 
-//# sourceMappingURL=common.js.map
+//# sourceMappingURL=util.js.map
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/path-to-regexp@6.2.1/node_modules/path-to-regexp/dist.es2015/index.js
 /**
  * Tokenize input string.
@@ -3542,18 +3733,20 @@ function pathToRegexp(path, keys, options) {
     return stringToRegexp(path, keys, options);
 }
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.1_jinge@3.2.1/node_modules/jinge-router/lib/components/view.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/components/view.js
 
 
 function createEl(renderFn, context) {
-  const el = new lib/* Component */.wA((0,lib/* attrs */.Qb)({
-    [lib.__]: {
-      context,
-      slots: {
-        default: renderFn
+  const el = new lib/* Component */.wA(
+    (0,lib/* attrs */.Qb)({
+      [lib.__]: {
+        context,
+        slots: {
+          default: renderFn
+        }
       }
-    }
-  }));
+    })
+  );
   return el[lib.$$].proxy;
 }
 class RouterViewComponent extends lib/* Component */.wA {
@@ -3634,12 +3827,14 @@ class RouterViewComponent extends lib/* Component */.wA {
       roots[0] = newEl2;
       return;
     }
-    const newEl = CompClazz.create((0,lib/* attrs */.Qb)({
-      ...routeMatchItem.resolves,
-      [lib.__]: {
-        context: this[lib.__].context
-      }
-    }));
+    const newEl = CompClazz.create(
+      (0,lib/* attrs */.Qb)({
+        ...routeMatchItem.resolves,
+        [lib.__]: {
+          context: this[lib.__].context
+        }
+      })
+    );
     const ns = (0,lib/* assertRenderResults */.KO)(newEl.__render());
     $pa.insertBefore(ns.length > 1 ? (0,lib/* createFragment */.xJ)(ns) : ns[0], $el);
     removeOldEl();
@@ -3680,7 +3875,7 @@ class RouterViewComponent extends lib/* Component */.wA {
 
 
 //# sourceMappingURL=view.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.1_jinge@3.2.1/node_modules/jinge-router/lib/components/redirect.tpl.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/components/redirect.tpl.js
 
 
 /* harmony default export */ function redirect_tpl(component) {
@@ -3699,7 +3894,7 @@ class RouterViewComponent extends lib/* Component */.wA {
   })()
   ];
 }
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.1_jinge@3.2.1/node_modules/jinge-router/lib/components/redirect.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/components/redirect.js
 
 
 class RouterParentComponent extends lib/* Component */.wA {
@@ -3708,7 +3903,7 @@ RouterParentComponent.template = redirect_tpl;
 
 
 //# sourceMappingURL=redirect.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.1_jinge@3.2.1/node_modules/jinge-router/lib/router.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/router.js
 
 
 
@@ -3733,10 +3928,12 @@ function parseQuery(search) {
   const segments = search.split("&").map((s) => s.trim()).filter((s) => !!s);
   if (segments.length === 0)
     return {};
-  return Object.fromEntries(segments.map((seg) => {
-    const pair = seg.split("=").map(decodeURIComponent);
-    return [pair[0], pair.length <= 1 ? true : parseVal(pair[1])];
-  }));
+  return Object.fromEntries(
+    segments.map((seg) => {
+      const pair = seg.split("=").map(decodeURIComponent);
+      return [pair[0], pair.length <= 1 ? true : parseVal(pair[1])];
+    })
+  );
 }
 function addRoute(map, route, container, parent = null) {
   const hasChild = route.children && route.children.length > 0;
@@ -3808,9 +4005,11 @@ function getPathnameAndSearch(destination, __map, baseHref) {
     rs.unshift(_p);
   }
   return {
-    pathname: normPath(baseHref + "/" + rs.reduce((pv, it) => {
-      return pv + "/" + it.p2r.toPath(destination.params);
-    }, "")),
+    pathname: normPath(
+      baseHref + "/" + rs.reduce((pv, it) => {
+        return pv + "/" + it.p2r.toPath(destination.params);
+      }, "")
+    ),
     search: Object.keys(destination.query || {}).map((k) => {
       return encodeURIComponent(k) + "=" + encodeURIComponent(destination.query[k]);
     }).join("&")
@@ -3914,7 +4113,11 @@ class Router {
       return;
     this.__started = true;
     const isHashMode = this.__mode === "hash";
-    this.__dereg = (0,lib/* registerEvent */.KS)(window, isHashMode ? "hashchange" : "popstate", isHashMode ? this._onHashChange.bind(this) : this._onStateChange.bind(this));
+    this.__dereg = (0,lib/* registerEvent */.KS)(
+      window,
+      isHashMode ? "hashchange" : "popstate",
+      isHashMode ? this._onHashChange.bind(this) : this._onStateChange.bind(this)
+    );
     if (isHashMode) {
       this._onHashChange();
     } else {
@@ -3932,10 +4135,14 @@ class Router {
   _onHashChange() {
     const hash = location.hash.slice(1);
     const qi = hash.indexOf("?");
-    this._update(qi > 0 ? hash.substring(0, qi) : hash, qi > 0 ? hash.substring(qi + 1) : "").catch((err) => this._onErr(err));
+    this._update(qi > 0 ? hash.substring(0, qi) : hash, qi > 0 ? hash.substring(qi + 1) : "").catch(
+      (err) => this._onErr(err)
+    );
   }
   _onStateChange() {
-    this._update(location.pathname, location.search ? location.search.substring(1) : "").catch((err) => this._onErr(err));
+    this._update(location.pathname, location.search ? location.search.substring(1) : "").catch(
+      (err) => this._onErr(err)
+    );
   }
   async _update(pathname, search) {
     pathname = normPath(pathname);
@@ -4080,9 +4287,11 @@ class Router {
           try {
             const rtn = resolveOrFn(matchedRoute.params, newRouteInfo.query, parentResolves);
             if ((0,lib/* isObject */.Kn)(rtn) && (0,lib/* isFunction */.mf)(rtn.then)) {
-              promises.push(rtn.then((rr) => {
-                currentResolves[k] = rr;
-              }));
+              promises.push(
+                rtn.then((rr) => {
+                  currentResolves[k] = rr;
+                })
+              );
             } else {
               currentResolves[k] = rtn;
             }
@@ -4109,9 +4318,11 @@ class Router {
             try {
               const r = CompClazz(matchedRoute.params, newRouteInfo.query, currentResolves);
               if ((0,lib/* isObject */.Kn)(r) && (0,lib/* isFunction */.mf)(r.then)) {
-                promises.push(r.then((rr) => {
-                  loadedComClasses[cn] = rr;
-                }));
+                promises.push(
+                  r.then((rr) => {
+                    loadedComClasses[cn] = rr;
+                  })
+                );
               } else {
                 loadedComClasses[cn] = CompClazz;
               }
@@ -4218,7 +4429,7 @@ class Router {
 
 
 //# sourceMappingURL=router.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.1_jinge@3.2.1/node_modules/jinge-router/lib/components/link.tpl.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/components/link.tpl.js
 
 /* harmony default export */ function link_tpl(component) {
   const vm_0 = component;
@@ -4233,7 +4444,7 @@ class Router {
           (() => {
             const el = (0,lib/* createTextNode */.Eg)();
             const fn_0 = () => {
-              (0,lib/* setText */.Hd)(el, `${vm_0.text}`);
+              (0,lib/* setText */.Hd)(el, vm_0.text);
             };
             fn_0();
             vm_0[lib.$$].__watch(["text"], fn_0, component[lib.$$]);
@@ -4241,15 +4452,14 @@ class Router {
           })()
         );
         const fn_0 = () => {
-          (0,lib/* setAttribute */.P$)(el, "class", !vm_0.className && !(vm_0.isActive && vm_0.active) ? vm_0._udef : (vm_0.className || '') + (vm_0.isActive && vm_0.active ? (vm_0.className ? ' ' : '') + vm_0.active : ''));
+          (0,lib/* setClassAttribute */.VT)(el, ([vm_0.isActive && vm_0.active, vm_0.class]));
         };
         fn_0();
-        vm_0[lib.$$].__watch(["className"], fn_0, component[lib.$$]);
         vm_0[lib.$$].__watch(["isActive"], fn_0, component[lib.$$]);
         vm_0[lib.$$].__watch(["active"], fn_0, component[lib.$$]);
-        vm_0[lib.$$].__watch(["_udef"], fn_0, component[lib.$$]);
+        vm_0[lib.$$].__watch(["class"], fn_0, component[lib.$$]);
         const fn_1 = () => {
-          (0,lib/* setAttribute */.P$)(el, "style", vm_0.style);
+          (0,lib/* setStyleAttribute */.V7)(el, vm_0.style);
         };
         fn_1();
         vm_0[lib.$$].__watch(["style"], fn_1, component[lib.$$]);
@@ -4272,7 +4482,7 @@ class Router {
   })()
   ];
 }
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.1_jinge@3.2.1/node_modules/jinge-router/lib/components/link.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/components/link.js
 
 
 
@@ -4283,9 +4493,7 @@ class RouterLinkComponent extends lib/* Component */.wA {
     _jg0.text = attrs.text || ""; }; f2_jg0402(); attrs[lib.$$].__watch("text", f2_jg0402);const f3_jg0402 = () => {
     _jg0.target = attrs.target || "_self"; }; f3_jg0402(); attrs[lib.$$].__watch("target", f3_jg0402);const f4_jg0402 = () => {
     _jg0.replace = !!attrs.replace; }; f4_jg0402(); attrs[lib.$$].__watch("replace", f4_jg0402);const f5_jg0402 = () => {
-    _jg0.className = attrs.class; }; f5_jg0402(); attrs[lib.$$].__watch("class", f5_jg0402);const f6_jg0402 = () => {
-    _jg0.style = attrs.style; }; f6_jg0402(); attrs[lib.$$].__watch("style", f6_jg0402);const f7_jg0402 = () => {
-    _jg0.active = attrs.active; }; f7_jg0402(); attrs[lib.$$].__watch("active", f7_jg0402);
+    _jg0.active = attrs.active; }; f5_jg0402(); attrs[lib.$$].__watch("active", f5_jg0402);
     _jg0._router = _jg0.__getContext("router");
     if (!_jg0._router) {
       throw new Error('Context named "router" not found.');
@@ -4411,7 +4619,7 @@ RouterLinkComponent.template = link_tpl;
 
 
 //# sourceMappingURL=link.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.1_jinge@3.2.1/node_modules/jinge-router/lib/components/router.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/components/router.js
 
 
 class RouterComponent extends lib/* Component */.wA {
@@ -4450,13 +4658,14 @@ class RouterComponent extends lib/* Component */.wA {
 
 
 //# sourceMappingURL=router.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.1_jinge@3.2.1/node_modules/jinge-router/lib/components/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/components/index.js
 
 
 
 
 //# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.1_jinge@3.2.1/node_modules/jinge-router/lib/index.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/jinge-router@3.2.2_jinge@3.2.2/node_modules/jinge-router/lib/index.js
+
 
 
 
@@ -4520,7 +4729,7 @@ class A27pfrih_ZHCN_EN extends jinge_i18n_lib/* AComponent */.D7 {
   static d = [_27pfrih_ZHCN_EN];
 }
 // EXTERNAL MODULE: ./src/components/printer.c.js + 1 modules
-var printer_c = __webpack_require__(15);
+var printer_c = __webpack_require__(196);
 ;// CONCATENATED MODULE: ./src/app.module.scss
 // extracted by mini-css-extract-plugin
 /* harmony default export */ const app_module = ({"nav":"saHbmE5E2pRh_n9kOMCR","active":"BFeG74xlw9e582RNhbAE"});
@@ -4575,7 +4784,7 @@ var printer_c = __webpack_require__(15);
                         (() => {
                           const el = (0,lib/* createTextNode */.Eg)();
                           const fn_0 = () => {
-                            (0,lib/* setText */.Hd)(el, `${vm_1.each?.name}`);
+                            (0,lib/* setText */.Hd)(el, vm_1.each?.name);
                           };
                           fn_0();
                           vm_1[lib.$$].__watch(["each","name"], fn_0, component[lib.$$]);
@@ -4583,7 +4792,7 @@ var printer_c = __webpack_require__(15);
                         })()
                       );
                       const fn_0 = () => {
-                        el.value = `${vm_1.each?.locale}`;
+                        el.value = vm_1.each?.locale;
                       };
                       fn_0();
                       vm_1[lib.$$].__watch(["each","locale"], fn_0, component[lib.$$]);
@@ -4594,7 +4803,7 @@ var printer_c = __webpack_require__(15);
                   }
                 }
               },
-              loop: null
+              loop: undefined
             });
             const fn_0 = () => {
               attrs.loop = vm_0.locales;
@@ -4636,7 +4845,7 @@ var printer_c = __webpack_require__(15);
                     [lib.__]: {
                       context: component[lib.__].context,
                     },
-                    message: null
+                    message: undefined
                   });
                   const fn_0 = () => {
                     attrs.message = vm_1.c?.[0];
@@ -4703,7 +4912,7 @@ var printer_c = __webpack_require__(15);
                               [lib.__]: {
                                 context: component[lib.__].context,
                               },
-                              text: null,
+                              text: undefined,
                               active: `active`,
                               to: `/a`
                             });
@@ -4738,7 +4947,7 @@ var printer_c = __webpack_require__(15);
                               [lib.__]: {
                                 context: component[lib.__].context,
                               },
-                              text: null,
+                              text: undefined,
                               active: `active`,
                               to: `/b`
                             });
@@ -4773,7 +4982,7 @@ var printer_c = __webpack_require__(15);
                               [lib.__]: {
                                 context: component[lib.__].context,
                               },
-                              text: null,
+                              text: undefined,
                               active: `active`,
                               to: `/c`
                             });
@@ -4823,20 +5032,15 @@ var printer_c = __webpack_require__(15);
           }
         }
       },
-      routes: null,
-      baseHref: null,
-      router: `hash`
+      baseHref: undefined,
+      router: `hash`,
+      routes: vm_0._routes
     });
     const fn_0 = () => {
-      attrs.routes = vm_0._routes;
-    };
-    fn_0();
-    vm_0[lib.$$].__watch(["_routes"], fn_0, component[lib.$$]);
-    const fn_1 = () => {
       attrs.baseHref = vm_0.locale;
     };
-    fn_1();
-    vm_0[lib.$$].__watch(["locale"], fn_1, component[lib.$$]);
+    fn_0();
+    vm_0[lib.$$].__watch(["locale"], fn_0, component[lib.$$]);
     const el = RouterComponent.create(attrs);
     component[lib.__].rootNodes.push(el);
     return (0,lib/* assertRenderResults */.KO)(el.__render());
@@ -4854,19 +5058,19 @@ const routes = [{
   path: '/a',
   // component: A
   async component() {
-    return (await Promise.all(/* import() */[__webpack_require__.e(649), __webpack_require__.e(194)]).then(__webpack_require__.bind(__webpack_require__, 84))).A;
+    return (await Promise.all(/* import() */[__webpack_require__.e(444), __webpack_require__.e(925)]).then(__webpack_require__.bind(__webpack_require__, 332))).A;
   }
 }, {
   path: '/b',
   // component: B
   async component() {
-    return (await __webpack_require__.e(/* import() */ 775).then(__webpack_require__.bind(__webpack_require__, 775))).B;
+    return (await __webpack_require__.e(/* import() */ 207).then(__webpack_require__.bind(__webpack_require__, 207))).B;
   }
 }, {
   path: '/c',
   // component: C
   component() {
-    return Promise.all(/* import() */[__webpack_require__.e(649), __webpack_require__.e(81)]).then(__webpack_require__.bind(__webpack_require__, 409)).then(module => {
+    return Promise.all(/* import() */[__webpack_require__.e(444), __webpack_require__.e(69)]).then(__webpack_require__.bind(__webpack_require__, 221)).then(module => {
       return module.C;
     });
   }

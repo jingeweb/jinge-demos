@@ -12,8 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "echarts": "^5.3.3",
-    "jinge": "^3.2.1",
-    "jinge-compiler": "^3.2.1",
+    "jinge": "^3.2.2",
+    "jinge-compiler": "^3.2.2",
     "jquery": "^3.6.0"
   },
   "devDependencies": {

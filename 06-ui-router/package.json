@@ -13,8 +13,8 @@
   "dependencies": {
     "@uirouter/core": "^6.0.8",
     "@uirouter/visualizer": "^7.2.1",
-    "jinge": "^3.2.1",
-    "jinge-compiler": "^3.2.1",
+    "jinge": "^3.2.2",
+    "jinge-compiler": "^3.2.2",
     "jinge-ui-router": "^3.2.0"
   },
   "devDependencies": {
