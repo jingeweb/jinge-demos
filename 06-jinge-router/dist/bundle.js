@@ -355,7 +355,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jinge_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jinge-router */ "../../jinge-router/lib/index.js");
 
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   (() => {
@@ -372,7 +372,7 @@ __webpack_require__.r(__webpack_exports__);
         debugName: "attrs_of_<router>",
         context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
         slots: {
-          'default': function(component) {
+          'default': function(component) {  
             return [
             (() => {
               const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
@@ -418,7 +418,7 @@ __webpack_require__.r(__webpack_exports__);
                           debugName: "attrs_of_<router-link>",
                           context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
                         },
-                        target: null,
+                        target: undefined,
                         class: `xx`,
                         style: `margin-right: 8px;`,
                         text: `Hello`,
@@ -432,7 +432,7 @@ __webpack_require__.r(__webpack_exports__);
                       vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["newTab"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
                       const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkComponent.create(attrs);
                       component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-                      return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+                      return el.__render();
                     })(),
                     ...(() => {
                       const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
@@ -440,7 +440,7 @@ __webpack_require__.r(__webpack_exports__);
                           debugName: "attrs_of_<router-link>",
                           context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
                           slots: {
-                            'default': function(component) {
+                            'default': function(component) {  
                               return [
                               (() => {
                                 const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElement)(
@@ -457,7 +457,7 @@ __webpack_require__.r(__webpack_exports__);
                             }
                           }
                         },
-                        target: null,
+                        target: undefined,
                         to: `/about`,
                         active: `active`
                       });
@@ -468,7 +468,7 @@ __webpack_require__.r(__webpack_exports__);
                       vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["newTab"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
                       const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkComponent.create(attrs);
                       component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-                      return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+                      return el.__render();
                     })(),
                     ...(() => {
                       const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
@@ -476,7 +476,7 @@ __webpack_require__.r(__webpack_exports__);
                           debugName: "attrs_of_<router-link>",
                           context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
                           slots: {
-                            'default': function(component) {
+                            'default': function(component) {  
                               return [
                               (() => {
                                 const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
@@ -490,7 +490,7 @@ __webpack_require__.r(__webpack_exports__);
                             }
                           }
                         },
-                        target: null,
+                        target: undefined,
                         to: `/people`,
                         active: `active`
                       });
@@ -501,7 +501,7 @@ __webpack_require__.r(__webpack_exports__);
                       vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["newTab"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
                       const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkComponent.create(attrs);
                       component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-                      return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+                      return el.__render();
                     })(),
                     ...(() => {
                       const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
@@ -516,7 +516,7 @@ __webpack_require__.r(__webpack_exports__);
                       });
                       const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkComponent.create(attrs);
                       component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-                      return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+                      return el.__render();
                     })(),
                     (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElement)(
                       "a",
@@ -537,7 +537,7 @@ __webpack_require__.r(__webpack_exports__);
                       });
                       const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkComponent.create(attrs);
                       component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-                      return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+                      return el.__render();
                     })()
                   )
                 ),
@@ -558,7 +558,7 @@ __webpack_require__.r(__webpack_exports__);
                           debugName: "attrs_of_<router-view>",
                           context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
                           slots: {
-                            'default': function(component) {
+                            'default': function(component) {  
                               return [
                               (() => {
                                 const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
@@ -570,7 +570,7 @@ __webpack_require__.r(__webpack_exports__);
                               })()
                               ];
                             },
-                            'error': function(component) {
+                            'error': function(component) {  
                               const vm_1 = component;
                               return [
                               (() => {
@@ -585,7 +585,7 @@ __webpack_require__.r(__webpack_exports__);
                                     (() => {
                                       const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
                                       const fn_0 = () => {
-                                        (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `${vm_1.error}`);
+                                        (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, vm_1.error);
                                       };
                                       fn_0();
                                       vm_1[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["error"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
@@ -603,7 +603,7 @@ __webpack_require__.r(__webpack_exports__);
                       });
                       const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterViewComponent.create(attrs);
                       component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-                      return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+                      return el.__render();
                     })()
                   ),
                   (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElement)(
@@ -621,7 +621,7 @@ __webpack_require__.r(__webpack_exports__);
                       });
                       const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterViewComponent.create(attrs);
                       component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-                      return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+                      return el.__render();
                     })()
                   )
                 )
@@ -633,17 +633,12 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       },
-      routes: null,
-      router: `hash`
+      router: `hash`,
+      routes: vm_0._routes
     });
-    const fn_0 = () => {
-      attrs.routes = vm_0._routes;
-    };
-    fn_0();
-    vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["_routes"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
     const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterComponent.create(attrs);
     component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-    return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+    return el.__render();
   })()
   ];
 }
@@ -662,7 +657,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   (() => {
@@ -698,7 +693,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   (() => {
@@ -726,7 +721,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   (() => {
@@ -756,7 +751,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jinge_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jinge-router */ "../../jinge-router/lib/index.js");
 
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   (() => {
@@ -790,7 +785,7 @@ __webpack_require__.r(__webpack_exports__);
         });
         const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkComponent.create(attrs);
         component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-        return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+        return el.__render();
       })(),
       ...(() => {
         const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
@@ -804,7 +799,7 @@ __webpack_require__.r(__webpack_exports__);
         });
         const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkComponent.create(attrs);
         component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-        return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+        return el.__render();
       })(),
       ...(() => {
         const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
@@ -818,7 +813,7 @@ __webpack_require__.r(__webpack_exports__);
         });
         const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkComponent.create(attrs);
         component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-        return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+        return el.__render();
       })()
     );
     component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
@@ -833,7 +828,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterViewComponent.create(attrs);
     component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-    return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+    return el.__render();
   })()
   ];
 }
@@ -852,7 +847,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   (() => {
@@ -896,7 +891,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   (() => {
@@ -927,7 +922,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   (() => {
@@ -953,7 +948,7 @@ __webpack_require__.r(__webpack_exports__);
                 debugName: "attrs_of_<for>",
                 context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
                 slots: {
-                  'default': function(component) {
+                  'default': function(component) {  
                     const vm_1 = component;
                     return [
                     (() => {
@@ -965,8 +960,8 @@ __webpack_require__.r(__webpack_exports__);
                               debugName: "attrs_of_<router-link>",
                               context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
                             },
-                            text: null,
-                            to: null,
+                            text: undefined,
+                            to: undefined,
                             active: `active`
                           });
                           const fn_0 = () => {
@@ -981,7 +976,7 @@ __webpack_require__.r(__webpack_exports__);
                           vm_1[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["each","id"], fn_1, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
                           const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkComponent.create(attrs);
                           component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-                          return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+                          return el.__render();
                         })()
                       );
                       component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
@@ -991,7 +986,7 @@ __webpack_require__.r(__webpack_exports__);
                   }
                 }
               },
-              loop: null,
+              loop: undefined,
               key: `each.id`
             });
             const fn_0 = () => {
@@ -1001,7 +996,7 @@ __webpack_require__.r(__webpack_exports__);
             vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["people"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
             const el = jinge__WEBPACK_IMPORTED_MODULE_0__.ForComponent.create(attrs);
             component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-            return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+            return el.__render();
           })()
         )
       ),
@@ -1013,7 +1008,7 @@ __webpack_require__.r(__webpack_exports__);
               debugName: "attrs_of_<router-view>",
               context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
               slots: {
-                'default': function(component) {
+                'default': function(component) {  
                   return [
                   (0,jinge__WEBPACK_IMPORTED_MODULE_0__.textRenderFn)(component, `loading...`)
                   ];
@@ -1023,7 +1018,7 @@ __webpack_require__.r(__webpack_exports__);
           });
           const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterViewComponent.create(attrs);
           component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-          return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+          return el.__render();
         })()
       )
     );
@@ -1049,7 +1044,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jinge_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jinge-router */ "../../jinge-router/lib/index.js");
 
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   (() => {
@@ -1061,63 +1056,23 @@ __webpack_require__.r(__webpack_exports__);
       ),
       (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
         "div",
-        (() => {
-          const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
-          const fn_0 = () => {
-            (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `Name: ${vm_0._person?.name}`);
-          };
-          fn_0();
-          vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["_person","name"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-          return el;
-        })()
+        `Name: ${vm_0._person?.name}`
       ),
       (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
         "div",
-        (() => {
-          const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
-          const fn_0 = () => {
-            (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `Id: ${vm_0._person?.id}`);
-          };
-          fn_0();
-          vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["_person","id"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-          return el;
-        })()
+        `Id: ${vm_0._person?.id}`
       ),
       (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
         "div",
-        (() => {
-          const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
-          const fn_0 = () => {
-            (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `Company: ${vm_0._person?.company}`);
-          };
-          fn_0();
-          vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["_person","company"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-          return el;
-        })()
+        `Company: ${vm_0._person?.company}`
       ),
       (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
         "div",
-        (() => {
-          const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
-          const fn_0 = () => {
-            (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `Email: ${vm_0._person?.email}`);
-          };
-          fn_0();
-          vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["_person","email"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-          return el;
-        })()
+        `Email: ${vm_0._person?.email}`
       ),
       (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
         "div",
-        (() => {
-          const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
-          const fn_0 = () => {
-            (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `Address: ${vm_0._person?.address}`);
-          };
-          fn_0();
-          vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["_person","address"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-          return el;
-        })()
+        `Address: ${vm_0._person?.address}`
       ),
       ...(() => {
         const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
@@ -1125,7 +1080,7 @@ __webpack_require__.r(__webpack_exports__);
             debugName: "attrs_of_<router-link>",
             context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
             slots: {
-              'default': function(component) {
+              'default': function(component) {  
                 return [
                 (() => {
                   const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
@@ -1143,7 +1098,7 @@ __webpack_require__.r(__webpack_exports__);
         });
         const el = jinge_router__WEBPACK_IMPORTED_MODULE_1__.RouterLinkComponent.create(attrs);
         component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
-        return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+        return el.__render();
       })()
     );
     component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
@@ -1238,9 +1193,11 @@ function isParamsOrQuerySameOrInclude(src, dst, strict = true) {
   return true;
 }
 function cloneParamsOrQuery(v) {
-  return Object.fromEntries(Object.keys(v).map((k) => {
-    return [k, v[k]];
-  }));
+  return Object.fromEntries(
+    Object.keys(v).map((k) => {
+      return [k, v[k]];
+    })
+  );
 }
 function encodeParamsOrQuery(v) {
   if (!(0,jinge__WEBPACK_IMPORTED_MODULE_0__.isObject)(v))
@@ -1315,9 +1272,11 @@ class RouterLinkComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
     _jg0._rch = _jg0._onRc.bind(_jg0);
     _jg0._rcd = null;
   }
-  static get template() {
-    return _link_tpl_js__WEBPACK_IMPORTED_MODULE_2__["default"];
-  }
+  /**
+   * @internal
+   *
+   * handle router changed event/guard
+   */
   _onRc() {
     this._upA();
   }
@@ -1351,6 +1310,9 @@ class RouterLinkComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
     this._to = v;
     this.__updateIfNeed(this._upHa);
   }
+  /**
+   * @internal
+   */
   _onClick(e) {
     if (e.defaultPrevented || e.metaKey || e.ctrlKey) {
       return;
@@ -1383,15 +1345,30 @@ class RouterLinkComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
       (0,jinge__WEBPACK_IMPORTED_MODULE_0__.unwatch)(this._router.__info, "query.*", this._rch);
     }
   }
+  /**
+   * @internal
+   *
+   * update target attribute of link
+   */
   _upT() {
     if (this._tag <= 0) {
       (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setAttribute)(this._el, "target", this.target);
     }
   }
+  /**
+   * @internal
+   *
+   * update href and active class
+   */
   _upHa() {
     this._upH();
     this._upA();
   }
+  /**
+   * @internal
+   *
+   * update href attribute of link
+   */
   _upH() {
     if (this._tag <= 0) {
       let href;
@@ -1402,6 +1379,11 @@ class RouterLinkComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
       }
     }
   }
+  /**
+   * @internal
+   *
+   * update active class of link
+   */
   _upA() {
     let isActive = this._to && this._router.includes(this._to);
     if (isActive && (0,jinge__WEBPACK_IMPORTED_MODULE_0__.isObject)(this._to) && this._to.query) {
@@ -1428,6 +1410,7 @@ class RouterLinkComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
     }
   }
 }
+RouterLinkComponent.template = _link_tpl_js__WEBPACK_IMPORTED_MODULE_2__["default"];
 
 
 //# sourceMappingURL=link.js.map
@@ -1446,12 +1429,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   ...(() => {
     const __ac = vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.__].slots;
-    const renderFn = __ac && __ac['default'] ? __ac['default'] :   function(component) {
+    const renderFn = __ac && __ac['default'] ? __ac['default'] :   function(component) {  
       return [
       (() => {
         const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
@@ -1459,7 +1442,7 @@ __webpack_require__.r(__webpack_exports__);
           (() => {
             const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
             const fn_0 = () => {
-              (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `${vm_0.text}`);
+              (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, vm_0.text);
             };
             fn_0();
             vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["text"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
@@ -1467,15 +1450,14 @@ __webpack_require__.r(__webpack_exports__);
           })()
         );
         const fn_0 = () => {
-          (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setAttribute)(el, "class", !vm_0.className && !(vm_0.isActive && vm_0.active) ? vm_0._udef : (vm_0.className || '') + (vm_0.isActive && vm_0.active ? (vm_0.className ? ' ' : '') + vm_0.active : ''));
+          (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setClassAttribute)(el, !vm_0.className && !(vm_0.isActive && vm_0.active) ? vm_0._udef : (vm_0.className || '') + (vm_0.isActive && vm_0.active ? (vm_0.className ? ' ' : '') + vm_0.active : ''));
         };
         fn_0();
         vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["className"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
         vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["isActive"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
         vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["active"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["_udef"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
         const fn_1 = () => {
-          (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setAttribute)(el, "style", vm_0.style);
+          (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setStyleAttribute)(el, vm_0.style);
         };
         fn_1();
         vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["style"], fn_1, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
@@ -1494,7 +1476,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     const el = (new jinge__WEBPACK_IMPORTED_MODULE_0__.ParameterComponent(attrs, []))[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
     component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-    return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+    return el.__render();
   })()
   ];
 }
@@ -1516,10 +1498,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class RouterParentComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
-  static get template() {
-    return _redirect_tpl_js__WEBPACK_IMPORTED_MODULE_1__["default"];
-  }
 }
+RouterParentComponent.template = _redirect_tpl_js__WEBPACK_IMPORTED_MODULE_1__["default"];
 
 
 //# sourceMappingURL=redirect.js.map
@@ -1540,7 +1520,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _view__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./view */ "../../jinge-router/lib/components/view.js");
 
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   ...(() => {
@@ -1552,7 +1532,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     const el = _view__WEBPACK_IMPORTED_MODULE_1__.RouterViewComponent.create(attrs);
     component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-    return (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(el.__render());
+    return el.__render();
   })()
   ];
 }
@@ -1627,14 +1607,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function createEl(renderFn, context) {
-  const el = new jinge__WEBPACK_IMPORTED_MODULE_0__.Component((0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
-    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
-      context,
-      slots: {
-        default: renderFn
+  const el = new jinge__WEBPACK_IMPORTED_MODULE_0__.Component(
+    (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+      [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+        context,
+        slots: {
+          default: renderFn
+        }
       }
-    }
-  }));
+    })
+  );
   return el[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
 }
 class RouterViewComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
@@ -1659,6 +1641,9 @@ class RouterViewComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
     this[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
     return this[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes;
   }
+  /**
+   * @internal
+   */
   async _shouldUpdateView(from, to) {
     const el = this[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes[0];
     if (!(0,jinge__WEBPACK_IMPORTED_MODULE_0__.isComponent)(el)) {
@@ -1669,6 +1654,9 @@ class RouterViewComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
     }
     return true;
   }
+  /**
+   * @internal
+   */
   _doUpdateView(err, current, routeMatchItem) {
     const roots = this[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes;
     const oldEl = roots[0];
@@ -1694,7 +1682,7 @@ class RouterViewComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
       }
       const newEl2 = createEl(errRenderFn, this[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context);
       newEl2.error = err;
-      const ns2 = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(newEl2.__render());
+      const ns2 = newEl2.__render();
       $pa.insertBefore(ns2.length > 1 ? (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createFragment)(ns2) : ns2[0], $el);
       removeOldEl();
       roots[0] = newEl2;
@@ -1715,18 +1703,23 @@ class RouterViewComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
       roots[0] = newEl2;
       return;
     }
-    const newEl = CompClazz.create((0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
-      ...routeMatchItem.resolves,
-      [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
-        context: this[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context
-      }
-    }));
-    const ns = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(newEl.__render());
+    const newEl = CompClazz.create(
+      (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+        ...routeMatchItem.resolves,
+        [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+          context: this[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context
+        }
+      })
+    );
+    const ns = newEl.__render();
     $pa.insertBefore(ns.length > 1 ? (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createFragment)(ns) : ns[0], $el);
     removeOldEl();
     roots[0] = newEl;
     newEl.__handleAfterRender();
   }
+  /**
+   * @internal
+   */
   _prepareUpdateView() {
     if (this._doc !== "before") {
       return;
@@ -1749,7 +1742,7 @@ class RouterViewComponent extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
       return;
     }
     const loadingEl = createEl(loadingRenderFn, this[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context);
-    const ns = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.assertRenderResults)(loadingEl.__render());
+    const ns = loadingEl.__render();
     $pa.insertBefore(ns.length > 1 ? (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createFragment)(ns) : ns[0], $cursor);
     $pa.removeChild($cursor);
     roots[0] = loadingEl;
@@ -1803,7 +1796,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Router": () => (/* binding */ Router)
 /* harmony export */ });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
-/* harmony import */ var path_to_regexp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! path-to-regexp */ "../../jinge-router/node_modules/.pnpm/path-to-regexp@6.2.1/node_modules/path-to-regexp/dist.es2015/index.js");
+/* harmony import */ var path_to_regexp__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! path-to-regexp */ "../../jinge-router/node_modules/.pnpm/registry.npmmirror.com+path-to-regexp@6.2.1/node_modules/path-to-regexp/dist.es2015/index.js");
 /* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common */ "../../jinge-router/lib/common.js");
 /* harmony import */ var _components_redirect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/redirect */ "../../jinge-router/lib/components/redirect.js");
 
@@ -1811,7 +1804,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function normPath(p) {
-  if (!p || !p.startsWith("/"))
+  if (!p?.startsWith("/"))
     p = "/" + p;
   return p.replace(/[/\\]+/g, "/");
 }
@@ -1830,10 +1823,12 @@ function parseQuery(search) {
   const segments = search.split("&").map((s) => s.trim()).filter((s) => !!s);
   if (segments.length === 0)
     return {};
-  return Object.fromEntries(segments.map((seg) => {
-    const pair = seg.split("=").map(decodeURIComponent);
-    return [pair[0], pair.length <= 1 ? true : parseVal(pair[1])];
-  }));
+  return Object.fromEntries(
+    segments.map((seg) => {
+      const pair = seg.split("=").map(decodeURIComponent);
+      return [pair[0], pair.length <= 1 ? true : parseVal(pair[1])];
+    })
+  );
 }
 function addRoute(map, route, container, parent = null) {
   const hasChild = route.children && route.children.length > 0;
@@ -1870,7 +1865,7 @@ function matchRoutePath(pathname, routes, parentPath = []) {
     const matches = route.p2r.match(pathname);
     if (matches) {
       const params = parentPath.reduce((pv, it) => {
-        return Object.assign({}, it.params);
+        return Object.assign(pv, it.params);
       }, {});
       parentPath.push({
         route,
@@ -1905,9 +1900,11 @@ function getPathnameAndSearch(destination, __map, baseHref) {
     rs.unshift(_p);
   }
   return {
-    pathname: normPath(baseHref + "/" + rs.reduce((pv, it) => {
-      return pv + "/" + it.p2r.toPath(destination.params);
-    }, "")),
+    pathname: normPath(
+      baseHref + "/" + rs.reduce((pv, it) => {
+        return pv + "/" + it.p2r.toPath(destination.params);
+      }, "")
+    ),
     search: Object.keys(destination.query || {}).map((k) => {
       return encodeURIComponent(k) + "=" + encodeURIComponent(destination.query[k]);
     }).join("&")
@@ -1966,6 +1963,9 @@ class Router {
   afterEach(guardFn) {
     return addGuard(this.__guard.after, guardFn);
   }
+  /**
+   * @internal
+   */
   __regView(viewNamePath, viewComponent) {
     let node = this;
     for (let i = 0; i < viewNamePath.length - 1; i++) {
@@ -1987,6 +1987,9 @@ class Router {
     }
     viewComponent._doUpdateView(null, this.__info, this.__info._routePath[viewNamePath.length - 1]);
   }
+  /**
+   * @internal
+   */
   __deregView(viewNamePath) {
     let node = this;
     for (let i = 0; i < viewNamePath.length - 1; i++) {
@@ -2011,7 +2014,11 @@ class Router {
       return;
     this.__started = true;
     const isHashMode = this.__mode === "hash";
-    this.__dereg = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.registerEvent)(window, isHashMode ? "hashchange" : "popstate", isHashMode ? this._onHashChange.bind(this) : this._onStateChange.bind(this));
+    this.__dereg = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.registerEvent)(
+      window,
+      isHashMode ? "hashchange" : "popstate",
+      isHashMode ? this._onHashChange.bind(this) : this._onStateChange.bind(this)
+    );
     if (isHashMode) {
       this._onHashChange();
     } else {
@@ -2023,17 +2030,33 @@ class Router {
       return;
     this.__dereg?.();
   }
+  /**
+   * @internal
+   */
   _onErr(err) {
     console.error(err);
   }
+  /**
+   * @internal
+   */
   _onHashChange() {
     const hash = location.hash.slice(1);
     const qi = hash.indexOf("?");
-    this._update(qi > 0 ? hash.substring(0, qi) : hash, qi > 0 ? hash.substring(qi + 1) : "").catch((err) => this._onErr(err));
+    this._update(qi > 0 ? hash.substring(0, qi) : hash, qi > 0 ? hash.substring(qi + 1) : "").catch(
+      (err) => this._onErr(err)
+    );
   }
+  /**
+   * @internal
+   */
   _onStateChange() {
-    this._update(location.pathname, location.search ? location.search.substring(1) : "").catch((err) => this._onErr(err));
+    this._update(location.pathname, location.search ? location.search.substring(1) : "").catch(
+      (err) => this._onErr(err)
+    );
   }
+  /**
+   * @internal
+   */
   async _update(pathname, search) {
     pathname = normPath(pathname);
     if (this.__base !== "/" && pathname.startsWith(this.__base)) {
@@ -2058,6 +2081,7 @@ class Router {
       _pathname: pathname,
       _routePath: newMatchPath,
       query: (0,jinge__WEBPACK_IMPORTED_MODULE_0__.vm)(query),
+      // clone last route params as final params
       params: (0,jinge__WEBPACK_IMPORTED_MODULE_0__.vm)(Object.assign({}, last.params))
     });
     let redirect = last.route.redirect;
@@ -2148,10 +2172,10 @@ class Router {
         }
       }
     }
-    viewsToUpdate.forEach((vtp) => {
+    for (const vtp of viewsToUpdate) {
       vtp.__views?.clear();
       vtp.component._prepareUpdateView(newRouteInfo, newMatchPath[routeIdxToUpdate]);
-    });
+    }
     if (newRouteInfo._routePath.length > routeIdxToUpdate) {
       for (let i = routeIdxToUpdate; i < newRouteInfo._routePath.length; i++) {
         const routeDef = newRouteInfo._routePath[i].route.define;
@@ -2171,28 +2195,32 @@ class Router {
       const resolveDefs = matchedRoute.route.define.resolves;
       const currentResolves = { ...parentResolves };
       const promises = [];
-      resolveDefs && Object.keys(resolveDefs).forEach((k) => {
-        const resolveOrFn = resolveDefs[k];
-        if ((0,jinge__WEBPACK_IMPORTED_MODULE_0__.isFunction)(resolveOrFn)) {
-          try {
-            const rtn = resolveOrFn(matchedRoute.params, newRouteInfo.query, parentResolves);
-            if ((0,jinge__WEBPACK_IMPORTED_MODULE_0__.isObject)(rtn) && (0,jinge__WEBPACK_IMPORTED_MODULE_0__.isFunction)(rtn.then)) {
-              promises.push(rtn.then((rr) => {
-                currentResolves[k] = rr;
-              }));
-            } else {
-              currentResolves[k] = rtn;
+      if (resolveDefs) {
+        for await (const k of Object.keys(resolveDefs)) {
+          const resolveOrFn = resolveDefs[k];
+          if ((0,jinge__WEBPACK_IMPORTED_MODULE_0__.isFunction)(resolveOrFn)) {
+            try {
+              const rtn = resolveOrFn(matchedRoute.params, newRouteInfo.query, parentResolves);
+              if ((0,jinge__WEBPACK_IMPORTED_MODULE_0__.isObject)(rtn) && (0,jinge__WEBPACK_IMPORTED_MODULE_0__.isFunction)(rtn.then)) {
+                promises.push(
+                  rtn.then((rr) => {
+                    currentResolves[k] = rr;
+                  })
+                );
+              } else {
+                currentResolves[k] = rtn;
+              }
+            } catch (ex) {
+              for (const vtp of viewsToUpdate) {
+                vtp.component._doUpdateView(ex);
+              }
+              throw ex;
             }
-          } catch (ex) {
-            viewsToUpdate.forEach((vtp) => {
-              vtp.component._doUpdateView(ex);
-            });
-            throw ex;
+          } else {
+            currentResolves[k] = resolveOrFn;
           }
-        } else {
-          currentResolves[k] = resolveOrFn;
         }
-      });
+      }
       let loadedComClasses = matchedRoute.route.components;
       if (!loadedComClasses) {
         const comClasses = matchedRoute.route.define.components || {};
@@ -2200,36 +2228,38 @@ class Router {
         if (matchedRoute.route.define.component) {
           comClasses.default = matchedRoute.route.define.component;
         }
-        Object.keys(comClasses).forEach((cn) => {
+        for await (const cn of Object.keys(comClasses)) {
           const CompClazz = comClasses[cn];
           if ((0,jinge__WEBPACK_IMPORTED_MODULE_0__.isFunction)(CompClazz) && !(0,jinge__WEBPACK_IMPORTED_MODULE_0__.isComponent)(CompClazz)) {
             try {
               const r = CompClazz(matchedRoute.params, newRouteInfo.query, currentResolves);
               if ((0,jinge__WEBPACK_IMPORTED_MODULE_0__.isObject)(r) && (0,jinge__WEBPACK_IMPORTED_MODULE_0__.isFunction)(r.then)) {
-                promises.push(r.then((rr) => {
-                  loadedComClasses[cn] = rr;
-                }));
+                promises.push(
+                  r.then((rr) => {
+                    loadedComClasses[cn] = rr;
+                  })
+                );
               } else {
                 loadedComClasses[cn] = CompClazz;
               }
             } catch (ex) {
-              viewsToUpdate.forEach((vtp) => {
+              for (const vtp of viewsToUpdate) {
                 vtp.component._doUpdateView(ex);
-              });
+              }
               throw ex;
             }
           } else {
             loadedComClasses[cn] = CompClazz;
           }
-        });
+        }
       }
       try {
         await Promise.all(promises);
       } catch (ex) {
         if (asyncKey === this.__asyncKey) {
-          viewsToUpdate.forEach((vtp) => {
+          for (const vtp of viewsToUpdate) {
             vtp.component._doUpdateView(ex);
-          });
+          }
         }
         throw ex;
       }
@@ -2242,19 +2272,28 @@ class Router {
     }
     const oldRouteInfo = Object.assign({}, currentInfo);
     Object.assign(currentInfo, newRouteInfo);
-    viewsToUpdate.forEach((vtp) => {
+    for (const vtp of viewsToUpdate) {
       vtp.component._doUpdateView(null, newRouteInfo, newMatchPath[routeIdxToUpdate]);
-    });
+    }
     this.__guard.after.forEach((fn) => {
       fn(oldRouteInfo, newRouteInfo);
     });
   }
+  /**
+   * current location url path parameters
+   */
   get params() {
     return this.__info?.params;
   }
+  /**
+   * current location url query/search
+   */
   get query() {
     return this.__info?.query;
   }
+  /**
+   * current matched route
+   */
   get current() {
     const rp = this.__info?._routePath;
     if (!rp || rp.length === 0)
@@ -2318,10 +2357,10 @@ class Router {
 
 /***/ }),
 
-/***/ "../../jinge-router/node_modules/.pnpm/path-to-regexp@6.2.1/node_modules/path-to-regexp/dist.es2015/index.js":
-/*!*******************************************************************************************************************!*\
-  !*** ../../jinge-router/node_modules/.pnpm/path-to-regexp@6.2.1/node_modules/path-to-regexp/dist.es2015/index.js ***!
-  \*******************************************************************************************************************/
+/***/ "../../jinge-router/node_modules/.pnpm/registry.npmmirror.com+path-to-regexp@6.2.1/node_modules/path-to-regexp/dist.es2015/index.js":
+/*!******************************************************************************************************************************************!*\
+  !*** ../../jinge-router/node_modules/.pnpm/registry.npmmirror.com+path-to-regexp@6.2.1/node_modules/path-to-regexp/dist.es2015/index.js ***!
+  \******************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -2737,146 +2776,6 @@ function pathToRegexp(path, keys, options) {
 
 /***/ }),
 
-/***/ "../../jinge/lib/components/class.js":
-/*!*******************************************!*\
-  !*** ../../jinge/lib/components/class.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ToggleClassComponent": () => (/* binding */ ToggleClassComponent)
-/* harmony export */ });
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
-/* harmony import */ var _core_transition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/transition */ "../../jinge/lib/core/transition.js");
-
-
-
-
-function loopOperateClass(el, isAddOperate, domClass) {
-  if ((0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(el)) {
-    el[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes.forEach((ce) => loopOperateClass(ce, isAddOperate, domClass));
-  } else if (isAddOperate) {
-    el.classList.add(domClass);
-  } else {
-    el.classList.remove(domClass);
-  }
-}
-class ToggleClassComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Component {
-  constructor(attrs) {
-    if (!attrs || !(0,_util__WEBPACK_IMPORTED_MODULE_2__.isObject)(attrs.class)) {
-      throw new Error('<toggle-class> component require "class" attribute to be Object.');
-    }
-    super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;const f2_jg0402 = () => {
-    _jg0.domClass = attrs.class; }; f2_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("class", f2_jg0402);const f3_jg0402 = () => {
-    _jg0.transition = !!attrs.transition; }; f3_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("transition", f3_jg0402);
-    _jg0._t = null;
-    _jg0._i = -1;
-    _jg0[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("domClass.**", () => {
-      _jg0.__updateIfNeed();
-    });
-  }
-  __render() {
-    const rr = super.__render();
-    this.__update(true);
-    return rr;
-  }
-  __beforeDestroy() {
-    this._t = null;
-  }
-  __update(first) {
-    const el = this.transition ? this.__transitionDOM : null;
-    if (el && el.nodeType !== Node.ELEMENT_NODE) {
-      return;
-    }
-    if (this.transition && !this._t) {
-      this._t = /* @__PURE__ */ new Map();
-    }
-    const cs = this.domClass;
-    Object.keys(cs).forEach((k) => {
-      const v = cs[k];
-      if (!this.transition) {
-        loopOperateClass(this, !!v, k);
-        return;
-      }
-      if (first) {
-        this._t.set(k, [
-          v ? _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.ENTERED : _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.LEAVED,
-          null
-        ]);
-        if (v) {
-          el.classList.add(k);
-        } else {
-          el.classList.remove(k);
-        }
-        return;
-      }
-      const t = this._t.get(k);
-      if (!t) {
-        console.error("Unsupport <toogle-class> attribute. see https://todo");
-        return;
-      }
-      const s = t[0];
-      if (v && s <= _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.ENTERED || !v && s >= _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.LEAVING) {
-        return;
-      }
-      if (s === (v ? _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.LEAVING : _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.ENTERING)) {
-        el.classList.remove(k + (v ? "-leave-active" : "-enter-active"));
-        el.classList.remove(k + (v ? "-leave" : "-enter"));
-        (0,_util__WEBPACK_IMPORTED_MODULE_2__.removeEvent)(el, "transitionend", t[1]);
-        (0,_util__WEBPACK_IMPORTED_MODULE_2__.removeEvent)(el, "animationend", t[1]);
-        t[1] = null;
-        this.__notify("transition", v ? "leave-cancelled" : "enter-cancelled", k, el);
-      }
-      const classOfStart = k + (v ? "-enter" : "-leave");
-      const classOfActive = k + (v ? "-enter-active" : "-leave-active");
-      el.classList.add(classOfStart);
-      (0,_core_transition__WEBPACK_IMPORTED_MODULE_3__.getDurationType)(el);
-      el.classList.add(classOfActive);
-      const tsEndName = (0,_core_transition__WEBPACK_IMPORTED_MODULE_3__.getDurationType)(el);
-      if (!tsEndName) {
-        el.classList.remove(classOfStart);
-        el.classList.remove(classOfActive);
-        t[0] = v ? _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.ENTERED : _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.LEAVED;
-        if (v) {
-          el.classList.add(k);
-        } else {
-          el.classList.remove(k);
-        }
-        return;
-      }
-      const onEnd = () => {
-        (0,_util__WEBPACK_IMPORTED_MODULE_2__.removeEvent)(el, "transitionend", onEnd);
-        (0,_util__WEBPACK_IMPORTED_MODULE_2__.removeEvent)(el, "animationend", onEnd);
-        el.classList.remove(classOfStart);
-        el.classList.remove(classOfActive);
-        t[1] = null;
-        t[0] = v ? _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.ENTERED : _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.LEAVED;
-        if (v) {
-          el.classList.add(k);
-        } else {
-          el.classList.remove(k);
-        }
-        this.__notify("transition", v ? "after-enter" : "after-leave", k, el);
-      };
-      t[0] = v ? _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.ENTERING : _core_transition__WEBPACK_IMPORTED_MODULE_3__.TransitionStates.LEAVING;
-      t[1] = onEnd;
-      (0,_util__WEBPACK_IMPORTED_MODULE_2__.addEvent)(el, tsEndName, onEnd);
-      this.__notify("transition", v ? "before-enter" : "before-leave", k, el);
-      (0,_util__WEBPACK_IMPORTED_MODULE_2__.setImmediate)(() => {
-        this.__notify("transition", v ? "enter" : "leave", k, el);
-      });
-    });
-  }
-}
-
-
-//# sourceMappingURL=class.js.map
-
-/***/ }),
-
 /***/ "../../jinge/lib/components/dynamic.js":
 /*!*********************************************!*\
   !*** ../../jinge/lib/components/dynamic.js ***!
@@ -2998,19 +2897,21 @@ class ForEachComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Comp
   set each(v) {
     this._e = v;
   }
-  __render() {
-    return this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots.default(this);
-  }
 }
 function createEl(item, i, isLast, itemRenderFn, context) {
-  return new ForEachComponent((0,_core_component__WEBPACK_IMPORTED_MODULE_1__.attrs)({
-    [_core_component__WEBPACK_IMPORTED_MODULE_1__.__]: {
-      context,
-      slots: {
-        default: itemRenderFn
+  return new ForEachComponent(
+    (0,_core_component__WEBPACK_IMPORTED_MODULE_1__.attrs)({
+      [_core_component__WEBPACK_IMPORTED_MODULE_1__.__]: {
+        context,
+        slots: {
+          default: itemRenderFn
+        }
       }
-    }
-  }), item, i, isLast)[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
+    }),
+    item,
+    i,
+    isLast
+  )[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
 }
 function appendRenderEach(item, i, isLast, itemRenderFn, roots, context) {
   const el = createEl(item, i, isLast, itemRenderFn, context);
@@ -3020,7 +2921,11 @@ function appendRenderEach(item, i, isLast, itemRenderFn, roots, context) {
 function _prepareKey(item, i, keyMap, keyName) {
   const key = keyName === "each" ? item : keyName(item);
   if (keyMap.has(key)) {
-    console.error(`loop items [${i}] and [${keyMap.get(key)}] of <for> component both have key '${key}', dulplicated key may cause update error.`);
+    console.error(
+      `loop items [${i}] and [${keyMap.get(
+        key
+      )}] of <for> component both have key '${key}', dulplicated key may cause update error.`
+    );
   }
   keyMap.set(key, i);
   return key;
@@ -3028,12 +2933,14 @@ function _prepareKey(item, i, keyMap, keyName) {
 function renderItems(items, itemRenderFn, roots, keys, keyName, context) {
   const result = [];
   const tmpKeyMap = /* @__PURE__ */ new Map();
-  items.forEach((item, i) => {
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
     if (keyName !== "index") {
       keys.push(_prepareKey(item, i, tmpKeyMap, keyName));
     }
-    result.push(...appendRenderEach(item, i, i === items.length - 1, itemRenderFn, roots, context));
-  });
+    const els = appendRenderEach(item, i, i === items.length - 1, itemRenderFn, roots, context);
+    result.push(...els);
+  }
   return result;
 }
 function loopAppend($parent, el) {
@@ -3068,10 +2975,14 @@ class ForComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
       throw new Error('Value of "key" attribute of <for> component is invalidate. See https://[todo]');
     }
     super(attrs2);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
-    if (!(0,_vm_common__WEBPACK_IMPORTED_MODULE_0__.isViewModel)(attrs2.loop)) {
-      throw new Error("require ViewModelArray");
-    }const f3_jg0402 = () => {
-    _jg0.loop = attrs2.loop; }; f3_jg0402(); attrs2[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("loop", f3_jg0402);
+    if ((0,_util__WEBPACK_IMPORTED_MODULE_2__.isUndefined)(attrs2.loop) || attrs2.loop === null || (0,_vm_common__WEBPACK_IMPORTED_MODULE_0__.isViewModel)(attrs2.loop)) {
+      _jg0.loop = attrs2.loop;
+      attrs2[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("loop", () => {
+        _jg0.loop = attrs2.loop;
+      });
+    } else {
+      _jg0._l = attrs2.loop;
+    }
     const kn = attrs2.key || "index";
     _jg0._keyName = kn;
     _jg0._length = 0;
@@ -3154,7 +3065,7 @@ class ForComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
       if (newKey !== oldKey) {
         const $fd = oldEl.__firstDOM;
         const newEl = createEl(item, index, oldEl.isLast, itemRenderFn, this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].context);
-        const rr = (0,_core_component__WEBPACK_IMPORTED_MODULE_1__.assertRenderResults)(newEl.__render());
+        const rr = newEl.__render();
         $fd.parentNode.insertBefore(rr.length > 1 ? (0,_util__WEBPACK_IMPORTED_MODULE_2__.createFragment)(rr) : rr[0], $fd);
         oldEl.__destroy();
         roots[index] = newEl;
@@ -3208,7 +3119,8 @@ class ForComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
         } else {
           if (!$f)
             $f = (0,_util__WEBPACK_IMPORTED_MODULE_2__.createFragment)();
-          appendRenderEach(newItems[i], i, i === nl - 1, itemRenderFn, roots, ctx).forEach((el) => {
+          const doms = appendRenderEach(newItems[i], i, i === nl - 1, itemRenderFn, roots, ctx);
+          doms.forEach((el) => {
             $f.appendChild(el);
           });
         }
@@ -3237,7 +3149,9 @@ class ForComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
       const rs = renderItems(newItems, itemRenderFn, roots, oldKeys, keyName, this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].context);
       (0,_util__WEBPACK_IMPORTED_MODULE_2__.insertAfter)($parent, (0,_util__WEBPACK_IMPORTED_MODULE_2__.createFragment)(rs), firstEl);
       $parent.removeChild(firstEl);
-      roots.forEach((el) => el.__handleAfterRender());
+      for (const el of roots) {
+        el.__handleAfterRender();
+      }
       return;
     }
     const oldKeyMap = /* @__PURE__ */ new Map();
@@ -3278,7 +3192,8 @@ class ForComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
           const el2 = createEl(newItems[ni], ni, ni === nl - 1, itemRenderFn, ctx);
           if (!$f2)
             $f2 = (0,_util__WEBPACK_IMPORTED_MODULE_2__.createFragment)();
-          el2.__render().forEach(($n) => $f2.appendChild($n));
+          const doms = el2.__render();
+          doms.forEach(($n) => $f2.appendChild($n));
           newRoots.push(el2);
         }
         if ($f2) {
@@ -3312,7 +3227,8 @@ class ForComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
           $f = (0,_util__WEBPACK_IMPORTED_MODULE_2__.createFragment)();
         if (!reuseEl) {
           reuseEl = createEl(newItems[ni], ni, ni === nl - 1, itemRenderFn, ctx);
-          reuseEl.__render().forEach(($n) => $f.appendChild($n));
+          const doms = reuseEl.__render();
+          doms.forEach(($n) => $f.appendChild($n));
           if (!$nes)
             $nes = [];
           $nes.push(reuseEl);
@@ -3328,7 +3244,11 @@ class ForComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
       }
       const el = roots[oi];
       $f && $parent.insertBefore($f, el.__firstDOM);
-      $nes?.forEach((el2) => el2.__handleAfterRender());
+      if ($nes?.length) {
+        for (const el2 of $nes) {
+          el2.__handleAfterRender();
+        }
+      }
       updateEl(el, ni, newItems);
       newRoots.push(el);
       oi++;
@@ -3341,39 +3261,6 @@ class ForComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
 
 
 //# sourceMappingURL=for.js.map
-
-/***/ }),
-
-/***/ "../../jinge/lib/components/hide.js":
-/*!******************************************!*\
-  !*** ../../jinge/lib/components/hide.js ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "HideComponent": () => (/* binding */ HideComponent)
-/* harmony export */ });
-/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _vm_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../vm/index */ "../../jinge/lib/vm/index.js");
-/* harmony import */ var _class__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./class */ "../../jinge/lib/components/class.js");
-
-
-
-class HideComponent extends _class__WEBPACK_IMPORTED_MODULE_2__.ToggleClassComponent {
-  constructor(attrs) {
-    attrs.class = (0,_vm_index__WEBPACK_IMPORTED_MODULE_1__.vm)({
-      "jg-hide": attrs.test
-    });
-    attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("test", () => {
-      attrs.class["jg-hide"] = attrs.hide;
-    });
-    super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
-  }
-}
-
-
-//# sourceMappingURL=hide.js.map
 
 /***/ }),
 
@@ -3451,8 +3338,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
 /* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
-/* harmony import */ var _core_transition__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/transition */ "../../jinge/lib/core/transition.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
+/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./transition */ "../../jinge/lib/components/transition.js");
 
 
 
@@ -3467,21 +3354,9 @@ function createEl(renderFn, context) {
   });
   return _core_component__WEBPACK_IMPORTED_MODULE_1__.Component.create(attrs);
 }
-function renderSwitch(component) {
-  const value = component._currentValue;
-  const acs = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots;
-  if (component.transition && acs) {
-    component._transitionMap = /* @__PURE__ */ new Map();
-    for (const k in acs) {
-      component._transitionMap.set(k, [
-        k === value ? _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.ENTERED : _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.LEAVED,
-        null
-      ]);
-    }
-    component._previousValue = value;
-    component._onEndHandler = component.onTransitionEnd.bind(component);
-  }
-  const renderFn = acs ? acs[value] : null;
+function renderSwitch(component, slot) {
+  const slots = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots;
+  const renderFn = slots ? slots[slot] : null;
   const roots = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes;
   if (!renderFn) {
     roots.push(document.createComment("empty"));
@@ -3489,19 +3364,25 @@ function renderSwitch(component) {
   }
   const el = createEl(renderFn, component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].context);
   roots.push(el);
-  return el.__render();
+  const doms = el.__render();
+  for (const node of el[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes) {
+    if ((0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(node) && node instanceof _transition__WEBPACK_IMPORTED_MODULE_3__.TransitionComponent) {
+      node.__transition(this.test, true);
+    }
+  }
+  return doms;
 }
-function doUpdate(component) {
+function doUpdate(component, slot) {
   const roots = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes;
   const el = roots[0];
   const isComp = (0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(el);
   const firstDOM = isComp ? el.__firstDOM : el;
   const parentDOM = (isComp ? firstDOM : el).parentNode;
-  const renderFn = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots?.[component._currentValue];
+  const renderFn = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots?.[slot];
   if (renderFn) {
     const newEl = createEl(renderFn, component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].context);
-    const nodes = (0,_core_component__WEBPACK_IMPORTED_MODULE_1__.assertRenderResults)(newEl.__render());
-    parentDOM.insertBefore(nodes.length > 1 ? (0,_util__WEBPACK_IMPORTED_MODULE_3__.createFragment)(nodes) : nodes[0], firstDOM);
+    const nodes = newEl.__render();
+    parentDOM.insertBefore(nodes.length > 1 ? (0,_util__WEBPACK_IMPORTED_MODULE_2__.createFragment)(nodes) : nodes[0], firstDOM);
     roots[0] = newEl;
   } else {
     roots[0] = document.createComment("empty");
@@ -3513,200 +3394,70 @@ function doUpdate(component) {
     parentDOM.removeChild(firstDOM);
   }
   renderFn && roots[0].__handleAfterRender();
-  component.__notify("branch-switched", component._branch);
 }
-function cancelTs(t, tn, e, component) {
-  const el = t[1];
-  if (el.nodeType !== Node.ELEMENT_NODE) {
-    return;
-  }
-  const onEnd = component._onEndHandler;
-  el.classList.remove(tn + (e ? "-enter" : "-leave"));
-  el.classList.remove(tn + (e ? "-enter-active" : "-leave-active"));
-  (0,_util__WEBPACK_IMPORTED_MODULE_3__.removeEvent)(el, "transitionend", onEnd);
-  (0,_util__WEBPACK_IMPORTED_MODULE_3__.removeEvent)(el, "animationend", onEnd);
-  component.__notify("transition", e ? "enter-cancelled" : "leave-cancelled", el);
-}
-function startTs(t, tn, e, component) {
-  const el = t[1];
-  const onEnd = component._onEndHandler;
-  if (el.nodeType !== Node.ELEMENT_NODE) {
-    onEnd();
-    return;
-  }
-  const classOfStart = tn + (e ? "-enter" : "-leave");
-  const classOfActive = tn + (e ? "-enter-active" : "-leave-active");
-  el.classList.add(classOfStart);
-  (0,_core_transition__WEBPACK_IMPORTED_MODULE_2__.getDurationType)(el);
-  el.classList.add(classOfActive);
-  const tsEndName = (0,_core_transition__WEBPACK_IMPORTED_MODULE_2__.getDurationType)(el);
-  if (!tsEndName) {
-    onEnd();
-    return;
-  }
-  t[0] = e ? _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.ENTERING : _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.LEAVING;
-  (0,_util__WEBPACK_IMPORTED_MODULE_3__.addEvent)(el, tsEndName, onEnd);
-  component.__notify("transition", e ? "before-enter" : "before-leave", el);
-  (0,_util__WEBPACK_IMPORTED_MODULE_3__.setImmediate)(() => {
-    component.__notify("transition", e ? "enter" : "leave", el);
-  });
-}
-function updateSwitchWithTransition(component) {
-  const value = component._currentValue;
-  const pv = component._previousValue;
-  const tn = component.transition;
-  let pt = component._transitionMap.get(pv);
-  if (!pt) {
-    pt = [
-      pv === "else" ? _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.LEAVED : _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.ENTERED,
-      null
-    ];
-    component._transitionMap.set(pv, pt);
-  }
-  if (pt[0] === _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.ENTERING) {
-    if (value === pv)
-      return;
-    cancelTs(pt, tn, true, component);
-    startTs(pt, tn, false, component);
-  } else if (pt[0] === _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.LEAVING) {
-    if (value !== pv)
-      return;
-    cancelTs(pt, tn, false, component);
-    startTs(pt, tn, true, component);
-  } else if (pt[0] === _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.ENTERED) {
-    pt[1] = component.__transitionDOM;
-    startTs(pt, tn, false, component);
-  } else if (pt[0] === _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.LEAVED) {
-    pt[1] = component.__transitionDOM;
-    startTs(pt, tn, true, component);
-  }
-}
-function updateSwitch(component) {
-  if (!(0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes[0]) && (!component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots || !component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots[component._currentValue])) {
-    return;
-  }
-  if (component._transitionMap) {
-    updateSwitchWithTransition(component);
-    return;
-  }
-  doUpdate(component);
-}
-function updateSwitchOnTransitionEnd(component) {
-  const value = component._currentValue;
-  const pv = component._previousValue;
-  const tn = component.transition;
-  const pt = component._transitionMap.get(pv);
-  const e = pt[0] === _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.ENTERING;
-  const el = pt[1];
-  if (el.nodeType === Node.ELEMENT_NODE) {
-    (0,_util__WEBPACK_IMPORTED_MODULE_3__.removeEvent)(el, "transitionend", component._onEndHandler);
-    (0,_util__WEBPACK_IMPORTED_MODULE_3__.removeEvent)(el, "animationend", component._onEndHandler);
-    el.classList.remove(tn + (e ? "-enter" : "-leave"));
-    el.classList.remove(tn + (e ? "-enter-active" : "-leave-active"));
-    component.__notify("transition", e ? "after-enter" : "after-leave");
-  }
-  pt[0] = e ? _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.ENTERED : _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.LEAVED;
-  if (e)
-    return;
-  doUpdate(component);
-  component._previousValue = value;
-  const ct = component._transitionMap.get(value);
-  if (!ct) {
-    return;
-  }
-  const fd = component.__transitionDOM;
-  if (fd.nodeType !== Node.ELEMENT_NODE) {
-    ct[0] = _core_transition__WEBPACK_IMPORTED_MODULE_2__.TransitionStates.ENTERED;
-    return;
-  }
-  ct[1] = fd;
-  startTs(ct, tn, true, component);
-}
-function destroySwitch(component) {
-  if (component._transitionMap) {
-    component._transitionMap.forEach((ts) => {
-      const el = ts[1];
-      if (el) {
-        (0,_util__WEBPACK_IMPORTED_MODULE_3__.removeEvent)(el, "transitionend", component._onEndHandler);
-        (0,_util__WEBPACK_IMPORTED_MODULE_3__.removeEvent)(el, "animationend", component._onEndHandler);
-      }
-    });
-    component._transitionMap = null;
+function getIfSlot(component, expect) {
+  const slots = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots;
+  if (!slots)
+    return "default";
+  if (expect) {
+    return "true" in slots ? "true" : "default";
+  } else {
+    return "false" in slots ? "false" : "else";
   }
 }
 class IfComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Component {
   constructor(attrs) {
-    super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
-    _jg0._currentValue = "default";
-    _jg0._onEndHandler = null;
-    _jg0._transitionMap = null;
-    _jg0._previousValue = null;const f5_jg0402 = () => {
-    _jg0.expect = attrs.expect; }; f5_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("expect", f5_jg0402);const f6_jg0402 = () => {
-    _jg0.transition = attrs.transition; }; f6_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("transition", f6_jg0402);
+    super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;const f1_jg0402 = () => {
+    _jg0.expect = attrs.expect; }; f1_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("expect", f1_jg0402);
   }
   get expect() {
-    return this._currentValue === "default";
+    return this._e;
   }
   set expect(value) {
-    const v = value ? "default" : "else";
-    if (this._currentValue === v)
+    if (this._e === value)
       return;
-    this._currentValue = v;
+    this._e = value;
     this.__updateIfNeed();
   }
-  get _branch() {
-    return this.expect;
-  }
-  onTransitionEnd() {
-    updateSwitchOnTransitionEnd(this);
-  }
   __render() {
-    return renderSwitch(this);
+    const els = renderSwitch(this, getIfSlot(this, this._e));
+    this.__notify("branch-switched", this._e);
+    return els;
   }
   __update() {
-    updateSwitch(this);
-  }
-  __beforeDestroy() {
-    destroySwitch(this);
+    const s = getIfSlot(this, this._e);
+    if (!(0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes[0]) && !this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots?.[s]) {
+      return;
+    }
+    doUpdate(this, s);
+    this.__notify("branch-switched", this._e);
   }
 }
 class SwitchComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Component {
   constructor(attrs) {
-    super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
-    _jg0._onEndHandler = null;
-    _jg0._transitionMap = null;
-    _jg0._previousValue = null;
-    _jg0._currentValue = null;const f5_jg0402 = () => {
-    _jg0.test = attrs.test; }; f5_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("test", f5_jg0402);const f6_jg0402 = () => {
-    _jg0.transition = attrs.transition; }; f6_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("transition", f6_jg0402);
+    super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;const f1_jg0402 = () => {
+    _jg0.test = attrs.test; }; f1_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("test", f1_jg0402);
   }
   get test() {
-    return this._currentValue;
+    return this._v;
   }
   set test(v) {
-    const acs = this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots;
-    if (!acs || !(v in acs)) {
-      v = "default";
-    }
-    if (this._currentValue === v)
+    if (this._v === v)
       return;
-    this._currentValue = v;
+    this._v = v;
     this.__updateIfNeed();
   }
-  get _branch() {
-    return this.test;
-  }
-  onTransitionEnd() {
-    updateSwitchOnTransitionEnd(this);
-  }
   __render() {
-    return renderSwitch(this);
+    const els = renderSwitch(this, this._v);
+    this.__notify("branch-switched", this._v);
+    return els;
   }
   __update() {
-    updateSwitch(this);
-  }
-  __beforeDestroy() {
-    destroySwitch(this);
+    if (!(0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes[0]) && !this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots?.[this._v]) {
+      return;
+    }
+    doUpdate(this, this._v);
+    this.__notify("branch-switched", this._v);
   }
 }
 
@@ -3723,25 +3474,25 @@ class SwitchComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Compo
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BindHtmlComponent": () => (/* reexport safe */ _html__WEBPACK_IMPORTED_MODULE_3__.BindHtmlComponent),
-/* harmony export */   "DynamicRenderComponent": () => (/* reexport safe */ _dynamic__WEBPACK_IMPORTED_MODULE_7__.DynamicRenderComponent),
-/* harmony export */   "ForComponent": () => (/* reexport safe */ _for__WEBPACK_IMPORTED_MODULE_1__.ForComponent),
-/* harmony export */   "ForEachComponent": () => (/* reexport safe */ _for__WEBPACK_IMPORTED_MODULE_1__.ForEachComponent),
-/* harmony export */   "HideComponent": () => (/* reexport safe */ _hide__WEBPACK_IMPORTED_MODULE_2__.HideComponent),
-/* harmony export */   "IfComponent": () => (/* reexport safe */ _if__WEBPACK_IMPORTED_MODULE_4__.IfComponent),
-/* harmony export */   "LogComponent": () => (/* reexport safe */ _log__WEBPACK_IMPORTED_MODULE_6__.LogComponent),
-/* harmony export */   "ParameterComponent": () => (/* reexport safe */ _parameter__WEBPACK_IMPORTED_MODULE_5__.ParameterComponent),
-/* harmony export */   "SwitchComponent": () => (/* reexport safe */ _if__WEBPACK_IMPORTED_MODULE_4__.SwitchComponent),
-/* harmony export */   "ToggleClassComponent": () => (/* reexport safe */ _class__WEBPACK_IMPORTED_MODULE_0__.ToggleClassComponent)
+/* harmony export */   "BindHtmlComponent": () => (/* reexport safe */ _html__WEBPACK_IMPORTED_MODULE_2__.BindHtmlComponent),
+/* harmony export */   "DynamicRenderComponent": () => (/* reexport safe */ _dynamic__WEBPACK_IMPORTED_MODULE_6__.DynamicRenderComponent),
+/* harmony export */   "ForComponent": () => (/* reexport safe */ _for__WEBPACK_IMPORTED_MODULE_0__.ForComponent),
+/* harmony export */   "ForEachComponent": () => (/* reexport safe */ _for__WEBPACK_IMPORTED_MODULE_0__.ForEachComponent),
+/* harmony export */   "IfComponent": () => (/* reexport safe */ _if__WEBPACK_IMPORTED_MODULE_3__.IfComponent),
+/* harmony export */   "LogComponent": () => (/* reexport safe */ _log__WEBPACK_IMPORTED_MODULE_5__.LogComponent),
+/* harmony export */   "ParameterComponent": () => (/* reexport safe */ _parameter__WEBPACK_IMPORTED_MODULE_4__.ParameterComponent),
+/* harmony export */   "ShowComponent": () => (/* reexport safe */ _show__WEBPACK_IMPORTED_MODULE_1__.ShowComponent),
+/* harmony export */   "SwitchComponent": () => (/* reexport safe */ _if__WEBPACK_IMPORTED_MODULE_3__.SwitchComponent),
+/* harmony export */   "TransitionComponent": () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_7__.TransitionComponent)
 /* harmony export */ });
-/* harmony import */ var _class__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./class */ "../../jinge/lib/components/class.js");
-/* harmony import */ var _for__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./for */ "../../jinge/lib/components/for.js");
-/* harmony import */ var _hide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hide */ "../../jinge/lib/components/hide.js");
-/* harmony import */ var _html__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./html */ "../../jinge/lib/components/html.js");
-/* harmony import */ var _if__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./if */ "../../jinge/lib/components/if.js");
-/* harmony import */ var _parameter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./parameter */ "../../jinge/lib/components/parameter.js");
-/* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./log */ "../../jinge/lib/components/log.js");
-/* harmony import */ var _dynamic__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dynamic */ "../../jinge/lib/components/dynamic.js");
+/* harmony import */ var _for__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./for */ "../../jinge/lib/components/for.js");
+/* harmony import */ var _show__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./show */ "../../jinge/lib/components/show.js");
+/* harmony import */ var _html__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./html */ "../../jinge/lib/components/html.js");
+/* harmony import */ var _if__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./if */ "../../jinge/lib/components/if.js");
+/* harmony import */ var _parameter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./parameter */ "../../jinge/lib/components/parameter.js");
+/* harmony import */ var _log__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./log */ "../../jinge/lib/components/log.js");
+/* harmony import */ var _dynamic__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dynamic */ "../../jinge/lib/components/dynamic.js");
+/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./transition */ "../../jinge/lib/components/transition.js");
 
 
 
@@ -3781,7 +3532,7 @@ class LogComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Componen
     return this._msg;
   }
   __render() {
-    return [document.createComment("log placeholder")];
+    return [document.createComment(this._msg.toString())];
   }
 }
 
@@ -3818,6 +3569,176 @@ class ParameterComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Co
 
 
 //# sourceMappingURL=parameter.js.map
+
+/***/ }),
+
+/***/ "../../jinge/lib/components/show.js":
+/*!******************************************!*\
+  !*** ../../jinge/lib/components/show.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ShowComponent": () => (/* binding */ ShowComponent)
+/* harmony export */ });
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
+/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./transition */ "../../jinge/lib/components/transition.js");
+
+
+function setDisplay(el, show) {
+  if (el.nodeType === Node.ELEMENT_NODE) {
+    el.style.display = show ? "" : "none";
+  }
+}
+class ShowComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Component {
+  constructor(attrs) {
+    super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;const f1_jg0402 = () => {
+    _jg0.test = attrs.test; }; f1_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("test", f1_jg0402);
+  }
+  get test() {
+    return this._test;
+  }
+  set test(v) {
+    if (this._test === v)
+      return;
+    this._test = v;
+    this.__updateIfNeed();
+  }
+  __render() {
+    const els = super.__render();
+    this.__update(true);
+    return els;
+  }
+  __update(isFirst = false) {
+    for (const node of this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes) {
+      if ((0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(node)) {
+        if (node instanceof _transition__WEBPACK_IMPORTED_MODULE_2__.TransitionComponent) {
+          node.__cancel();
+          if (this.test) {
+            node.__on("before-enter", () => setDisplay(node.__firstDOM, true), { once: true });
+          } else {
+            node.__on("after-leave", () => setDisplay(node.__firstDOM, false), { once: true });
+          }
+          node.__transition(this.test, isFirst);
+        } else {
+          setDisplay(node.__firstDOM, this.test);
+        }
+      } else {
+        setDisplay(node, this.test);
+      }
+    }
+  }
+}
+
+
+//# sourceMappingURL=show.js.map
+
+/***/ }),
+
+/***/ "../../jinge/lib/components/transition.js":
+/*!************************************************!*\
+  !*** ../../jinge/lib/components/transition.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "TransitionComponent": () => (/* binding */ TransitionComponent)
+/* harmony export */ });
+/* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
+/* harmony import */ var _core_transition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../core/transition */ "../../jinge/lib/core/transition.js");
+
+
+
+function genClassNames(name) {
+  name = name || "jg";
+  return {
+    enterFrom: `${name}-enter-from`,
+    enterActive: `${name}-enter-active`,
+    enterTo: `${name}-enter-to`,
+    leaveFrom: `${name}-leave-from`,
+    leaveActive: `${name}-leave-active`,
+    leaveTo: `${name}-leave-to`
+  };
+}
+function doTrans(comp, isEnter, el) {
+  const type = isEnter ? "enter" : "leave";
+  const fromClass = comp._cs[`${type}From`];
+  const activeClass = comp._cs[`${type}Active`];
+  const toClass = comp._cs[`${type}To`];
+  el.classList.add(fromClass, activeClass);
+  comp.__notify(`before-${type}`, el);
+  let cancel = void 0;
+  let imm = (0,_util__WEBPACK_IMPORTED_MODULE_1__.setImmediate)(() => {
+    imm = 0;
+    const dt = (0,_core_transition__WEBPACK_IMPORTED_MODULE_3__.getDurationType)(el);
+    if (!dt) {
+      comp.__notify(`after-${type}`, el);
+      return;
+    }
+    const clear = () => {
+      cancel = void 0;
+      comp._t = void 0;
+      (0,_util__WEBPACK_IMPORTED_MODULE_1__.removeEvent)(el, dt, onEnd);
+      el.classList.remove(activeClass, toClass);
+    };
+    const onEnd = () => {
+      clear();
+      comp.__notify(`after-${type}`, el);
+    };
+    (0,_util__WEBPACK_IMPORTED_MODULE_1__.addEvent)(el, dt, onEnd);
+    cancel = () => {
+      clear();
+      comp.__notify(`${type}-cancelled`, el);
+    };
+    el.classList.remove(fromClass);
+    el.classList.add(toClass);
+    comp.__notify(type, el);
+  });
+  comp._t = () => {
+    if (imm)
+      (0,_util__WEBPACK_IMPORTED_MODULE_1__.clearImmediate)(imm);
+    if (cancel)
+      cancel();
+  };
+}
+class TransitionComponent extends _core_component__WEBPACK_IMPORTED_MODULE_2__.Component {
+  constructor(attrs) {
+    super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
+    _jg0._cs = attrs.classNames || genClassNames(attrs.name);
+    _jg0._appear = attrs.appear === true;
+  }
+  __transition(isEnter, isFirst) {
+    if (isFirst && !this._appear) {
+      return;
+    }
+    this.__cancel();
+    const el = this.__firstDOM;
+    if (el.nodeType === Node.ELEMENT_NODE) {
+      doTrans(this, isEnter, el);
+    }
+  }
+  /**
+   * 取消当前正在进行的渡（如果当前处于过渡中的话）
+   */
+  __cancel() {
+    if (this._t) {
+      this._t();
+      this._t = void 0;
+    }
+  }
+  __destroy(removeDOM) {
+    this.__cancel();
+    return super.__destroy(removeDOM);
+  }
+}
+
+
+//# sourceMappingURL=transition.js.map
 
 /***/ }),
 
@@ -3862,14 +3783,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
 /* harmony import */ var _vm_proxy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../vm/proxy */ "../../jinge/lib/vm/proxy.js");
 /* harmony import */ var _messenger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./messenger */ "../../jinge/lib/core/messenger.js");
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style */ "../../jinge/lib/core/style.js");
 var _a;
 
 
 
 
-
-(0,_style__WEBPACK_IMPORTED_MODULE_4__.initStyle)();
 var ComponentStates = /* @__PURE__ */ ((ComponentStates2) => {
   ComponentStates2[ComponentStates2["INITIALIZE"] = 0] = "INITIALIZE";
   ComponentStates2[ComponentStates2["RENDERED"] = 1] = "RENDERED";
@@ -3901,6 +3819,11 @@ function wrapAttrs(target) {
   return (0,_vm_proxy__WEBPACK_IMPORTED_MODULE_2__.createAttributes)(target);
 }
 class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
+  /**
+   * ATTENTION!!!
+   *
+   * Don't use constructor directly, use static factory method `create(attrs)` instead.
+   */
   constructor(attrs) {
     if (!(0,_util__WEBPACK_IMPORTED_MODULE_0__.isObject)(attrs) || !(_vm_common__WEBPACK_IMPORTED_MODULE_1__.$$ in attrs)) {
       throw new Error("Attributes passed to Component constructor must be ViewModel. See https://[todo]");
@@ -3921,12 +3844,23 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
       upNextMap: null,
       deregFns: null
     };
+    const $proxy = this[_vm_common__WEBPACK_IMPORTED_MODULE_1__.$$].proxy;
+    ["class", "style"].forEach((attrN) => {
+      if (!(attrN in attrs))
+        return;
+      const f = () => $proxy[attrN] = attrs[attrN];
+      f();
+      attrs[_vm_common__WEBPACK_IMPORTED_MODULE_1__.$$].__watch(attrN, f);
+    });
   }
   static create(attrs) {
     const isObj = (0,_util__WEBPACK_IMPORTED_MODULE_0__.isObject)(attrs);
     const vmAttrs = isObj && _vm_common__WEBPACK_IMPORTED_MODULE_1__.$$ in attrs ? attrs : wrapAttrs(isObj ? attrs : {});
     return new this(vmAttrs)[_vm_common__WEBPACK_IMPORTED_MODULE_1__.$$].proxy;
   }
+  /**
+   * store deregisterFn and auto call it when component is being destroy.
+   */
   __addDeregisterFn(deregisterFn) {
     let deregs = this[__].deregFns;
     if (!deregs) {
@@ -3934,10 +3868,33 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
     }
     deregs.add(deregisterFn);
   }
+  /**
+   * Helper function to add i18n change listener.
+   * The listener will be auto removed when component is destroied.
+   */
+  // __i18nWatch(listener: (locale: string) => void, immediate = false): void {
+  //   this.__addDeregisterFn(
+  //     i18n.watch((locale) => {
+  //       // bind component to listener's function context.
+  //       listener.call(this, locale);
+  //     }, immediate),
+  //   );
+  // }
+  /**
+   * Helper function to add dom event listener.
+   * Return deregister function which will remove event listener.
+   * If you do dot call deregister function, it will be auto called when component is destroied.
+   * @returns {Function} deregister function to remove listener
+   */
   __domAddListener($el, eventName, listener, capture) {
-    const deregEvtFn = (0,_util__WEBPACK_IMPORTED_MODULE_0__.registerEvent)($el, eventName, ($event) => {
-      listener.call(this, $event);
-    }, capture);
+    const deregEvtFn = (0,_util__WEBPACK_IMPORTED_MODULE_0__.registerEvent)(
+      $el,
+      eventName,
+      ($event) => {
+        listener.call(this, $event);
+      },
+      capture
+    );
     this.__addDeregisterFn(deregEvtFn);
     return () => {
       deregEvtFn();
@@ -3966,30 +3923,46 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
         return;
       }
       handlers.forEach((opts, handler) => {
-        const deregFn = (0,_util__WEBPACK_IMPORTED_MODULE_0__.registerEvent)(targetEl, eventName, opts && (opts.stop || opts.prevent) ? ($evt) => {
-          opts.stop && $evt.stopPropagation();
-          opts.prevent && $evt.preventDefault();
-          handler.call(this, $evt);
-        } : ($evt) => {
-          handler.call(this, $evt);
-        }, opts);
+        const deregFn = (0,_util__WEBPACK_IMPORTED_MODULE_0__.registerEvent)(
+          targetEl,
+          eventName,
+          opts && (opts.stop || opts.prevent) ? ($evt) => {
+            opts.stop && $evt.stopPropagation();
+            opts.prevent && $evt.preventDefault();
+            handler.call(this, $evt);
+          } : ($evt) => {
+            handler.call(this, $evt);
+          },
+          opts
+        );
         this.__addDeregisterFn(deregFn);
       });
     });
   }
-  get __transitionDOM() {
-    const el = this[__].rootNodes[0];
-    return isComponent(el) ? el.__transitionDOM : el;
-  }
+  /**
+   * Get first rendered DOM Node after Component is rendered.
+   *
+   * 按从左往右从上到下的深度遍历，找到的第一个 DOM 节点。
+   */
   get __firstDOM() {
     const el = this[__].rootNodes[0];
     return isComponent(el) ? el.__firstDOM : el;
   }
+  /**
+   * Get last rendered DOM Node after Component is rendered.
+   *
+   * 按从右往左，从上到下的深度遍历，找到的第一个 DOM 节点（相对于从左到右的顺序是最后一个 DOM 节点）。
+   */
   get __lastDOM() {
     const rns = this[__].rootNodes;
     const el = rns[rns.length - 1];
     return isComponent(el) ? el.__lastDOM : el;
   }
+  /**
+   * 组件的实际渲染函数，渲染模板或默认插槽。
+   * 该函数可被子组件重载，进而覆盖渲染逻辑。
+   * 该函数可以是同步或异步函数，但通常推荐使用同步函数，将异步初始化逻辑放到 __beforeRender 生命周期函数中。
+   */
   __render() {
     const Clazz = this.constructor;
     let renderFn = Clazz.template;
@@ -3999,8 +3972,17 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
     if (!(0,_util__WEBPACK_IMPORTED_MODULE_0__.isFunction)(renderFn)) {
       throw new Error(`Template of ${Clazz.name} not found. Forget static getter "template"?`);
     }
-    return renderFn(this);
+    return assertRenderResults(renderFn(this));
   }
+  /**
+   * Render Component to HTMLElement.
+   * This method is usually used to render the entire application.
+   * See the `bootstrap()` function in `./bootstrap.js`.
+   *
+   * By default, the target element will be replaced(that means deleted).
+   * But you can disable it by pass `replaceMode`=`false`,
+   * which means component append to target as it's children.
+   */
   __renderToDOM(targetEl, replaceMode = true) {
     if (this[__].state !== 0 /* INITIALIZE */) {
       throw new Error("component has already been rendered.");
@@ -4048,7 +4030,9 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
       comp.relatedRefs = null;
     }
     if (comp.deregFns) {
-      comp.deregFns.forEach((deregFn) => deregFn());
+      for (const deregFn of Array.from(comp.deregFns)) {
+        deregFn();
+      }
       comp.deregFns.clear();
       comp.deregFns = null;
     }
@@ -4056,11 +4040,11 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
     comp.rootNodes = comp.nonRootCompNodes = comp.refs = comp.slots = comp.context = null;
   }
   __handleBeforeDestroy(removeDOM = false) {
-    this[__].nonRootCompNodes.forEach((component) => {
+    for (const component of this[__].nonRootCompNodes) {
       component.__destroy(false);
-    });
+    }
     let $parent;
-    this[__].rootNodes.forEach((node) => {
+    for (const node of this[__].rootNodes) {
       if (isComponent(node)) {
         node.__destroy(removeDOM);
       } else if (removeDOM) {
@@ -4069,19 +4053,19 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
         }
         $parent.removeChild(node);
       }
-    });
+    }
   }
   __handleAfterRender() {
     this[__].passedAttrs[_vm_common__WEBPACK_IMPORTED_MODULE_1__.$$].__notifiable = true;
     this[_vm_common__WEBPACK_IMPORTED_MODULE_1__.$$].__notifiable = true;
-    this[__].rootNodes.forEach((n) => {
-      if (isComponent(n))
+    for (const n of this[__].rootNodes) {
+      if (isComponent(n)) {
         n.__handleAfterRender();
-    });
-    this[__].nonRootCompNodes.forEach((n) => {
-      if (isComponent(n))
-        n.__handleAfterRender();
-    });
+      }
+    }
+    for (const n of this[__].nonRootCompNodes) {
+      n.__handleAfterRender();
+    }
     this[__].state = 1 /* RENDERED */;
     this[__].contextState = this[__].contextState === 1 /* TOUCHED */ ? 3 /* TOUCHED_FREEZED */ : 2 /* UNTOUCH_FREEZED */;
     this.__afterRender();
@@ -4092,12 +4076,17 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
       return;
     }
     if (handler === false) {
-      return this.__update();
+      this.__update();
+      return;
     }
     if (!(0,_util__WEBPACK_IMPORTED_MODULE_0__.isFunction)(handler)) {
-      handler = this.__update;
-    }
-    if (!nextTick) {
+      if (!nextTick) {
+        this.__update();
+        return;
+      } else {
+        handler = this.__update;
+      }
+    } else if (!nextTick) {
       handler.call(this);
       return;
     }
@@ -4107,11 +4096,15 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
     if (ntMap.has(handler)) {
       return;
     }
-    ntMap.set(handler, (0,_util__WEBPACK_IMPORTED_MODULE_0__.setImmediate)(() => {
-      ntMap.delete(handler);
-      handler.call(this);
-    }));
+    ntMap.set(
+      handler,
+      (0,_util__WEBPACK_IMPORTED_MODULE_0__.setImmediate)(() => {
+        ntMap.delete(handler);
+        handler.call(this);
+      })
+    );
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   __update(first) {
   }
   __setContext(key, value, forceOverride = false) {
@@ -4124,14 +4117,20 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
     }
     if (key in this[__].context) {
       if (!forceOverride) {
-        throw new Error(`Contenxt with key: ${key.toString()} is exist. Pass third argument forceOverride=true to override it.`);
+        throw new Error(
+          `Contenxt with key: ${key.toString()} is exist. Pass third argument forceOverride=true to override it.`
+        );
       }
     }
     this[__].context[key] = value;
   }
   __getContext(key) {
-    return this[__].context ? this[__].context[key] : null;
+    return this[__].context?.[key];
   }
+  /**
+   * This method is used for compiler generated code.
+   * Do not use it manually.
+   */
   __setRef(ref, el, relatedComponent) {
     let rns = this[__].refs;
     if (!rns) {
@@ -4160,18 +4159,44 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
       node: isComp ? null : el
     });
   }
+  /**
+   * Get child node(or nodes) marked by 'ref:' attribute in template
+   */
   __getRef(ref) {
     if (this[__].state !== 1 /* RENDERED */) {
-      (0,_util__WEBPACK_IMPORTED_MODULE_0__.warn)(`Warning: call __getRef before component '${this.constructor.name}' rendered will get nothing. see https://[TODO]`);
+      (0,_util__WEBPACK_IMPORTED_MODULE_0__.warn)(
+        `Warning: call __getRef before component '${this.constructor.name}' rendered will get nothing. see https://[TODO]`
+      );
     }
-    return this[__].refs ? this[__].refs.get(ref) : null;
+    return this[__].refs?.get(ref);
   }
+  /**
+   * lifecycle hook, called after rendered.
+   */
   __afterRender() {
   }
+  /**
+   * lifecycle hook, called before destroy.
+   */
   __beforeDestroy() {
   }
 }
 _a = __, __, _vm_common__WEBPACK_IMPORTED_MODULE_1__.$$;
+/**
+ * 某些情况下，需要判断一个函数是否是组件的构造函数。添加一个静态成员属性符号用于进行该判断。
+ * isComponent 函数既可以判断是否是构造函数（配合 isFunction），又可以判断一个对像是否是组件实例。
+ *
+ * 示例：
+ *
+ * ````js
+ * import { isComponent, Component } from 'jinge';
+ *
+ * class A {};
+ * class B extends Component {};
+ * console.log(isComponent(A)); // false
+ * console.log(isComponent(B)); // true
+ * ````
+ */
 Component[_a] = true;
 
 
@@ -4192,16 +4217,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ContextStates": () => (/* reexport safe */ _component__WEBPACK_IMPORTED_MODULE_1__.ContextStates),
 /* harmony export */   "MESSENGER_LISTENERS": () => (/* reexport safe */ _messenger__WEBPACK_IMPORTED_MODULE_2__.MESSENGER_LISTENERS),
 /* harmony export */   "Messenger": () => (/* reexport safe */ _messenger__WEBPACK_IMPORTED_MODULE_2__.Messenger),
-/* harmony export */   "TransitionStates": () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_5__.TransitionStates),
+/* harmony export */   "TransitionStates": () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_4__.TransitionStates),
 /* harmony export */   "__": () => (/* reexport safe */ _component__WEBPACK_IMPORTED_MODULE_1__.__),
 /* harmony export */   "assertRenderResults": () => (/* reexport safe */ _component__WEBPACK_IMPORTED_MODULE_1__.assertRenderResults),
 /* harmony export */   "attrs": () => (/* reexport safe */ _component__WEBPACK_IMPORTED_MODULE_1__.attrs),
 /* harmony export */   "bootstrap": () => (/* reexport safe */ _bootstrap__WEBPACK_IMPORTED_MODULE_0__.bootstrap),
 /* harmony export */   "emptyRenderFn": () => (/* reexport safe */ _render_fns__WEBPACK_IMPORTED_MODULE_3__.emptyRenderFn),
 /* harmony export */   "errorRenderFn": () => (/* reexport safe */ _render_fns__WEBPACK_IMPORTED_MODULE_3__.errorRenderFn),
-/* harmony export */   "getDuration": () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_5__.getDuration),
-/* harmony export */   "getDurationType": () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_5__.getDurationType),
-/* harmony export */   "initStyle": () => (/* reexport safe */ _style__WEBPACK_IMPORTED_MODULE_4__.initStyle),
+/* harmony export */   "getDuration": () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_4__.getDuration),
+/* harmony export */   "getDurationType": () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_4__.getDurationType),
 /* harmony export */   "isComponent": () => (/* reexport safe */ _component__WEBPACK_IMPORTED_MODULE_1__.isComponent),
 /* harmony export */   "textRenderFn": () => (/* reexport safe */ _render_fns__WEBPACK_IMPORTED_MODULE_3__.textRenderFn)
 /* harmony export */ });
@@ -4209,9 +4233,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./component */ "../../jinge/lib/core/component.js");
 /* harmony import */ var _messenger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./messenger */ "../../jinge/lib/core/messenger.js");
 /* harmony import */ var _render_fns__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./render_fns */ "../../jinge/lib/core/render_fns.js");
-/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style */ "../../jinge/lib/core/style.js");
-/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./transition */ "../../jinge/lib/core/transition.js");
-
+/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./transition */ "../../jinge/lib/core/transition.js");
 
 
 
@@ -4250,13 +4272,20 @@ class Messenger {
     const listeners = this[MESSENGER_LISTENERS].get(eventName);
     if (!listeners)
       return;
-    listeners.forEach((opts, handler) => {
-      handler(...args);
+    for (const [handler, opts] of listeners) {
+      try {
+        handler(...args);
+      } catch (ex) {
+        console.error("failed __notify", eventName, "due to:", ex);
+      }
       if (opts?.once) {
         listeners.delete(handler);
       }
-    });
+    }
   }
+  /**
+   * 监听事件，返回该监听的卸载函数
+   */
   __on(eventName, eventListener, options) {
     if (!this[MESSENGER_LISTENERS]) {
       this[MESSENGER_LISTENERS] = /* @__PURE__ */ new Map();
@@ -4266,6 +4295,9 @@ class Messenger {
       this[MESSENGER_LISTENERS].set(eventName, listeners = /* @__PURE__ */ new Map());
     }
     listeners.set(eventListener, options);
+    return () => {
+      this.__off(eventName, eventListener);
+    };
   }
   __off(eventName, eventListener) {
     const lisMap = this[MESSENGER_LISTENERS];
@@ -4316,13 +4348,13 @@ function emptyRenderFn(component) {
   component[_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes.push(el);
   return [el];
 }
-function errorRenderFn(component) {
-  const el = (0,_util__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+function errorRenderFn(component, message) {
+  const el = (0,_util__WEBPACK_IMPORTED_MODULE_0__.createElement)("code", {
     style: "color: red !important;"
   });
-  el.textContent = "template parsing failed! please check webpack log.";
+  el.innerHTML = message;
   component[_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes.push(el);
-  return el;
+  return [el];
 }
 function textRenderFn(component, txtContent) {
   const el = (0,_util__WEBPACK_IMPORTED_MODULE_0__.createTextNode)(txtContent);
@@ -4332,39 +4364,6 @@ function textRenderFn(component, txtContent) {
 
 
 //# sourceMappingURL=render_fns.js.map
-
-/***/ }),
-
-/***/ "../../jinge/lib/core/style.js":
-/*!*************************************!*\
-  !*** ../../jinge/lib/core/style.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "initStyle": () => (/* binding */ initStyle)
-/* harmony export */ });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
-
-const CSS = ".jg-hide{display:none!important}.jg-hide.jg-hide-enter,.jg-hide.jg-hide-leave{display:block!important}";
-let inited = false;
-function initStyle() {
-  if (inited)
-    return;
-  inited = true;
-  const $style = (0,_util__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-    type: "text/css"
-  });
-  if ($style.styleSheet)
-    $style.styleSheet.cssText = CSS;
-  else
-    $style.textContent = CSS;
-  document.head.appendChild($style);
-}
-
-
-//# sourceMappingURL=style.js.map
 
 /***/ }),
 
@@ -4448,14 +4447,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "DynamicRenderComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.DynamicRenderComponent),
 /* harmony export */   "ForComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.ForComponent),
 /* harmony export */   "ForEachComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.ForEachComponent),
-/* harmony export */   "HideComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.HideComponent),
 /* harmony export */   "IfComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.IfComponent),
 /* harmony export */   "LogComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.LogComponent),
 /* harmony export */   "MESSENGER_LISTENERS": () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.MESSENGER_LISTENERS),
 /* harmony export */   "Messenger": () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.Messenger),
 /* harmony export */   "ParameterComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.ParameterComponent),
+/* harmony export */   "ShowComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.ShowComponent),
 /* harmony export */   "SwitchComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.SwitchComponent),
-/* harmony export */   "ToggleClassComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.ToggleClassComponent),
+/* harmony export */   "TransitionComponent": () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent),
 /* harmony export */   "TransitionStates": () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.TransitionStates),
 /* harmony export */   "ViewModelCoreImpl": () => (/* reexport safe */ _vm__WEBPACK_IMPORTED_MODULE_3__.ViewModelCoreImpl),
 /* harmony export */   "__": () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.__),
@@ -4468,6 +4467,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "assertRenderResults": () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.assertRenderResults),
 /* harmony export */   "attrs": () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.attrs),
 /* harmony export */   "bootstrap": () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.bootstrap),
+/* harmony export */   "class2str": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.class2str),
 /* harmony export */   "clearImmediate": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.clearImmediate),
 /* harmony export */   "createAttributes": () => (/* reexport safe */ _vm__WEBPACK_IMPORTED_MODULE_3__.createAttributes),
 /* harmony export */   "createComponent": () => (/* reexport safe */ _vm__WEBPACK_IMPORTED_MODULE_3__.createComponent),
@@ -4488,7 +4488,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getPropertyName": () => (/* reexport safe */ _vm__WEBPACK_IMPORTED_MODULE_3__.getPropertyName),
 /* harmony export */   "handleCancel": () => (/* reexport safe */ _vm__WEBPACK_IMPORTED_MODULE_3__.handleCancel),
 /* harmony export */   "handleOnce": () => (/* reexport safe */ _vm__WEBPACK_IMPORTED_MODULE_3__.handleOnce),
-/* harmony export */   "initStyle": () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.initStyle),
 /* harmony export */   "insertAfter": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.insertAfter),
 /* harmony export */   "isArray": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.isArray),
 /* harmony export */   "isBoolean": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.isBoolean),
@@ -4514,9 +4513,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "removeParent": () => (/* reexport safe */ _vm__WEBPACK_IMPORTED_MODULE_3__.removeParent),
 /* harmony export */   "replaceChildren": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.replaceChildren),
 /* harmony export */   "setAttribute": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.setAttribute),
+/* harmony export */   "setClassAttribute": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.setClassAttribute),
 /* harmony export */   "setImmediate": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.setImmediate),
+/* harmony export */   "setStyleAttribute": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.setStyleAttribute),
 /* harmony export */   "setText": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.setText),
 /* harmony export */   "shiftParent": () => (/* reexport safe */ _vm__WEBPACK_IMPORTED_MODULE_3__.shiftParent),
+/* harmony export */   "style2str": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.style2str),
 /* harmony export */   "textRenderFn": () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.textRenderFn),
 /* harmony export */   "typeOf": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.typeOf),
 /* harmony export */   "uid": () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_2__.uid),
@@ -4617,6 +4619,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addEvent": () => (/* binding */ addEvent),
 /* harmony export */   "appendChildren": () => (/* binding */ appendChildren),
+/* harmony export */   "class2str": () => (/* binding */ class2str),
 /* harmony export */   "createElement": () => (/* binding */ createElement),
 /* harmony export */   "createElementWithChild": () => (/* binding */ createElementWithChild),
 /* harmony export */   "createElementWithoutAttrs": () => (/* binding */ createElementWithoutAttrs),
@@ -4630,18 +4633,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "removeEvent": () => (/* binding */ removeEvent),
 /* harmony export */   "replaceChildren": () => (/* binding */ replaceChildren),
 /* harmony export */   "setAttribute": () => (/* binding */ setAttribute),
-/* harmony export */   "setText": () => (/* binding */ setText)
+/* harmony export */   "setClassAttribute": () => (/* binding */ setClassAttribute),
+/* harmony export */   "setStyleAttribute": () => (/* binding */ setStyleAttribute),
+/* harmony export */   "setText": () => (/* binding */ setText),
+/* harmony export */   "style2str": () => (/* binding */ style2str)
 /* harmony export */ });
 /* harmony import */ var _type__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./type */ "../../jinge/lib/util/type.js");
 
 function setText($element, text) {
-  if (!(0,_type__WEBPACK_IMPORTED_MODULE_0__.isString)(text)) {
+  if ((0,_type__WEBPACK_IMPORTED_MODULE_0__.isObject)(text)) {
     text = JSON.stringify(text);
   }
   $element.textContent = text;
 }
 function createTextNode(text = "") {
-  return document.createTextNode((0,_type__WEBPACK_IMPORTED_MODULE_0__.isString)(text) ? text : JSON.stringify(text));
+  return document.createTextNode((0,_type__WEBPACK_IMPORTED_MODULE_0__.isObject)(text) ? JSON.stringify(text) : text);
 }
 function createFragment(children) {
   const f = document.createDocumentFragment();
@@ -4651,7 +4657,9 @@ function createFragment(children) {
   return f;
 }
 function appendChildren($parent, children) {
-  $parent.appendChild(children.length > 1 ? createFragment(children) : (0,_type__WEBPACK_IMPORTED_MODULE_0__.isString)(children[0]) ? createTextNode(children[0]) : children[0]);
+  $parent.appendChild(
+    children.length > 1 ? createFragment(children) : (0,_type__WEBPACK_IMPORTED_MODULE_0__.isString)(children[0]) ? createTextNode(children[0]) : children[0]
+  );
 }
 function replaceChildren($parent, children, oldNode) {
   $parent.replaceChild(createFragment(children), oldNode);
@@ -4734,6 +4742,88 @@ function registerEvent($element, eventName, handler, capture) {
     removeEvent($element, eventName, handler);
   };
 }
+function class2str(className) {
+  if (!className)
+    return className;
+  if ((0,_type__WEBPACK_IMPORTED_MODULE_0__.isString)(className)) {
+    return className.trim();
+  }
+  if ((0,_type__WEBPACK_IMPORTED_MODULE_0__.isArray)(className)) {
+    const clist = [];
+    className.forEach((cn) => {
+      const seg = class2str(cn);
+      seg && clist.push(seg);
+    });
+    return clist.join(" ").trim();
+  }
+  return Object.keys(className).filter((k) => !!className[k]).join(" ").trim();
+}
+function setClassAttribute($ele, className) {
+  className = class2str(className);
+  if (!className)
+    $ele.removeAttribute("class");
+  else
+    $ele.setAttribute("class", className);
+}
+const UNITLESS = /* @__PURE__ */ new Set([
+  "box-flex",
+  "box-flex-group",
+  "column-count",
+  "flex",
+  "flex-grow",
+  "flex-positive",
+  "flex-shrink",
+  "flex-negative",
+  "font-weight",
+  "line-clamp",
+  "line-height",
+  "opacity",
+  "order",
+  "orphans",
+  "tab-size",
+  "widows",
+  "z-index",
+  "zoom",
+  "fill-opacity",
+  "stroke-dashoffset",
+  "stroke-opacity",
+  "stroke-width"
+]);
+function style2str(style) {
+  if (!style)
+    return style;
+  if ((0,_type__WEBPACK_IMPORTED_MODULE_0__.isString)(style))
+    return style.trim();
+  if (Array.isArray(style)) {
+    const slist = [];
+    style.forEach((sty) => {
+      const seg = style2str(sty);
+      seg && slist.push(seg);
+    });
+    return slist.join("").trim();
+  }
+  const segs = [];
+  Object.keys(style).forEach((k) => {
+    let v = style[k];
+    if (!v && v !== 0)
+      return;
+    k = k.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
+    if ((0,_type__WEBPACK_IMPORTED_MODULE_0__.isNumber)(v) && !UNITLESS.has(k)) {
+      v = `${v}px`;
+    } else {
+      v = v.toString();
+    }
+    segs.push(`${k}:${v};`);
+  });
+  return segs.join("").trim();
+}
+function setStyleAttribute($ele, style) {
+  style = style2str(style);
+  if (!style)
+    $ele.removeAttribute("style");
+  else
+    $ele.setAttribute("style", style);
+}
 
 
 //# sourceMappingURL=dom.js.map
@@ -4753,6 +4843,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "arrayEqual": () => (/* reexport safe */ _array__WEBPACK_IMPORTED_MODULE_1__.arrayEqual),
 /* harmony export */   "arrayPushIfNotExist": () => (/* reexport safe */ _array__WEBPACK_IMPORTED_MODULE_1__.arrayPushIfNotExist),
 /* harmony export */   "arrayRemove": () => (/* reexport safe */ _array__WEBPACK_IMPORTED_MODULE_1__.arrayRemove),
+/* harmony export */   "class2str": () => (/* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_4__.class2str),
 /* harmony export */   "clearImmediate": () => (/* reexport safe */ _setimm__WEBPACK_IMPORTED_MODULE_3__.clearImmediate),
 /* harmony export */   "createElement": () => (/* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_4__.createElement),
 /* harmony export */   "createElementWithChild": () => (/* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_4__.createElementWithChild),
@@ -4776,8 +4867,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "removeEvent": () => (/* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_4__.removeEvent),
 /* harmony export */   "replaceChildren": () => (/* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_4__.replaceChildren),
 /* harmony export */   "setAttribute": () => (/* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_4__.setAttribute),
+/* harmony export */   "setClassAttribute": () => (/* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_4__.setClassAttribute),
 /* harmony export */   "setImmediate": () => (/* reexport safe */ _setimm__WEBPACK_IMPORTED_MODULE_3__.setImmediate),
+/* harmony export */   "setStyleAttribute": () => (/* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_4__.setStyleAttribute),
 /* harmony export */   "setText": () => (/* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_4__.setText),
+/* harmony export */   "style2str": () => (/* reexport safe */ _dom__WEBPACK_IMPORTED_MODULE_4__.style2str),
 /* harmony export */   "typeOf": () => (/* reexport safe */ _type__WEBPACK_IMPORTED_MODULE_0__.typeOf),
 /* harmony export */   "uid": () => (/* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_2__.uid),
 /* harmony export */   "warn": () => (/* reexport safe */ _common__WEBPACK_IMPORTED_MODULE_2__.warn)
@@ -4846,11 +4940,15 @@ const win = typeof window === "undefined" ? globalThis : window;
 if ((0,_type__WEBPACK_IMPORTED_MODULE_0__.isUndefined)(win.setImmediate)) {
   tasksByHandle = /* @__PURE__ */ new Map();
   const messagePrefix = "setImmediate$" + (autoIncrement++).toString(32) + "$";
-  win.addEventListener("message", (event) => {
-    if (event.source === window && (0,_type__WEBPACK_IMPORTED_MODULE_0__.isString)(event.data) && event.data.startsWith(messagePrefix)) {
-      runIfPresent(Number(event.data.slice(messagePrefix.length)));
-    }
-  }, false);
+  win.addEventListener(
+    "message",
+    (event) => {
+      if (event.source === window && (0,_type__WEBPACK_IMPORTED_MODULE_0__.isString)(event.data) && event.data.startsWith(messagePrefix)) {
+        runIfPresent(Number(event.data.slice(messagePrefix.length)));
+      }
+    },
+    false
+  );
   registerImmediate = function(handle) {
     win.postMessage(messagePrefix + handle, "*");
   };
@@ -5015,6 +5113,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 class ViewModelCoreImpl {
+  /**
+   * Don't use the constructor. Use createViewModel instead.
+   */
   constructor(target) {
     this.__notifiable = true;
     this.__parents = null;
@@ -5488,7 +5589,10 @@ function attrsPropSetHandler(target, prop, value) {
 }
 function componentPropSetHandler(target, prop, value) {
   if (!(_common__WEBPACK_IMPORTED_MODULE_1__.$$ in target)) {
-    (0,_util__WEBPACK_IMPORTED_MODULE_0__.warn)(`call setter "${prop.toString()}" after destroied, resources such as setInterval maybe not released before destroy. component:`, target);
+    (0,_util__WEBPACK_IMPORTED_MODULE_0__.warn)(
+      `call setter "${prop.toString()}" after destroied, resources such as setInterval maybe not released before destroy. component:`,
+      target
+    );
     return true;
   }
   return __propSetHandler(target, prop, value, __componentPropSetFn);
@@ -5737,7 +5841,10 @@ const ArrayProxyHandler = {
 };
 function wrapProxy(target, isArr) {
   const vmCore = new _core__WEBPACK_IMPORTED_MODULE_2__.ViewModelCoreImpl(target);
-  return vmCore.proxy = new Proxy(target, isArr ? ArrayProxyHandler : (0,_util__WEBPACK_IMPORTED_MODULE_0__.isPromise)(target) ? PromiseProxyHandler : ObjectProxyHandler);
+  return vmCore.proxy = new Proxy(
+    target,
+    isArr ? ArrayProxyHandler : (0,_util__WEBPACK_IMPORTED_MODULE_0__.isPromise)(target) ? PromiseProxyHandler : ObjectProxyHandler
+  );
 }
 function wrapProp(parent, child, property) {
   if (!(0,_util__WEBPACK_IMPORTED_MODULE_0__.isObject)(child) || (0,_common__WEBPACK_IMPORTED_MODULE_1__.isInnerObj)(child)) {
@@ -5866,7 +5973,7 @@ function unwatch(vm2, propertyPath, handler) {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + chunkId + "." + {"components_dynamic_c_js":"b909a97b","components_footer_c_c_js":"eda967fc"}[chunkId] + ".js";
+/******/ 			return "" + chunkId + "." + {"components_dynamic_c_js":"3d2d3af0","components_footer_c_c_js":"fd6918e3"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -5913,7 +6020,6 @@ function unwatch(vm2, propertyPath, handler) {
 /******/ 				doneFns && doneFns.forEach((fn) => (fn(event)));
 /******/ 				if(prev) return prev(event);
 /******/ 			}
-/******/ 			;
 /******/ 			var timeout = setTimeout(onScriptComplete.bind(null, undefined, { type: 'timeout', target: script }), 120000);
 /******/ 			script.onerror = onScriptComplete.bind(null, script.onerror);
 /******/ 			script.onload = onScriptComplete.bind(null, script.onload);
@@ -5982,7 +6088,7 @@ function unwatch(vm2, propertyPath, handler) {
 /******/ 								}
 /******/ 							};
 /******/ 							__webpack_require__.l(url, loadingEnded, "chunk-" + chunkId, chunkId);
-/******/ 						} else installedChunks[chunkId] = 0;
+/******/ 						}
 /******/ 					}
 /******/ 				}
 /******/ 		};

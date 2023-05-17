@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ async function __WEBPACK_DEFAULT_EXPORT__(component) {
   const vm_0 = component;
   return [
   (() => {
@@ -52,4 +52,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=components_footer_c_c_js.eda967fc.js.map
+//# sourceMappingURL=components_footer_c_c_js.eb28c595.js.map

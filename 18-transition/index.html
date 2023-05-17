@@ -36,32 +36,31 @@
     }
   }
 
-  .jg-hide-enter,
-  .jg-hide-leave {
-    transition: all 5000ms ease;
-  }
-  .jg-hide-enter-active,
-  .jg-hide.jg-hide-leave {
+  .jg-enter-from,
+  .jg-leave-to {
     opacity: 0;
-    transform: translateX(60px);
   }
-  .jg-hide.jg-hide-leave-active {
+  .jg-enter-active,
+  .jg-leave-active {
+    transition: opacity 1.2s ease;
+  }
+  .jg-enter-to,
+  .jg-leave-from {
     opacity: 1;
-    transform: translateX(0);
   }
 
-  .slide-fade-enter,
-  .slide-fade-leave {
-    transition: opacity 1s, transform 1s;
-  }
-  .slide-fade-enter,
-  .slide-fade-leave-active {
-    transform: translateX(60px);
-    opacity: 0;
-  }
   .slide-fade-enter-active {
-    transform: translateX(0);
-    opacity: 1;
+    transition: all 0.3s ease-out;
+  }
+
+  .slide-fade-leave-active {
+    transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+
+  .slide-fade-enter-from,
+  .slide-fade-leave-to {
+    transform: translateX(20px);
+    opacity: 0;
   }
 
   </style>

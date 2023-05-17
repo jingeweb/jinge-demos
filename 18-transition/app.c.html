@@ -1,37 +1,39 @@
 <h1>Transition Demo</h1>
 <p>Jinge framework only provide basic transition/animation supports.</p>
 <p>TODO: implement advance transtion/animation supports</p>
-<h3>Toggle className</h3>
+
+<h3>State-driven</h3>
 <div>
-  <p>
-    <toggle-class
-      e:class="{fade: fade, slide: slide}"
-      transition
-      on:transition="handleTransition"
-    >
-    <div class="ts">Hello, World</div>
-    </toggle-class>
-  </p>
-  <button on:click="fade = !fade">Fade</button>
-  <button on:click="slide = !slide">Slide</button>
-  <button on:click="fade = !fade; slide = !slide">Both</button>
+  <div @mousemove="onMousemove" :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }" class="movearea">
+    <p>Move your mouse across this div...</p>
+    <p>x: ${x}</p>
+  </div>
 </div>
-<h3>Hide/Show</h3>
+<h3>Show/Hide</h3>
 <div>
   <button on:click="show = !show">${show ? 'Hide' : 'Show'}</button>
-  <hide e:test="!show" transition>
-  <p>Hello, World</p>
-  </hide>
+  <show e:test="show">
+  <transition
+    @before-enter="log('before-enter')"
+    @before-leave="log('before-leave')"
+    @enter="log('enter')"
+    @leave="log('leave')"
+    @after-enter="log('after-enter')"
+    @after-leave="log('after-leave')"
+    @enter-cancelled="log('enter-cancelled')"
+    @leave-cancelled="log('leave-cancelled')"
+  >
+    <p>Hello, World</p>
+  </transition>
+  </show>
 </div>
 <h3>If</h3>
 <div>
   <button on:click="show2 = !show2">${show2 ? 'Hide' : 'Show'}</button>
-  <if
-    e:expect="show2"
-    transition="slide-fade"
-    on:transition="log(...$args)"
-  >
-    <p>Hello, World</p>
+  <if e:expect="show2">
+    <transition name="slide-fade">
+      <p>Hello, World</p>
+    </transition>
   </if>
 </div>
 <h3>If/Else</h3>

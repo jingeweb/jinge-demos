@@ -13,18 +13,18 @@
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "jinge": "^3.2.2",
-    "jinge-router": "^3.2.2"
+    "jinge": "^3.3.0",
+    "jinge-router": "^3.3.0"
   },
   "devDependencies": {
-    "css-loader": "^6.7.1",
-    "jinge-compiler": "^3.2.2",
-    "jinge-i18n": "^1.0.0",
-    "mini-css-extract-plugin": "^2.6.1",
-    "sass": "^1.54.4",
-    "sass-loader": "^13.0.2",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.10.0"
+    "css-loader": "^6.7.3",
+    "jinge-compiler": "^3.3.0",
+    "jinge-i18n": "^3.3.0",
+    "mini-css-extract-plugin": "^2.7.5",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   }
 }

@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/jinge-design/jinge-demos/issues"
   },
-  "homepage": "https://github.com/jinge-design/jinge-demos#readme"
+  "homepage": "https://github.com/jinge-design/jinge-demos#readme",
+  "dependencies": {
+    "jinge-router": "^3.3.0"
+  }
 }

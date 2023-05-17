@@ -50,7 +50,7 @@ export default class App extends Component {
   }
 
   changeLocale(locale) {
-    history.pushState(null, '', location.pathname + '#/' + locale);
+    history.pushState(null, '', location.pathname + location.hash.replace(this.locale, locale));
     this.locale = locale;
     setLocale(locale);
   }

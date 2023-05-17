@@ -1,7 +1,7 @@
 <table>
   <thead>
     <tr>
-      <for e:loop="columns" e:key="_columnKey" vm:each="col" vm:index="i">
+      <for :loop="columns" :key="_columnKey" vm:each="col" vm:index="i">
       <_slot slot-use:th vm-pass:columnIndex="i" vm-pass:columnData="col">
       <th>${col.title || col.key}</th>
       </_slot>

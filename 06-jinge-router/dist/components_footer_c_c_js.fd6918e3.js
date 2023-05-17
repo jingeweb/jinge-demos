@@ -35,13 +35,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
 
-/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
   const vm_0 = component;
   return [
   (() => {
     const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
       "p",
-      "Footer-C-dynamic"
+      `Footer-C-dynamic`
     );
     component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
     return el;
@@ -52,4 +52,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=components_footer_c_c_js.6796f04e.js.map
+//# sourceMappingURL=components_footer_c_c_js.fd6918e3.js.map

@@ -6,20 +6,20 @@
   "scripts": {
     "build-dev": "webpack --config ./webpack.config.js",
     "build": "MINIMIZE=true npm run build-dev",
-    "i18n:scan": "jinge-i18n extract --scan src/**/*.{js,html} --locale en zh_tr",
+    "i18n:scan": "jinge-i18n extract --scan src --locale en zh_tr",
     "i18n:gen": "jinge-i18n generate",
     "start": "webpack-dev-server --config ./webpack.config.js"
   },
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "jinge-compiler": "^3.2.2",
-    "jinge-i18n": "^1.0.0",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.10.0"
+    "jinge-compiler": "^3.3.0",
+    "jinge-i18n": "^3.3.0",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
-    "jinge": "^3.2.2"
+    "jinge": "^3.3.0"
   }
 }

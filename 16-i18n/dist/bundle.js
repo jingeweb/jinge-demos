@@ -125,7 +125,7 @@ if (isUndefined(win.setImmediate)) {
     win.postMessage(messagePrefix + handle, "*");
   };
 }
-const setimm_setImmediate = win.setImmediate || setImmediateFallback;
+const setImmediate = win.setImmediate || setImmediateFallback;
 const clearImmediate = win.clearImmediate || clearImmediateFallback;
 
 
@@ -167,12 +167,12 @@ function removeAttribute($ele, attrName) {
   }
   return $ele.removeAttribute(attrName);
 }
-function dom_setAttribute($ele, attrName, attrValue) {
+function setAttribute($ele, attrName, attrValue) {
   if (!attrName)
     return;
   if (isObject(attrName)) {
     for (const attrN in attrName) {
-      dom_setAttribute($ele, attrN, attrName[attrN]);
+      setAttribute($ele, attrN, attrName[attrN]);
     }
     return;
   }
@@ -186,7 +186,7 @@ function _createEl($el, attrs, children) {
   if (attrs) {
     for (const an in attrs) {
       if (an && !isUndefined(attrs[an])) {
-        dom_setAttribute($el, an, attrs[an]);
+        setAttribute($el, an, attrs[an]);
       }
     }
   }
@@ -218,20 +218,20 @@ function insertAfter($parent, newNode, referenceNode) {
     $parent.insertBefore(newNode, rn);
   }
 }
-function dom_addEvent($element, eventName, handler, capture) {
+function addEvent($element, eventName, handler, capture) {
   isUndefined(capture) && (capture = eventName.startsWith("touch") ? {
     capture: false,
     passive: true
   } : false);
   $element.addEventListener(eventName, handler, capture);
 }
-function dom_removeEvent($element, eventName, handler) {
+function removeEvent($element, eventName, handler) {
   $element.removeEventListener(eventName, handler);
 }
 function registerEvent($element, eventName, handler, capture) {
-  dom_addEvent($element, eventName, handler, capture);
+  addEvent($element, eventName, handler, capture);
   return function deregister() {
-    dom_removeEvent($element, eventName, handler);
+    removeEvent($element, eventName, handler);
   };
 }
 function class2str(className) {
@@ -403,7 +403,7 @@ function handleOnce(handler, propertyPath) {
   if (handleTasks.has(handler)) {
     return;
   }
-  const imm = setimm_setImmediate(() => {
+  const imm = setImmediate(() => {
     const arg = handleTasks.get(handler);
     try {
       handler(arg.propertyPath);
@@ -534,6 +534,9 @@ function loopClearNode(node) {
 
 
 class ViewModelCoreImpl {
+  /**
+   * Don't use the constructor. Use createViewModel instead.
+   */
   constructor(target) {
     this.__notifiable = true;
     this.__parents = null;
@@ -1104,13 +1107,20 @@ class Messenger {
     const listeners = this[MESSENGER_LISTENERS].get(eventName);
     if (!listeners)
       return;
-    listeners.forEach((opts, handler) => {
-      handler(...args);
+    for (const [handler, opts] of listeners) {
+      try {
+        handler(...args);
+      } catch (ex) {
+        console.error("failed __notify", eventName, "due to:", ex);
+      }
       if (opts?.once) {
         listeners.delete(handler);
       }
-    });
+    }
   }
+  /**
+   * 监听事件，返回该监听的卸载函数
+   */
   __on(eventName, eventListener, options) {
     if (!this[MESSENGER_LISTENERS]) {
       this[MESSENGER_LISTENERS] = /* @__PURE__ */ new Map();
@@ -1120,6 +1130,9 @@ class Messenger {
       this[MESSENGER_LISTENERS].set(eventName, listeners = /* @__PURE__ */ new Map());
     }
     listeners.set(eventListener, options);
+    return () => {
+      this.__off(eventName, eventListener);
+    };
   }
   __off(eventName, eventListener) {
     const lisMap = this[MESSENGER_LISTENERS];
@@ -1146,34 +1159,12 @@ MESSENGER_LISTENERS;
 
 
 //# sourceMappingURL=messenger.js.map
-;// CONCATENATED MODULE: ../../jinge/lib/core/style.js
-
-const CSS = ".jg-hide{display:none!important}.jg-hide.jg-hide-enter,.jg-hide.jg-hide-leave{display:block!important}";
-let inited = false;
-function initStyle() {
-  if (inited)
-    return;
-  inited = true;
-  const $style = dom_createElement("style", {
-    type: "text/css"
-  });
-  if ($style.styleSheet)
-    $style.styleSheet.cssText = CSS;
-  else
-    $style.textContent = CSS;
-  document.head.appendChild($style);
-}
-
-
-//# sourceMappingURL=style.js.map
 ;// CONCATENATED MODULE: ../../jinge/lib/core/component.js
 var _a;
 
 
 
 
-
-initStyle();
 var ComponentStates = /* @__PURE__ */ ((ComponentStates2) => {
   ComponentStates2[ComponentStates2["INITIALIZE"] = 0] = "INITIALIZE";
   ComponentStates2[ComponentStates2["RENDERED"] = 1] = "RENDERED";
@@ -1189,7 +1180,7 @@ var ContextStates = /* @__PURE__ */ ((ContextStates2) => {
   return ContextStates2;
 })(ContextStates || {});
 const component_ = Symbol("__");
-function isComponent(v) {
+function component_isComponent(v) {
   return component_ in v;
 }
 function assertRenderResults(renderResults) {
@@ -1205,6 +1196,11 @@ function component_wrapAttrs(target) {
   return createAttributes(target);
 }
 class component_Component extends Messenger {
+  /**
+   * ATTENTION!!!
+   *
+   * Don't use constructor directly, use static factory method `create(attrs)` instead.
+   */
   constructor(attrs) {
     if (!isObject(attrs) || !(common_$$ in attrs)) {
       throw new Error("Attributes passed to Component constructor must be ViewModel. See https://[todo]");
@@ -1239,6 +1235,9 @@ class component_Component extends Messenger {
     const vmAttrs = isObj && common_$$ in attrs ? attrs : component_wrapAttrs(isObj ? attrs : {});
     return new this(vmAttrs)[common_$$].proxy;
   }
+  /**
+   * store deregisterFn and auto call it when component is being destroy.
+   */
   __addDeregisterFn(deregisterFn) {
     let deregs = this[component_].deregFns;
     if (!deregs) {
@@ -1246,6 +1245,24 @@ class component_Component extends Messenger {
     }
     deregs.add(deregisterFn);
   }
+  /**
+   * Helper function to add i18n change listener.
+   * The listener will be auto removed when component is destroied.
+   */
+  // __i18nWatch(listener: (locale: string) => void, immediate = false): void {
+  //   this.__addDeregisterFn(
+  //     i18n.watch((locale) => {
+  //       // bind component to listener's function context.
+  //       listener.call(this, locale);
+  //     }, immediate),
+  //   );
+  // }
+  /**
+   * Helper function to add dom event listener.
+   * Return deregister function which will remove event listener.
+   * If you do dot call deregister function, it will be auto called when component is destroied.
+   * @returns {Function} deregister function to remove listener
+   */
   __domAddListener($el, eventName, listener, capture) {
     const deregEvtFn = registerEvent(
       $el,
@@ -1299,19 +1316,30 @@ class component_Component extends Messenger {
       });
     });
   }
-  get __transitionDOM() {
-    const el = this[component_].rootNodes[0];
-    return isComponent(el) ? el.__transitionDOM : el;
-  }
+  /**
+   * Get first rendered DOM Node after Component is rendered.
+   *
+   * 按从左往右从上到下的深度遍历，找到的第一个 DOM 节点。
+   */
   get __firstDOM() {
     const el = this[component_].rootNodes[0];
-    return isComponent(el) ? el.__firstDOM : el;
+    return component_isComponent(el) ? el.__firstDOM : el;
   }
+  /**
+   * Get last rendered DOM Node after Component is rendered.
+   *
+   * 按从右往左，从上到下的深度遍历，找到的第一个 DOM 节点（相对于从左到右的顺序是最后一个 DOM 节点）。
+   */
   get __lastDOM() {
     const rns = this[component_].rootNodes;
     const el = rns[rns.length - 1];
-    return isComponent(el) ? el.__lastDOM : el;
+    return component_isComponent(el) ? el.__lastDOM : el;
   }
+  /**
+   * 组件的实际渲染函数，渲染模板或默认插槽。
+   * 该函数可被子组件重载，进而覆盖渲染逻辑。
+   * 该函数可以是同步或异步函数，但通常推荐使用同步函数，将异步初始化逻辑放到 __beforeRender 生命周期函数中。
+   */
   __render() {
     const Clazz = this.constructor;
     let renderFn = Clazz.template;
@@ -1321,8 +1349,17 @@ class component_Component extends Messenger {
     if (!isFunction(renderFn)) {
       throw new Error(`Template of ${Clazz.name} not found. Forget static getter "template"?`);
     }
-    return renderFn(this);
+    return assertRenderResults(renderFn(this));
   }
+  /**
+   * Render Component to HTMLElement.
+   * This method is usually used to render the entire application.
+   * See the `bootstrap()` function in `./bootstrap.js`.
+   *
+   * By default, the target element will be replaced(that means deleted).
+   * But you can disable it by pass `replaceMode`=`false`,
+   * which means component append to target as it's children.
+   */
   __renderToDOM(targetEl, replaceMode = true) {
     if (this[component_].state !== 0 /* INITIALIZE */) {
       throw new Error("component has already been rendered.");
@@ -1370,7 +1407,9 @@ class component_Component extends Messenger {
       comp.relatedRefs = null;
     }
     if (comp.deregFns) {
-      comp.deregFns.forEach((deregFn) => deregFn());
+      for (const deregFn of Array.from(comp.deregFns)) {
+        deregFn();
+      }
       comp.deregFns.clear();
       comp.deregFns = null;
     }
@@ -1378,12 +1417,12 @@ class component_Component extends Messenger {
     comp.rootNodes = comp.nonRootCompNodes = comp.refs = comp.slots = comp.context = null;
   }
   __handleBeforeDestroy(removeDOM = false) {
-    this[component_].nonRootCompNodes.forEach((component) => {
+    for (const component of this[component_].nonRootCompNodes) {
       component.__destroy(false);
-    });
+    }
     let $parent;
-    this[component_].rootNodes.forEach((node) => {
-      if (isComponent(node)) {
+    for (const node of this[component_].rootNodes) {
+      if (component_isComponent(node)) {
         node.__destroy(removeDOM);
       } else if (removeDOM) {
         if (!$parent) {
@@ -1391,18 +1430,19 @@ class component_Component extends Messenger {
         }
         $parent.removeChild(node);
       }
-    });
+    }
   }
   __handleAfterRender() {
     this[component_].passedAttrs[common_$$].__notifiable = true;
     this[common_$$].__notifiable = true;
-    this[component_].rootNodes.forEach((n) => {
-      if (isComponent(n))
+    for (const n of this[component_].rootNodes) {
+      if (component_isComponent(n)) {
         n.__handleAfterRender();
-    });
-    this[component_].nonRootCompNodes.forEach((n) => {
+      }
+    }
+    for (const n of this[component_].nonRootCompNodes) {
       n.__handleAfterRender();
-    });
+    }
     this[component_].state = 1 /* RENDERED */;
     this[component_].contextState = this[component_].contextState === 1 /* TOUCHED */ ? 3 /* TOUCHED_FREEZED */ : 2 /* UNTOUCH_FREEZED */;
     this.__afterRender();
@@ -1413,12 +1453,17 @@ class component_Component extends Messenger {
       return;
     }
     if (handler === false) {
-      return this.__update();
+      this.__update();
+      return;
     }
     if (!isFunction(handler)) {
-      handler = this.__update;
-    }
-    if (!nextTick) {
+      if (!nextTick) {
+        this.__update();
+        return;
+      } else {
+        handler = this.__update;
+      }
+    } else if (!nextTick) {
       handler.call(this);
       return;
     }
@@ -1430,12 +1475,13 @@ class component_Component extends Messenger {
     }
     ntMap.set(
       handler,
-      setimm_setImmediate(() => {
+      setImmediate(() => {
         ntMap.delete(handler);
         handler.call(this);
       })
     );
   }
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   __update(first) {
   }
   __setContext(key, value, forceOverride = false) {
@@ -1458,6 +1504,10 @@ class component_Component extends Messenger {
   __getContext(key) {
     return this[component_].context?.[key];
   }
+  /**
+   * This method is used for compiler generated code.
+   * Do not use it manually.
+   */
   __setRef(ref, el, relatedComponent) {
     let rns = this[component_].refs;
     if (!rns) {
@@ -1472,7 +1522,7 @@ class component_Component extends Messenger {
       elOrArr = [elOrArr, el];
       rns.set(ref, elOrArr);
     }
-    const isComp = isComponent(el);
+    const isComp = component_isComponent(el);
     if (!isComp && this === relatedComponent) {
       return;
     }
@@ -1486,6 +1536,9 @@ class component_Component extends Messenger {
       node: isComp ? null : el
     });
   }
+  /**
+   * Get child node(or nodes) marked by 'ref:' attribute in template
+   */
   __getRef(ref) {
     if (this[component_].state !== 1 /* RENDERED */) {
       warn(
@@ -1494,199 +1547,37 @@ class component_Component extends Messenger {
     }
     return this[component_].refs?.get(ref);
   }
+  /**
+   * lifecycle hook, called after rendered.
+   */
   __afterRender() {
   }
+  /**
+   * lifecycle hook, called before destroy.
+   */
   __beforeDestroy() {
   }
 }
 _a = component_, component_, common_$$;
+/**
+ * 某些情况下，需要判断一个函数是否是组件的构造函数。添加一个静态成员属性符号用于进行该判断。
+ * isComponent 函数既可以判断是否是构造函数（配合 isFunction），又可以判断一个对像是否是组件实例。
+ *
+ * 示例：
+ *
+ * ````js
+ * import { isComponent, Component } from 'jinge';
+ *
+ * class A {};
+ * class B extends Component {};
+ * console.log(isComponent(A)); // false
+ * console.log(isComponent(B)); // true
+ * ````
+ */
 component_Component[_a] = true;
 
 
 //# sourceMappingURL=component.js.map
-;// CONCATENATED MODULE: ../../jinge/lib/core/transition.js
-var transition_TransitionStates = /* @__PURE__ */ ((TransitionStates2) => {
-  TransitionStates2[TransitionStates2["ENTERING"] = 1] = "ENTERING";
-  TransitionStates2[TransitionStates2["ENTERED"] = 2] = "ENTERED";
-  TransitionStates2[TransitionStates2["LEAVING"] = 3] = "LEAVING";
-  TransitionStates2[TransitionStates2["LEAVED"] = 4] = "LEAVED";
-  return TransitionStates2;
-})(transition_TransitionStates || {});
-function transition_getDurationType(el) {
-  const cst = getComputedStyle(el);
-  if (cst.getPropertyValue("transition-duration") !== "0s") {
-    return "transitionend";
-  } else if (cst.getPropertyValue("animation-duration") !== "0s") {
-    return "animationend";
-  }
-  return null;
-}
-function parseDuration(v) {
-  if (/ms$/.test(v)) {
-    return parseInt(v);
-  } else if (/s$/.test(v)) {
-    return parseFloat(v) * 1e3;
-  } else {
-    return 0;
-  }
-}
-function getDuration(el) {
-  const cst = getComputedStyle(el);
-  let dur = cst.getPropertyValue("transition-duration");
-  if (dur !== "0s") {
-    return {
-      type: "transitionend",
-      time: parseDuration(dur)
-    };
-  }
-  dur = cst.getPropertyValue("animation-duration");
-  if (dur !== "0s") {
-    return {
-      type: "animationend",
-      time: parseDuration(dur)
-    };
-  }
-  return {
-    type: null,
-    time: 0
-  };
-}
-
-
-//# sourceMappingURL=transition.js.map
-;// CONCATENATED MODULE: ../../jinge/lib/vm/index.js
-
-
-
-
-
-
-//# sourceMappingURL=index.js.map
-;// CONCATENATED MODULE: ../../jinge/lib/components/class.js
-
-
-
-
-var ClassOpType = /* @__PURE__ */ ((ClassOpType2) => {
-  ClassOpType2[ClassOpType2["ADD"] = 0] = "ADD";
-  ClassOpType2[ClassOpType2["DEL"] = 1] = "DEL";
-  return ClassOpType2;
-})(ClassOpType || {});
-class class_ToggleClassComponent extends (/* unused pure expression or super */ null && (Component)) {
-  constructor(attrs) {
-    super(attrs);const _jg0 = this[$$_jg0402].proxy;const f1_jg0402 = () => {
-    _jg0.transition = attrs.transition !== false; }; f1_jg0402(); attrs[$$_jg0402].__watch("transition", f1_jg0402);
-    _jg0[$$].__watch("class", () => {
-      _jg0.__updateIfNeed();
-    });
-  }
-  __render() {
-    const rr = super.__render();
-    this.__update(true);
-    return rr;
-  }
-  __beforeDestroy() {
-    this._ts = null;
-  }
-  __update(first) {
-    const el = this.__transitionDOM;
-    if (el && el.nodeType !== Node.ELEMENT_NODE) {
-      return;
-    }
-    if (!this.transition) {
-      setAttribute(el, "class", this.class);
-      return;
-    }
-    if (!this._ts) {
-      this._ts = /* @__PURE__ */ new Map();
-    }
-    const newClassList = new Set(this.class ? this.class.split(" ") : []);
-    if (first) {
-      newClassList.forEach((clz) => {
-        this._ts.set(clz, [TransitionStates.ENTERED, null]);
-        el.classList.add(clz);
-      });
-      this._cs = newClassList;
-      return;
-    }
-    const preClassList = this._cs;
-    const diffClassList = [];
-    newClassList.forEach((clz) => {
-      if (preClassList.has(clz)) {
-        preClassList.delete(clz);
-      } else {
-        diffClassList.push({ className: clz, type: 0 /* ADD */ });
-      }
-    });
-    preClassList.forEach((clz) => {
-      diffClassList.push({ className: clz, type: 1 /* DEL */ });
-    });
-    this._cs = newClassList;
-    if (diffClassList.length === 0) {
-      return;
-    }
-    diffClassList.forEach(({ className, type }) => {
-      const isAdd = type === 0 /* ADD */;
-      let t = this._ts.get(className);
-      if (!t) {
-        t = [isAdd ? TransitionStates.LEAVED : TransitionStates.ENTERED, null];
-        this._ts.set(className, t);
-      }
-      if (isAdd && t[0] <= TransitionStates.ENTERED || !isAdd && t[0] >= TransitionStates.LEAVING) {
-        return;
-      }
-      if (t && t[0] === (isAdd ? TransitionStates.LEAVING : TransitionStates.ENTERING)) {
-        el.classList.remove(className + (isAdd ? "-leave-active" : "-enter-active"));
-        el.classList.remove(className + (isAdd ? "-leave" : "-enter"));
-        removeEvent(el, "transitionend", t[1]);
-        removeEvent(el, "animationend", t[1]);
-        t[1] = null;
-        this.__notify("transition", isAdd ? "leave-cancelled" : "enter-cancelled", className, el);
-      }
-      const classOfStart = className + (isAdd ? "-enter" : "-leave");
-      const classOfActive = className + (isAdd ? "-enter-active" : "-leave-active");
-      el.classList.add(classOfStart);
-      getDurationType(el);
-      el.classList.add(classOfActive);
-      const tsEndName = getDurationType(el);
-      if (!tsEndName) {
-        el.classList.remove(classOfStart);
-        el.classList.remove(classOfActive);
-        t[0] = isAdd ? TransitionStates.ENTERED : TransitionStates.LEAVED;
-        if (isAdd) {
-          el.classList.add(className);
-        } else {
-          el.classList.remove(className);
-        }
-        return;
-      }
-      const onEnd = () => {
-        removeEvent(el, "transitionend", onEnd);
-        removeEvent(el, "animationend", onEnd);
-        el.classList.remove(classOfStart);
-        el.classList.remove(classOfActive);
-        t[1] = null;
-        t[0] = isAdd ? TransitionStates.ENTERED : TransitionStates.LEAVED;
-        if (isAdd) {
-          el.classList.add(className);
-        } else {
-          el.classList.remove(className);
-        }
-        this.__notify("transition", isAdd ? "after-enter" : "after-leave", className, el);
-      };
-      t[0] = isAdd ? TransitionStates.ENTERING : TransitionStates.LEAVING;
-      t[1] = onEnd;
-      addEvent(el, tsEndName, onEnd);
-      this.__notify("transition", isAdd ? "before-enter" : "before-leave", className, el);
-      setImmediate(() => {
-        this.__notify("transition", isAdd ? "enter" : "leave", className, el);
-      });
-    });
-  }
-}
-
-
-//# sourceMappingURL=class.js.map
 ;// CONCATENATED MODULE: ../../jinge/lib/components/for.js
 
 
@@ -1708,9 +1599,6 @@ class ForEachComponent extends component_Component {
   }
   set each(v) {
     this._e = v;
-  }
-  __render() {
-    return this[component_].slots.default(this);
   }
 }
 function createEl(item, i, isLast, itemRenderFn, context) {
@@ -1748,17 +1636,19 @@ function _prepareKey(item, i, keyMap, keyName) {
 function renderItems(items, itemRenderFn, roots, keys, keyName, context) {
   const result = [];
   const tmpKeyMap = /* @__PURE__ */ new Map();
-  items.forEach((item, i) => {
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i];
     if (keyName !== "index") {
       keys.push(_prepareKey(item, i, tmpKeyMap, keyName));
     }
-    result.push(...appendRenderEach(item, i, i === items.length - 1, itemRenderFn, roots, context));
-  });
+    const els = appendRenderEach(item, i, i === items.length - 1, itemRenderFn, roots, context);
+    result.push(...els);
+  }
   return result;
 }
 function loopAppend($parent, el) {
   el[component_].rootNodes.forEach((node) => {
-    if (isComponent(node)) {
+    if (component_isComponent(node)) {
       loopAppend($parent, node);
     } else {
       $parent.appendChild(node);
@@ -1788,7 +1678,7 @@ class ForComponent extends component_Component {
       throw new Error('Value of "key" attribute of <for> component is invalidate. See https://[todo]');
     }
     super(attrs2);const _jg0 = this[common_$$].proxy;
-    if (isViewModel(attrs2.loop)) {
+    if (isUndefined(attrs2.loop) || attrs2.loop === null || isViewModel(attrs2.loop)) {
       _jg0.loop = attrs2.loop;
       attrs2[common_$$].__watch("loop", () => {
         _jg0.loop = attrs2.loop;
@@ -1878,7 +1768,7 @@ class ForComponent extends component_Component {
       if (newKey !== oldKey) {
         const $fd = oldEl.__firstDOM;
         const newEl = createEl(item, index, oldEl.isLast, itemRenderFn, this[component_].context);
-        const rr = assertRenderResults(newEl.__render());
+        const rr = newEl.__render();
         $fd.parentNode.insertBefore(rr.length > 1 ? dom_createFragment(rr) : rr[0], $fd);
         oldEl.__destroy();
         roots[index] = newEl;
@@ -1932,7 +1822,8 @@ class ForComponent extends component_Component {
         } else {
           if (!$f)
             $f = dom_createFragment();
-          appendRenderEach(newItems[i], i, i === nl - 1, itemRenderFn, roots, ctx).forEach((el) => {
+          const doms = appendRenderEach(newItems[i], i, i === nl - 1, itemRenderFn, roots, ctx);
+          doms.forEach((el) => {
             $f.appendChild(el);
           });
         }
@@ -1961,7 +1852,9 @@ class ForComponent extends component_Component {
       const rs = renderItems(newItems, itemRenderFn, roots, oldKeys, keyName, this[component_].context);
       insertAfter($parent, dom_createFragment(rs), firstEl);
       $parent.removeChild(firstEl);
-      roots.forEach((el) => el.__handleAfterRender());
+      for (const el of roots) {
+        el.__handleAfterRender();
+      }
       return;
     }
     const oldKeyMap = /* @__PURE__ */ new Map();
@@ -2002,7 +1895,8 @@ class ForComponent extends component_Component {
           const el2 = createEl(newItems[ni], ni, ni === nl - 1, itemRenderFn, ctx);
           if (!$f2)
             $f2 = dom_createFragment();
-          el2.__render().forEach(($n) => $f2.appendChild($n));
+          const doms = el2.__render();
+          doms.forEach(($n) => $f2.appendChild($n));
           newRoots.push(el2);
         }
         if ($f2) {
@@ -2036,7 +1930,8 @@ class ForComponent extends component_Component {
           $f = dom_createFragment();
         if (!reuseEl) {
           reuseEl = createEl(newItems[ni], ni, ni === nl - 1, itemRenderFn, ctx);
-          reuseEl.__render().forEach(($n) => $f.appendChild($n));
+          const doms = reuseEl.__render();
+          doms.forEach(($n) => $f.appendChild($n));
           if (!$nes)
             $nes = [];
           $nes.push(reuseEl);
@@ -2052,7 +1947,11 @@ class ForComponent extends component_Component {
       }
       const el = roots[oi];
       $f && $parent.insertBefore($f, el.__firstDOM);
-      $nes?.forEach((el2) => el2.__handleAfterRender());
+      if ($nes?.length) {
+        for (const el2 of $nes) {
+          el2.__handleAfterRender();
+        }
+      }
       updateEl(el, ni, newItems);
       newRoots.push(el);
       oi++;
@@ -2065,22 +1964,195 @@ class ForComponent extends component_Component {
 
 
 //# sourceMappingURL=for.js.map
-;// CONCATENATED MODULE: ../../jinge/lib/components/hide.js
-
-
-class HideComponent extends (/* unused pure expression or super */ null && (ToggleClassComponent)) {
-  constructor(attrs) {
-    const fn = () => {
-      attrs.class = attrs.test ? "jg-hide" : null;
+;// CONCATENATED MODULE: ../../jinge/lib/core/transition.js
+var TransitionStates = /* @__PURE__ */ ((TransitionStates2) => {
+  TransitionStates2[TransitionStates2["ENTERING"] = 1] = "ENTERING";
+  TransitionStates2[TransitionStates2["ENTERED"] = 2] = "ENTERED";
+  TransitionStates2[TransitionStates2["LEAVING"] = 3] = "LEAVING";
+  TransitionStates2[TransitionStates2["LEAVED"] = 4] = "LEAVED";
+  return TransitionStates2;
+})(TransitionStates || {});
+function getDurationType(el) {
+  const cst = getComputedStyle(el);
+  if (cst.getPropertyValue("transition-duration") !== "0s") {
+    return "transitionend";
+  } else if (cst.getPropertyValue("animation-duration") !== "0s") {
+    return "animationend";
+  }
+  return null;
+}
+function parseDuration(v) {
+  if (/ms$/.test(v)) {
+    return parseInt(v);
+  } else if (/s$/.test(v)) {
+    return parseFloat(v) * 1e3;
+  } else {
+    return 0;
+  }
+}
+function getDuration(el) {
+  const cst = getComputedStyle(el);
+  let dur = cst.getPropertyValue("transition-duration");
+  if (dur !== "0s") {
+    return {
+      type: "transitionend",
+      time: parseDuration(dur)
     };
-    fn();
-    attrs[$$].__watch("test", fn);
-    super(attrs);
+  }
+  dur = cst.getPropertyValue("animation-duration");
+  if (dur !== "0s") {
+    return {
+      type: "animationend",
+      time: parseDuration(dur)
+    };
+  }
+  return {
+    type: null,
+    time: 0
+  };
+}
+
+
+//# sourceMappingURL=transition.js.map
+;// CONCATENATED MODULE: ../../jinge/lib/components/transition.js
+
+
+
+function genClassNames(name) {
+  name = name || "jg";
+  return {
+    enterFrom: `${name}-enter-from`,
+    enterActive: `${name}-enter-active`,
+    enterTo: `${name}-enter-to`,
+    leaveFrom: `${name}-leave-from`,
+    leaveActive: `${name}-leave-active`,
+    leaveTo: `${name}-leave-to`
+  };
+}
+function doTrans(comp, isEnter, el) {
+  const type = isEnter ? "enter" : "leave";
+  const fromClass = comp._cs[`${type}From`];
+  const activeClass = comp._cs[`${type}Active`];
+  const toClass = comp._cs[`${type}To`];
+  el.classList.add(fromClass, activeClass);
+  comp.__notify(`before-${type}`, el);
+  let cancel = void 0;
+  let imm = setImmediate(() => {
+    imm = 0;
+    const dt = getDurationType(el);
+    if (!dt) {
+      comp.__notify(`after-${type}`, el);
+      return;
+    }
+    const clear = () => {
+      cancel = void 0;
+      comp._t = void 0;
+      removeEvent(el, dt, onEnd);
+      el.classList.remove(activeClass, toClass);
+    };
+    const onEnd = () => {
+      clear();
+      comp.__notify(`after-${type}`, el);
+    };
+    addEvent(el, dt, onEnd);
+    cancel = () => {
+      clear();
+      comp.__notify(`${type}-cancelled`, el);
+    };
+    el.classList.remove(fromClass);
+    el.classList.add(toClass);
+    comp.__notify(type, el);
+  });
+  comp._t = () => {
+    if (imm)
+      clearImmediate(imm);
+    if (cancel)
+      cancel();
+  };
+}
+class transition_TransitionComponent extends component_Component {
+  constructor(attrs) {
+    super(attrs);const _jg0 = this[common_$$].proxy;
+    _jg0._cs = attrs.classNames || genClassNames(attrs.name);
+    _jg0._appear = attrs.appear === true;
+  }
+  __transition(isEnter, isFirst) {
+    if (isFirst && !this._appear) {
+      return;
+    }
+    this.__cancel();
+    const el = this.__firstDOM;
+    if (el.nodeType === Node.ELEMENT_NODE) {
+      doTrans(this, isEnter, el);
+    }
+  }
+  /**
+   * 取消当前正在进行的渡（如果当前处于过渡中的话）
+   */
+  __cancel() {
+    if (this._t) {
+      this._t();
+      this._t = void 0;
+    }
+  }
+  __destroy(removeDOM) {
+    this.__cancel();
+    return super.__destroy(removeDOM);
   }
 }
 
 
-//# sourceMappingURL=hide.js.map
+//# sourceMappingURL=transition.js.map
+;// CONCATENATED MODULE: ../../jinge/lib/components/show.js
+
+
+function setDisplay(el, show) {
+  if (el.nodeType === Node.ELEMENT_NODE) {
+    el.style.display = show ? "" : "none";
+  }
+}
+class ShowComponent extends (/* unused pure expression or super */ null && (Component)) {
+  constructor(attrs) {
+    super(attrs);const _jg0 = this[$$_jg0402].proxy;const f1_jg0402 = () => {
+    _jg0.test = attrs.test; }; f1_jg0402(); attrs[$$_jg0402].__watch("test", f1_jg0402);
+  }
+  get test() {
+    return this._test;
+  }
+  set test(v) {
+    if (this._test === v)
+      return;
+    this._test = v;
+    this.__updateIfNeed();
+  }
+  __render() {
+    const els = super.__render();
+    this.__update(true);
+    return els;
+  }
+  __update(isFirst = false) {
+    for (const node of this[__].rootNodes) {
+      if (isComponent(node)) {
+        if (node instanceof TransitionComponent) {
+          node.__cancel();
+          if (this.test) {
+            node.__on("before-enter", () => setDisplay(node.__firstDOM, true), { once: true });
+          } else {
+            node.__on("after-leave", () => setDisplay(node.__firstDOM, false), { once: true });
+          }
+          node.__transition(this.test, isFirst);
+        } else {
+          setDisplay(node.__firstDOM, this.test);
+        }
+      } else {
+        setDisplay(node, this.test);
+      }
+    }
+  }
+}
+
+
+//# sourceMappingURL=show.js.map
 ;// CONCATENATED MODULE: ../../jinge/lib/components/html.js
 
 
@@ -2142,21 +2214,9 @@ function if_createEl(renderFn, context) {
   });
   return component_Component.create(attrs);
 }
-function renderSwitch(component) {
-  const value = component._currentValue;
-  const acs = component[component_].slots;
-  if (component.transition && acs) {
-    component._transitionMap = /* @__PURE__ */ new Map();
-    for (const k in acs) {
-      component._transitionMap.set(k, [
-        k === value ? transition_TransitionStates.ENTERED : transition_TransitionStates.LEAVED,
-        null
-      ]);
-    }
-    component._previousValue = value;
-    component._onEndHandler = component.onTransitionEnd.bind(component);
-  }
-  const renderFn = acs ? acs[value] : null;
+function renderSwitch(component, slot) {
+  const slots = component[component_].slots;
+  const renderFn = slots ? slots[slot] : null;
   const roots = component[component_].rootNodes;
   if (!renderFn) {
     roots.push(document.createComment("empty"));
@@ -2164,18 +2224,24 @@ function renderSwitch(component) {
   }
   const el = if_createEl(renderFn, component[component_].context);
   roots.push(el);
-  return el.__render();
+  const doms = el.__render();
+  for (const node of el[component_].rootNodes) {
+    if (component_isComponent(node) && node instanceof transition_TransitionComponent) {
+      node.__transition(this.test, true);
+    }
+  }
+  return doms;
 }
-function doUpdate(component) {
+function doUpdate(component, slot) {
   const roots = component[component_].rootNodes;
   const el = roots[0];
-  const isComp = isComponent(el);
+  const isComp = component_isComponent(el);
   const firstDOM = isComp ? el.__firstDOM : el;
   const parentDOM = (isComp ? firstDOM : el).parentNode;
-  const renderFn = component[component_].slots?.[component._currentValue];
+  const renderFn = component[component_].slots?.[slot];
   if (renderFn) {
     const newEl = if_createEl(renderFn, component[component_].context);
-    const nodes = assertRenderResults(newEl.__render());
+    const nodes = newEl.__render();
     parentDOM.insertBefore(nodes.length > 1 ? dom_createFragment(nodes) : nodes[0], firstDOM);
     roots[0] = newEl;
   } else {
@@ -2188,200 +2254,70 @@ function doUpdate(component) {
     parentDOM.removeChild(firstDOM);
   }
   renderFn && roots[0].__handleAfterRender();
-  component.__notify("branch-switched", component._branch);
 }
-function cancelTs(t, tn, e, component) {
-  const el = t[1];
-  if (el.nodeType !== Node.ELEMENT_NODE) {
-    return;
-  }
-  const onEnd = component._onEndHandler;
-  el.classList.remove(tn + (e ? "-enter" : "-leave"));
-  el.classList.remove(tn + (e ? "-enter-active" : "-leave-active"));
-  dom_removeEvent(el, "transitionend", onEnd);
-  dom_removeEvent(el, "animationend", onEnd);
-  component.__notify("transition", e ? "enter-cancelled" : "leave-cancelled", el);
-}
-function startTs(t, tn, e, component) {
-  const el = t[1];
-  const onEnd = component._onEndHandler;
-  if (el.nodeType !== Node.ELEMENT_NODE) {
-    onEnd();
-    return;
-  }
-  const classOfStart = tn + (e ? "-enter" : "-leave");
-  const classOfActive = tn + (e ? "-enter-active" : "-leave-active");
-  el.classList.add(classOfStart);
-  transition_getDurationType(el);
-  el.classList.add(classOfActive);
-  const tsEndName = transition_getDurationType(el);
-  if (!tsEndName) {
-    onEnd();
-    return;
-  }
-  t[0] = e ? transition_TransitionStates.ENTERING : transition_TransitionStates.LEAVING;
-  dom_addEvent(el, tsEndName, onEnd);
-  component.__notify("transition", e ? "before-enter" : "before-leave", el);
-  setimm_setImmediate(() => {
-    component.__notify("transition", e ? "enter" : "leave", el);
-  });
-}
-function updateSwitchWithTransition(component) {
-  const value = component._currentValue;
-  const pv = component._previousValue;
-  const tn = component.transition;
-  let pt = component._transitionMap.get(pv);
-  if (!pt) {
-    pt = [
-      pv === "else" ? transition_TransitionStates.LEAVED : transition_TransitionStates.ENTERED,
-      null
-    ];
-    component._transitionMap.set(pv, pt);
-  }
-  if (pt[0] === transition_TransitionStates.ENTERING) {
-    if (value === pv)
-      return;
-    cancelTs(pt, tn, true, component);
-    startTs(pt, tn, false, component);
-  } else if (pt[0] === transition_TransitionStates.LEAVING) {
-    if (value !== pv)
-      return;
-    cancelTs(pt, tn, false, component);
-    startTs(pt, tn, true, component);
-  } else if (pt[0] === transition_TransitionStates.ENTERED) {
-    pt[1] = component.__transitionDOM;
-    startTs(pt, tn, false, component);
-  } else if (pt[0] === transition_TransitionStates.LEAVED) {
-    pt[1] = component.__transitionDOM;
-    startTs(pt, tn, true, component);
-  }
-}
-function updateSwitch(component) {
-  if (!isComponent(component[component_].rootNodes[0]) && (!component[component_].slots || !component[component_].slots[component._currentValue])) {
-    return;
-  }
-  if (component._transitionMap) {
-    updateSwitchWithTransition(component);
-    return;
-  }
-  doUpdate(component);
-}
-function updateSwitchOnTransitionEnd(component) {
-  const value = component._currentValue;
-  const pv = component._previousValue;
-  const tn = component.transition;
-  const pt = component._transitionMap.get(pv);
-  const e = pt[0] === transition_TransitionStates.ENTERING;
-  const el = pt[1];
-  if (el.nodeType === Node.ELEMENT_NODE) {
-    dom_removeEvent(el, "transitionend", component._onEndHandler);
-    dom_removeEvent(el, "animationend", component._onEndHandler);
-    el.classList.remove(tn + (e ? "-enter" : "-leave"));
-    el.classList.remove(tn + (e ? "-enter-active" : "-leave-active"));
-    component.__notify("transition", e ? "after-enter" : "after-leave");
-  }
-  pt[0] = e ? transition_TransitionStates.ENTERED : transition_TransitionStates.LEAVED;
-  if (e)
-    return;
-  doUpdate(component);
-  component._previousValue = value;
-  const ct = component._transitionMap.get(value);
-  if (!ct) {
-    return;
-  }
-  const fd = component.__transitionDOM;
-  if (fd.nodeType !== Node.ELEMENT_NODE) {
-    ct[0] = transition_TransitionStates.ENTERED;
-    return;
-  }
-  ct[1] = fd;
-  startTs(ct, tn, true, component);
-}
-function destroySwitch(component) {
-  if (component._transitionMap) {
-    component._transitionMap.forEach((ts) => {
-      const el = ts[1];
-      if (el) {
-        dom_removeEvent(el, "transitionend", component._onEndHandler);
-        dom_removeEvent(el, "animationend", component._onEndHandler);
-      }
-    });
-    component._transitionMap = null;
+function getIfSlot(component, expect) {
+  const slots = component[component_].slots;
+  if (!slots)
+    return "default";
+  if (expect) {
+    return "true" in slots ? "true" : "default";
+  } else {
+    return "false" in slots ? "false" : "else";
   }
 }
 class IfComponent extends component_Component {
   constructor(attrs) {
-    super(attrs);const _jg0 = this[common_$$].proxy;
-    _jg0._currentValue = "default";
-    _jg0._onEndHandler = null;
-    _jg0._transitionMap = null;
-    _jg0._previousValue = null;const f5_jg0402 = () => {
-    _jg0.expect = attrs.expect; }; f5_jg0402(); attrs[common_$$].__watch("expect", f5_jg0402);const f6_jg0402 = () => {
-    _jg0.transition = attrs.transition; }; f6_jg0402(); attrs[common_$$].__watch("transition", f6_jg0402);
+    super(attrs);const _jg0 = this[common_$$].proxy;const f1_jg0402 = () => {
+    _jg0.expect = attrs.expect; }; f1_jg0402(); attrs[common_$$].__watch("expect", f1_jg0402);
   }
   get expect() {
-    return this._currentValue === "default";
+    return this._e;
   }
   set expect(value) {
-    const v = value ? "default" : "else";
-    if (this._currentValue === v)
+    if (this._e === value)
       return;
-    this._currentValue = v;
+    this._e = value;
     this.__updateIfNeed();
   }
-  get _branch() {
-    return this.expect;
-  }
-  onTransitionEnd() {
-    updateSwitchOnTransitionEnd(this);
-  }
   __render() {
-    return renderSwitch(this);
+    const els = renderSwitch(this, getIfSlot(this, this._e));
+    this.__notify("branch-switched", this._e);
+    return els;
   }
   __update() {
-    updateSwitch(this);
-  }
-  __beforeDestroy() {
-    destroySwitch(this);
+    const s = getIfSlot(this, this._e);
+    if (!component_isComponent(this[component_].rootNodes[0]) && !this[component_].slots?.[s]) {
+      return;
+    }
+    doUpdate(this, s);
+    this.__notify("branch-switched", this._e);
   }
 }
 class SwitchComponent extends (/* unused pure expression or super */ null && (Component)) {
   constructor(attrs) {
-    super(attrs);const _jg0 = this[$$_jg0402].proxy;
-    _jg0._onEndHandler = null;
-    _jg0._transitionMap = null;
-    _jg0._previousValue = null;
-    _jg0._currentValue = null;const f5_jg0402 = () => {
-    _jg0.test = attrs.test; }; f5_jg0402(); attrs[$$_jg0402].__watch("test", f5_jg0402);const f6_jg0402 = () => {
-    _jg0.transition = attrs.transition; }; f6_jg0402(); attrs[$$_jg0402].__watch("transition", f6_jg0402);
+    super(attrs);const _jg0 = this[$$_jg0402].proxy;const f1_jg0402 = () => {
+    _jg0.test = attrs.test; }; f1_jg0402(); attrs[$$_jg0402].__watch("test", f1_jg0402);
   }
   get test() {
-    return this._currentValue;
+    return this._v;
   }
   set test(v) {
-    const acs = this[__].slots;
-    if (!acs || !(v in acs)) {
-      v = "default";
-    }
-    if (this._currentValue === v)
+    if (this._v === v)
       return;
-    this._currentValue = v;
+    this._v = v;
     this.__updateIfNeed();
   }
-  get _branch() {
-    return this.test;
-  }
-  onTransitionEnd() {
-    updateSwitchOnTransitionEnd(this);
-  }
   __render() {
-    return renderSwitch(this);
+    const els = renderSwitch(this, this._v);
+    this.__notify("branch-switched", this._v);
+    return els;
   }
   __update() {
-    updateSwitch(this);
-  }
-  __beforeDestroy() {
-    destroySwitch(this);
+    if (!isComponent(this[__].rootNodes[0]) && !this[__].slots?.[this._v]) {
+      return;
+    }
+    doUpdate(this, this._v);
+    this.__notify("branch-switched", this._v);
   }
 }
 
@@ -2419,7 +2355,7 @@ class LogComponent extends (/* unused pure expression or super */ null && (Compo
     return this._msg;
   }
   __render() {
-    return [document.createComment("log placeholder")];
+    return [document.createComment(this._msg.toString())];
   }
 }
 
@@ -2433,11 +2369,11 @@ function render_fns_emptyRenderFn(component) {
   component[__].rootNodes.push(el);
   return [el];
 }
-function errorRenderFn(component) {
-  const el = createElement("span", {
+function errorRenderFn(component, message) {
+  const el = createElement("code", {
     style: "color: red !important;"
   });
-  el.textContent = "template parsing failed! please check webpack log.";
+  el.innerHTML = message;
   component[__].rootNodes.push(el);
   return [el];
 }
@@ -2541,6 +2477,13 @@ function bootstrap(ComponentClazz, dom, attrs) {
 //# sourceMappingURL=bootstrap.js.map
 ;// CONCATENATED MODULE: ../../jinge/lib/core/index.js
 
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+;// CONCATENATED MODULE: ../../jinge/lib/vm/index.js
 
 
 
@@ -2657,10 +2600,11 @@ class RComponent extends component_Component {
     } else {
       $pa.appendChild($newEl);
     }
-    this[component_].rootNodes.forEach((n) => {
-      if (isComponent(n))
+    for (const n of this[component_].rootNodes) {
+      if (component_isComponent(n)) {
         n.__handleAfterRender();
-    });
+      }
+    }
   }
   __beforeDestroy() {
     this.attrs = null;
@@ -2717,27 +2661,27 @@ class SwitchLocaleComponent extends component_Component {
     const el = switch_createEl(this);
     const roots = this[component_].rootNodes;
     roots.push(el);
-    return isComponent(el) ? el.__render() : roots;
+    return component_isComponent(el) ? el.__render() : roots;
   }
   __update() {
     const roots = this[component_].rootNodes;
     const el = roots[0];
-    const fd = isComponent(el) ? el.__firstDOM : el;
+    const fd = component_isComponent(el) ? el.__firstDOM : el;
     const pa = fd.parentNode;
     const newEl = switch_createEl(this);
     roots[0] = newEl;
-    if (isComponent(newEl)) {
+    if (component_isComponent(newEl)) {
       const nels = newEl.__render();
       pa.insertBefore(nels.length > 1 ? dom_createFragment(nels) : nels[0], fd);
     } else {
       pa.insertBefore(newEl, fd);
     }
-    if (isComponent(el)) {
+    if (component_isComponent(el)) {
       el.__destroy();
     } else {
       pa.removeChild(el);
     }
-    if (isComponent(newEl)) {
+    if (component_isComponent(newEl)) {
       newEl.__handleAfterRender();
     }
   }
@@ -2854,8 +2798,8 @@ class T391oneu_ZHCN_EN_ZHTR extends TComponent {
 
 
 class A29rjaqd_391oneu_ZHCN_EN_ZHTR_ZHCN_EN_ZHTR extends AComponent {
-  static d = [_29rjaqd_ZHCN_EN_ZHTR, _391oneu_ZHCN_EN_ZHTR];
-}
+    static d = [_29rjaqd_ZHCN_EN_ZHTR, _391oneu_ZHCN_EN_ZHTR];
+  }
 ;// CONCATENATED MODULE: ./translate/dict/1kkvksc.js
 /** @eslint-disabled **/
 /** this file is auto generated by jinge-i18n, don't modify it manually. **/
@@ -2866,8 +2810,8 @@ const _1kkvksc_EN = (attrs) => `In spring the river rises as high as the sea, An
 const _1kkvksc_ZHTR = (attrs) => `春江潮水連海平，海上明${attrs.p0}共潮生`;
 const _1kkvksc_ZHCN_EN_ZHTR = (locale) => locale === 'zh_cn' ? _1kkvksc_ZHCN : locale === 'en' ? _1kkvksc_EN : _1kkvksc_ZHTR;
 class A1kkvksc_ZHCN_EN_ZHTR extends AComponent {
-  static d = [_1kkvksc_ZHCN_EN_ZHTR];
-}
+    static d = [_1kkvksc_ZHCN_EN_ZHTR];
+  }
 ;// CONCATENATED MODULE: ./translate/dict/phj56t.js
 /** @eslint-disabled **/
 /** this file is auto generated by jinge-i18n, don't modify it manually. **/
@@ -2878,8 +2822,8 @@ const phj56t_EN = (attrs) => `Hi, ${attrs.p0}!`;
 const phj56t_ZHTR = (attrs) => `你好，${attrs.p0}！`;
 const phj56t_ZHCN_EN_ZHTR = (locale) => locale === 'zh_cn' ? phj56t_ZHCN : locale === 'en' ? phj56t_EN : phj56t_ZHTR;
 class Aphj56t_ZHCN_EN_ZHTR extends AComponent {
-  static d = [phj56t_ZHCN_EN_ZHTR];
-}
+    static d = [phj56t_ZHCN_EN_ZHTR];
+  }
 ;// CONCATENATED MODULE: ./translate/dict/97q3jo.js
 /** @eslint-disabled **/
 /** this file is auto generated by jinge-i18n, don't modify it manually. **/
@@ -2893,7 +2837,7 @@ class Aphj56t_ZHCN_EN_ZHTR extends AComponent {
 
 
 
-const _97q3jo_ZHCN = function(component) {
+const _97q3jo_ZHCN = function(component) {  
   const vm_0 = component;
   return [
   textRenderFn(component, `对于 inline tag，包括`),
@@ -2985,7 +2929,7 @@ const _97q3jo_ZHCN = function(component) {
   })()
   ];
 };
-const _97q3jo_EN = function(component) {
+const _97q3jo_EN = function(component) {  
   const vm_0 = component;
   return [
   textRenderFn(component, `For inline tags, include`),
@@ -3077,7 +3021,7 @@ const _97q3jo_EN = function(component) {
   })()
   ];
 };
-const _97q3jo_ZHTR = function(component) {
+const _97q3jo_ZHTR = function(component) {  
   const vm_0 = component;
   return [
   textRenderFn(component, `對於 inline tag，包括`),
@@ -3189,7 +3133,7 @@ class Tq7fn30_ZHCN_EN_ZHTR extends TComponent {
 
 
 
-/* harmony default export */ function printer_c(component) {
+/* harmony default export */ function printer_c(component) {  
   const vm_0 = component;
   return [
   ...(() => {
@@ -3197,7 +3141,7 @@ class Tq7fn30_ZHCN_EN_ZHTR extends TComponent {
       [component_]: {
         context: component[component_].context,
         slots: {
-          'default': function(component) {
+          'default': function(component) {  
             return [
             (() => {
               const el = createElementWithoutAttrs(
@@ -3217,7 +3161,7 @@ class Tq7fn30_ZHCN_EN_ZHTR extends TComponent {
             })()
             ];
           },
-          'else': function(component) {
+          'else': function(component) {  
             return [
             (() => {
               const el = createElementWithoutAttrs(
@@ -3230,7 +3174,7 @@ class Tq7fn30_ZHCN_EN_ZHTR extends TComponent {
                   });
                   const el = Tq7fn30_ZHCN_EN_ZHTR.create(attrs);
                   component[component_].nonRootCompNodes.push(el);
-                  return assertRenderResults(el.__render());
+                  return el.__render();
                 })()
               );
               component[component_].rootNodes.push(el);
@@ -3249,7 +3193,7 @@ class Tq7fn30_ZHCN_EN_ZHTR extends TComponent {
     vm_0[common_$$].__watch(["message"], fn_0, component[common_$$]);
     const el = IfComponent.create(attrs);
     component[component_].rootNodes.push(el);
-    return assertRenderResults(el.__render());
+    return el.__render();
   })()
   ];
 }
@@ -3294,7 +3238,7 @@ class Printer extends component_Component {
 
 
 
-/* harmony default export */ function app_c(component) {
+/* harmony default export */ function app_c(component) {  
   const vm_0 = component;
   return [
   (() => {
@@ -3316,7 +3260,7 @@ class Printer extends component_Component {
               });
               const el = T3lvhd0u_ZHCN_EN_ZHTR.create(attrs);
               component[component_].nonRootCompNodes.push(el);
-              return assertRenderResults(el.__render());
+              return el.__render();
             })()
           ),
           ...(() => {
@@ -3324,7 +3268,7 @@ class Printer extends component_Component {
               [component_]: {
                 context: component[component_].context,
                 slots: {
-                  'default': function(component) {
+                  'default': function(component) {  
                     const vm_1 = component;
                     return [
                     (() => {
@@ -3361,7 +3305,7 @@ class Printer extends component_Component {
             vm_0[common_$$].__watch(["locales"], fn_0, component[common_$$]);
             const el = ForComponent.create(attrs);
             component[component_].nonRootCompNodes.push(el);
-            return assertRenderResults(el.__render());
+            return el.__render();
           })()
         );
         const fn_0 = () => {
@@ -3369,7 +3313,7 @@ class Printer extends component_Component {
         };
         fn_0();
         vm_0[common_$$].__watch(["locale"], fn_0, component[common_$$]);
-        dom_addEvent(el, 'change', function(...args) {
+        addEvent(el, 'change', function(...args) {
           vm_0.changeLocale(args[0].target.value)
         });
         return el;
@@ -3388,10 +3332,10 @@ class Printer extends component_Component {
             });
             const el = T336or7m_ZHCN_EN_ZHTR.create(attrs);
             component[component_].nonRootCompNodes.push(el);
-            return assertRenderResults(el.__render());
+            return el.__render();
           })()
         );
-        dom_addEvent(el, 'click', function(...args) {
+        addEvent(el, 'click', function(...args) {
           vm_0.test(...args);
         });
         return el;
@@ -3405,7 +3349,7 @@ class Printer extends component_Component {
       [component_]: {
         context: component[component_].context,
         slots: {
-          'default': function(component) {
+          'default': function(component) {  
             const vm_1 = component;
             return [
             (() => {
@@ -3416,7 +3360,7 @@ class Printer extends component_Component {
                     [component_]: {
                       context: component[component_].context,
                       slots: {
-                        'default': function(component) {
+                        'default': function(component) {  
                           const vm_2 = component;
                           return [
                           (() => {
@@ -3430,16 +3374,16 @@ class Printer extends component_Component {
                                 });
                                 const el = T29rjaqd_ZHCN_EN_ZHTR.create(attrs);
                                 component[component_].nonRootCompNodes.push(el);
-                                return assertRenderResults(el.__render());
+                                return el.__render();
                               })()
                             );
                             const fn_0 = () => {
-                              dom_setAttribute(el, "data-xx", vm_2.c?.[0]);
+                              setAttribute(el, "data-xx", vm_2.c?.[0]);
                             };
                             fn_0();
                             vm_2[common_$$].__watch(["c",0], fn_0, component[common_$$]);
                             const fn_1 = () => {
-                              dom_setAttribute(el, "data-yy", vm_2.c?.[1]);
+                              setAttribute(el, "data-yy", vm_2.c?.[1]);
                             };
                             fn_1();
                             vm_2[common_$$].__watch(["c",1], fn_1, component[common_$$]);
@@ -3459,7 +3403,7 @@ class Printer extends component_Component {
                   vm_1[common_$$].__watch(["each","name"], fn_0, component[common_$$]);
                   const el = A29rjaqd_391oneu_ZHCN_EN_ZHTR_ZHCN_EN_ZHTR.create(attrs);
                   component[component_].nonRootCompNodes.push(el);
-                  return assertRenderResults(el.__render());
+                  return el.__render();
                 })(),
                 createElementWithoutAttrs(
                   "p",
@@ -3477,7 +3421,7 @@ class Printer extends component_Component {
                     vm_1[common_$$].__watch(["each","name"], fn_0, component[common_$$]);
                     const el = T391oneu_ZHCN_EN_ZHTR.create(attrs);
                     component[component_].nonRootCompNodes.push(el);
-                    return assertRenderResults(el.__render());
+                    return el.__render();
                   })()
                 )
               );
@@ -3497,7 +3441,7 @@ class Printer extends component_Component {
     vm_0[common_$$].__watch(["boys"], fn_0, component[common_$$]);
     const el = ForComponent.create(attrs);
     component[component_].rootNodes.push(el);
-    return assertRenderResults(el.__render());
+    return el.__render();
   })(),
   (() => {
     const el = createElementWithoutAttrs(
@@ -3523,14 +3467,14 @@ class Printer extends component_Component {
     });
     const el = Printer.create(attrs);
     component[component_].rootNodes.push(el);
-    return assertRenderResults(el.__render());
+    return el.__render();
   })(),
   ...(() => {
     const attrs = component_wrapAttrs({
       [component_]: {
         context: component[component_].context,
         slots: {
-          'default': function(component) {
+          'default': function(component) {  
             const vm_1 = component;
             return [
             ...(() => {
@@ -3547,7 +3491,7 @@ class Printer extends component_Component {
               vm_1[common_$$].__watch(["c",0], fn_0, component[common_$$]);
               const el = Printer.create(attrs);
               component[component_].rootNodes.push(el);
-              return assertRenderResults(el.__render());
+              return el.__render();
             })()
             ];
           }
@@ -3562,14 +3506,14 @@ class Printer extends component_Component {
     vm_0[common_$$].__watch(["moon"], fn_0, component[common_$$]);
     const el = A1kkvksc_ZHCN_EN_ZHTR.create(attrs);
     component[component_].rootNodes.push(el);
-    return assertRenderResults(el.__render());
+    return el.__render();
   })(),
   ...(() => {
     const attrs = component_wrapAttrs({
       [component_]: {
         context: component[component_].context,
         slots: {
-          'default': function(component) {
+          'default': function(component) {  
             const vm_1 = component;
             return [
             ...(() => {
@@ -3586,7 +3530,7 @@ class Printer extends component_Component {
               vm_1[common_$$].__watch(["c",0], fn_0, component[common_$$]);
               const el = Printer.create(attrs);
               component[component_].rootNodes.push(el);
-              return assertRenderResults(el.__render());
+              return el.__render();
             })()
             ];
           }
@@ -3601,7 +3545,7 @@ class Printer extends component_Component {
     vm_0[common_$$].__watch(["boy","name"], fn_0, component[common_$$]);
     const el = Aphj56t_ZHCN_EN_ZHTR.create(attrs);
     component[component_].rootNodes.push(el);
-    return assertRenderResults(el.__render());
+    return el.__render();
   })(),
   (() => {
     const el = createElementWithoutAttrs(
@@ -3620,7 +3564,7 @@ class Printer extends component_Component {
         vm_0[common_$$].__watch(["boy","name"], fn_0, component[common_$$]);
         const el = T97q3jo_ZHCN_EN_ZHTR.create(attrs);
         component[component_].nonRootCompNodes.push(el);
-        return assertRenderResults(el.__render());
+        return el.__render();
       })()
     );
     component[component_].rootNodes.push(el);
@@ -3634,7 +3578,7 @@ class Printer extends component_Component {
           [component_]: {
             context: component[component_].context,
             slots: {
-              'zh_cn': function(component) {
+              'zh_cn': function(component) {  
                 return [
                 (() => {
                   const el = createElementWithoutAttrs(
@@ -3653,7 +3597,7 @@ class Printer extends component_Component {
                 })()
                 ];
               },
-              'en': function(component) {
+              'en': function(component) {  
                 return [
                 (() => {
                   const el = createElementWithoutAttrs(
@@ -3677,7 +3621,7 @@ class Printer extends component_Component {
         });
         const el = SwitchLocaleComponent.create(attrs);
         component[component_].nonRootCompNodes.push(el);
-        return assertRenderResults(el.__render());
+        return el.__render();
       })()
     );
     component[component_].rootNodes.push(el);
