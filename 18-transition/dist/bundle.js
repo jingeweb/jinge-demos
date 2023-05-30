@@ -2,6 +2,32 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./a.c.js":
+/*!****************!*\
+  !*** ./a.c.js ***!
+  \****************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (/* binding */ A)
+/* harmony export */ });
+/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
+/* harmony import */ var _a_c_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./a.c.html */ "./a.c.html");
+
+
+
+let N = 0;
+class A extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
+  static template = _a_c_html__WEBPACK_IMPORTED_MODULE_1__["default"];
+  constructor(attrs) {
+    super(attrs);const _jg0 = this[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
+    _jg0.n = N++;
+  }
+}
+
+/***/ }),
+
 /***/ "./app.c.js":
 /*!******************!*\
   !*** ./app.c.js ***!
@@ -22,38 +48,52 @@ class App extends jinge__WEBPACK_IMPORTED_MODULE_0__.Component {
   static get template() {
     return _app_c_html__WEBPACK_IMPORTED_MODULE_1__["default"];
   }
-  log(...args) {
-    console.log(...args);
-  }
   constructor(args) {
     super(args);const _jg0 = this[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;
-    _jg0.disabled = false;
-    _jg0.fade = false;
-    _jg0.slide = true;
     _jg0.show = true;
     _jg0.si = 0;
-    _jg0.x = 0;
   }
   log(...args) {
     console.log(...args);
-  }
-  handleTransition(action, className, el) {
-    console.log(action, className, el.className);
-  }
-  handleIfTransition(action, el) {
-    console.log(action, el.className);
-  }
-  warnDisabled() {
-    this.disabled = true;
-    setTimeout(() => {
-      this.disabled = false;
-    }, 1500);
-  }
-  onMousemove(evt) {
-    this.x = evt.clientX;
   }
 }
 
+
+/***/ }),
+
+/***/ "./a.c.html":
+/*!******************!*\
+  !*** ./a.c.html ***!
+  \******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
+  const vm_0 = component;
+  return [
+  (() => {
+    const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+      "span",
+      (() => {
+        const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
+        const fn_0 = () => {
+          (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, vm_0.n);
+        };
+        fn_0();
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["n"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+        return el;
+      })()
+    );
+    component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+    return el;
+  })()
+  ];
+}
 
 /***/ }),
 
@@ -68,6 +108,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var jinge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jinge */ "../../jinge/lib/index.js");
+/* harmony import */ var _a_c__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./a.c */ "./a.c.js");
+
 
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(component) {  
@@ -93,54 +135,6 @@ __webpack_require__.r(__webpack_exports__);
     const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
       "p",
       `TODO: implement advance transtion/animation supports`
-    );
-    component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-    return el;
-  })(),
-  (() => {
-    const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
-      "h3",
-      `State-driven`
-    );
-    component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-    return el;
-  })(),
-  (() => {
-    const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
-      "div",
-      (() => {
-        const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElement)(
-          "div",
-          {
-            class: `movearea`
-          },
-          (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
-            "p",
-            `Move your mouse across this div...`
-          ),
-          (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
-            "p",
-            (() => {
-              const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
-              const fn_0 = () => {
-                (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `x: ${vm_0.x}`);
-              };
-              fn_0();
-              vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["x"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-              return el;
-            })()
-          )
-        );
-        const fn_0 = () => {
-          (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setStyleAttribute)(el, ({ backgroundColor: `hsl(${vm_0.x}, 80%, 50%)` }));
-        };
-        fn_0();
-        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["x"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-        (0,jinge__WEBPACK_IMPORTED_MODULE_0__.addEvent)(el, 'mousemove', function(...args) {
-          vm_0.onMousemove(...args);
-        });
-        return el;
-      })()
     );
     component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
     return el;
@@ -254,10 +248,10 @@ __webpack_require__.r(__webpack_exports__);
               }
             }
           },
-          test: undefined
+          expect: undefined
         });
         const fn_0 = () => {
-          attrs.test = vm_0.show;
+          attrs.expect = vm_0.show;
         };
         fn_0();
         vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["show"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
@@ -286,7 +280,7 @@ __webpack_require__.r(__webpack_exports__);
           (() => {
             const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
             const fn_0 = () => {
-              (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, vm_0.show2 ? 'Hide' : 'Show');
+              (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, !vm_0.show2 ? 'Hide' : 'Show');
             };
             fn_0();
             vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["show2"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
@@ -317,7 +311,18 @@ __webpack_require__.r(__webpack_exports__);
                           (() => {
                             const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
                               "p",
-                              `Hello, World`
+                              `Default,`,
+                              ...(() => {
+                                const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                                  [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                                    debugName: "attrs_of_<A>",
+                                    context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                                  },
+                                });
+                                const el = _a_c__WEBPACK_IMPORTED_MODULE_1__.A.create(attrs);
+                                component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+                                return el.__render();
+                              })()
                             );
                             component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
                             return el;
@@ -339,7 +344,129 @@ __webpack_require__.r(__webpack_exports__);
           expect: undefined
         });
         const fn_0 = () => {
-          attrs.expect = vm_0.show2;
+          attrs.expect = !vm_0.show2;
+        };
+        fn_0();
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["show2"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+        const el = jinge__WEBPACK_IMPORTED_MODULE_0__.IfComponent.create(attrs);
+        component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+        return el.__render();
+      })(),
+      ...(() => {
+        const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+          [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+            debugName: "attrs_of_<if>",
+            context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+            slots: {
+              'default': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `Out In,`,
+                              ...(() => {
+                                const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                                  [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                                    debugName: "attrs_of_<A>",
+                                    context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                                  },
+                                });
+                                const el = _a_c__WEBPACK_IMPORTED_MODULE_1__.A.create(attrs);
+                                component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+                                return el.__render();
+                              })()
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              }
+            }
+          },
+          expect: undefined,
+          mode: `out-in`
+        });
+        const fn_0 = () => {
+          attrs.expect = !vm_0.show2;
+        };
+        fn_0();
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["show2"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+        const el = jinge__WEBPACK_IMPORTED_MODULE_0__.IfComponent.create(attrs);
+        component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+        return el.__render();
+      })(),
+      ...(() => {
+        const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+          [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+            debugName: "attrs_of_<if>",
+            context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+            slots: {
+              'default': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `In Out,`,
+                              ...(() => {
+                                const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                                  [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                                    debugName: "attrs_of_<A>",
+                                    context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                                  },
+                                });
+                                const el = _a_c__WEBPACK_IMPORTED_MODULE_1__.A.create(attrs);
+                                component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+                                return el.__render();
+                              })()
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              }
+            }
+          },
+          expect: undefined,
+          mode: `in-out`
+        });
+        const fn_0 = () => {
+          attrs.expect = !vm_0.show2;
         };
         fn_0();
         vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["show2"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
@@ -365,7 +492,15 @@ __webpack_require__.r(__webpack_exports__);
       (() => {
         const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
           "button",
-          `Toggle`
+          (() => {
+            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
+            const fn_0 = () => {
+              (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `Toggle(${vm_0.show3 ? 'A' : 'B'})`);
+            };
+            fn_0();
+            vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["show3"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+            return el;
+          })()
         );
         (0,jinge__WEBPACK_IMPORTED_MODULE_0__.addEvent)(el, 'click', function(...args) {
           vm_0.show3 = !vm_0.show3
@@ -378,7 +513,7 @@ __webpack_require__.r(__webpack_exports__);
             debugName: "attrs_of_<if>",
             context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
             listeners: {
-              "branch-switched": {
+              switched: {
                 fn: function(...args) {
                   vm_0.log('if updated', ...args)
                 },
@@ -386,34 +521,324 @@ __webpack_require__.r(__webpack_exports__);
               }
             },
             slots: {
-              'default': function(component) {  
+              'true': function(component) {  
                 return [
-                (() => {
-                  const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
-                    "p",
-                    `Hello, A!`
-                  );
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `Out In, A:`,
+                              ...(() => {
+                                const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                                  [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                                    debugName: "attrs_of_<A>",
+                                    context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                                  },
+                                });
+                                const el = _a_c__WEBPACK_IMPORTED_MODULE_1__.A.create(attrs);
+                                component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+                                return el.__render();
+                              })(),
+                              `!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`,
+                    appear: true
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
                   component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-                  return el;
+                  return el.__render();
                 })()
                 ];
               },
-              'else': function(component) {  
+              'false': function(component) {  
                 return [
-                (() => {
-                  const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
-                    "p",
-                    `Hello, B!`
-                  );
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `Out In, B:`,
+                              ...(() => {
+                                const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                                  [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                                    debugName: "attrs_of_<A>",
+                                    context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                                  },
+                                });
+                                const el = _a_c__WEBPACK_IMPORTED_MODULE_1__.A.create(attrs);
+                                component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+                                return el.__render();
+                              })(),
+                              `!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`,
+                    appear: true
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
                   component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-                  return el;
+                  return el.__render();
                 })()
                 ];
               }
             }
           },
           expect: undefined,
-          transition: `slide-fade`
+          mode: `out-in`
+        });
+        const fn_0 = () => {
+          attrs.expect = vm_0.show3;
+        };
+        fn_0();
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["show3"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+        const el = jinge__WEBPACK_IMPORTED_MODULE_0__.IfComponent.create(attrs);
+        component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+        return el.__render();
+      })(),
+      ...(() => {
+        const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+          [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+            debugName: "attrs_of_<if>",
+            context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+            listeners: {
+              switched: {
+                fn: function(...args) {
+                  vm_0.log('if updated', ...args)
+                },
+                opts: null
+              }
+            },
+            slots: {
+              'true': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `Default, A:`,
+                              ...(() => {
+                                const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                                  [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                                    debugName: "attrs_of_<A>",
+                                    context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                                  },
+                                });
+                                const el = _a_c__WEBPACK_IMPORTED_MODULE_1__.A.create(attrs);
+                                component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+                                return el.__render();
+                              })(),
+                              `!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`,
+                    appear: true
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              },
+              'false': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `Default, B:`,
+                              ...(() => {
+                                const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                                  [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                                    debugName: "attrs_of_<A>",
+                                    context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                                  },
+                                });
+                                const el = _a_c__WEBPACK_IMPORTED_MODULE_1__.A.create(attrs);
+                                component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+                                return el.__render();
+                              })(),
+                              `!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`,
+                    appear: true
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              }
+            }
+          },
+          expect: undefined,
+          mode: `default`
+        });
+        const fn_0 = () => {
+          attrs.expect = vm_0.show3;
+        };
+        fn_0();
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["show3"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+        const el = jinge__WEBPACK_IMPORTED_MODULE_0__.IfComponent.create(attrs);
+        component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+        return el.__render();
+      })(),
+      ...(() => {
+        const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+          [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+            debugName: "attrs_of_<if>",
+            context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+            listeners: {
+              switched: {
+                fn: function(...args) {
+                  vm_0.log('if updated', ...args)
+                },
+                opts: null
+              }
+            },
+            slots: {
+              'true': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `In Out, A:`,
+                              ...(() => {
+                                const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                                  [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                                    debugName: "attrs_of_<A>",
+                                    context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                                  },
+                                });
+                                const el = _a_c__WEBPACK_IMPORTED_MODULE_1__.A.create(attrs);
+                                component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+                                return el.__render();
+                              })(),
+                              `!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`,
+                    appear: true
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              },
+              'false': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `In Out, B:`,
+                              ...(() => {
+                                const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                                  [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                                    debugName: "attrs_of_<A>",
+                                    context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                                  },
+                                });
+                                const el = _a_c__WEBPACK_IMPORTED_MODULE_1__.A.create(attrs);
+                                component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+                                return el.__render();
+                              })(),
+                              `!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`,
+                    appear: true
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              }
+            }
+          },
+          expect: undefined,
+          mode: `in-out`
         });
         const fn_0 = () => {
           attrs.expect = vm_0.show3;
@@ -453,7 +878,7 @@ __webpack_require__.r(__webpack_exports__);
           })()
         );
         (0,jinge__WEBPACK_IMPORTED_MODULE_0__.addEvent)(el, 'click', function(...args) {
-          vm_0.si = vm_0.si ? vm_0.si + 1 : 1
+          vm_0.si++
         });
         return el;
       })(),
@@ -471,7 +896,7 @@ __webpack_require__.r(__webpack_exports__);
           })()
         );
         (0,jinge__WEBPACK_IMPORTED_MODULE_0__.addEvent)(el, 'click', function(...args) {
-          vm_0.si = vm_0.si ? vm_0.si - 1 : 0
+          vm_0.si--
         });
         return el;
       })(),
@@ -481,7 +906,7 @@ __webpack_require__.r(__webpack_exports__);
             debugName: "attrs_of_<switch>",
             context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
             listeners: {
-              "branch-switched": {
+              switched: {
                 fn: function(...args) {
                   vm_0.log('switch updated', ...args)
                 },
@@ -491,52 +916,341 @@ __webpack_require__.r(__webpack_exports__);
             slots: {
               '1': function(component) {  
                 return [
-                (() => {
-                  const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
-                    "p",
-                    `Hello, A!`
-                  );
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `Hello, A!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
                   component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-                  return el;
+                  return el.__render();
                 })()
                 ];
               },
               '2': function(component) {  
                 return [
-                (() => {
-                  const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
-                    "p",
-                    `Hello, B!`
-                  );
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `Hello, B!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
                   component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-                  return el;
+                  return el.__render();
                 })()
                 ];
               },
               'default': function(component) {  
                 return [
-                (() => {
-                  const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
-                    "p",
-                    (() => {
-                      const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
-                      const fn_0 = () => {
-                        (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `Hello, ${vm_0.si}`);
-                      };
-                      fn_0();
-                      vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["si"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
-                      return el;
-                    })()
-                  );
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              (() => {
+                                const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
+                                const fn_0 = () => {
+                                  (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `Hello, ${vm_0.si}`);
+                                };
+                                fn_0();
+                                vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["si"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+                                return el;
+                              })()
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
                   component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
-                  return el;
+                  return el.__render();
+                })()
+                ];
+              }
+            }
+          },
+          test: undefined
+        });
+        const fn_0 = () => {
+          attrs.test = vm_0.si;
+        };
+        fn_0();
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["si"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+        const el = jinge__WEBPACK_IMPORTED_MODULE_0__.SwitchComponent.create(attrs);
+        component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+        return el.__render();
+      })(),
+      ...(() => {
+        const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+          [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+            debugName: "attrs_of_<switch>",
+            context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+            slots: {
+              '1': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `Out In, A!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              },
+              '2': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `Out In, B!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              },
+              'default': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              (() => {
+                                const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
+                                const fn_0 = () => {
+                                  (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `Out In, ${vm_0.si}`);
+                                };
+                                fn_0();
+                                vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["si"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+                                return el;
+                              })()
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
                 })()
                 ];
               }
             }
           },
           test: undefined,
-          transition: `slide-fade`
+          mode: `out-in`
+        });
+        const fn_0 = () => {
+          attrs.test = vm_0.si;
+        };
+        fn_0();
+        vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["si"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+        const el = jinge__WEBPACK_IMPORTED_MODULE_0__.SwitchComponent.create(attrs);
+        component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].nonRootCompNodes.push(el);
+        return el.__render();
+      })(),
+      ...(() => {
+        const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+          [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+            debugName: "attrs_of_<switch>",
+            context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+            slots: {
+              '1': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `In Out, A!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              },
+              '2': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              `In Out, B!`
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              },
+              'default': function(component) {  
+                return [
+                ...(() => {
+                  const attrs = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.attrs)({
+                    [jinge__WEBPACK_IMPORTED_MODULE_0__.__]: {
+                      debugName: "attrs_of_<transition>",
+                      context: component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].context,
+                      slots: {
+                        'default': function(component) {  
+                          return [
+                          (() => {
+                            const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createElementWithoutAttrs)(
+                              "p",
+                              (() => {
+                                const el = (0,jinge__WEBPACK_IMPORTED_MODULE_0__.createTextNode)();
+                                const fn_0 = () => {
+                                  (0,jinge__WEBPACK_IMPORTED_MODULE_0__.setText)(el, `In Out, ${vm_0.si}`);
+                                };
+                                fn_0();
+                                vm_0[jinge__WEBPACK_IMPORTED_MODULE_0__.$$].__watch(["si"], fn_0, component[jinge__WEBPACK_IMPORTED_MODULE_0__.$$]);
+                                return el;
+                              })()
+                            );
+                            component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                            return el;
+                          })()
+                          ];
+                        }
+                      }
+                    },
+                    name: `slide-fade`
+                  });
+                  const el = jinge__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent.create(attrs);
+                  component[jinge__WEBPACK_IMPORTED_MODULE_0__.__].rootNodes.push(el);
+                  return el.__render();
+                })()
+                ];
+              }
+            }
+          },
+          test: undefined,
+          mode: `in-out`
         });
         const fn_0 = () => {
           attrs.test = vm_0.si;
@@ -1138,81 +1852,183 @@ class BindHtmlComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Com
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   IfComponent: () => (/* binding */ IfComponent),
+/* harmony export */   SWITCH_EVENT_NAME: () => (/* binding */ SWITCH_EVENT_NAME),
 /* harmony export */   SwitchComponent: () => (/* binding */ SwitchComponent)
 /* harmony export */ });
 /* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
-/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./transition */ "../../jinge/lib/components/transition.js");
+/* harmony import */ var _core_transition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/transition */ "../../jinge/lib/core/transition.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "../../jinge/lib/util/index.js");
+/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./transition */ "../../jinge/lib/components/transition.js");
+
 
 
 
 function createEl(renderFn, context) {
-  const attrs = (0,_core_component__WEBPACK_IMPORTED_MODULE_1__.attrs)({
-    [_core_component__WEBPACK_IMPORTED_MODULE_1__.__]: {
+  const attrs = (0,_core_component__WEBPACK_IMPORTED_MODULE_2__.attrs)({
+    [_core_component__WEBPACK_IMPORTED_MODULE_2__.__]: {
       context,
       slots: {
         default: renderFn
       }
     }
   });
-  return _core_component__WEBPACK_IMPORTED_MODULE_1__.Component.create(attrs);
+  return _core_component__WEBPACK_IMPORTED_MODULE_2__.Component.create(attrs);
 }
-function renderSwitch(component, slot) {
-  const slots = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots;
-  const renderFn = slots ? slots[slot] : null;
-  const roots = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes;
+function renderSwitch(component, slot, isEnter = false) {
+  const renderFn = component[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].slots?.[slot];
+  const roots = component[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].rootNodes;
   if (!renderFn) {
-    roots.push(document.createComment("empty"));
+    roots.push(document.createComment(slot));
     return roots;
   }
-  const el = createEl(renderFn, component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].context);
+  const el = createEl(renderFn, component[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].context);
   roots.push(el);
   const doms = el.__render();
-  for (const node of el[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes) {
-    if ((0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(node) && node instanceof _transition__WEBPACK_IMPORTED_MODULE_3__.TransitionComponent) {
-      node.__transition(this.test, true);
+  for (const node of el[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].rootNodes) {
+    if ((0,_core_component__WEBPACK_IMPORTED_MODULE_2__.isComponent)(node) && node instanceof _transition__WEBPACK_IMPORTED_MODULE_4__.TransitionComponent) {
+      node.__transition(isEnter, true);
     }
   }
   return doms;
 }
-function doUpdate(component, slot) {
-  const roots = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes;
-  const el = roots[0];
-  const isComp = (0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(el);
-  const firstDOM = isComp ? el.__firstDOM : el;
-  const parentDOM = (isComp ? firstDOM : el).parentNode;
-  const renderFn = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots?.[slot];
-  if (renderFn) {
-    const newEl = createEl(renderFn, component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].context);
-    const nodes = newEl.__render();
-    parentDOM.insertBefore(nodes.length > 1 ? (0,_util__WEBPACK_IMPORTED_MODULE_2__.createFragment)(nodes) : nodes[0], firstDOM);
-    roots[0] = newEl;
-  } else {
-    roots[0] = document.createComment("empty");
-    parentDOM.insertBefore(roots[0], firstDOM);
+function doLeave(component, el, doEnterCb) {
+  let tc_count = 0;
+  const onEnd = (callCb) => {
+    tc_count--;
+    if (tc_count === 0) {
+      component._l = void 0;
+      callCb && doEnterCb?.();
+      el.__destroy();
+    }
+  };
+  for (const node of el[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].rootNodes) {
+    if ((0,_core_component__WEBPACK_IMPORTED_MODULE_2__.isComponent)(node) && node instanceof _transition__WEBPACK_IMPORTED_MODULE_4__.TransitionComponent) {
+      tc_count++;
+      const lc = () => {
+        node.__off(_core_transition__WEBPACK_IMPORTED_MODULE_1__.AFTER_LEAVE, al);
+        onEnd(false);
+      };
+      const al = () => {
+        node.__off(_core_transition__WEBPACK_IMPORTED_MODULE_1__.LEAVE_CANCELLED, lc);
+        onEnd(true);
+      };
+      node.__on(_core_transition__WEBPACK_IMPORTED_MODULE_1__.AFTER_LEAVE, al, { once: true });
+      node.__on(_core_transition__WEBPACK_IMPORTED_MODULE_1__.LEAVE_CANCELLED, lc, { once: true });
+      node.__transition(false, false);
+    }
   }
-  if (isComp) {
+  if (tc_count === 0) {
+    doEnterCb?.();
     el.__destroy();
   } else {
-    parentDOM.removeChild(firstDOM);
+    component._l = el;
   }
-  renderFn && roots[0].__handleAfterRender();
+}
+function insertAfter(refDOM, newNode) {
+  const pn = refDOM.parentNode;
+  const ns = refDOM.nextSibling;
+  ns ? pn.insertBefore(newNode, ns) : pn.appendChild(newNode);
+}
+function doEnter(component, enterRenderFn, refDOM, slot, cb) {
+  const roots = component[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].rootNodes;
+  if (!enterRenderFn) {
+    const cmt = document.createComment(slot);
+    roots.push(cmt);
+    insertAfter(refDOM, cmt);
+    return;
+  }
+  const newEl = createEl(enterRenderFn, component[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].context);
+  const nodes = newEl.__render();
+  let tc_count = 0;
+  const onEnd = () => {
+    tc_count--;
+    tc_count === 0 && cb?.();
+  };
+  for (const node of newEl[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].rootNodes) {
+    if ((0,_core_component__WEBPACK_IMPORTED_MODULE_2__.isComponent)(node) && node instanceof _transition__WEBPACK_IMPORTED_MODULE_4__.TransitionComponent) {
+      tc_count++;
+      const ec = () => {
+        node.__off(_core_transition__WEBPACK_IMPORTED_MODULE_1__.AFTER_ENTER, ae);
+      };
+      const ae = () => {
+        node.__off(_core_transition__WEBPACK_IMPORTED_MODULE_1__.ENTER_CANCELLED, ec);
+        onEnd();
+      };
+      node.__on(_core_transition__WEBPACK_IMPORTED_MODULE_1__.AFTER_ENTER, ae, { once: true });
+      node.__on(_core_transition__WEBPACK_IMPORTED_MODULE_1__.ENTER_CANCELLED, ec, { once: true });
+      node.__transition(true, false);
+    }
+  }
+  roots.push(newEl);
+  const nn = nodes.length > 1 ? (0,_util__WEBPACK_IMPORTED_MODULE_3__.createFragment)(nodes) : nodes[0];
+  insertAfter(refDOM, nn);
+  newEl.__handleAfterRender();
+  if (tc_count === 0) {
+    cb?.();
+  }
+}
+function doUpdate(component, slot) {
+  const roots = component[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].rootNodes;
+  if (roots.length > 1)
+    throw new Error("assert failed");
+  const enterRenderFn = component[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].slots?.[slot];
+  if (roots.length === 0) {
+    const lastDOM2 = component._l.__lastDOM;
+    doEnter(component, enterRenderFn, lastDOM2, slot);
+    component._l.__destroy();
+    component._l = void 0;
+    return;
+  } else if (component._l) {
+    component._l.__destroy();
+    component._l = void 0;
+  }
+  const el = roots.shift();
+  const isComp = (0,_core_component__WEBPACK_IMPORTED_MODULE_2__.isComponent)(el);
+  if (isComp) {
+    for (const node of el[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].rootNodes) {
+      if ((0,_core_component__WEBPACK_IMPORTED_MODULE_2__.isComponent)(node) && node instanceof _transition__WEBPACK_IMPORTED_MODULE_4__.TransitionComponent) {
+        node.__cancel(true);
+      }
+    }
+  }
+  const lastDOM = isComp ? el.__lastDOM : el;
+  const parentDOM = lastDOM?.parentNode;
+  let mode = component._m;
+  if (!isComp || !enterRenderFn) {
+    mode = void 0;
+  }
+  if (mode === "out-in") {
+    doLeave(component, el, () => {
+      doEnter(component, enterRenderFn, lastDOM, slot);
+    });
+  } else if (mode === "in-out") {
+    isComp && (component._l = el);
+    doEnter(component, enterRenderFn, lastDOM, slot, () => {
+      isComp && (component._l = void 0);
+      isComp ? doLeave(component, el) : parentDOM.removeChild(lastDOM);
+    });
+  } else {
+    doEnter(component, enterRenderFn, lastDOM, slot);
+    isComp ? doLeave(component, el) : parentDOM.removeChild(lastDOM);
+  }
 }
 function getIfSlot(component, expect) {
-  const slots = component[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots;
+  const slots = component[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].slots;
   if (!slots)
-    return "default";
+    return expect ? "default" : "else";
   if (expect) {
     return "true" in slots ? "true" : "default";
   } else {
     return "false" in slots ? "false" : "else";
   }
 }
-class IfComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Component {
+const SWITCH_EVENT_NAME = "switched";
+class IfComponent extends _core_component__WEBPACK_IMPORTED_MODULE_2__.Component {
   constructor(attrs) {
     super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;const f1_jg0402 = () => {
     _jg0.expect = attrs.expect; }; f1_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("expect", f1_jg0402);
+    _jg0._m = attrs.mode;
   }
   get expect() {
     return this._e;
@@ -1224,23 +2040,30 @@ class IfComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Component
     this.__updateIfNeed();
   }
   __render() {
-    const els = renderSwitch(this, getIfSlot(this, this._e));
-    this.__notify("branch-switched", this._e);
+    const els = renderSwitch(this, getIfSlot(this, this._e), true);
+    this.__notify(SWITCH_EVENT_NAME, this._e);
     return els;
   }
   __update() {
     const s = getIfSlot(this, this._e);
-    if (!(0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes[0]) && !this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots?.[s]) {
-      return;
-    }
     doUpdate(this, s);
-    this.__notify("branch-switched", this._e);
+    this.__notify(SWITCH_EVENT_NAME, this._e);
+  }
+  __beforeDestroy() {
+    this._l?.__destroy();
   }
 }
-class SwitchComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Component {
+function getSwitchSlot(component) {
+  const slots = component[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].slots;
+  if (!slots)
+    return "default";
+  return component._v in slots ? component._v : "default";
+}
+class SwitchComponent extends _core_component__WEBPACK_IMPORTED_MODULE_2__.Component {
   constructor(attrs) {
     super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;const f1_jg0402 = () => {
     _jg0.test = attrs.test; }; f1_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("test", f1_jg0402);
+    _jg0._m = attrs.mode;
   }
   get test() {
     return this._v;
@@ -1252,16 +2075,16 @@ class SwitchComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Compo
     this.__updateIfNeed();
   }
   __render() {
-    const els = renderSwitch(this, this._v);
-    this.__notify("branch-switched", this._v);
+    const els = renderSwitch(this, getSwitchSlot(this), true);
+    this.__notify(SWITCH_EVENT_NAME, this._v);
     return els;
   }
   __update() {
-    if (!(0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes[0]) && !this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].slots?.[this._v]) {
-      return;
-    }
-    doUpdate(this, this._v);
-    this.__notify("branch-switched", this._v);
+    doUpdate(this, getSwitchSlot(this));
+    this.__notify(SWITCH_EVENT_NAME, this._v);
+  }
+  __beforeDestroy() {
+    this._l?.__destroy();
   }
 }
 
@@ -1285,6 +2108,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   IfComponent: () => (/* reexport safe */ _if__WEBPACK_IMPORTED_MODULE_3__.IfComponent),
 /* harmony export */   LogComponent: () => (/* reexport safe */ _log__WEBPACK_IMPORTED_MODULE_5__.LogComponent),
 /* harmony export */   ParameterComponent: () => (/* reexport safe */ _parameter__WEBPACK_IMPORTED_MODULE_4__.ParameterComponent),
+/* harmony export */   SWITCH_EVENT_NAME: () => (/* reexport safe */ _if__WEBPACK_IMPORTED_MODULE_3__.SWITCH_EVENT_NAME),
 /* harmony export */   ShowComponent: () => (/* reexport safe */ _show__WEBPACK_IMPORTED_MODULE_1__.ShowComponent),
 /* harmony export */   SwitchComponent: () => (/* reexport safe */ _if__WEBPACK_IMPORTED_MODULE_3__.SwitchComponent),
 /* harmony export */   TransitionComponent: () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_7__.TransitionComponent)
@@ -1387,8 +2211,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ShowComponent: () => (/* binding */ ShowComponent)
 /* harmony export */ });
 /* harmony import */ var _vm_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../vm/common */ "../../jinge/lib/vm/common.js");
-/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
-/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./transition */ "../../jinge/lib/components/transition.js");
+/* harmony import */ var _core_transition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../core/transition */ "../../jinge/lib/core/transition.js");
+/* harmony import */ var _core_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../core/component */ "../../jinge/lib/core/component.js");
+/* harmony import */ var _transition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./transition */ "../../jinge/lib/components/transition.js");
+
 
 
 function setDisplay(el, show) {
@@ -1396,18 +2222,18 @@ function setDisplay(el, show) {
     el.style.display = show ? "" : "none";
   }
 }
-class ShowComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Component {
+class ShowComponent extends _core_component__WEBPACK_IMPORTED_MODULE_2__.Component {
   constructor(attrs) {
     super(attrs);const _jg0 = this[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].proxy;const f1_jg0402 = () => {
-    _jg0.test = attrs.test; }; f1_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("test", f1_jg0402);
+    _jg0.expect = attrs.expect; }; f1_jg0402(); attrs[_vm_common__WEBPACK_IMPORTED_MODULE_0__.$$].__watch("expect", f1_jg0402);
   }
-  get test() {
-    return this._test;
+  get expect() {
+    return this._e;
   }
-  set test(v) {
-    if (this._test === v)
+  set expect(v) {
+    if (this._e === v)
       return;
-    this._test = v;
+    this._e = v;
     this.__updateIfNeed();
   }
   __render() {
@@ -1416,21 +2242,29 @@ class ShowComponent extends _core_component__WEBPACK_IMPORTED_MODULE_1__.Compone
     return els;
   }
   __update(isFirst = false) {
-    for (const node of this[_core_component__WEBPACK_IMPORTED_MODULE_1__.__].rootNodes) {
-      if ((0,_core_component__WEBPACK_IMPORTED_MODULE_1__.isComponent)(node)) {
-        if (node instanceof _transition__WEBPACK_IMPORTED_MODULE_2__.TransitionComponent) {
-          node.__cancel();
-          if (this.test) {
-            node.__on("before-enter", () => setDisplay(node.__firstDOM, true), { once: true });
+    for (const node of this[_core_component__WEBPACK_IMPORTED_MODULE_2__.__].rootNodes) {
+      if ((0,_core_component__WEBPACK_IMPORTED_MODULE_2__.isComponent)(node)) {
+        if (node instanceof _transition__WEBPACK_IMPORTED_MODULE_3__.TransitionComponent) {
+          node.__cancel(true);
+          if (this.expect) {
+            node.__on(_core_transition__WEBPACK_IMPORTED_MODULE_1__.BEFORE_ENTER, () => setDisplay(node.__firstDOM, true), { once: true });
           } else {
-            node.__on("after-leave", () => setDisplay(node.__firstDOM, false), { once: true });
+            const al = () => {
+              setDisplay(node.__firstDOM, false);
+              node.__off(_core_transition__WEBPACK_IMPORTED_MODULE_1__.LEAVE_CANCELLED, lc);
+            };
+            const lc = () => {
+              node.__off(_core_transition__WEBPACK_IMPORTED_MODULE_1__.AFTER_LEAVE, al);
+            };
+            node.__on(_core_transition__WEBPACK_IMPORTED_MODULE_1__.AFTER_LEAVE, al, { once: true });
+            node.__on(_core_transition__WEBPACK_IMPORTED_MODULE_1__.LEAVE_CANCELLED, lc, { once: true });
           }
-          node.__transition(this.test, isFirst);
+          node.__transition(this.expect, isFirst);
         } else {
-          setDisplay(node.__firstDOM, this.test);
+          setDisplay(node.__firstDOM, this.expect);
         }
       } else {
-        setDisplay(node, this.test);
+        setDisplay(node, this.expect);
       }
     }
   }
@@ -1475,13 +2309,13 @@ function doTrans(comp, isEnter, el) {
   const activeClass = comp._cs[`${type}Active`];
   const toClass = comp._cs[`${type}To`];
   el.classList.add(fromClass, activeClass);
-  comp.__notify(`before-${type}`, el);
+  comp.__notify(isEnter ? _core_transition__WEBPACK_IMPORTED_MODULE_3__.BEFORE_ENTER : _core_transition__WEBPACK_IMPORTED_MODULE_3__.BEFORE_LEAVE, el);
   let cancel = void 0;
   let imm = (0,_util__WEBPACK_IMPORTED_MODULE_1__.setImmediate)(() => {
     imm = 0;
     const dt = (0,_core_transition__WEBPACK_IMPORTED_MODULE_3__.getDurationType)(el);
     if (!dt) {
-      comp.__notify(`after-${type}`, el);
+      comp.__notify(isEnter ? _core_transition__WEBPACK_IMPORTED_MODULE_3__.AFTER_ENTER : _core_transition__WEBPACK_IMPORTED_MODULE_3__.AFTER_LEAVE, el);
       return;
     }
     const clear = () => {
@@ -1492,22 +2326,22 @@ function doTrans(comp, isEnter, el) {
     };
     const onEnd = () => {
       clear();
-      comp.__notify(`after-${type}`, el);
+      comp.__notify(isEnter ? _core_transition__WEBPACK_IMPORTED_MODULE_3__.AFTER_ENTER : _core_transition__WEBPACK_IMPORTED_MODULE_3__.AFTER_LEAVE, el);
     };
     (0,_util__WEBPACK_IMPORTED_MODULE_1__.addEvent)(el, dt, onEnd);
-    cancel = () => {
+    cancel = (notify) => {
       clear();
-      comp.__notify(`${type}-cancelled`, el);
+      notify && comp.__notify(isEnter ? _core_transition__WEBPACK_IMPORTED_MODULE_3__.ENTER_CANCELLED : _core_transition__WEBPACK_IMPORTED_MODULE_3__.LEAVE_CANCELLED, el);
     };
     el.classList.remove(fromClass);
     el.classList.add(toClass);
     comp.__notify(type, el);
   });
-  comp._t = () => {
+  comp._t = (notify) => {
     if (imm)
       (0,_util__WEBPACK_IMPORTED_MODULE_1__.clearImmediate)(imm);
     if (cancel)
-      cancel();
+      cancel(notify);
   };
 }
 class TransitionComponent extends _core_component__WEBPACK_IMPORTED_MODULE_2__.Component {
@@ -1517,10 +2351,13 @@ class TransitionComponent extends _core_component__WEBPACK_IMPORTED_MODULE_2__.C
     _jg0._appear = attrs.appear === true;
   }
   __transition(isEnter, isFirst) {
+    if (this._t) {
+      throw new Error("assert failed: previous transition in progress");
+    }
     if (isFirst && !this._appear) {
+      this.__notify(isEnter ? _core_transition__WEBPACK_IMPORTED_MODULE_3__.AFTER_ENTER : _core_transition__WEBPACK_IMPORTED_MODULE_3__.AFTER_LEAVE);
       return;
     }
-    this.__cancel();
     const el = this.__firstDOM;
     if (el.nodeType === Node.ELEMENT_NODE) {
       doTrans(this, isEnter, el);
@@ -1529,14 +2366,15 @@ class TransitionComponent extends _core_component__WEBPACK_IMPORTED_MODULE_2__.C
   /**
    * 取消当前正在进行的渡（如果当前处于过渡中的话）
    */
-  __cancel() {
+  __cancel(notify) {
     if (this._t) {
-      this._t();
+      const f = this._t;
       this._t = void 0;
+      f(notify);
     }
   }
   __destroy(removeDOM) {
-    this.__cancel();
+    this.__cancel(false);
     return super.__destroy(removeDOM);
   }
 }
@@ -1801,7 +2639,7 @@ class Component extends _messenger__WEBPACK_IMPORTED_MODULE_3__.Messenger {
   }
   __destroy(removeDOM = true) {
     const comp = this[__];
-    if (comp.state > 2 /* WILLDESTROY */)
+    if (comp.state >= 2 /* WILLDESTROY */)
       return;
     comp.state = 2 /* WILLDESTROY */;
     this[_vm_common__WEBPACK_IMPORTED_MODULE_1__.$$].__notifiable = false;
@@ -2016,9 +2854,15 @@ Component[_a] = true;
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AFTER_ENTER: () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_4__.AFTER_ENTER),
+/* harmony export */   AFTER_LEAVE: () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_4__.AFTER_LEAVE),
+/* harmony export */   BEFORE_ENTER: () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_4__.BEFORE_ENTER),
+/* harmony export */   BEFORE_LEAVE: () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_4__.BEFORE_LEAVE),
 /* harmony export */   Component: () => (/* reexport safe */ _component__WEBPACK_IMPORTED_MODULE_1__.Component),
 /* harmony export */   ComponentStates: () => (/* reexport safe */ _component__WEBPACK_IMPORTED_MODULE_1__.ComponentStates),
 /* harmony export */   ContextStates: () => (/* reexport safe */ _component__WEBPACK_IMPORTED_MODULE_1__.ContextStates),
+/* harmony export */   ENTER_CANCELLED: () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_4__.ENTER_CANCELLED),
+/* harmony export */   LEAVE_CANCELLED: () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_4__.LEAVE_CANCELLED),
 /* harmony export */   MESSENGER_LISTENERS: () => (/* reexport safe */ _messenger__WEBPACK_IMPORTED_MODULE_2__.MESSENGER_LISTENERS),
 /* harmony export */   Messenger: () => (/* reexport safe */ _messenger__WEBPACK_IMPORTED_MODULE_2__.Messenger),
 /* harmony export */   TransitionStates: () => (/* reexport safe */ _transition__WEBPACK_IMPORTED_MODULE_4__.TransitionStates),
@@ -2179,6 +3023,12 @@ function textRenderFn(component, txtContent) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AFTER_ENTER: () => (/* binding */ AFTER_ENTER),
+/* harmony export */   AFTER_LEAVE: () => (/* binding */ AFTER_LEAVE),
+/* harmony export */   BEFORE_ENTER: () => (/* binding */ BEFORE_ENTER),
+/* harmony export */   BEFORE_LEAVE: () => (/* binding */ BEFORE_LEAVE),
+/* harmony export */   ENTER_CANCELLED: () => (/* binding */ ENTER_CANCELLED),
+/* harmony export */   LEAVE_CANCELLED: () => (/* binding */ LEAVE_CANCELLED),
 /* harmony export */   TransitionStates: () => (/* binding */ TransitionStates),
 /* harmony export */   getDuration: () => (/* binding */ getDuration),
 /* harmony export */   getDurationType: () => (/* binding */ getDurationType)
@@ -2190,6 +3040,12 @@ var TransitionStates = /* @__PURE__ */ ((TransitionStates2) => {
   TransitionStates2[TransitionStates2["LEAVED"] = 4] = "LEAVED";
   return TransitionStates2;
 })(TransitionStates || {});
+const BEFORE_ENTER = "before-enter";
+const AFTER_ENTER = "after-enter";
+const BEFORE_LEAVE = "before-leave";
+const AFTER_LEAVE = "after-leave";
+const ENTER_CANCELLED = "enter-cancelled";
+const LEAVE_CANCELLED = "leave-cancelled";
 function getDurationType(el) {
   const cst = getComputedStyle(el);
   if (cst.getPropertyValue("transition-duration") !== "0s") {
@@ -2244,18 +3100,25 @@ function getDuration(el) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   $$: () => (/* reexport safe */ _vm__WEBPACK_IMPORTED_MODULE_3__.$$),
+/* harmony export */   AFTER_ENTER: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.AFTER_ENTER),
+/* harmony export */   AFTER_LEAVE: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.AFTER_LEAVE),
+/* harmony export */   BEFORE_ENTER: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.BEFORE_ENTER),
+/* harmony export */   BEFORE_LEAVE: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.BEFORE_LEAVE),
 /* harmony export */   BindHtmlComponent: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.BindHtmlComponent),
 /* harmony export */   Component: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.Component),
 /* harmony export */   ComponentStates: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.ComponentStates),
 /* harmony export */   ContextStates: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.ContextStates),
 /* harmony export */   DynamicRenderComponent: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.DynamicRenderComponent),
+/* harmony export */   ENTER_CANCELLED: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.ENTER_CANCELLED),
 /* harmony export */   ForComponent: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.ForComponent),
 /* harmony export */   ForEachComponent: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.ForEachComponent),
 /* harmony export */   IfComponent: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.IfComponent),
+/* harmony export */   LEAVE_CANCELLED: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.LEAVE_CANCELLED),
 /* harmony export */   LogComponent: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.LogComponent),
 /* harmony export */   MESSENGER_LISTENERS: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.MESSENGER_LISTENERS),
 /* harmony export */   Messenger: () => (/* reexport safe */ _core__WEBPACK_IMPORTED_MODULE_1__.Messenger),
 /* harmony export */   ParameterComponent: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.ParameterComponent),
+/* harmony export */   SWITCH_EVENT_NAME: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.SWITCH_EVENT_NAME),
 /* harmony export */   ShowComponent: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.ShowComponent),
 /* harmony export */   SwitchComponent: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.SwitchComponent),
 /* harmony export */   TransitionComponent: () => (/* reexport safe */ _components__WEBPACK_IMPORTED_MODULE_0__.TransitionComponent),

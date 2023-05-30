@@ -1,18 +1,12 @@
-<h1>Transition Demo</h1>
-<p>Jinge framework only provide basic transition/animation supports.</p>
-<p>TODO: implement advance transtion/animation supports</p>
+<!-- import { A } from './a.c'; -->
 
-<h3>State-driven</h3>
-<div>
-  <div @mousemove="onMousemove" :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }" class="movearea">
-    <p>Move your mouse across this div...</p>
-    <p>x: ${x}</p>
-  </div>
-</div>
+<h1>Transition Demo</h1>
+<p>Jinge framework provide &lt;transition&gt; component to support transition/animation.</p>
+
 <h3>Show/Hide</h3>
 <div>
   <button on:click="show = !show">${show ? 'Hide' : 'Show'}</button>
-  <show e:test="show">
+  <show e:expect="show">
   <transition
     @before-enter="log('before-enter')"
     @before-leave="log('before-leave')"
@@ -29,38 +23,111 @@
 </div>
 <h3>If</h3>
 <div>
-  <button on:click="show2 = !show2">${show2 ? 'Hide' : 'Show'}</button>
-  <if e:expect="show2">
+  <button on:click="show2 = !show2">${!show2 ? 'Hide' : 'Show'}</button>
+  
+  <if e:expect="!show2">
     <transition name="slide-fade">
-      <p>Hello, World</p>
+      <p>Default, <A /></p>
     </transition>
   </if>
+  <if e:expect="!show2" mode="out-in">
+    <transition name="slide">
+      <p>Out In, <A /></p>
+    </transition>
+  </if>
+  <if e:expect="!show2" mode="in-out">
+    <transition name="slide-fade">
+      <p>In Out, <A /></p>
+    </transition>
+  </if>
+
 </div>
 <h3>If/Else</h3>
 <div>
-  <button on:click="show3 = !show3">Toggle</button>
+  <button on:click="show3 = !show3">Toggle(${show3 ? 'A' : 'B'})</button>
   <if
     e:expect="show3"
-    transition="slide-fade"
-    on:branch-switched="log('if updated', ...$args)"
+    on:switched="log('if updated', ...$args)"
+    mode="out-in"
   >
-    <p slot-pass:default>Hello, A!</p>
-    <p slot-pass:else>Hello, B!</p>
+  <transition slot-pass:true name="slide-fade" appear>
+    <p>Out In, A: <A />!</p>
+  </transition>
+  <transition slot-pass:false name="slide-fade" appear>
+    <p>Out In, B: <A />!</p>
+  </transition>
+  </if>
+  <if
+    :expect="show3"
+    @switched="log('if updated', ...$args)"
+    mode="default"
+  >
+  <transition slot-pass:true name="slide-fade" appear>
+    <p>Default, A: <A />!</p>
+  </transition>
+  <transition slot-pass:false name="slide-fade" appear>
+    <p>Default, B: <A />!</p>
+  </transition>
+  </if>
+  <if
+    :expect="show3"
+    @switched="log('if updated', ...$args)"
+    mode="in-out"
+  >
+  <transition slot-pass:true name="slide-fade" appear>
+    <p>In Out, A: <A />!</p>
+  </transition>
+  <transition slot-pass:false name="slide-fade" appear>
+    <p>In Out, B: <A />!</p>
+  </transition>
   </if>
 </div>
 <h3>Switch</h3>
 <div>
-  <button on:click="si = si ? si + 1 : 1">Increment ${si}</button>
-  <button on:click="si = si ? si - 1 : 0">Decrement ${si}</button>
+  <button on:click="si++">Increment ${si}</button>
+  <button on:click="si--">Decrement ${si}</button>
 
   <switch
-    e:test="si"
-    transition="slide-fade"
-    on:branch-switched="log('switch updated', ...$args)"
+    :test="si"
+    @switched="log('switch updated', ...$args)"
   >
-    <p slot-pass:1>Hello, A!</p>
-    <p slot-pass:2>Hello, B!</p>
-    <p slot-pass:default>Hello, ${si}</p>
+    <transition slot-pass:1 name="slide-fade">
+      <p>Hello, A!</p>
+    </transition>
+    <transition slot-pass:2 name="slide-fade">
+      <p>Hello, B!</p>
+    </transition>
+    <transition slot-pass:default name="slide-fade">
+      <p>Hello, ${si}</p>
+    </transition>
+  </switch>
+  <switch
+    :test="si"
+    mode="out-in"
+  >
+    <transition slot-pass:1 name="slide-fade">
+      <p>Out In, A!</p>
+    </transition>
+    <transition slot-pass:2 name="slide-fade">
+      <p>Out In, B!</p>
+    </transition>
+    <transition slot-pass:default name="slide-fade">
+      <p>Out In, ${si}</p>
+    </transition>
+  </switch>
+  <switch
+    :test="si"
+    mode="in-out"
+  >
+    <transition slot-pass:1 name="slide-fade">
+      <p>In Out, A!</p>
+    </transition>
+    <transition slot-pass:2 name="slide-fade">
+      <p>In Out, B!</p>
+    </transition>
+    <transition slot-pass:default name="slide-fade">
+      <p>In Out, ${si}</p>
+    </transition>
   </switch>
 </div>
 <h3>For</h3>
