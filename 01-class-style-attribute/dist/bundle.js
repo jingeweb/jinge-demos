@@ -534,6 +534,13 @@ function loopClearNode(node) {
 
 
 class ViewModelCoreImpl {
+  __parents;
+  __listeners;
+  __notifiable;
+  __related;
+  __setters;
+  target;
+  proxy;
   /**
    * Don't use the constructor. Use createViewModel instead.
    */
@@ -1065,7 +1072,7 @@ function createAttributes(attributes) {
   });
 }
 function createComponent(component) {
-  if (common_$$ in component) {
+  if (component[common_$$]) {
     throw new Error("component has alreay been wrapped.");
   }
   const vmCore = new ViewModelCoreImpl(component);
@@ -1092,6 +1099,7 @@ function unwatch(vm2, propertyPath, handler) {
 ;// CONCATENATED MODULE: ../../jinge/lib/core/messenger.js
 const MESSENGER_LISTENERS = Symbol("listeners");
 class Messenger {
+  [MESSENGER_LISTENERS];
   constructor(templateListeners) {
     this[MESSENGER_LISTENERS] = null;
     if (templateListeners) {
@@ -1155,12 +1163,10 @@ class Messenger {
     }
   }
 }
-MESSENGER_LISTENERS;
 
 
 //# sourceMappingURL=messenger.js.map
 ;// CONCATENATED MODULE: ../../jinge/lib/core/component.js
-var _a;
 
 
 
@@ -1181,7 +1187,7 @@ var ContextStates = /* @__PURE__ */ ((ContextStates2) => {
 })(ContextStates || {});
 const component_ = Symbol("__");
 function component_isComponent(v) {
-  return component_ in v;
+  return !!v[component_];
 }
 function assertRenderResults(renderResults) {
   if (!type_isArray(renderResults) || renderResults.length === 0) {
@@ -1196,6 +1202,44 @@ function component_wrapAttrs(target) {
   return createAttributes(target);
 }
 class component_Component extends Messenger {
+  /**
+   * 指定组件的渲染模板。务必使用 getter 的形式指定，例如：
+   * ````js
+   * class SomeComponent extends Component {
+   *   static get template() {
+   *     return '<p>hello, world</p>';
+   *   }
+   * }
+   * ````
+   */
+  static template;
+  /**
+   * 某些情况下，需要判断一个函数是否是组件的构造函数。添加一个静态成员属性符号用于进行该判断。
+   * isComponent 函数既可以判断是否是构造函数（配合 isFunction），又可以判断一个对像是否是组件实例。
+   *
+   * 示例：
+   *
+   * ````js
+   * import { isComponent, Component } from 'jinge';
+   *
+   * class A {};
+   * class B extends Component {};
+   * console.log(isComponent(A)); // false
+   * console.log(isComponent(B)); // true
+   * ````
+   */
+  static [component_] = true;
+  static create(attrs) {
+    const isObj = isObject(attrs);
+    const vmAttrs = isObj && common_$$ in attrs ? attrs : component_wrapAttrs(isObj ? attrs : {});
+    return new this(vmAttrs)[common_$$].proxy;
+  }
+  /* 使用 symbol 来定义属性，避免业务层无意覆盖了支撑 jinge 框架逻辑的属性带来坑 */
+  [component_];
+  [common_$$];
+  /* 预定义好的常用的传递样式控制的属性 */
+  class;
+  style;
   /**
    * ATTENTION!!!
    *
@@ -1229,11 +1273,6 @@ class component_Component extends Messenger {
       f();
       attrs[common_$$].__watch(attrN, f);
     });
-  }
-  static create(attrs) {
-    const isObj = isObject(attrs);
-    const vmAttrs = isObj && common_$$ in attrs ? attrs : component_wrapAttrs(isObj ? attrs : {});
-    return new this(vmAttrs)[common_$$].proxy;
   }
   /**
    * store deregisterFn and auto call it when component is being destroy.
@@ -1374,7 +1413,7 @@ class component_Component extends Messenger {
   }
   __destroy(removeDOM = true) {
     const comp = this[component_];
-    if (comp.state > 2 /* WILLDESTROY */)
+    if (comp.state >= 2 /* WILLDESTROY */)
       return;
     comp.state = 2 /* WILLDESTROY */;
     this[common_$$].__notifiable = false;
@@ -1558,23 +1597,6 @@ class component_Component extends Messenger {
   __beforeDestroy() {
   }
 }
-_a = component_, component_, common_$$;
-/**
- * 某些情况下，需要判断一个函数是否是组件的构造函数。添加一个静态成员属性符号用于进行该判断。
- * isComponent 函数既可以判断是否是构造函数（配合 isFunction），又可以判断一个对像是否是组件实例。
- *
- * 示例：
- *
- * ````js
- * import { isComponent, Component } from 'jinge';
- *
- * class A {};
- * class B extends Component {};
- * console.log(isComponent(A)); // false
- * console.log(isComponent(B)); // true
- * ````
- */
-component_Component[_a] = true;
 
 
 //# sourceMappingURL=component.js.map
@@ -1583,6 +1605,10 @@ component_Component[_a] = true;
 
 
 class ForEachComponent extends (/* unused pure expression or super */ null && (Component)) {
+  _e;
+  index;
+  isFirst;
+  isLast;
   constructor(attrs2, item, index, isLast) {
     super(attrs2);const _jg0 = this[$$_jg0402].proxy;
     if (isViewModel(item)) {
@@ -1673,6 +1699,11 @@ function _parseIndexPath(p) {
   return isString(p) && p !== "length" && /^\d+$/.test(p) ? Number(p) : p;
 }
 class ForComponent extends (/* unused pure expression or super */ null && (Component)) {
+  _l;
+  _keyName;
+  _length;
+  _keys;
+  _waitingUpdate;
   constructor(attrs2) {
     if (attrs2.key && !/^(index|each(.[\w\d$_]+)*)$/.test(attrs2.key)) {
       throw new Error('Value of "key" attribute of <for> component is invalidate. See https://[todo]');
@@ -1972,6 +2003,12 @@ var TransitionStates = /* @__PURE__ */ ((TransitionStates2) => {
   TransitionStates2[TransitionStates2["LEAVED"] = 4] = "LEAVED";
   return TransitionStates2;
 })(TransitionStates || {});
+const transition_BEFORE_ENTER = "before-enter";
+const transition_AFTER_ENTER = "after-enter";
+const transition_BEFORE_LEAVE = "before-leave";
+const transition_AFTER_LEAVE = "after-leave";
+const transition_ENTER_CANCELLED = "enter-cancelled";
+const transition_LEAVE_CANCELLED = "leave-cancelled";
 function transition_getDurationType(el) {
   const cst = getComputedStyle(el);
   if (cst.getPropertyValue("transition-duration") !== "0s") {
@@ -2035,13 +2072,13 @@ function doTrans(comp, isEnter, el) {
   const activeClass = comp._cs[`${type}Active`];
   const toClass = comp._cs[`${type}To`];
   el.classList.add(fromClass, activeClass);
-  comp.__notify(`before-${type}`, el);
+  comp.__notify(isEnter ? BEFORE_ENTER : BEFORE_LEAVE, el);
   let cancel = void 0;
   let imm = setImmediate(() => {
     imm = 0;
     const dt = getDurationType(el);
     if (!dt) {
-      comp.__notify(`after-${type}`, el);
+      comp.__notify(isEnter ? AFTER_ENTER : AFTER_LEAVE, el);
       return;
     }
     const clear = () => {
@@ -2052,35 +2089,42 @@ function doTrans(comp, isEnter, el) {
     };
     const onEnd = () => {
       clear();
-      comp.__notify(`after-${type}`, el);
+      comp.__notify(isEnter ? AFTER_ENTER : AFTER_LEAVE, el);
     };
     addEvent(el, dt, onEnd);
-    cancel = () => {
+    cancel = (notify) => {
       clear();
-      comp.__notify(`${type}-cancelled`, el);
+      notify && comp.__notify(isEnter ? ENTER_CANCELLED : LEAVE_CANCELLED, el);
     };
     el.classList.remove(fromClass);
     el.classList.add(toClass);
     comp.__notify(type, el);
   });
-  comp._t = () => {
+  comp._t = (notify) => {
     if (imm)
       clearImmediate(imm);
     if (cancel)
-      cancel();
+      cancel(notify);
   };
 }
 class transition_TransitionComponent extends (/* unused pure expression or super */ null && (Component)) {
+  _cs;
+  _appear;
+  /** 当前正在进行的过渡的取消函数，不为 undefined 时代表正在过渡中 */
+  _t;
   constructor(attrs) {
     super(attrs);const _jg0 = this[$$_jg0402].proxy;
     _jg0._cs = attrs.classNames || genClassNames(attrs.name);
     _jg0._appear = attrs.appear === true;
   }
   __transition(isEnter, isFirst) {
+    if (this._t) {
+      throw new Error("assert failed: previous transition in progress");
+    }
     if (isFirst && !this._appear) {
+      this.__notify(isEnter ? AFTER_ENTER : AFTER_LEAVE);
       return;
     }
-    this.__cancel();
     const el = this.__firstDOM;
     if (el.nodeType === Node.ELEMENT_NODE) {
       doTrans(this, isEnter, el);
@@ -2089,14 +2133,15 @@ class transition_TransitionComponent extends (/* unused pure expression or super
   /**
    * 取消当前正在进行的渡（如果当前处于过渡中的话）
    */
-  __cancel() {
+  __cancel(notify) {
     if (this._t) {
-      this._t();
+      const f = this._t;
       this._t = void 0;
+      f(notify);
     }
   }
   __destroy(removeDOM) {
-    this.__cancel();
+    this.__cancel(false);
     return super.__destroy(removeDOM);
   }
 }
@@ -2106,23 +2151,25 @@ class transition_TransitionComponent extends (/* unused pure expression or super
 ;// CONCATENATED MODULE: ../../jinge/lib/components/show.js
 
 
+
 function setDisplay(el, show) {
   if (el.nodeType === Node.ELEMENT_NODE) {
     el.style.display = show ? "" : "none";
   }
 }
 class ShowComponent extends (/* unused pure expression or super */ null && (Component)) {
+  _e;
   constructor(attrs) {
     super(attrs);const _jg0 = this[$$_jg0402].proxy;const f1_jg0402 = () => {
-    _jg0.test = attrs.test; }; f1_jg0402(); attrs[$$_jg0402].__watch("test", f1_jg0402);
+    _jg0.expect = attrs.expect; }; f1_jg0402(); attrs[$$_jg0402].__watch("expect", f1_jg0402);
   }
-  get test() {
-    return this._test;
+  get expect() {
+    return this._e;
   }
-  set test(v) {
-    if (this._test === v)
+  set expect(v) {
+    if (this._e === v)
       return;
-    this._test = v;
+    this._e = v;
     this.__updateIfNeed();
   }
   __render() {
@@ -2134,18 +2181,26 @@ class ShowComponent extends (/* unused pure expression or super */ null && (Comp
     for (const node of this[__].rootNodes) {
       if (isComponent(node)) {
         if (node instanceof TransitionComponent) {
-          node.__cancel();
-          if (this.test) {
-            node.__on("before-enter", () => setDisplay(node.__firstDOM, true), { once: true });
+          node.__cancel(true);
+          if (this.expect) {
+            node.__on(BEFORE_ENTER, () => setDisplay(node.__firstDOM, true), { once: true });
           } else {
-            node.__on("after-leave", () => setDisplay(node.__firstDOM, false), { once: true });
+            const al = () => {
+              setDisplay(node.__firstDOM, false);
+              node.__off(LEAVE_CANCELLED, lc);
+            };
+            const lc = () => {
+              node.__off(AFTER_LEAVE, al);
+            };
+            node.__on(AFTER_LEAVE, al, { once: true });
+            node.__on(LEAVE_CANCELLED, lc, { once: true });
           }
-          node.__transition(this.test, isFirst);
+          node.__transition(this.expect, isFirst);
         } else {
-          setDisplay(node.__firstDOM, this.test);
+          setDisplay(node.__firstDOM, this.expect);
         }
       } else {
-        setDisplay(node, this.test);
+        setDisplay(node, this.expect);
       }
     }
   }
@@ -2168,6 +2223,7 @@ function renderHtml(content) {
   return cn;
 }
 class BindHtmlComponent extends (/* unused pure expression or super */ null && (Component)) {
+  _c;
   constructor(attrs) {
     if (!("content" in attrs))
       throw new Error('<bind-html/> require "content" attribute');
@@ -2203,6 +2259,7 @@ class BindHtmlComponent extends (/* unused pure expression or super */ null && (
 
 
 
+
 function if_createEl(renderFn, context) {
   const attrs = wrapAttrs({
     [__]: {
@@ -2214,12 +2271,11 @@ function if_createEl(renderFn, context) {
   });
   return Component.create(attrs);
 }
-function renderSwitch(component, slot) {
-  const slots = component[__].slots;
-  const renderFn = slots ? slots[slot] : null;
+function renderSwitch(component, slot, isEnter = false) {
+  const renderFn = component[__].slots?.[slot];
   const roots = component[__].rootNodes;
   if (!renderFn) {
-    roots.push(document.createComment("empty"));
+    roots.push(document.createComment(slot));
     return roots;
   }
   const el = if_createEl(renderFn, component[__].context);
@@ -2227,48 +2283,152 @@ function renderSwitch(component, slot) {
   const doms = el.__render();
   for (const node of el[__].rootNodes) {
     if (isComponent(node) && node instanceof TransitionComponent) {
-      node.__transition(this.test, true);
+      node.__transition(isEnter, true);
     }
   }
   return doms;
 }
-function doUpdate(component, slot) {
-  const roots = component[__].rootNodes;
-  const el = roots[0];
-  const isComp = isComponent(el);
-  const firstDOM = isComp ? el.__firstDOM : el;
-  const parentDOM = (isComp ? firstDOM : el).parentNode;
-  const renderFn = component[__].slots?.[slot];
-  if (renderFn) {
-    const newEl = if_createEl(renderFn, component[__].context);
-    const nodes = newEl.__render();
-    parentDOM.insertBefore(nodes.length > 1 ? createFragment(nodes) : nodes[0], firstDOM);
-    roots[0] = newEl;
-  } else {
-    roots[0] = document.createComment("empty");
-    parentDOM.insertBefore(roots[0], firstDOM);
+function doLeave(component, el, doEnterCb) {
+  let tc_count = 0;
+  const onEnd = (callCb) => {
+    tc_count--;
+    if (tc_count === 0) {
+      component._l = void 0;
+      callCb && doEnterCb?.();
+      el.__destroy();
+    }
+  };
+  for (const node of el[__].rootNodes) {
+    if (isComponent(node) && node instanceof TransitionComponent) {
+      tc_count++;
+      const lc = () => {
+        node.__off(AFTER_LEAVE, al);
+        onEnd(false);
+      };
+      const al = () => {
+        node.__off(LEAVE_CANCELLED, lc);
+        onEnd(true);
+      };
+      node.__on(AFTER_LEAVE, al, { once: true });
+      node.__on(LEAVE_CANCELLED, lc, { once: true });
+      node.__transition(false, false);
+    }
   }
-  if (isComp) {
+  if (tc_count === 0) {
+    doEnterCb?.();
     el.__destroy();
   } else {
-    parentDOM.removeChild(firstDOM);
+    component._l = el;
   }
-  renderFn && roots[0].__handleAfterRender();
+}
+function if_insertAfter(refDOM, newNode) {
+  const pn = refDOM.parentNode;
+  const ns = refDOM.nextSibling;
+  ns ? pn.insertBefore(newNode, ns) : pn.appendChild(newNode);
+}
+function doEnter(component, enterRenderFn, refDOM, slot, cb) {
+  const roots = component[__].rootNodes;
+  if (!enterRenderFn) {
+    const cmt = document.createComment(slot);
+    roots.push(cmt);
+    if_insertAfter(refDOM, cmt);
+    return;
+  }
+  const newEl = if_createEl(enterRenderFn, component[__].context);
+  const nodes = newEl.__render();
+  let tc_count = 0;
+  const onEnd = () => {
+    tc_count--;
+    tc_count === 0 && cb?.();
+  };
+  for (const node of newEl[__].rootNodes) {
+    if (isComponent(node) && node instanceof TransitionComponent) {
+      tc_count++;
+      const ec = () => {
+        node.__off(AFTER_ENTER, ae);
+      };
+      const ae = () => {
+        node.__off(ENTER_CANCELLED, ec);
+        onEnd();
+      };
+      node.__on(AFTER_ENTER, ae, { once: true });
+      node.__on(ENTER_CANCELLED, ec, { once: true });
+      node.__transition(true, false);
+    }
+  }
+  roots.push(newEl);
+  const nn = nodes.length > 1 ? createFragment(nodes) : nodes[0];
+  if_insertAfter(refDOM, nn);
+  newEl.__handleAfterRender();
+  if (tc_count === 0) {
+    cb?.();
+  }
+}
+function doUpdate(component, slot) {
+  const roots = component[__].rootNodes;
+  if (roots.length > 1)
+    throw new Error("assert failed");
+  const enterRenderFn = component[__].slots?.[slot];
+  if (roots.length === 0) {
+    const lastDOM2 = component._l.__lastDOM;
+    doEnter(component, enterRenderFn, lastDOM2, slot);
+    component._l.__destroy();
+    component._l = void 0;
+    return;
+  } else if (component._l) {
+    component._l.__destroy();
+    component._l = void 0;
+  }
+  const el = roots.shift();
+  const isComp = isComponent(el);
+  if (isComp) {
+    for (const node of el[__].rootNodes) {
+      if (isComponent(node) && node instanceof TransitionComponent) {
+        node.__cancel(true);
+      }
+    }
+  }
+  const lastDOM = isComp ? el.__lastDOM : el;
+  const parentDOM = lastDOM?.parentNode;
+  let mode = component._m;
+  if (!isComp || !enterRenderFn) {
+    mode = void 0;
+  }
+  if (mode === "out-in") {
+    doLeave(component, el, () => {
+      doEnter(component, enterRenderFn, lastDOM, slot);
+    });
+  } else if (mode === "in-out") {
+    isComp && (component._l = el);
+    doEnter(component, enterRenderFn, lastDOM, slot, () => {
+      isComp && (component._l = void 0);
+      isComp ? doLeave(component, el) : parentDOM.removeChild(lastDOM);
+    });
+  } else {
+    doEnter(component, enterRenderFn, lastDOM, slot);
+    isComp ? doLeave(component, el) : parentDOM.removeChild(lastDOM);
+  }
 }
 function getIfSlot(component, expect) {
   const slots = component[__].slots;
   if (!slots)
-    return "default";
+    return expect ? "default" : "else";
   if (expect) {
     return "true" in slots ? "true" : "default";
   } else {
     return "false" in slots ? "false" : "else";
   }
 }
+const SWITCH_EVENT_NAME = "switched";
 class IfComponent extends (/* unused pure expression or super */ null && (Component)) {
+  _e;
+  _m;
+  /** 正在 leaving 中的组件 */
+  _l;
   constructor(attrs) {
     super(attrs);const _jg0 = this[$$_jg0402].proxy;const f1_jg0402 = () => {
     _jg0.expect = attrs.expect; }; f1_jg0402(); attrs[$$_jg0402].__watch("expect", f1_jg0402);
+    _jg0._m = attrs.mode;
   }
   get expect() {
     return this._e;
@@ -2280,23 +2440,33 @@ class IfComponent extends (/* unused pure expression or super */ null && (Compon
     this.__updateIfNeed();
   }
   __render() {
-    const els = renderSwitch(this, getIfSlot(this, this._e));
-    this.__notify("branch-switched", this._e);
+    const els = renderSwitch(this, getIfSlot(this, this._e), true);
+    this.__notify(SWITCH_EVENT_NAME, this._e);
     return els;
   }
   __update() {
     const s = getIfSlot(this, this._e);
-    if (!isComponent(this[__].rootNodes[0]) && !this[__].slots?.[s]) {
-      return;
-    }
     doUpdate(this, s);
-    this.__notify("branch-switched", this._e);
+    this.__notify(SWITCH_EVENT_NAME, this._e);
+  }
+  __beforeDestroy() {
+    this._l?.__destroy();
   }
 }
+function getSwitchSlot(component) {
+  const slots = component[__].slots;
+  if (!slots)
+    return "default";
+  return component._v in slots ? component._v : "default";
+}
 class SwitchComponent extends (/* unused pure expression or super */ null && (Component)) {
+  _v;
+  _m;
+  _l;
   constructor(attrs) {
     super(attrs);const _jg0 = this[$$_jg0402].proxy;const f1_jg0402 = () => {
     _jg0.test = attrs.test; }; f1_jg0402(); attrs[$$_jg0402].__watch("test", f1_jg0402);
+    _jg0._m = attrs.mode;
   }
   get test() {
     return this._v;
@@ -2308,16 +2478,16 @@ class SwitchComponent extends (/* unused pure expression or super */ null && (Co
     this.__updateIfNeed();
   }
   __render() {
-    const els = renderSwitch(this, this._v);
-    this.__notify("branch-switched", this._v);
+    const els = renderSwitch(this, getSwitchSlot(this), true);
+    this.__notify(SWITCH_EVENT_NAME, this._v);
     return els;
   }
   __update() {
-    if (!isComponent(this[__].rootNodes[0]) && !this[__].slots?.[this._v]) {
-      return;
-    }
-    doUpdate(this, this._v);
-    this.__notify("branch-switched", this._v);
+    doUpdate(this, getSwitchSlot(this));
+    this.__notify(SWITCH_EVENT_NAME, this._v);
+  }
+  __beforeDestroy() {
+    this._l?.__destroy();
   }
 }
 
@@ -2343,6 +2513,7 @@ class ParameterComponent extends (/* unused pure expression or super */ null && 
 ;// CONCATENATED MODULE: ../../jinge/lib/components/log.js
 
 class LogComponent extends (/* unused pure expression or super */ null && (Component)) {
+  _msg;
   constructor(attrs) {
     super(attrs);const _jg0 = this[$$_jg0402].proxy;const f1_jg0402 = () => {
     _jg0.msg = attrs.msg; }; f1_jg0402(); attrs[$$_jg0402].__watch("msg", f1_jg0402);
@@ -2418,6 +2589,15 @@ function dynamic_createEl(component) {
   return Clazz.create(attrs);
 }
 class DynamicRenderComponent extends (/* unused pure expression or super */ null && (Component)) {
+  _r;
+  /**
+   * current attributes
+   */
+  _ca;
+  /**
+   * has watched passed compiler attributes
+   */
+  _w;
   constructor(attrs) {
     super(attrs);const _jg0 = this[$$_jg0402].proxy;
     _jg0._ca = null;
@@ -2622,12 +2802,86 @@ class C extends component_Component {
   const vm_0 = component;
   return [
   (() => {
+    const el = createElementWithoutAttrs(
+      "p",
+      `class 和 style 属性可以重复叠加`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  (() => {
     const el = dom_createElement(
       "div",
       {
-        class: `red`
+        class: `red bold`
       },
-      `class="red"`
+      `class="red" class="bold"`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "br",
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "p",
+      `以下两种写法等价`
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "div",
+      `:class="['blue', {bold: bold}]"`,
+      (() => {
+        const el = createElementWithoutAttrs(
+          "button",
+          `TEST`
+        );
+        dom_addEvent(el, 'click', function(...args) {
+          vm_0.bold=!vm_0.bold
+        });
+        return el;
+      })()
+    );
+    const fn_0 = () => {
+      setClassAttribute(el, (['blue', {bold: vm_0.bold}]));
+    };
+    fn_0();
+    vm_0[common_$$].__watch(["bold"], fn_0, component[common_$$]);
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "div",
+      `:class="{ bold: bold }" class="blue"`
+    );
+    const fn_0 = () => {
+      setClassAttribute(el, ([{ bold: vm_0.bold }, `blue`]));
+    };
+    fn_0();
+    vm_0[common_$$].__watch(["bold"], fn_0, component[common_$$]);
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "br",
+    );
+    component[component_].rootNodes.push(el);
+    return el;
+  })(),
+  (() => {
+    const el = createElementWithoutAttrs(
+      "p",
+      `更多用法`
     );
     component[component_].rootNodes.push(el);
     return el;
@@ -2658,30 +2912,7 @@ class C extends component_Component {
   (() => {
     const el = createElementWithoutAttrs(
       "div",
-      `:class="['red', {bold: bold}]"`,
-      (() => {
-        const el = createElementWithoutAttrs(
-          "button",
-          `TEST`
-        );
-        dom_addEvent(el, 'click', function(...args) {
-          vm_0.bold=!vm_0.bold
-        });
-        return el;
-      })()
-    );
-    const fn_0 = () => {
-      setClassAttribute(el, (['blue', {bold: vm_0.bold}]));
-    };
-    fn_0();
-    vm_0[common_$$].__watch(["bold"], fn_0, component[common_$$]);
-    component[component_].rootNodes.push(el);
-    return el;
-  })(),
-  (() => {
-    const el = createElementWithoutAttrs(
-      "div",
-      `style="color: red; font-size: \${fsize}px;`,
+      `style="color: red; font-size: \${fsize}px;" :style="{minHeight: fsize}"`,
       (() => {
         const el = createElementWithoutAttrs(
           "button",
@@ -2694,7 +2925,7 @@ class C extends component_Component {
       })()
     );
     const fn_0 = () => {
-      setStyleAttribute(el, `color: red; font-size: ${vm_0.fsize || 16}px;`);
+      setStyleAttribute(el, ([`color: red; font-size: ${vm_0.fsize || 16}px;`, {minHeight: vm_0.fsize}]));
     };
     fn_0();
     vm_0[common_$$].__watch(["fsize"], fn_0, component[common_$$]);
@@ -2755,7 +2986,7 @@ class C extends component_Component {
       class: undefined
     });
     const fn_0 = () => {
-      attrs.class = class2str(vm_0.red ? 'red' : '');
+      attrs.class = class2str(`${vm_0.red ? 'red' : ''} bold`);
     };
     fn_0();
     vm_0[common_$$].__watch(["red"], fn_0, component[common_$$]);

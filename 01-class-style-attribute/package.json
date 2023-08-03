@@ -11,12 +11,12 @@
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "jinge": "^3.3.0",
-    "jinge-compiler": "^3.3.0"
+    "jinge": "^3.2.3",
+    "jinge-compiler": "^3.2.3"
   },
   "devDependencies": {
-    "webpack": "^5.82.1",
-    "webpack-cli": "^5.1.1",
-    "webpack-dev-server": "^4.15.0"
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
