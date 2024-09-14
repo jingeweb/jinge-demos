@@ -1,4 +1,4 @@
-import { uid, vm, vmWatch } from 'jinge';
+import { isString, uid, vm } from 'jinge';
 
 const STORAGE_KEY = 'jinge-todo-mvc-saved-todos';
 
@@ -26,27 +26,14 @@ let currentFilter = 'all';
 export const TodoStore = vm({
   status: 'all',
   all: allTodos,
-  todos: [] as Todo[],
-  remaining: 0,
+  todos: allTodos,
+  remaining: allTodos.reduce((pv, it) => pv + (it.done ? 0 : 1), 0),
 });
 
-vmWatch(
-  TodoStore,
-  'all',
-  (v) => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(v));
-  },
-  {
-    deep: true,
-  },
-);
-// function applyFilter() {
-
-//   }
-
-export function updateStatus(filter: string) {
-  if (currentFilter === filter) return;
-  currentFilter = filter || 'all';
+function save() {
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(TodoStore.all));
+}
+function applyFilter() {
   if (TodoStore.all.length === 0) return;
   if (currentFilter === 'all') {
     TodoStore.todos = TodoStore.all;
@@ -54,97 +41,50 @@ export function updateStatus(filter: string) {
     TodoStore.todos = TodoStore.all.filter((t) => t.done === (currentFilter === 'completed'));
   }
 }
+export function updateStatus(filter?: string) {
+  if (currentFilter === filter) return;
+  currentFilter = isString(filter) && filter ? filter : 'all';
+  applyFilter();
+}
 
 export function removeDone() {
   TodoStore.all = TodoStore.all.filter((t) => !t.done);
+  applyFilter();
+  save();
 }
 
+export function toggleDone(todo: Todo) {
+  todo.done = !todo.done;
+  TodoStore.remaining += todo.done ? -1 : 1;
+  applyFilter();
+  save();
+}
 export function toggleAllDone() {
   if (TodoStore.all.length === 0) return;
   TodoStore.remaining = TodoStore.remaining > 0 ? 0 : TodoStore.all.length;
   TodoStore.all.forEach((t) => (t.done = TodoStore.remaining === 0));
+  applyFilter();
+  save();
 }
-// class TodoStore {
-//   constructor() {
-//     this.allTodos = this._load();
-//     this.todos = this.allTodos.slice();
-//     this.remaining = this._calcRemaining();
-//     this._status = '';
-//     /*
-//      * this code is important. we must convert object to ViewModel,
-//      *   as todo store will be linked to public property of Component.
-//      */
-//     return vm(this);
-//   }
-//   _findById(id) {
-//     const idx = this._findIndexById(id);
-//     return idx >= 0 ? this.allTodos[idx] : null;
-//   }
-//   _findIndexById(id) {
-//     return this.allTodos.findIndex(t => t.id === id);
-//   }
-//   _calcRemaining() {
-//     return this.allTodos.reduce((p, c) => p + (c.done ? 0 : 1), 0);
-//   }
-//   _load() {
+export function addTodo(title: string) {
+  TodoStore.all.push({ id: uid(), title, done: false });
+  TodoStore.remaining++;
+  applyFilter();
+  save();
+}
 
-//   }
-//   _save() {
-//     if (!window.localStorage) return;
+export function removeById(id: string) {
+  const idx = TodoStore.all.findIndex((t) => t.id === id);
+  if (idx < 0) return;
+  const todo = TodoStore.all.splice(idx, 1)[0];
+  if (!todo.done) {
+    TodoStore.remaining--;
+  }
+  applyFilter();
+  save();
+}
 
-//   }
-
-//   updateStatus(status) {
-//     if (this._status === status) return;
-//     this._status = status;
-//     this._filter();
-//   }
-//   toggleAllDone() {
-//     if (this.allTodos.length === 0) return;
-//     this.remaining = this.remaining > 0 ? 0 : this.allTodos.length;
-//     this.allTodos.forEach(t => t.done = this.remaining === 0);
-//     this._filter();
-//     this._save();
-//   }
-//   toggleDone(todo) {
-//     todo.done = !todo.done;
-//     this.remaining += todo.done ? -1 : 1;
-//     this._filter();
-//     this._save();
-//   }
-//   removeDone() {
-//     this.allTodos = this.allTodos.filter(t => !t.done);
-//     this._filter();
-//     this._save();
-//   }
-//   add(title) {
-//     const todo = new Todo(title);
-//     this.allTodos.push(todo);
-//     this.remaining++;
-//     this._filter();
-//     this._save();
-//   }
-//   remove(id) {
-//     let idx = this._findIndexById(id);
-//     if (idx < 0) return;
-//     const todo = this.allTodos.splice(idx, 1)[0];
-//     if (!todo.done) {
-//       this.remaining--;
-//     }
-//     this._filter();
-//     this._save();
-//   }
-//   onTitleChanged(id) {
-//     console.log('Message "title-changed" passed from TodoItem with argument:', id);
-//     this._save();
-//   }
-//   onDoneChanged(id, isDone) {
-//     console.log('Message "done-changed" passed from TodoItem with arguments:', id, ',', isDone);
-//     this.remaining += isDone ? -1 : 1;
-//     this._filter();
-//     this._save();
-//   }
-// }
-
-// // singleton
-// export default new TodoStore();
+export function updateTitle(todo: Todo, title: string) {
+  todo.title = title;
+  save();
+}

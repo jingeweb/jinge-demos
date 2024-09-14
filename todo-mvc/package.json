@@ -12,12 +12,9 @@
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "jinge-compiler": "4.0.0-alpha.3",
     "todomvc-app-css": "^2.4.3",
     "todomvc-common": "^1.0.5",
     "vite": "^5.4.5"
   },
-  "dependencies": {
-    "jinge": "4.0.0-alpha.2"
-  }
+  "dependencies": {}
 }

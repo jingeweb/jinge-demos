@@ -6,14 +6,7 @@ settings:
 
 importers:
   .:
-    dependencies:
-      jinge:
-        specifier: 4.0.0-alpha.2
-        version: 4.0.0-alpha.2
     devDependencies:
-      jinge-compiler:
-        specifier: 4.0.0-alpha.3
-        version: 4.0.0-alpha.3
       todomvc-app-css:
         specifier: ^2.4.3
         version: 2.4.3
@@ -456,48 +449,6 @@ packages:
     engines: { node: ^8.16.0 || ^10.6.0 || >=11.0.0 }
     os: [darwin]
 
-  jinge-compiler-core-linux-aarch64@4.0.0-alpha.2:
-    resolution:
-      {
-        integrity: sha512-ZJdEXUcVNgSoFuhEIib+sgMky/g6cRrWTdJyY40pcTQltJTzTh8s36SqqwSD+KBB3diRP3envdY+vzgZhsQ9sg==,
-      }
-
-  jinge-compiler-core-linux-x86_64@4.0.0-alpha.2:
-    resolution:
-      {
-        integrity: sha512-svoRUprT0bn6yOlW+2WZ2zk+gWYXNDvW2bbDU5rPurCZ4q190GGmumWreViYug0fQKRzuWpq8kmf00wqmeBBJg==,
-      }
-
-  jinge-compiler-core-macos-aarch64@4.0.0-alpha.2:
-    resolution:
-      {
-        integrity: sha512-xcMH23RjQSVwP9a2eSQxn+22kU2Hcq6xQgN47MNNlaSf3ZOwAA/uLFjsrZtoeRInS1iI316t421ty5rF1xcu4g==,
-      }
-
-  jinge-compiler-core-macos-x86_64@4.0.0-alpha.2:
-    resolution:
-      {
-        integrity: sha512-RKQ5ySq3Raoo0KZsoDTJiGxdJ70Fs/5YNj8Wq+0BKJbDba0hcB+S63+5lH+TQaF9YJgqMRxXVqosjzp1SOKHPw==,
-      }
-
-  jinge-compiler-core-windows-x86_64@4.0.0-alpha.2:
-    resolution:
-      {
-        integrity: sha512-Y0invQUFR3U2r9VDtbRYJIPFFRra6fPJlQtPs8EfSDU/XU3z8jdAowlbHd0xF7wW5PIPtLanXG9RiFW6jAlj3g==,
-      }
-
-  jinge-compiler@4.0.0-alpha.3:
-    resolution:
-      {
-        integrity: sha512-8so8MVPtXbp9ngPPNMROaP+OIMzznTNCe/8v1jbdOx9zPV36RPPGSrMdHCMJbW0qTmmMztMFKmi7RgNtJM33CQ==,
-      }
-
-  jinge@4.0.0-alpha.2:
-    resolution:
-      {
-        integrity: sha512-30K3Ssn3sjqzezJBGE8aoEitszi/PI2idntUBRpXHx/FuxFdMCo6vhNTbApRmeycfeMt5y3SXd5mOwnRUbO3LQ==,
-      }
-
   nanoid@3.3.7:
     resolution:
       {
@@ -790,26 +741,6 @@ snapshots:
 
   fsevents@2.3.3:
     optional: true
-
-  jinge-compiler-core-linux-aarch64@4.0.0-alpha.2: {}
-
-  jinge-compiler-core-linux-x86_64@4.0.0-alpha.2: {}
-
-  jinge-compiler-core-macos-aarch64@4.0.0-alpha.2: {}
-
-  jinge-compiler-core-macos-x86_64@4.0.0-alpha.2: {}
-
-  jinge-compiler-core-windows-x86_64@4.0.0-alpha.2: {}
-
-  jinge-compiler@4.0.0-alpha.3:
-    dependencies:
-      jinge-compiler-core-linux-aarch64: 4.0.0-alpha.2
-      jinge-compiler-core-linux-x86_64: 4.0.0-alpha.2
-      jinge-compiler-core-macos-aarch64: 4.0.0-alpha.2
-      jinge-compiler-core-macos-x86_64: 4.0.0-alpha.2
-      jinge-compiler-core-windows-x86_64: 4.0.0-alpha.2
-
-  jinge@4.0.0-alpha.2: {}
 
   nanoid@3.3.7: {}
 
