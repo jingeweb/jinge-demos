@@ -1,26 +1,46 @@
 {
   "name": "jinge-demos",
   "version": "2.0.0",
-  "description": "demos for jinge-framework",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "demos for jinge web framework",
+  "private": true,
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jinge-design/jinge-demos.git"
+  },
+  "scripts": {
+    "lint-fix": "eslint 'hello-world/**/*.{js,mjs,ts,tsx}' --fix && prettier ./if --log-level=warn --write",
+    "lint": "eslint '**/*.{js,mjs,ts,tsx}' && prettier --check .",
+    "lint-staged": "lint-staged",
+    "prepare": "husky"
   },
   "keywords": [
     "jinge",
     "demo"
   ],
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
   "author": "Yuhang Ge <abeyuhang@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jinge-design/jinge-demos/issues"
   },
   "homepage": "https://github.com/jinge-design/jinge-demos#readme",
-  "dependencies": {
-    "jinge-router": "^3.3.0"
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.5.5",
+    "eslint": "^9.10.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import-x": "^4.2.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "typescript": "~5.5.4",
+    "typescript-eslint": "^8.5.0"
   }
 }
