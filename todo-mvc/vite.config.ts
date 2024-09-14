@@ -12,18 +12,18 @@ import { jingeVitePlugin } from 'jinge-compiler';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: [
-      {
-        find: /^jinge$/,
-        replacement: 'jinge/source',
-      },
-      {
-        find: /^jinge-router$/,
-        replacement: 'jinge-router/source',
-      },
-    ],
-  },
+  // resolve: {
+  //   alias: [
+  //     {
+  //       find: /^jinge$/,
+  //       replacement: 'jinge/source',
+  //     },
+  //     {
+  //       find: /^jinge-router$/,
+  //       replacement: 'jinge-router/source',
+  //     },
+  //   ],
+  // },
   build: {
     // watch: {},
     // minify: false,
@@ -40,7 +40,7 @@ export default defineConfig({
 
   plugins: [
     jingeVitePlugin({
-      loadDebugNativeBinding: true,
+      // loadDebugNativeBinding: true,
     }),
   ],
 });
