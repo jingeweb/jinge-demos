@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "jinge": "4.0.0-alpha.4",
-    "jinge-router": "4.0.0-alpha.1"
+    "jinge-router": "4.0.0-alpha.2"
   }
 }
