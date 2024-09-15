@@ -10,7 +10,7 @@ export function App() {
       <footer className='info'>
         <p>Double-click to edit a todo</p>
         <p>
-          Created by{' '}<a href='https://github.com/yuhangge'>Yuhang Ge</a>
+          Created by <a href='https://github.com/yuhangge'>Yuhang Ge</a>
         </p>
       </footer>
     </>

@@ -1,23 +1,21 @@
 {
-  "name": "jinge-demo-todo-mvc",
+  "name": "jinge-demo-integrated-with-echarts",
   "version": "1.0.0",
-  "description": "todo mvc demo for jinge",
+  "description": "echarts integrated demo for jinge",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "prettier": "prettier . --write"
+    "build": "vite build"
   },
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "jinge-compiler": "4.0.0-alpha.6",
-    "todomvc-app-css": "^2.4.3",
-    "todomvc-common": "^1.0.5",
     "vite": "^5.4.5"
   },
   "dependencies": {
+    "echarts": "^5.5.1",
     "jinge": "4.0.0-alpha.4",
     "jinge-router": "4.0.0-alpha.3"
   }

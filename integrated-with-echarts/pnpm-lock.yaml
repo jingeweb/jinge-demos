@@ -7,22 +7,22 @@ settings:
 importers:
   .:
     dependencies:
+      echarts:
+        specifier: ^5.5.1
+        version: 5.5.1
       jinge:
         specifier: 4.0.0-alpha.4
         version: 4.0.0-alpha.4
       jinge-router:
         specifier: 4.0.0-alpha.3
         version: 4.0.0-alpha.3(jinge@4.0.0-alpha.4)
+      jquery:
+        specifier: ^3.7.1
+        version: 3.7.1
     devDependencies:
       jinge-compiler:
         specifier: 4.0.0-alpha.6
         version: 4.0.0-alpha.6
-      todomvc-app-css:
-        specifier: ^2.4.3
-        version: 2.4.3
-      todomvc-common:
-        specifier: ^1.0.5
-        version: 1.0.5
       vite:
         specifier: ^5.4.5
         version: 5.4.5(@types/node@20.1.7)(terser@5.17.4)
@@ -235,43 +235,49 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@jridgewell/gen-mapping@0.3.5':
+  '@jridgewell/gen-mapping@0.3.3':
     resolution:
       {
-        integrity: sha512-IzL8ZoEDIBRWEzlCcRhOaCupYyN5gdIK+Q6fbFdPDg6HqX6jpkItn7DFIpW9LQzXG6Df9sA7+OKnq0qlz/GaQg==,
+        integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==,
       }
     engines: { node: '>=6.0.0' }
 
-  '@jridgewell/resolve-uri@3.1.2':
+  '@jridgewell/resolve-uri@3.1.0':
     resolution:
       {
-        integrity: sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==,
+        integrity: sha512-F2msla3tad+Mfht5cJq7LSXcdudKTWCVYUgw6pLFOOHSTtZlj6SWNYAp+AhuqLmWdBO2X5hPrLcu8cVP8fy28w==,
       }
     engines: { node: '>=6.0.0' }
 
-  '@jridgewell/set-array@1.2.1':
+  '@jridgewell/set-array@1.1.2':
     resolution:
       {
-        integrity: sha512-R8gLRTZeyp03ymzP/6Lil/28tGeGEzhx1q2k703KGWRAI1VdvPIXdG70VJc2pAMw3NA6JKL5hhFu1sJX0Mnn/A==,
+        integrity: sha512-xnkseuNADM0gt2bs+BvhO0p78Mk762YnZdsuzFV018NoG1Sj1SCQvpSqa7XUaTam5vAGasABV9qXASMKnFMwMw==,
       }
     engines: { node: '>=6.0.0' }
 
-  '@jridgewell/source-map@0.3.6':
+  '@jridgewell/source-map@0.3.3':
     resolution:
       {
-        integrity: sha512-1ZJTZebgqllO79ue2bm3rIGud/bOe0pP5BjSRCRxxYkEZS8STV7zN84UBbiYu7jy+eCKSnVIUgoWWE/tt+shMQ==,
+        integrity: sha512-b+fsZXeLYi9fEULmfBrhxn4IrPlINf8fiNarzTof004v3lFdntdwa9PF7vFJqm3mg7s+ScJMxXaE3Acp1irZcg==,
       }
 
-  '@jridgewell/sourcemap-codec@1.5.0':
+  '@jridgewell/sourcemap-codec@1.4.14':
     resolution:
       {
-        integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==,
+        integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==,
       }
 
-  '@jridgewell/trace-mapping@0.3.25':
+  '@jridgewell/sourcemap-codec@1.4.15':
     resolution:
       {
-        integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==,
+        integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==,
+      }
+
+  '@jridgewell/trace-mapping@0.3.18':
+    resolution:
+      {
+        integrity: sha512-w+niJYzMHdd7USdiH2U6869nqhD2nbfZXND5Yp93qIbEmnDNk7PD48o+YchRVpzMU7M6jVCbenTR7PA1FLQ9pA==,
       }
 
   '@rollup/rollup-android-arm-eabi@4.21.3':
@@ -423,10 +429,10 @@ packages:
         integrity: sha512-WCuw/o4GSwDGMoonES8rcvwsig77dGCMbZDrZr2x4ZZiNW4P/gcoZXe/0twgtobcTkmg9TuKflxYL/DuwDyJzg==,
       }
 
-  acorn@8.12.1:
+  acorn@8.8.2:
     resolution:
       {
-        integrity: sha512-tcpGyI9zbizT9JbV6oYE477V6mTlXvvi0T0G3SNIYE2apm/G5huBa1+K89VGeovbg+jycCrfhl3ADxErOuO6Jg==,
+        integrity: sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==,
       }
     engines: { node: '>=0.4.0' }
     hasBin: true
@@ -441,6 +447,12 @@ packages:
     resolution:
       {
         integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==,
+      }
+
+  echarts@5.5.1:
+    resolution:
+      {
+        integrity: sha512-Fce8upazaAXUVUVsjgV6mBnGuqgO+JNDlcgF79Dksy4+wgGpQB2lmYoO4TSweFg/mZITdpGHomw/cNBJZj1icA==,
       }
 
   esbuild@0.21.5:
@@ -509,6 +521,12 @@ packages:
         integrity: sha512-7Rs74NJM1uEqPxVrcgLq/KKMbf1ps3IjxZS2/Tct19zgcUatpeIUicNMqdooBWX99C9XtnntWPxScJCdx7RkNw==,
       }
 
+  jquery@3.7.1:
+    resolution:
+      {
+        integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==,
+      }
+
   nanoid@3.3.7:
     resolution:
       {
@@ -566,17 +584,10 @@ packages:
     engines: { node: '>=10' }
     hasBin: true
 
-  todomvc-app-css@2.4.3:
+  tslib@2.3.0:
     resolution:
       {
-        integrity: sha512-mSnWZaKBWj9aQcFRsGguY/a8O8NR8GmecD48yU1rzwNemgZa/INLpIsxxMiToFGVth+uEKBrQ7IhWkaXZxwq5Q==,
-      }
-    engines: { node: '>=4' }
-
-  todomvc-common@1.0.5:
-    resolution:
-      {
-        integrity: sha512-D8kEJmxVMQIWwztEdH+WeiAfXRbbSCpgXq4NkYi+gduJ2tr8CNq7sYLfJvjpQ10KD9QxJwig57rvMbV2QAESwQ==,
+        integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==,
       }
 
   vite@5.4.5:
@@ -612,6 +623,12 @@ packages:
         optional: true
       terser:
         optional: true
+
+  zrender@5.6.0:
+    resolution:
+      {
+        integrity: sha512-uzgraf4njmmHAbEUxMJ8Oxg+P3fT04O+9p7gY+wJRVxo8Ge+KmYv0WJev945EH4wFuc4OY2NLXz46FZrWS9xJg==,
+      }
 
 snapshots:
   '@esbuild/aix-ppc64@0.21.5':
@@ -683,32 +700,35 @@ snapshots:
   '@esbuild/win32-x64@0.21.5':
     optional: true
 
-  '@jridgewell/gen-mapping@0.3.5':
+  '@jridgewell/gen-mapping@0.3.3':
     dependencies:
-      '@jridgewell/set-array': 1.2.1
-      '@jridgewell/sourcemap-codec': 1.5.0
-      '@jridgewell/trace-mapping': 0.3.25
+      '@jridgewell/set-array': 1.1.2
+      '@jridgewell/sourcemap-codec': 1.4.15
+      '@jridgewell/trace-mapping': 0.3.18
     optional: true
 
-  '@jridgewell/resolve-uri@3.1.2':
+  '@jridgewell/resolve-uri@3.1.0':
     optional: true
 
-  '@jridgewell/set-array@1.2.1':
+  '@jridgewell/set-array@1.1.2':
     optional: true
 
-  '@jridgewell/source-map@0.3.6':
+  '@jridgewell/source-map@0.3.3':
     dependencies:
-      '@jridgewell/gen-mapping': 0.3.5
-      '@jridgewell/trace-mapping': 0.3.25
+      '@jridgewell/gen-mapping': 0.3.3
+      '@jridgewell/trace-mapping': 0.3.18
     optional: true
 
-  '@jridgewell/sourcemap-codec@1.5.0':
+  '@jridgewell/sourcemap-codec@1.4.14':
     optional: true
 
-  '@jridgewell/trace-mapping@0.3.25':
+  '@jridgewell/sourcemap-codec@1.4.15':
+    optional: true
+
+  '@jridgewell/trace-mapping@0.3.18':
     dependencies:
-      '@jridgewell/resolve-uri': 3.1.2
-      '@jridgewell/sourcemap-codec': 1.5.0
+      '@jridgewell/resolve-uri': 3.1.0
+      '@jridgewell/sourcemap-codec': 1.4.14
     optional: true
 
   '@rollup/rollup-android-arm-eabi@4.21.3':
@@ -764,7 +784,7 @@ snapshots:
   '@types/node@20.1.7':
     optional: true
 
-  acorn@8.12.1:
+  acorn@8.8.2:
     optional: true
 
   buffer-from@1.1.2:
@@ -772,6 +792,11 @@ snapshots:
 
   commander@2.20.3:
     optional: true
+
+  echarts@5.5.1:
+    dependencies:
+      tslib: 2.3.0
+      zrender: 5.6.0
 
   esbuild@0.21.5:
     optionalDependencies:
@@ -826,6 +851,8 @@ snapshots:
 
   jinge@4.0.0-alpha.4: {}
 
+  jquery@3.7.1: {}
+
   nanoid@3.3.7: {}
 
   picocolors@1.1.0: {}
@@ -871,15 +898,13 @@ snapshots:
 
   terser@5.17.4:
     dependencies:
-      '@jridgewell/source-map': 0.3.6
-      acorn: 8.12.1
+      '@jridgewell/source-map': 0.3.3
+      acorn: 8.8.2
       commander: 2.20.3
       source-map-support: 0.5.21
     optional: true
 
-  todomvc-app-css@2.4.3: {}
-
-  todomvc-common@1.0.5: {}
+  tslib@2.3.0: {}
 
   vite@5.4.5(@types/node@20.1.7)(terser@5.17.4):
     dependencies:
@@ -890,3 +915,7 @@ snapshots:
       '@types/node': 20.1.7
       fsevents: 2.3.3
       terser: 5.17.4
+
+  zrender@5.6.0:
+    dependencies:
+      tslib: 2.3.0

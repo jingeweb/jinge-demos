@@ -3,6 +3,6 @@ import { jingeVitePlugin } from 'jinge-compiler';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/jinge-demos/todo-mvc/dist/',
+  base: '/jinge-demos/integrated-with-echarts/dist/',
   plugins: [jingeVitePlugin()],
 });
