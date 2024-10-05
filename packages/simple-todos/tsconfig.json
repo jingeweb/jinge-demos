@@ -10,7 +10,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "strict": true,
-    "baseUrl": "./"
+    "jsx": "preserve"
   },
-  "include": ["*.js", "*.mjs"]
+  "include": ["src", "*.js", "*.mjs", "vite.config.ts", "src/app.tsx", "src/main.ts"]
 }

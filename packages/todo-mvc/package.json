@@ -1,0 +1,18 @@
+{
+  "name": "jinge-demo-todo-mvc",
+  "version": "1.0.0",
+  "description": "todo mvc demo for jinge",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "prettier": "prettier . --write"
+  },
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "todomvc-app-css": "^2.4.3",
+    "todomvc-common": "^1.0.5"
+  }
+}

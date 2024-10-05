@@ -1,0 +1,19 @@
+{
+  "name": "vue-hello-world",
+  "version": "1.0.0",
+  "description": "hello world of vue",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^3.5.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue-jsx": "^4.0.1"
+  }
+}

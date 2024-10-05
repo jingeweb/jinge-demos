@@ -1,0 +1,12 @@
+{
+  "name": "jinge-demo-if-else",
+  "version": "1.0.0",
+  "description": "if demo for jinge",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "license": "ISC"
+}

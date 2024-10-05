@@ -1,0 +1,13 @@
+{
+  "name": "jinge-demo-recursion-component",
+  "version": "1.0.0",
+  "description": "recursion component demo for jinge",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "license": "ISC"
+}

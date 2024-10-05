@@ -1,1 +1,3 @@
-**/dist
+dist
+**/*.yaml
+/docs/

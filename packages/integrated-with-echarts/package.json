@@ -1,0 +1,16 @@
+{
+  "name": "jinge-demo-integrated-with-echarts",
+  "version": "1.0.0",
+  "description": "echarts integrated demo for jinge",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "echarts": "^5.5.1"
+  }
+}

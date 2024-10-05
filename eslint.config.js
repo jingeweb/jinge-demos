@@ -10,6 +10,11 @@ export default tseslint.config(
   {
     languageOptions: {
       parserOptions: {
+        project: [
+          './tsconfig.json',
+          './packages/*/tsconfig.json',
+          './packages/hello-world/*/tsconfig.json',
+        ],
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
@@ -47,13 +52,6 @@ export default tseslint.config(
       '@typescript-eslint/no-import-type-side-effects': 'error',
     },
   },
-  // Node scripts
-  {
-    files: ['scripts/**', '*.{js,mjs,ts}'],
-    rules: {
-      'no-console': 'off',
-    },
-  },
   {
     files: ['**/*.{js,mjs}'],
     ...tseslint.configs.disableTypeChecked,
@@ -69,6 +67,7 @@ export default tseslint.config(
       '.husky/',
       '.idea/',
       '.vscode/',
+      'docs/',
     ],
   },
 );
