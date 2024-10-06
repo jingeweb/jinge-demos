@@ -9,7 +9,7 @@ export default defineConfig({
   base: `/jinge-demos/${DIR}/`,
   plugins: [vueJsx()],
   build: {
-    emptyOutDir: false,
+    emptyOutDir: true,
     outDir: path.join(DIST, DIR),
   },
 });
