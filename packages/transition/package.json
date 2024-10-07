@@ -1,0 +1,14 @@
+{
+  "name": "jinge-demo-transition",
+  "version": "1.0.0",
+  "description": "transition/animation demo of jinge",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "prettier": "prettier . --write"
+  },
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "license": "ISC"
+}

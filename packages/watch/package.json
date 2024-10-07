@@ -1,0 +1,14 @@
+{
+  "name": "jinge-demo-watch",
+  "version": "1.0.0",
+  "description": "view-model watch demo",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "prettier": "prettier . --write"
+  },
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "license": "ISC"
+}

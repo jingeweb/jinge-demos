@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       jinge:
-        specifier: 4.0.0-alpha.8
-        version: 4.0.0-alpha.8
+        specifier: 4.0.0-alpha.9
+        version: 4.0.0-alpha.9
       jinge-router:
         specifier: 4.0.0-alpha.4
-        version: 4.0.0-alpha.4(jinge@4.0.0-alpha.8)
+        version: 4.0.0-alpha.4(jinge@4.0.0-alpha.9)
     devDependencies:
       '@eslint/js':
         specifier: ^9.12.0
@@ -116,6 +116,8 @@ importers:
       todomvc-common:
         specifier: ^1.0.5
         version: 1.0.5
+
+  packages/watch: {}
 
 packages:
 
@@ -1237,8 +1239,8 @@ packages:
     peerDependencies:
       jinge: ^4
 
-  jinge@4.0.0-alpha.8:
-    resolution: {integrity: sha512-Pw08QDajtm71O4XBULHlMB6x0NXj+b8qw8OAa3jlrnUaRqvn9vDWagt8IV9b6Rs94saQ2r3+2uN75Vicn7LHeg==}
+  jinge@4.0.0-alpha.9:
+    resolution: {integrity: sha512-0HTGH3T/YjT2HzDKAG8S5i0R4o4O4xatGedK9r9Rght44ieBVbpXFzTvomge7V38VTqOh1hK/pSNSKIUCwdtCA==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -2773,11 +2775,11 @@ snapshots:
       jinge-compiler-core-windows-x86_64: 4.0.0-alpha.9
       typescript: 5.6.2
 
-  jinge-router@4.0.0-alpha.4(jinge@4.0.0-alpha.8):
+  jinge-router@4.0.0-alpha.4(jinge@4.0.0-alpha.9):
     dependencies:
-      jinge: 4.0.0-alpha.8
+      jinge: 4.0.0-alpha.9
 
-  jinge@4.0.0-alpha.8: {}
+  jinge@4.0.0-alpha.9: {}
 
   js-tokens@4.0.0: {}
 
