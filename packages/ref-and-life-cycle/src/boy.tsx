@@ -1,12 +1,21 @@
-import { type Props, onMount, onUnmount } from 'jinge';
+import { type Props, expose, onMount, onUnmount } from 'jinge';
 
 export interface BoyRef {
   someApi(): void;
 }
-export function Boy(this: BoyRef, props: Props<{ name: string }>) {
-  this.someApi = () => {
-    alert(`Hello, everyone. My name is ${props.name}`);
-  };
+export function Boy(
+  props: Props<{
+    props: { name: string };
+    expose: {
+      someApi: () => void;
+    };
+  }>,
+) {
+  expose<typeof Boy>({
+    someApi: () => {
+      alert(`Hello, everyone. My name is ${props.name}`);
+    },
+  });
   onMount(() => {
     console.info('after mounted');
     return () => {

@@ -1,11 +1,14 @@
 import { onMount, ref, vm } from 'jinge';
-import { Boy, type BoyRef } from './boy';
+import { Boy } from './boy';
 
 export function App() {
   const state = vm({ name: 'Bob', show: true, count: 0 });
-  const boy = ref<BoyRef>();
+
+  const el = ref<HTMLParagraphElement>(); // 获取 html 元素的 ref
+  const boy = ref<typeof Boy>(); // 获取 FC(函数组件) 的 ref，函数组件必须有定义 expose 属性。
 
   onMount(() => {
+    console.info(el.value);
     boy.value?.someApi();
   });
   const toggleShow = () => {
@@ -16,7 +19,7 @@ export function App() {
   return (
     <>
       <h2>Lifecycle demo</h2>
-      <p>
+      <p ref={el}>
         Each component have two lifecycle hooks, onMount and onUnmount. Open Dev-Tools to see log.
       </p>
       <p>{state.show && <Boy ref={boy} name={`${state.name}_${state.count}`} />}</p>

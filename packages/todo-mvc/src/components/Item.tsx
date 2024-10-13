@@ -1,11 +1,7 @@
-import { type Props, cx, ref, vm } from 'jinge';
+import { cx, ref, vm } from 'jinge';
 import { type Todo, removeById, toggleDone, updateTitle } from '../services/store';
 
-export function TodoItem(
-  props: Props<{
-    todo: Todo;
-  }>,
-) {
+export function TodoItem(props: { todo: Todo }) {
   const state = vm({ editing: false, editingTitle: '' });
   const stopEdit = () => {
     state.editing = false;
