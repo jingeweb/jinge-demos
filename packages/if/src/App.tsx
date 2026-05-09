@@ -14,7 +14,7 @@ export function App() {
         <If expect={state.show}>
           <div>我显示出来啦！</div>
         </If>
-        <button onClick={() => (state.show = !state.show)}>
+        <button on:click={() => (state.show = !state.show)}>
           <If expect={state.show}>
             {{
               true: '隐藏',
@@ -29,7 +29,7 @@ export function App() {
           {`<If expect={state.show}>
   <div>我显示出来啦！</div>
 </If>
-<button onClick={() => state.show = !state.show}>
+<button on:click={() => state.show = !state.show}>
   <If expect={state.show}>
     {{
       true: '隐藏',
@@ -46,13 +46,13 @@ export function App() {
       <pre>
         <code>
           {`{state.show ? <div>出来啦！</div> : <div>不见啦!</div>}
-<button onClick={() => (state.show = !state.show)}>{state.show ? '隐藏' : '显式'}</button>`}
+<button on:click={() => (state.show = !state.show)}>{state.show ? '隐藏' : '显式'}</button>`}
         </code>
       </pre>
       <p>上述代码的效果如下：</p>
       <div>
         {state.show ? <div>出来啦！</div> : <div>不见啦!</div>}
-        <button onClick={() => (state.show = !state.show)}>{state.show ? '隐藏' : '显式'}</button>
+        <button on:click={() => (state.show = !state.show)}>{state.show ? '隐藏' : '显式'}</button>
       </div>
     </>
   );

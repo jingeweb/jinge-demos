@@ -2,12 +2,12 @@
   "name": "jinge-demo-hello-world",
   "version": "1.0.0",
   "description": "hello world demo of react/vue/jinge",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build"
-  },
+  "license": "ISC",
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
-  "license": "ISC"
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  }
 }

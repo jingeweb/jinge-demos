@@ -40,34 +40,34 @@ export function App() {
       <div>
         <form>
           <p>
-            <label htmlFor='t'>TEXT:</label>
+            <label htmlFor="t">TEXT:</label>
             <input
-              id='t'
+              id="t"
               value={data.t}
-              placeholder='input 1'
-              onInput={(evt) => {
+              placeholder="input 1"
+              on:input={(evt) => {
                 data.t = evt.target.value;
               }}
             />
           </p>
           <p>
-            <label htmlFor='t2'>TEXTAREA:</label>
+            <label htmlFor="t2">TEXTAREA:</label>
             <textarea
-              id='t2'
+              id="t2"
               value={data.t2}
               placeholder={`input ${data.t}`}
-              onInput={(evt) => (data.t2 = evt.target.value)}
+              on:input={(evt) => (data.t2 = evt.target.value)}
             ></textarea>
           </p>
           <p>
             <label>CHECKBOX:</label>
             <input
-              id='t3'
-              type='checkbox'
+              id="t3"
+              type="checkbox"
               checked={data.t3}
-              onChange={(evt) => (data.t3 = evt.target.checked)}
+              on:change={(evt) => (data.t3 = evt.target.checked)}
             />
-            <label htmlFor='t3'>Click here to check: {data.t3}</label>
+            <label htmlFor="t3">Click here to check: {data.t3}</label>
           </p>
           <p>
             <label>MULTI CHECK:</label>
@@ -75,13 +75,17 @@ export function App() {
               {(each) => (
                 <label>
                   <input
-                    name='t4'
+                    name="t4"
                     checked={each.data.selected}
-                    onChange={(evt) => {
+                    on:change={(evt) => {
                       each.data.selected = evt.target.checked;
-                      evt.target.checked ? add(each.data.name) : del(each.data.name);
+                      if (evt.target.checked) {
+                        add(each.data.name);
+                      } else {
+                        del(each.data.name);
+                      }
                     }}
-                    type='checkbox'
+                    type="checkbox"
                   />
                   {each.data.name}
                 </label>
@@ -91,12 +95,12 @@ export function App() {
           <p>
             <label>RADIO:</label>
             {fruits5.map((fruit) => (
-              <label>
+              <label key={fruit}>
                 <input
-                  name='t5'
+                  name="t5"
                   checked={fruit === data.t5}
-                  onClick={() => (data.t5 = fruit)}
-                  type='radio'
+                  on:click={() => (data.t5 = fruit)}
+                  type="radio"
                 />
                 {fruit}
               </label>
@@ -104,8 +108,8 @@ export function App() {
           </p>
           <p>
             <label>SELECT:</label>
-            <select value={data.t6} onChange={(evt) => (data.t6 = evt.target.value)}>
-              <option disabled value=''>
+            <select value={data.t6} on:change={(evt) => (data.t6 = evt.target.value)}>
+              <option disabled value="">
                 Please select one
               </option>
               {fruits5.map((fruit) => (
@@ -119,7 +123,7 @@ export function App() {
             <label>MULTI SELECT:</label>
             <select
               multiple
-              onChange={(evt) => {
+              on:change={(evt) => {
                 data.t7 = data.t4 = [
                   ...(evt.target.selectedOptions as unknown as HTMLOptionElement[]),
                 ].map((opt) => opt.value);
@@ -137,7 +141,7 @@ export function App() {
       <h4>Input Form Data:</h4>
       <pre>{state.output}</pre>
       <p>
-        <button onClick={() => test()}>Test</button>
+        <button on:click={() => test()}>Test</button>
       </p>
     </>
   );

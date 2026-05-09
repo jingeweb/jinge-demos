@@ -1,3 +1,9 @@
 packages:
   - packages/hello-world/*
   - packages/*
+allowBuilds:
+  '@swc/core': false
+  bun: true
+  unrs-resolver: set this to true or false
+overrides:
+  jinge-compiler: link:../jinge-compiler

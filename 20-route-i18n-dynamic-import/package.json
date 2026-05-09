@@ -2,16 +2,16 @@
   "name": "jinge-demo-i18n",
   "version": "1.0.0",
   "description": "basic demo for jinge",
+  "license": "ISC",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "main": "index.js",
   "scripts": {
-    "i18n:scan": "jinge-i18n extract --scan src --locale en",
-    "i18n:gen": "jinge-i18n generate",
-    "build-dev": "rm -rf dist && webpack --config ./webpack.config.js",
     "build": "MINIMIZE=true npm run build-dev",
+    "build-dev": "rm -rf dist && webpack --config ./webpack.config.js",
+    "i18n:gen": "jinge-i18n generate",
+    "i18n:scan": "jinge-i18n extract --scan src --locale en",
     "start": "webpack-dev-server --config ./webpack.config.js"
   },
-  "author": "Yuhang Ge<abeyuhang@gmail.com>",
-  "license": "ISC",
   "dependencies": {
     "jinge": "^3.3.0",
     "jinge-router": "^3.3.0"

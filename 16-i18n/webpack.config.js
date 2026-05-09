@@ -18,14 +18,14 @@ module.exports = {
   node: false,
   devtool: 'source-map',
   module: {
-    rules: JingeI18NRules
+    rules: JingeI18NRules,
   },
   devServer: {
     static: __dirname,
     port: 9000,
     hot: false,
     devMiddleware: {
-      writeToDisk: true
-    }
-  }
+      writeToDisk: true,
+    },
+  },
 };

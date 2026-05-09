@@ -1,0 +1,1 @@
+.active1{transition:opacity .4s}.active2{transition:opacity 2s}.show1{opacity:1}.hide1{opacity:0}.flex{align-items:center;gap:16px;display:flex}.enter-active2{transition:all 4s}.leave-active2{transition:all .4s}.enter2{opacity:1;transform:translateY(0)}.leave2{opacity:0;transform:translateY(-150%)}

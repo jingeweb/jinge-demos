@@ -1,4 +1,5 @@
 import { isArray, vm, watch } from 'jinge';
+
 import { TreeNode } from './TreeNode';
 
 export interface TreeData {
@@ -20,7 +21,7 @@ export function Tree(props: { data: TreeData | TreeData[] }) {
   return (
     <>
       {state.nodes.map((node) => (
-        <TreeNode node={node} />
+        <TreeNode key={node.name} node={node} />
       ))}
     </>
   );

@@ -1,6 +1,5 @@
-import {
-  Component
-} from 'jinge';
+import { Component } from 'jinge';
+
 import _tpl from './printer.c.html';
 
 export class Printer extends Component {

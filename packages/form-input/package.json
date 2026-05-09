@@ -2,13 +2,13 @@
   "name": "jinge-demo-form-input",
   "version": "1.0.0",
   "description": "Form & Input Demo for Jinge",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "prettier": "prettier . --write"
-  },
+  "license": "ISC",
   "author": "Yuhang Ge<abeyuhang@gmail.com>",
-  "license": "ISC"
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "prettier": "prettier . --write"
+  }
 }

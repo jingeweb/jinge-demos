@@ -5,12 +5,12 @@ const { JingeRulesWithRouterAlias } = require('jinge-router/compiler');
 
 module.exports = {
   mode: prod ? 'production' : 'development',
-  entry:path.join(__dirname, 'index.js'),
+  entry: path.join(__dirname, 'index.js'),
   output: {
     filename: 'bundle.js',
     chunkFilename: '[name].[contenthash:8].js',
     path: path.join(__dirname, 'dist'),
-    publicPath: 'dist/'
+    publicPath: 'dist/',
   },
   node: false,
   devtool: 'source-map',
@@ -22,7 +22,7 @@ module.exports = {
     port: 9000,
     hot: false,
     devMiddleware: {
-      writeToDisk: true
-    }
-  }
+      writeToDisk: true,
+    },
+  },
 };

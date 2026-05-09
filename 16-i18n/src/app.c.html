@@ -1,12 +1,9 @@
-
 <!-- import { Printer } from './printer.c' -->
 <p>
   <select :value="locale" on:change="changeLocale($event.target.value)">
-    <option disabled>
-      请选择语言
-    </option>
+    <option disabled>请选择语言</option>
     <for :loop="locales" vm:each>
-    <option value="${each.locale}">${each.name}</option>
+      <option value="${each.locale}">${each.name}</option>
     </for>
   </select>
   <button style="margin-left: 16px" on:click="test">测试</button>
@@ -20,18 +17,29 @@
 </for>
 
 <div>${tt}</div>
-<Printer/>
-<Printer message="春江潮水连海平，海上明${moon}共潮生"/>
-<Printer message="你好，${boy.name}！"/>
+<Printer />
+<Printer message="春江潮水连海平，海上明${moon}共潮生" />
+<Printer message="你好，${boy.name}！" />
 
 <div>
-  对于 inline tag，包括<code>code</code>, <span style="color: blue">span</span>, <small>small</small>, <strong style="font-size: 500">strong</strong>, <i style="font-size:500;font-style:italic">i</i>, <code>a</code>这几个，如果其不包含任何需要翻译的属性（Attribute），则可以<a href="https://baidu.com" target="_blank">合并</a>到一行文本进行抽取和翻译。
-  你好，${boy.name}
+  对于 inline tag，包括<code>code</code>, <span style="color: blue">span</span>,
+  <small>small</small>, <strong style="font-size: 500">strong</strong>,
+  <i style="font-size: 500; font-style: italic">i</i>,
+  <code>a</code>这几个，如果其不包含任何需要翻译的属性（Attribute），则可以<a
+    href="https://baidu.com"
+    target="_blank"
+    >合并</a
+  >到一行文本进行抽取和翻译。 你好，${boy.name}
 </div>
 
 <div>
   <switch-locale>
-    <p slot-pass:zh_cn>使用 &lt;switch-locale&gt; 进行高级控制，比如这里是<span style="color: red;">红色的中文</span></p>
-    <p slot-pass:en>use &lt;switch-locale&gt; to manually advanced control, for example, here is <span style="color: blue;">blue English</span></p>
+    <p slot-pass:zh_cn>
+      使用 &lt;switch-locale&gt; 进行高级控制，比如这里是<span style="color: red">红色的中文</span>
+    </p>
+    <p slot-pass:en>
+      use &lt;switch-locale&gt; to manually advanced control, for example, here is
+      <span style="color: blue">blue English</span>
+    </p>
   </switch-locale>
 </div>

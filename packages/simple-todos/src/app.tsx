@@ -88,9 +88,9 @@ export function App() {
               <th>
                 <input
                   disabled={state.todos.length === 0}
-                  type='checkbox'
+                  type="checkbox"
                   checked={state.allDone}
-                  onClick={() => toggleAllDone()}
+                  on:click={() => toggleAllDone()}
                 />
               </th>
               <th>Title</th>
@@ -101,19 +101,19 @@ export function App() {
             {state.todos.map((todo) => (
               <tr key={todo.title}>
                 <td>
-                  <input type='checkbox' checked={todo.done} onClick={() => toggleDone(todo)} />
+                  <input type="checkbox" checked={todo.done} on:click={() => toggleDone(todo)} />
                 </td>
                 <td>{todo.title}</td>
                 <td>
-                  <button onClick={() => modify(todo)}>Modify</button>
-                  <button onClick={() => remove(todo)}>Delete</button>
+                  <button on:click={() => modify(todo)}>Modify</button>
+                  <button on:click={() => remove(todo)}>Delete</button>
                 </td>
               </tr>
             ))}
 
             {state.todos.length === 0 && (
               <tr>
-                <td className='emp' colSpan={3}>
+                <td className="emp" colSpan={3}>
                   no todo, please add.
                 </td>
               </tr>
@@ -121,9 +121,9 @@ export function App() {
           </tbody>
         </table>
       </div>
-      <div className='ctrl'>
-        <button onClick={() => add()}>Add</button>
-        <button onClick={() => clear()}>Clear</button>
+      <div className="ctrl">
+        <button on:click={() => add()}>Add</button>
+        <button on:click={() => clear()}>Clear</button>
       </div>
     </>
   );

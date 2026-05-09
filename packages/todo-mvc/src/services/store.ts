@@ -34,8 +34,9 @@ function save() {
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(TodoStore.all));
 }
 function applyFilter() {
-  if (TodoStore.all.length === 0) return;
-  if (currentFilter === 'all') {
+  if (TodoStore.all.length === 0) {
+    TodoStore.todos = TodoStore.all;
+  } else if (currentFilter === 'all') {
     TodoStore.todos = TodoStore.all;
   } else {
     TodoStore.todos = TodoStore.all.filter((t) => t.done === (currentFilter === 'completed'));

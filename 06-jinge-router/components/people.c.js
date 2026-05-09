@@ -1,6 +1,5 @@
-import {
-  Component
-} from 'jinge';
+import { Component } from 'jinge';
+
 import _tpl from './people.c.html';
 export default class People extends Component {
   constructor(attrs) {

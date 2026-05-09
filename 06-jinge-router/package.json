@@ -2,22 +2,22 @@
   "name": "jinge-demo-ui-router",
   "version": "1.0.0",
   "description": "basic demo for jinge",
+  "license": "ISC",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
   "main": "index.js",
   "scripts": {
-    "build-dev": "webpack --config ./webpack.config.js",
     "build": "PROD=true npm run build-dev",
+    "build-dev": "webpack --config ./webpack.config.js",
     "start": "webpack-dev-server --config ./webpack.config.js"
-  },
-  "author": "Yuhang Ge<abeyuhang@gmail.com>",
-  "license": "ISC",
-  "devDependencies": {
-    "webpack": "^5.82.1",
-    "webpack-cli": "^5.1.1",
-    "webpack-dev-server": "^4.15.0"
   },
   "dependencies": {
     "jinge": "^3.3.0",
     "jinge-compiler": "^3.3.0",
     "jinge-router": "^3.3.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.82.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
   }
 }

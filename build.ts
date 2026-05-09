@@ -3,7 +3,7 @@ import { readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 
 const PKGS_DIR = path.resolve(__dirname, 'packages');
-for await (const pkg of await readdir(PKGS_DIR)) {
+for (const pkg of await readdir(PKGS_DIR)) {
   const pkgDir = path.join(PKGS_DIR, pkg);
   const st = await stat(pkgDir);
   if (!st.isDirectory()) {

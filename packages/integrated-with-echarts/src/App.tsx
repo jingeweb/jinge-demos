@@ -26,7 +26,9 @@ export function App() {
         {
           name: 'Sales',
           type: 'bar',
-          data: new Array(6).fill(0).map(() => (Math.random() * 10) | (0 + 4)),
+          data: Array.from({ length: 6 })
+            .fill(0)
+            .map(() => (Math.random() * 10) | (0 + 4)),
         },
       ],
     });
@@ -35,11 +37,11 @@ export function App() {
     <>
       <h2>jQuery & echarts integration</h2>
       <p>
-        <div style='width: 500px; height: 300px;' ref={chart}></div>
+        <div style="width: 500px; height: 300px;" ref={chart}></div>
       </p>
       <p>
         <button
-          onClick={() => {
+          on:click={() => {
             renderEcharts();
           }}
         >

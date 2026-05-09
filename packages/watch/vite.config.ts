@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
 import { jingeVitePlugin } from 'jinge-compiler';
 import path from 'node:path';
+import { defineConfig } from 'vite';
 
 const DIR = path.basename(__dirname);
 const DIST = path.resolve(__dirname, '../../docs');

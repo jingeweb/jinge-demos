@@ -1,6 +1,7 @@
-import { type Props, cx } from 'jinge';
+import { cx } from 'jinge';
+
 import type { TreeData } from './Tree';
-export function TreeNode(props: Props<{ node: TreeData; level?: number }>) {
+export function TreeNode(props: { node: TreeData; level?: number }) {
   return (
     <>
       <div

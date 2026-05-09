@@ -86,9 +86,9 @@ export function App() {
     <>
       <h3>ViewModel watch</h3>
       <p>Please see code and console output.</p>
-      <button onClick={() => test1()}>Test1</button>
-      <button onClick={() => test2()}>Test2</button>
-      <button onClick={() => test3()}>Test3</button>
+      <button on:click={() => test1()}>Test1</button>
+      <button on:click={() => test2()}>Test2</button>
+      <button on:click={() => test3()}>Test3</button>
     </>
   );
 }

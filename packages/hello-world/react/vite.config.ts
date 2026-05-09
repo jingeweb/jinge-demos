@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import path from 'node:path';
+import { defineConfig } from 'vite';
 const DIR = `hello-world-${path.basename(__dirname)}`;
 const DIST = path.resolve(__dirname, '../../../docs');
 

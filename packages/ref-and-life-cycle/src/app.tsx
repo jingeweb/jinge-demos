@@ -1,4 +1,5 @@
 import { onMount, ref, vm } from 'jinge';
+
 import { Boy } from './boy';
 
 export function App() {
@@ -24,10 +25,10 @@ export function App() {
       </p>
       <p>{state.show && <Boy ref={boy} name={`${state.name}_${state.count}`} />}</p>
       <p>
-        <button onClick={() => toggleShow()}>{state.show ? 'Hide' : 'Show'} Boy</button>
+        <button on:click={() => toggleShow()}>{state.show ? 'Hide' : 'Show'} Boy</button>
         {state.show && (
           <button
-            onClick={() => {
+            on:click={() => {
               boy.value?.someApi();
             }}
           >

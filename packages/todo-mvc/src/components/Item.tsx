@@ -1,4 +1,5 @@
 import { cx, ref, vm } from 'jinge';
+
 import { type Todo, removeById, toggleDone, updateTitle } from '../services/store';
 
 export function TodoItem(props: { todo: Todo }) {
@@ -12,19 +13,20 @@ export function TodoItem(props: { todo: Todo }) {
     }
   };
   const ipt = ref<HTMLInputElement>();
+
   return (
     <li className={cx(props.todo.done && 'completed', state.editing && 'editing')}>
-      <div className='view'>
+      <div className="view">
         <input
-          className='toggle'
-          type='checkbox'
-          onClick={() => {
+          className="toggle"
+          type="checkbox"
+          on:click={() => {
             toggleDone(props.todo);
           }}
           checked={props.todo.done}
         />
         <label
-          onDoubleClick={() => {
+          on:doubleClick={() => {
             state.editing = true;
             state.editingTitle = props.todo.title;
             setTimeout(() => {
@@ -36,22 +38,22 @@ export function TodoItem(props: { todo: Todo }) {
           {props.todo.title}
         </label>
         <button
-          className='destroy'
-          onClick={() => {
+          className="destroy"
+          on:click={() => {
             removeById(props.todo.id);
           }}
         ></button>
       </div>
       {state.editing && (
         <input
-          className='edit'
+          className="edit"
           ref={ipt}
           value={state.editingTitle}
-          onChange={(evt) => (state.editingTitle = evt.target.value)}
-          onBlur={() => {
+          on:change={(evt) => (state.editingTitle = evt.target.value)}
+          on:blur={() => {
             stopEdit();
           }}
-          onKeyUp={(evt) => {
+          on:keyUp={(evt) => {
             if (evt.key === 'Enter') {
               stopEdit();
             } else if (evt.key === 'Esc') {

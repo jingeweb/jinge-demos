@@ -1,6 +1,5 @@
-import {
-  Component
-} from 'jinge';
+import { Component } from 'jinge';
+
 import _tpl from './hello.c.html';
 
 export default class Hello extends Component {

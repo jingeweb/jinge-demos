@@ -3,6 +3,7 @@
     "tsBuildInfoFile": "./node_modules/.tsbuildinfo",
     "composite": true,
     "skipLibCheck": true,
+    "types": ["vite/client"],
     "lib": ["ESNext", "DOM"],
     "jsx": "preserve",
     "target": "ESNext",
@@ -13,7 +14,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "strict": true,
-    "baseUrl": "./"
+    "strict": true
   }
 }
