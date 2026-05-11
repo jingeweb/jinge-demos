@@ -10,7 +10,7 @@ export function App() {
 
   onMount(() => {
     console.info(el.value);
-    boy.value?.someApi();
+    console.info(boy.value?.someApi());
   });
   const toggleShow = () => {
     state.count++;
@@ -29,7 +29,7 @@ export function App() {
         {state.show && (
           <button
             on:click={() => {
-              boy.value?.someApi();
+              console.info(boy.value?.someApi());
             }}
           >
             Call Api

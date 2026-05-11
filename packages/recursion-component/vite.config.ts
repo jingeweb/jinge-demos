@@ -8,11 +8,7 @@ const DIST = path.resolve(__dirname, '../../docs');
 // https://vitejs.dev/config/
 export default defineConfig({
   base: `/jinge-demos/${DIR}/`,
-  plugins: [
-    jingeVitePlugin({
-      loadDebugNativeBinding: true,
-    }),
-  ],
+  plugins: [jingeVitePlugin()],
   build: {
     emptyOutDir: true,
     outDir: path.join(DIST, DIR),

@@ -1,19 +1,14 @@
-import { type Props, expose, onMount, onUnmount } from 'jinge';
+import { expose, onMount, onUnmount, Ref, WithExpose } from 'jinge';
 
-export interface BoyRef {
-  someApi(): void;
-}
 export function Boy(
-  props: Props<{
-    props: { name: string };
-    expose: {
-      someApi: () => void;
-    };
+  props: { name: string } & WithExpose<{
+    someApi(): string;
   }>,
 ) {
   expose<typeof Boy>({
     someApi: () => {
       alert(`Hello, everyone. My name is ${props.name}`);
+      return 'hello from expose api';
     },
   });
   onMount(() => {

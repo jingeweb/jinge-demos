@@ -15,26 +15,20 @@ export function App() {
           <div>我显示出来啦！</div>
         </If>
         <button on:click={() => (state.show = !state.show)}>
-          <If expect={state.show}>
-            {{
-              true: '隐藏',
-              false: '显式',
-            }}
+          <If expect={state.show} slot:else={'显示'}>
+            隐藏
           </If>
         </button>
       </div>
       <p>上面例子代码是：</p>
       <pre>
         <code>
-          {`<If expect={state.show}>
+          {` <If expect={state.show}>
   <div>我显示出来啦！</div>
 </If>
-<button on:click={() => state.show = !state.show}>
-  <If expect={state.show}>
-    {{
-      true: '隐藏',
-      false: '显式'
-    }}
+<button on:click={() => (state.show = !state.show)}>
+  <If expect={state.show} slot:else={'显示'}>
+    隐藏
   </If>
 </button>`}
         </code>
