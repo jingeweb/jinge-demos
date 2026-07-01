@@ -11,6 +11,6 @@
     "dev": "vite"
   },
   "dependencies": {
-    "echarts": "^5.5.1"
+    "echarts": "^6.1.0"
   }
 }
