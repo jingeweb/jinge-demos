@@ -1,0 +1,18 @@
+{
+  "name": "jinge-demo-events",
+  "version": "1.0.0",
+  "private": true,
+  "description": "events demo for jinge",
+  "license": "ISC",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "jingeDemo": {
+    "title": "事件 Events",
+    "desc": "原生事件、自定义事件与受控组件",
+    "order": 40
+  }
+}

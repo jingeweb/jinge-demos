@@ -1,43 +1,221 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>demos of jinge framework</title>
+    <style>
+      :root {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+        color: #1f2328;
+        background: #f6f7f9;
+      }
+      body {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+      }
+      h1 {
+        font-size: 26px;
+      }
+      .intro {
+        color: #656d76;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+      ul {
+        margin: 24px 0 0;
+        padding: 0;
+        list-style: none;
+        border: 1px solid #d8dee4;
+        border-radius: 10px;
+        background: #fff;
+        overflow: hidden;
+      }
+      li {
+        padding: 14px 18px;
+        border-bottom: 1px solid #eaeef2;
+      }
+      li:last-child {
+        border-bottom: none;
+      }
+      .row {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+      .title {
+        color: #0969da;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .title:hover {
+        text-decoration: underline;
+      }
+      .src {
+        color: #8c959f;
+        font-size: 12px;
+        text-decoration: none;
+      }
+      .src:hover {
+        color: #0969da;
+      }
+      .desc {
+        margin-top: 3px;
+        color: #656d76;
+        font-size: 13px;
+      }
+    </style>
+  </head>
 
-<head>
-  <title>demos of jinge framework</title>
-  <style>
-    li {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 8px;
-    }
-  </style>
-</head>
-
-<body>
-  <h1><a href="https://github.com/jingeweb/jinge" target="_blank">jinge</a> 框架示例</h1>
-  <p>
-    <a href="https://github.com/jingeweb/jinge" target="_blank">
-      <bold>jinge</bold>
-    </a> 框架是一个小巧的前端界面框架。该框架基于 `Proxy` 实现数据双向绑定内核；使用 `tsx` 作为模板描述，有近乎完美的类型约束、类型提示和编码体验；但完全不使用虚拟 DOM，从而可以做到框架极度地轻巧。
-  </p>
-  <p>以下是各种简单示例：</p>
-  <ul>
-    <li>
-      Hello World：
-      <a href="hello-world/">示例</a>
-      <a href="https://github.com/jingeweb/jinge-demos/tree/master/packages/hello-world" target="_blank">源码</a>
-    </li>
-    <li>
-      经典 Todo MVC：
-      <a href="todo-mvc/">示例</a>
-      <a href="https://github.com/jingeweb/jinge-demos/tree/master/packages/todo-mvc" target="_blank">源码</a>
-    </li>
-    <li>
-      If 条件判定渲染：
-      <a href="if/">示例</a>
-      <a href="https://github.com/jingeweb/jinge-demos/tree/master/packages/if" target="_blank">源码</a>
-    </li>
-
-  </ul>
-</body>
-
+  <body>
+    <h1><a href="https://github.com/jingeweb/jinge" target="_blank" rel="noreferrer">jinge</a> 框架示例</h1>
+    <p class="intro">
+      jinge 是一个小巧的前端界面框架：基于 Proxy 实现数据绑定，使用 tsx 描述模板，不使用虚拟 DOM。
+      下面是按主题排列的示例，每个示例都在独立目录里，既可以在线预览，也可以对照源码阅读。
+    </p>
+    <ul>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/hello-world/">Hello World（jinge）</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/hello-world/jinge" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">最小示例，对比同一功能的三种框架写法</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/hello-world-react/">Hello World（React）</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/hello-world/react" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">同一示例的 React 版本</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/hello-world-vue/">Hello World（Vue）</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/hello-world/vue" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">同一示例的 Vue 版本</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/if/">条件渲染 If</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/if" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">If 组件，以及 ? :、&amp;&amp; 的编译糖</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/form-input/">表单输入</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/form-input" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">原生表单控件与 vm 数据绑定</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/simple-todos/">简易待办</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/simple-todos" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">列表增删改查与 localStorage</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/todo-mvc/">Todo MVC</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/todo-mvc" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">路由、过滤器与模块级 store</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/watch/">数据侦听</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/watch" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">watch / vmWatch、深度监听与 changedPath</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/transition/">过渡动画</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/transition" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">Transition 与 TransitionGroup</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/recursion-component/">递归组件</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/recursion-component" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">用函数组件渲染树形结构</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/ref-and-life-cycle/">Ref 与生命周期</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/ref-and-life-cycle" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">ref、expose、onMount / onUnmount</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/integrated-with-echarts/">集成 ECharts</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/integrated-with-echarts" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">在组件中挂载第三方图表库</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/slots/">插槽 Slots</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/slots" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">默认插槽、命名插槽、作用域插槽与插槽透传</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/context/">上下文 Context</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/context" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">跨层级传递主题与配置，避免 props 逐层透传</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/events/">事件 Events</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/events" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">原生事件、自定义事件与受控组件</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/list-rendering/">列表渲染</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/list-rendering" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">keyed 重排、嵌套列表、空态与 nextTick</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/form/">表单 Form</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/form" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">input/select/radio/checkbox 等控件的绑定与汇总</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/styling/">样式 Styling</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/styling" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">class 组合、style 字符串与 CSS 变量主题</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/dynamic-components/">动态组件</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/dynamic-components" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">Dynamic 切换、lazy 异步加载与状态重建</div>
+      </li>
+      <li>
+        <div class="row">
+          <a class="title" href="/jinge-demos/i18n/">国际化 i18n</a>
+          <a class="src" href="https://github.com/jingeweb/jinge-demos/tree/master/packages/i18n" target="_blank" rel="noreferrer">源码</a>
+        </div>
+        <div class="desc">编译期 key、参数、富文本、语言切换与 CLI 流程</div>
+      </li>
+    </ul>
+  </body>
 </html>

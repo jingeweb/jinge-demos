@@ -12,5 +12,10 @@
   },
   "dependencies": {
     "echarts": "^5.5.1"
+  },
+  "jingeDemo": {
+    "title": "集成 ECharts",
+    "desc": "在组件中挂载第三方图表库",
+    "order": 18
   }
 }

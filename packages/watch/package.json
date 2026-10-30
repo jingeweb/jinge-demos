@@ -10,5 +10,10 @@
     "build": "vite build",
     "dev": "vite",
     "prettier": "prettier . --write"
+  },
+  "jingeDemo": {
+    "title": "数据侦听",
+    "desc": "watch / vmWatch、深度监听与 changedPath",
+    "order": 14
   }
 }

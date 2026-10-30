@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["unicorn", "typescript", "oxc", "import", "promise", "react"],
+  "plugins": ["unicorn", "typescript", "oxc", "import", "promise"],
   "categories": {
     "correctness": "error"
   },
@@ -27,6 +27,7 @@
     ".husky/",
     ".idea/",
     ".vscode/",
-    "/docs"
+    "/docs",
+    "packages/i18n/intl"
   ]
 }

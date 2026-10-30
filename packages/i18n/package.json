@@ -1,0 +1,20 @@
+{
+  "name": "jinge-demo-i18n",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i18n demo for jinge",
+  "license": "ISC",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "intl:compile": "intl-compile",
+    "intl:extract": "intl-extract --lang zh,en src"
+  },
+  "jingeDemo": {
+    "title": "国际化 i18n",
+    "desc": "编译期 key、参数、富文本、语言切换与 CLI 流程",
+    "order": 90
+  }
+}

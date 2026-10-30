@@ -1,0 +1,18 @@
+{
+  "name": "jinge-demo-form",
+  "version": "1.0.0",
+  "private": true,
+  "description": "form demo for jinge",
+  "license": "ISC",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "jingeDemo": {
+    "title": "表单 Form",
+    "desc": "input/select/radio/checkbox 等控件的绑定与汇总",
+    "order": 60
+  }
+}

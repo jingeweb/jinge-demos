@@ -9,5 +9,10 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite"
+  },
+  "jingeDemo": {
+    "title": "过渡动画",
+    "desc": "Transition 与 TransitionGroup",
+    "order": 15
   }
 }

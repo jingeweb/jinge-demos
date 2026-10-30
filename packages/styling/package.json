@@ -1,0 +1,18 @@
+{
+  "name": "jinge-demo-styling",
+  "version": "1.0.0",
+  "private": true,
+  "description": "styling demo for jinge",
+  "license": "ISC",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "jingeDemo": {
+    "title": "样式 Styling",
+    "desc": "class 组合、style 字符串与 CSS 变量主题",
+    "order": 70
+  }
+}

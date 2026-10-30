@@ -1,0 +1,18 @@
+{
+  "name": "jinge-demo-dynamic-components",
+  "version": "1.0.0",
+  "private": true,
+  "description": "dynamic-components demo for jinge",
+  "license": "ISC",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "jingeDemo": {
+    "title": "动态组件",
+    "desc": "Dynamic 切换、lazy 异步加载与状态重建",
+    "order": 80
+  }
+}

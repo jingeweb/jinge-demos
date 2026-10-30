@@ -9,5 +9,10 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite"
+  },
+  "jingeDemo": {
+    "title": "简易待办",
+    "desc": "列表增删改查与 localStorage",
+    "order": 12
   }
 }

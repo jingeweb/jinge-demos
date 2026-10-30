@@ -9,5 +9,10 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite"
+  },
+  "jingeDemo": {
+    "title": "递归组件",
+    "desc": "用函数组件渲染树形结构",
+    "order": 16
   }
 }

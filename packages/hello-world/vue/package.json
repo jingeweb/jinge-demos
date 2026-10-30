@@ -15,5 +15,11 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue-jsx": "^5.1.5"
+  },
+  "jingeDemo": {
+    "title": "Hello World（Vue）",
+    "desc": "同一示例的 Vue 版本",
+    "order": 3,
+    "dir": "hello-world-vue"
   }
 }

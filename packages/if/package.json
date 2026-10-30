@@ -8,5 +8,10 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite"
+  },
+  "jingeDemo": {
+    "title": "条件渲染 If",
+    "desc": "If 组件，以及 ? :、&& 的编译糖",
+    "order": 10
   }
 }

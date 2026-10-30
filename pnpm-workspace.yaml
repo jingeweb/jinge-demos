@@ -4,4 +4,10 @@ packages:
 allowBuilds:
   '@swc/core': false
   bun: true
-  unrs-resolver: set this to true or false
+minimumReleaseAgeExclude:
+  - lightstatic-darwin-arm64@2.0.0 || 2.1.0
+  - lightstatic-darwin-x64@2.0.0 || 2.1.0
+  - lightstatic-linux-arm64@2.0.0 || 2.1.0
+  - lightstatic-linux-x64@2.0.0 || 2.1.0
+  - lightstatic-win-x64@2.0.0 || 2.1.0
+  - lightstatic@2.0.0 || 2.1.0

@@ -1,0 +1,18 @@
+{
+  "name": "jinge-demo-slots",
+  "version": "1.0.0",
+  "private": true,
+  "description": "slots demo for jinge",
+  "license": "ISC",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "jingeDemo": {
+    "title": "插槽 Slots",
+    "desc": "默认插槽、命名插槽、作用域插槽与插槽透传",
+    "order": 20
+  }
+}

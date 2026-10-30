@@ -10,5 +10,10 @@
     "build": "vite build",
     "dev": "vite",
     "prettier": "prettier . --write"
+  },
+  "jingeDemo": {
+    "title": "Ref 与生命周期",
+    "desc": "ref、expose、onMount / onUnmount",
+    "order": 17
   }
 }

@@ -1,0 +1,18 @@
+{
+  "name": "jinge-demo-context",
+  "version": "1.0.0",
+  "private": true,
+  "description": "context demo for jinge",
+  "license": "ISC",
+  "author": "Yuhang Ge<abeyuhang@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite"
+  },
+  "jingeDemo": {
+    "title": "上下文 Context",
+    "desc": "跨层级传递主题与配置，避免 props 逐层透传",
+    "order": 30
+  }
+}

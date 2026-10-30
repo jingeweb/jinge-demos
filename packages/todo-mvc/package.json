@@ -13,5 +13,10 @@
   "devDependencies": {
     "todomvc-app-css": "^2.4.3",
     "todomvc-common": "^1.0.5"
+  },
+  "jingeDemo": {
+    "title": "Todo MVC",
+    "desc": "路由、过滤器与模块级 store",
+    "order": 13
   }
 }

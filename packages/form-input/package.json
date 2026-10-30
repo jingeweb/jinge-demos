@@ -10,5 +10,10 @@
     "build": "vite build",
     "dev": "vite",
     "prettier": "prettier . --write"
+  },
+  "jingeDemo": {
+    "title": "表单输入",
+    "desc": "原生表单控件与 vm 数据绑定",
+    "order": 11
   }
 }
