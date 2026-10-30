@@ -11,8 +11,8 @@
     "dev": "vite"
   },
   "jingeDemo": {
-    "title": "Hello World（jinge）",
-    "desc": "最小示例，对比同一功能的三种框架写法",
+    "title": "Hello World",
+    "desc": "最小示例：打包后 3.2 kB（gzip 1.5 kB），同样功能的 Vue 版 61 kB、React 版 220 kB。",
     "order": 1,
     "dir": "hello-world"
   }

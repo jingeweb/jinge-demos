@@ -1,0 +1,1 @@
+import{a as e,i as t,n,o as r,r as i,t as a}from"./index-DPvbxid1.js";function o(o,s){return[(()=>{let c=i(`div`,i(`h3`,(()=>{let t=n(``);return e(o,[`title`],e=>a(t,e),s),t})()),t(`p`,{class:`desc`},`这个面板是异步加载的：lazy() + 动态 import，构建时会被拆成独立的 chunk。`),t(`p`,{class:`ok`},`加载完成。`));return s[r].push(c),c})()]}export{o as LazyPanel};

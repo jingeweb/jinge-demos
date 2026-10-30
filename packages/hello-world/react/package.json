@@ -18,11 +18,5 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1"
-  },
-  "jingeDemo": {
-    "title": "Hello World（React）",
-    "desc": "同一示例的 React 版本",
-    "order": 2,
-    "dir": "hello-world-react"
   }
 }

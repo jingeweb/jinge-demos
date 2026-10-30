@@ -8,7 +8,7 @@
 
 构建全部示例：`pnpm build`（产物在 `docs/`）。本地预览：`pnpm preview:docs`，打开 [http://localhost:8080/](http://localhost:8080/)（会跳转到 `/jinge-demos/`）。
 
-示例的 `base` 是 `/jinge-demos/`，预览脚本会创建一个带该前缀的软链来模拟 GitHub Pages 的部署路径，所以请保留 `/jinge-demos/` 前缀访问。
+示例的 `base` 是 `/jinge-demos/`，预览脚本通过 `lightstatic --base-href` 模拟 GitHub Pages 的部署路径。
 
 ## 本地依赖
 

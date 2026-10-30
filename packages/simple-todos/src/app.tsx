@@ -65,8 +65,12 @@ export function App() {
   }
 
   function add() {
-    const title = prompt('Please enter title of new todo');
-    if (!title?.trim()) {
+    const title = prompt('Please enter title of new todo')?.trim();
+    if (!title) {
+      return;
+    }
+    if (state.todos.some(t => t.title === title)) {
+      alert('duplicated');
       return;
     }
     state.todos.push(createTodo(title));

@@ -49,7 +49,7 @@ async function collectDemos(): Promise<DemoMeta[]> {
     const pkgDir = path.join(PKGS_DIR, entry);
     if (!(await isDir(pkgDir))) continue;
     if (entry === 'hello-world') {
-      // hello-world 下有 jinge / react / vue 三个子项目，共用一个 README
+      // hello-world 下按子项目组织；目前文档里只保留 jinge 版本
       for (const sub of await readdir(pkgDir)) {
         const subDir = path.join(pkgDir, sub);
         if (!(await isDir(subDir))) continue;
@@ -186,8 +186,6 @@ if (!indexOnly) {
     }
     if (pkg === 'hello-world') {
       await $`pnpm build`.cwd(path.join(pkgDir, 'jinge'));
-      await $`pnpm build`.cwd(path.join(pkgDir, 'vue'));
-      await $`pnpm build`.cwd(path.join(pkgDir, 'react'));
     } else {
       await $`pnpm build`.cwd(pkgDir);
     }

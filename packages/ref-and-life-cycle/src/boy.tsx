@@ -1,4 +1,4 @@
-import { expose, onMount, onUnmount, Ref, WithExpose } from 'jinge';
+import { expose, onMount, onUnmount, type WithExpose } from 'jinge';
 
 export function Boy(
   props: { name: string } & WithExpose<{
