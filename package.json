@@ -27,15 +27,15 @@
     "preview:docs": "lightstatic docs -b /jinge-demos/"
   },
   "dependencies": {
-    "jinge": "link:../jinge",
-    "jinge-router": "4.1.0"
+    "jinge": "^4.2.0",
+    "jinge-router": "^4.2.0"
   },
   "devDependencies": {
     "@types/bun": "^1.4.4",
     "@types/node": "^26.6.6",
     "bun": "^1.4.4",
     "husky": "^9.1.7",
-    "jinge-compiler": "link:../jinge-compiler",
+    "jinge-compiler": "^4.2.0",
     "lightstatic": "^2.1.0",
     "lint-staged": "^17.6.0",
     "oxfmt": "^0.75.0",
