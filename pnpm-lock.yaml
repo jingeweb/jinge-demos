@@ -70,30 +70,30 @@ importers:
   packages/hello-world/react:
     dependencies:
       react:
-        specifier: ^19.2.6
+        specifier: ^19.3.1
         version: 19.3.1
       react-dom:
-        specifier: ^19.2.6
+        specifier: ^19.3.1
         version: 19.3.1(react@19.3.1)
     devDependencies:
       '@types/react':
-        specifier: ^19.2.14
+        specifier: ^19.3.0
         version: 19.3.0
       '@types/react-dom':
-        specifier: ^19.2.3
+        specifier: ^19.3.0
         version: 19.3.0(@types/react@19.3.0)
       '@vitejs/plugin-react':
-        specifier: ^6.0.1
+        specifier: ^6.1.2
         version: 6.1.2(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.1))
 
   packages/hello-world/vue:
     dependencies:
       vue:
-        specifier: ^3.5.34
+        specifier: ^3.5.44
         version: 3.5.44(typescript@7.0.2)
     devDependencies:
       '@vitejs/plugin-vue-jsx':
-        specifier: ^5.1.5
+        specifier: ^5.1.6
         version: 5.1.6(vite@8.3.5(@types/node@26.6.6)(yaml@2.9.1))(vue@3.5.44(typescript@7.0.2))
 
   packages/i18n: {}
@@ -103,8 +103,8 @@ importers:
   packages/integrated-with-echarts:
     dependencies:
       echarts:
-        specifier: ^5.5.1
-        version: 5.6.0
+        specifier: ^6.1.0
+        version: 6.1.0
 
   packages/list-rendering: {}
 
@@ -959,8 +959,8 @@ packages:
     resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
     engines: {node: '>=8'}
 
-  echarts@5.6.0:
-    resolution: {integrity: sha512-oTbVTsXfKuEhxftHqL5xprgLoc0k7uScAwtryCgWF6hPYFLRwOUHiFmHGCBKP5NPFNkDVopOieyUqYGH8Fa3kA==}
+  echarts@6.1.0:
+    resolution: {integrity: sha512-q0yaFPggC9FUdsWH4blavRWFmxdrIodbkoKNAjJudAI6CA9gNPxHtV2RcZNEepZVlk4yvBYkOkbk6HIVpIyHZA==}
 
   electron-to-chromium@1.5.472:
     resolution: {integrity: sha512-s4+nfT29b0FKpVKoaIxl2pWsoNcn7A/nMPSrxayw4T3BsmPeV2lF9Y06BsAQeMGhCTQ4nYJ5XST7jkqe4ZEqFw==}
@@ -1357,8 +1357,8 @@ packages:
     engines: {node: '>= 14.6'}
     hasBin: true
 
-  zrender@5.6.1:
-    resolution: {integrity: sha512-OFXkDJKcrlx5su2XbzJvj/34Q3m6PvyCZkVPHGYpcCJ52ek4U/ymZyfuV1nKE23AyBJ51E/6Yr0mhZ7xGTO4ag==}
+  zrender@6.1.0:
+    resolution: {integrity: sha512-oEGMDB6pOP2S6OwRR4PdVv610zrjnA3Bh+JnSG12fYJlBKjtNAoEb5fSUoCOOINlH96I2fU38/A2UpRKs67xYQ==}
 
 snapshots:
 
@@ -1993,10 +1993,10 @@ snapshots:
 
   detect-libc@2.1.2: {}
 
-  echarts@5.6.0:
+  echarts@6.1.0:
     dependencies:
       tslib: 2.3.0
-      zrender: 5.6.1
+      zrender: 6.1.0
 
   electron-to-chromium@1.5.472: {}
 
@@ -2330,6 +2330,6 @@ snapshots:
   yaml@2.9.1:
     optional: true
 
-  zrender@5.6.1:
+  zrender@6.1.0:
     dependencies:
       tslib: 2.3.0
