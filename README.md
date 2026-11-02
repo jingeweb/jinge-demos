@@ -12,7 +12,7 @@
 
 ## 本地依赖
 
-`jinge` 和 `jinge-compiler` 通过 `link:` 引用同级目录，首次构建前需要先构建它们：
+默认依赖从 npm 安装，版本由 lockfile 固定。如需将 `jinge` 和 `jinge-compiler` 改为 `link:` 引用同级仓库，首次构建前需要先构建它们：
 
 ```bash
 (cd ../jinge && pnpm install && pnpm build)
@@ -20,3 +20,9 @@
 ```
 
 `build-cargo-debug` 会生成 `jinge-compiler/index.node`；存在时编译器会优先使用这个本地构建的 binding。
+
+## 浏览器 e2e
+
+运行 `pnpm test` 会构建所有 20 个示例并运行 Chrome headless 的用户交互测试。
+用例涵盖表单、列表、插槽、事件、路由、持久化、语言切换、异步组件、动画及图表；测试产物独立于 `docs/`。
+运行环境、单个示例的测试方式和报告位置见 [测试说明](test/README.md)。

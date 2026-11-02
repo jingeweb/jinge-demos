@@ -15,5 +15,11 @@
   "sortPackageJson": {
     "sortScripts": true
   },
-  "ignorePatterns": ["/docs", "node_modules", "packages/i18n/intl"]
+  "ignorePatterns": [
+    "/docs",
+    "node_modules",
+    "packages/i18n/intl",
+    "test/.site/**",
+    "test/.results/**"
+  ]
 }

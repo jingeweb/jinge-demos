@@ -28,6 +28,8 @@
     ".idea/",
     ".vscode/",
     "/docs",
-    "packages/i18n/intl"
+    "packages/i18n/intl",
+    "test/.site/**",
+    "test/.results/**"
   ]
 }

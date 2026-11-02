@@ -20,23 +20,27 @@
   "type": "module",
   "scripts": {
     "build": "bun run build.ts",
-    "lint": "tsgo --noEmit && oxlint --type-aware && oxfmt --check",
+    "lint": "tsc --noEmit && oxlint --type-aware && oxfmt --check",
     "lint-fix": "oxlint --type-aware --fix && oxfmt",
     "lint-staged": "lint-staged",
     "prepare": "husky",
-    "preview:docs": "lightstatic docs -b /jinge-demos/"
+    "preview:docs": "lightstatic docs -b /jinge-demos/",
+    "test": "pnpm test:e2e",
+    "test:e2e": "node test/e2e/run.mjs",
+    "test:e2e:build": "node test/e2e/build.mjs"
   },
   "dependencies": {
     "jinge": "^4.2.0",
     "jinge-router": "^4.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@types/bun": "^1.4.4",
     "@types/node": "^26.6.6",
     "bun": "^1.4.4",
     "husky": "^9.1.7",
     "jinge-compiler": "^4.2.0",
-    "lightstatic": "^2.1.0",
+    "lightstatic": "^2.1.2",
     "lint-staged": "^17.6.0",
     "oxfmt": "^0.75.0",
     "oxlint": "^1.90.0",

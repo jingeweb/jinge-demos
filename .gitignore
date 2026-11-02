@@ -11,3 +11,5 @@ package-lock.json
 .jshint.json
 
 dist
+/test/.site/
+/test/.results/

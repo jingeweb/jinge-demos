@@ -69,7 +69,7 @@ export function App() {
     if (!title) {
       return;
     }
-    if (state.todos.some(t => t.title === title)) {
+    if (state.todos.some((t) => t.title === title)) {
       alert('duplicated');
       return;
     }
