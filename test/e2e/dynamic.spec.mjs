@@ -49,13 +49,14 @@ test('integrated-with-echarts: render, inspect a chart tooltip, then render agai
   await expect(page.locator('canvas')).toHaveCount(1);
   await expect(page.locator('canvas')).toBeVisible();
   const canvas = page.locator('canvas');
-  // Keep the pointer near the foot of the first bar as the real chart animates.
+  // ECharts 6 has larger default grid margins; hover inside the first bar,
+  // relative to the actual canvas, rather than on its left/bottom boundary.
   // Retry user pointer movement until its visible tooltip appears.
   const box = await canvas.boundingBox();
   let movement = 0;
   await expect
     .poll(async () => {
-      await page.mouse.move(box.x + 83 + (movement++ % 2), box.y + box.height - 80);
+      await page.mouse.move(box.x + box.width * 0.22 + (movement++ % 2), box.y + box.height * 0.7);
       return page.getByText('shirt', { exact: true }).isVisible();
     })
     .toBe(true);

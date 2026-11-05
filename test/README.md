@@ -82,3 +82,9 @@ Hello World 和递归树没有可操作业务控件，因此测试真实展示�
 2026-11-02，本机 Google Chrome headless 下：20 个示例构建成功，45 项检查全部通过
 （44 个用户场景和 1 个覆盖清单检查），没有跳过或重试。`pnpm lint` 和
 `pnpm install --frozen-lockfile` 也通过。
+
+## MethodPathWatcher 配套验收（2026-11-04）
+
+本次使用相邻 runtime/compiler 构建产物，由 compiler/scripts/sync-local-consumers.mjs 显式复制到安装包；router 与应用 Jinge 入口一致，未使用 link。全量 45 项 Chrome 用例通过，全部示例构建及 lint 通过。
+
+ECharts tooltip 原固定坐标在新版默认网格的边界外，导致首轮 44 通过/1 失败。新旧 compiler 对图表示例生成代码完全一致；测试使用实际 canvas 的相对内部位置，保留真实鼠标 tooltip 断言，修正后全量 45 通过。生成的 docs 构建产物在验收后恢复原样，不混入本次框架改动；test/.site 与报告保留当前产物。
